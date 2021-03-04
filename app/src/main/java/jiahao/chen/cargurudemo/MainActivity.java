@@ -3,6 +3,7 @@ package jiahao.chen.cargurudemo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.util.Log;
@@ -50,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button moveToPage2 = (Button)findViewById(R.id.pageTwoBtn);
+        moveToPage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SortingTop3.class);
+                startActivity(intent);
+            }
+        });
 
         // retrieving objects from xml
         tvModel = findViewById(R.id.tvModel);
