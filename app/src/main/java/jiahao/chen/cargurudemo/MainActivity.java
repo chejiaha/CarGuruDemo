@@ -3,6 +3,7 @@ package jiahao.chen.cargurudemo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Context context = getApplicationContext();
         Button moveToPage2 = (Button)findViewById(R.id.pageTwoBtn);
         moveToPage2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button home = (Button)findViewById(R.id.pageHomeBtn);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Home.class);
+                startActivity(intent);
+            }
+        });
+
 
         // retrieving objects from xml
         tvModel = findViewById(R.id.tvModel);
@@ -187,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
 
 //        listView = findViewById(R.id.lvCarInfo);
