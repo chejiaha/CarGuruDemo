@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+>
+
+        <TextView
+            android:id="@+id/tvSpecificCarTitle"
+            android:layout_width="128dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="32dp"
+            android:text="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivSpecificCarPic"
+            android:layout_width="303dp"
+            android:layout_height="179dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarTitle" />
+
+        <TextView
+            android:id="@+id/tvChooseCarsToCompare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Choose Cars to Compare"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/ivChooseCarsToCompare"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivChooseCarsToCompare"
+            android:layout_width="54dp"
+            android:layout_height="34dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSpecificCarDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSpecificCarPic" />
+
+        <TextView
+            android:id="@+id/tvSpecificCarDescriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Description Text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarDescription" />
+
+        <TextView
+            android:id="@+id/SpecificCarApproxCostPerYearTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Approximate Cost Per Year"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarDescriptionText" />
+
+        <TextView
+            android:id="@+id/tvSpecificCarRatings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Ratings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sbSeekBar" />
+
+        <SeekBar
+            android:id="@+id/sbSeekBar"
+            android:layout_width="331dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SpecificCarApproxCostPerYearTitle" />
+
+        <ImageView
+            android:id="@+id/ivSpecificCarGasRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ivSpecificCarCosts"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings" />
+
+        <ImageView
+            android:id="@+id/Test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            tools:layout_editor_absoluteX="276dp"
+            tools:layout_editor_absoluteY="690dp" />
+
+        <ImageView
+            android:id="@+id/ivSpecificCarCosts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toEndOf="@+id/ivSpecificCarSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings" />
+
+        <ImageView
+            android:id="@+id/ivSpecificCarSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toEndOf="@+id/ivSpecificCarWildcard"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings" />
+
+        <ImageView
+            android:id="@+id/ivSpecificCarWildcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings" />
+
+        <TextView
+            android:id="@+id/tvSpecificCarCommonProblemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Common Problems"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSpecificCarWildcard" />
+
+        <ListView
+            android:id="@+id/lvSpecificCarCommonProblemList"
+            android:layout_width="342dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarCommonProblemTitle">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/tvSpecificCarRecallsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Recalls"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarCommonProblemList" />
+
+        <ListView
+            android:id="@+id/lvSpecificCarRecallsList"
+            android:layout_width="342dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.607"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRecallsTitle"></ListView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

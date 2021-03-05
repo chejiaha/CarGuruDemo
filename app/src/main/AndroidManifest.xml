@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarGuruDemo">
         <activity android:name=".SortingTop3"></activity>
+        <activity android:name=".HomePage"></activity>
+        <activity android:name=".FindSpecificModel"></activity>
+        <activity android:name=".FindACarForYou"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".BrowseByCategory"></activity>
+        <activity android:name=".SpecificModel"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
