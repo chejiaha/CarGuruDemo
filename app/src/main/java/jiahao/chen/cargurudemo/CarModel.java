@@ -10,6 +10,8 @@ public class CarModel {
     public String Year;
 
     public String Category;
+
+
     public List<String> CommonProblems;
     public List<String> Recalls;
     public String Description;
@@ -27,7 +29,79 @@ public class CarModel {
         Engine = engine;
         Seats = seats;
     }
+    //Creating Getters and setters for all attributes
 
+    public String getMake() {
+        return Make;
+    }
+
+    public void setMake(String make) {
+        Make = make;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public void setModel(String model) {
+        Model = model;
+    }
+
+    public String getYear() {
+        return Year;
+    }
+
+    public void setYear(String year) {
+        Year = year;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public List<String> getCommonProblems() {
+        return CommonProblems;
+    }
+
+    public void setCommonProblems(List<String> commonProblems) {
+        CommonProblems = commonProblems;
+    }
+
+    public List<String> getRecalls() {
+        return Recalls;
+    }
+
+    public void setRecalls(List<String> recalls) {
+        Recalls = recalls;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public int getDoors() {
+        return Doors;
+    }
+
+    public void setDoors(int doors) {
+        Doors = doors;
+    }
+
+    public int getHorsePower() {
+        return HorsePower;
+    }
+
+    public void setHorsePower(int horsePower) {
+        HorsePower = horsePower;
+    }
     //public String getModel() {
     //    return Model;
     //}
