@@ -3,7 +3,9 @@ package jiahao.chen.cargurudemo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference dbRef;
     DatabaseReference dbRefSpinner;
     Spinner spModels;
+    Button btnAdd;
 
     ValueEventListener listener;
     ArrayList<String>list;
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         spModels = findViewById(R.id.spModels);
         listView = findViewById(R.id.listView);
+        btnAdd = findViewById(R.id.BtnNextPage);
 
         // creating a list to store Car makes
         list = new ArrayList<>();
@@ -130,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // attach the key value from spinner to .child of the parent (vehicle)
                 dbRef= FirebaseDatabase.getInstance().getReference().child("Vehicle")
-                        .child(spModels.getSelectedItem().toString());
+                        .child(spModels.getSelectedItem().toString()).child("Focus").child("2011");
 
                 dbRef.addValueEventListener(new ValueEventListener() {
 
@@ -141,20 +145,21 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         // log errors to console
-                        Log.d("TAG",(spModels.getSelectedItem().toString()));
+                        Log.d("TAG",(FirebaseDatabase.getInstance().getReference().child("Vehicle")
+                                .child(spModels.getSelectedItem().toString()).child("Fieta").child("2014").toString()));
 
                         // getting the child fields from Firebase table
                         // names have to match child(keys) in table (they are case-sensitive!)
-                        String model = snapshot.child("Model").getValue().toString();
+                        //String model = snapshot.child("Model").getValue().toString();
                         String engine = snapshot.child("Engine").getValue().toString();
-                        String year = snapshot.child("Year").getValue().toString();
+                        //String year = snapshot.child("Year").getValue().toString();
                         String mpg = snapshot.child("MPG").getValue().toString();
                         String seats = snapshot.child("Seats").getValue().toString();
 
                         // set fields to Textview
-                        tvModel.setText(model);
+                        //tvModel.setText(model);
                         tvEngine.setText(engine);
-                        tvYear.setText(year);
+                        //tvYear.setText(year);
                         tvMPG.setText(mpg);
                         tvSeats.setText(seats);
 
@@ -168,6 +173,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity2.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // method to retrieve data from Firebase and add to spinner list

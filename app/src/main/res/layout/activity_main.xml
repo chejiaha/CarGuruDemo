@@ -144,6 +144,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+
+        android:id="@+id/BtnNextPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="298dp"
+        android:layout_marginTop="416dp"
+        android:text="Add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
         android:id="@+id/pageTwoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,6 +170,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
