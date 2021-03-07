@@ -1,22 +1,42 @@
 package jiahao.chen.cargurudemo;
 
+import java.time.Year;
+import java.util.List;
+
 public class CarModel {
 
+    public String Make;
     public String Model;
+    public String Year;
+
+    public String Category;
+
+
+    public List<String> CommonProblems;
+    public List<String> Recalls;
+    public String Description;
+    public int Doors;
     public int MPG;
+    public int HorsePower;
     public String Engine;
     public int Seats;
-    public int Year;
 
     public CarModel() {
     }
 
     public CarModel(String model, int MPG, String engine, int seats, int year) {
-        Model = model;
         this.MPG = MPG;
         Engine = engine;
         Seats = seats;
-        Year = year;
+    }
+    //Creating Getters and setters for all attributes
+
+    public String getMake() {
+        return Make;
+    }
+
+    public void setMake(String make) {
+        Make = make;
     }
 
     public String getModel() {
@@ -26,6 +46,69 @@ public class CarModel {
     public void setModel(String model) {
         Model = model;
     }
+
+    public String getYear() {
+        return Year;
+    }
+
+    public void setYear(String year) {
+        Year = year;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public List<String> getCommonProblems() {
+        return CommonProblems;
+    }
+
+    public void setCommonProblems(List<String> commonProblems) {
+        CommonProblems = commonProblems;
+    }
+
+    public List<String> getRecalls() {
+        return Recalls;
+    }
+
+    public void setRecalls(List<String> recalls) {
+        Recalls = recalls;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public int getDoors() {
+        return Doors;
+    }
+
+    public void setDoors(int doors) {
+        Doors = doors;
+    }
+
+    public int getHorsePower() {
+        return HorsePower;
+    }
+
+    public void setHorsePower(int horsePower) {
+        HorsePower = horsePower;
+    }
+    //public String getModel() {
+    //    return Model;
+    //}
+
+    //public void setModel(String model) {
+    //    Model = model;
+    //}
 
     public int getMPG() {
         return MPG;
@@ -51,11 +134,11 @@ public class CarModel {
         Seats = seats;
     }
 
-    public int getYear() {
-        return Year;
-    }
+    //public int getYear() {
+     //   return Year;
+    //}
 
-    public void setYear(int year) {
-        Year = year;
-    }
+    //public void setYear(int year) {
+      //  Year = year;
+    //}
 }
