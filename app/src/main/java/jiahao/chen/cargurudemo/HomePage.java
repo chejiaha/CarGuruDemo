@@ -16,7 +16,6 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         context = getApplicationContext();
-
     }
 
 // Find a car Link
@@ -24,6 +23,7 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(context, FindACarForYou.class);
         startActivity(intent);
     }
+
 // Find a Specific Model Link
     public void onClickToSpecificModel (View view){
         Intent intent = new Intent(context, FindSpecificModel.class);
@@ -36,9 +36,10 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 // Car News Link
-//    public void onClickToNews (View view){
-//
-//    }
+    public void onClickToNews (View view){
+        Intent intent = new Intent(context, NewsPage.class);
+        startActivity(intent);
+    }
 //Settings Link
 public void onClickToSettings (View view){
     Intent intent = new Intent(context, Settings.class);
@@ -50,9 +51,10 @@ public void onClickToHomePage (View view){
     startActivity(intent);
 }
 // To Garage Page
-//public void onClickToMyGarage (View view){
-//
-//
-//}
+public void onClickToMyGarage (View view){
+    Intent intent = new Intent(context, MyGaragePage.class);
+    startActivity(intent);
+
+}
 }
 

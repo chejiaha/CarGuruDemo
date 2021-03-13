@@ -18,6 +18,9 @@
         <activity android:name=".Settings"></activity>
         <activity android:name=".BrowseByCategory"></activity>
         <activity android:name=".SpecificModel"></activity>
+        <activity android:name=".MyGaragePage"></activity>
+        <activity android:name=".NewsPage"></activity>
+        <activity android:name=".QuestionnaireQuestions"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
