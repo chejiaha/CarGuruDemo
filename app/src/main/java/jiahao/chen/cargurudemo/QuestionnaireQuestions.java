@@ -37,7 +37,6 @@ public class QuestionnaireQuestions extends AppCompatActivity {
         setContentView(R.layout.activity_guru_question_page);
         //Creating context
         context = getApplicationContext();
-
         //Connecting the Objects with the view
         btnNext = findViewById(R.id.btnViewByCategory);
         btnBack = findViewById(R.id.btnViewPreviousResults);
@@ -47,9 +46,8 @@ public class QuestionnaireQuestions extends AppCompatActivity {
         rbAnswer3 = findViewById(R.id.rbAnswer3);
         rbAnswer4 = findViewById(R.id.rbAnswer4);
         pbQuestionProgress = findViewById(R.id.pbProgress);
-
-       /* btnNext.setOnClickListener(this::onClickNextQuestion);
-        btnBack.setOnClickListener(this::onClickPreviousQuestion);*/
+        btnNext.setOnClickListener(this::onClickNextQuestion);
+        btnBack.setOnClickListener(this::onClickPreviousQuestion);
     }
 
 /*    public void OnClickAnswerQuestion(View view){

@@ -86,7 +86,7 @@ public class BottomNavigationFragment extends Fragment {
         }
         // Home Page Link
         public void onClickToHomePage (View view){
-            Intent intent = new Intent(context, FindACarForYou.class);
+            Intent intent = new Intent(context, HomePage.class);
             startActivity(intent);
         }
         // To Garage Page

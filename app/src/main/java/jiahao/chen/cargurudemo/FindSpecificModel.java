@@ -140,7 +140,6 @@ public class FindSpecificModel extends AppCompatActivity {
                             //if it is not in the list add it
                             makeList.add(make);
                         }
-                        makeSpinnerAdapter.notifyDataSetChanged();
                         //Go through each year and add the models for that year
                         for (DataSnapshot aModel : dataSnapshot.child(category).child(make).getChildren()) {
                             //setting the year so we can iterate through each year and get the models
@@ -242,7 +241,7 @@ public class FindSpecificModel extends AppCompatActivity {
     };
     /*
      * This Event Handler is paired so when the user clicks the Make spinners it will check if a
-     * value is chosen. If a value is chosen for the Make Spinner it will populate the model spinner
+     * value is chosen. If a value is chosen for the Make Spinner it will populate the year spinner
      *
      * The Function is created to populate The Model and View based on what value is returned from the Make.
      * If the user chooses a make, this function will be called to populate the year, once that file is populated,
@@ -279,15 +278,12 @@ public class FindSpecificModel extends AppCompatActivity {
     };
 
     /*
-     *  This Event Handler is fired when the user clicks the Search button on the Find Specific Car Page.
-     *  This function will Send the user to the specific cars page and will pass the Specific Vehicle
-     *  Information received from the Database
-     */
-    /*
      * When the user clicks the search button it will send the user to the next page
      *
      * The Function is created to get the vehicle data that the user requested. It will look through
      * The database Reference and get the item information that has the same make,model and year.
+     * This function will Send the user to the specific cars page and will pass the Specific Vehicle
+     * Information received from the Database
      *
      * This function will return None
      */
@@ -412,7 +408,6 @@ public class FindSpecificModel extends AppCompatActivity {
                                 intent.putExtra("CarModel", carModel);
                                 //Setting the carModel Object to the next page.
                                 startActivity(intent);
-
                             }
                         }
 
