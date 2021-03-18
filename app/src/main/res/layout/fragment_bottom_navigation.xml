@@ -40,7 +40,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivFooterHome"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.506" />
+        app:layout_constraintVertical_bias="0.515" />
+
+    <TextView
+        android:id="@+id/tvFooterFindMeACar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Find Me A Car"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFooterHome"
+        app:layout_constraintTop_toBottomOf="@+id/ivFooterFindMeACar"
+        app:layout_constraintVertical_bias="0.018" />
 
     <ImageView
         android:id="@+id/ivFooterSearchForCar"
@@ -80,18 +92,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFooterSettings"
         app:layout_constraintVertical_bias="0.009" />
-
-    <TextView
-        android:id="@+id/tvFooterFindMeACar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="Find Me A Car"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvFooterHome"
-        app:layout_constraintTop_toBottomOf="@+id/ivFooterFindMeACar"
-        app:layout_constraintVertical_bias="0.024" />
 
     <ImageView
         android:id="@+id/ivFooterMyGarage"

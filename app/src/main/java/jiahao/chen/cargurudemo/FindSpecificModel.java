@@ -31,15 +31,19 @@ public class FindSpecificModel extends AppCompatActivity {
     ArrayList<String> makeList;
     //Creating a List to hold all of the Names of the Models
     ArrayList<String> modelList;
+    //Creating a List to hold all of the Names of the Trims
+    ArrayList<String> trimList;
     //Creating a List to hold all of the Names of the Years
     ArrayList<String> yearList;
     //Getting the Spinner(Combobox) Objects
     Spinner makeSpinner;
     Spinner modelSpinner;
+    Spinner trimSpinner;
     Spinner yearSpinner;
     //Creating the Spinner Adapters
     ArrayAdapter makeSpinnerAdapter;
     ArrayAdapter modelSpinnerAdapter;
+    ArrayAdapter trimSpinnerAdapter;
     ArrayAdapter yearSpinnerAdapter;
     //Creating the Button for searching
     Button searchVehicle;
@@ -60,11 +64,13 @@ public class FindSpecificModel extends AppCompatActivity {
         //List of carModel Objects so I can pass the one they choose to the users.
         makeList = new ArrayList<>();
         modelList = new ArrayList<>();
+        trimList = new ArrayList<>();
         yearList = new ArrayList<>();
         vehicleList = new ArrayList<>();
         //Creating the Spinner Objects
         makeSpinner = findViewById(R.id.spMake);
         modelSpinner = findViewById(R.id.spModel);
+        trimSpinner = findViewById(R.id.spTrim);
         yearSpinner = findViewById(R.id.spYear);
         searchVehicle = findViewById(R.id.btnFindSpecificModelSearch);
 
@@ -72,22 +78,24 @@ public class FindSpecificModel extends AppCompatActivity {
         vehicleList = getMakeModelYear();
         //Creating the spinner adapters and setting the lists that are used.
         makeSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, makeList);
+        trimSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
         modelSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
         yearSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, yearList);
 
         //Setting the Spinner Adapters to the respected Spinner Objects
         makeSpinner.setAdapter(makeSpinnerAdapter);
+        trimSpinner.setAdapter(trimSpinnerAdapter);
         modelSpinner.setAdapter(modelSpinnerAdapter);
         yearSpinner.setAdapter(yearSpinnerAdapter);
 
         //Setting the onTap Event listeners for Spinners
         makeSpinner.setOnTouchListener(onTouchMakeSpinner);
         modelSpinner.setOnTouchListener(onTouchModelSpinner);
+        trimSpinner.setOnTouchListener(onTouchTrimSpinner);
         yearSpinner.setOnTouchListener(onTouchYearSpinner);
 
         //Setting the onTap Event Listener for Model
         searchVehicle.setOnTouchListener(onClickSearchVehicle);
-
     }
 
 
@@ -123,47 +131,46 @@ public class FindSpecificModel extends AppCompatActivity {
                  *   Will Return:
                  *       ArrayList <carModel> vehicleList (**only make, model, year and category are filled out**)
                  */
-                String category ="";
                 String make = "";
                 String model = "";
+                String trim = "";
                 String year = "";
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    category = snapshot.getKey();
+                for (DataSnapshot ssMake : dataSnapshot.getChildren()) {
+                    make = ssMake.getKey();
+                    //Adding the Make to the Make List
+                    makeList.add(make);
                     //Get the makes list Once they get this list then populate the others
                     //for each make in the Given Category (Category is passed)
-                    for (DataSnapshot aMake : dataSnapshot.child(category).getChildren()) {
+                    for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
                         //setting the make so we can iterate through them
-                        make = aMake.getKey();
-                        //Checking if the Make is already in the list of makes
-                        if (!makeList.contains(make)){
-                            //if it is not in the list add it
-                            makeList.add(make);
-                        }
+                        model = ssModel.getKey();
                         //Go through each year and add the models for that year
-                        for (DataSnapshot aModel : dataSnapshot.child(category).child(make).getChildren()) {
+                        for (DataSnapshot ssTrim : dataSnapshot.child(make).child(model).getChildren()) {
                             //setting the year so we can iterate through each year and get the models
-                            model = aModel.getKey();
+                            trim = ssTrim.getKey();
+                            //debug
+                            Log.d("testTrim", "The Trim is" + trim);
                             //Go through each model of each make
-                            for (DataSnapshot aYear : dataSnapshot.child(category).child(make).child(model).getChildren()) {
+                            for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
                                 CarModel carModel = new CarModel();
                                 //Getting the model
-                                year = aYear.getKey();
+                                year = ssYear.getKey();
                                 //Adding the make to the carModel Object
                                 carModel.Make = make;
-                                //Adding the category to the carModel Object
-                                carModel.Category = category;
                                 //add the models name to the carModel Object
                                 carModel.Model = model;
+                                //add the models name to the carModel Object
+                                carModel.Trim = trim;
                                 //Get the year and add it to the carModel Object
                                 carModel.Year = Integer.parseInt(year);
                                 //Check if the model is already in the models array list
                                 if (!modelList.contains(model)){
                                     //if it is not in the list add it
                                     modelList.add(model);
-                                    //Adding the carModel to the carModel List
-                                    vehicleList.add(carModel);
                                 }
+                                //Adding the carModel to the carModel List
+                                vehicleList.add(carModel);
                             }
                         }
                     }
@@ -195,7 +202,8 @@ public class FindSpecificModel extends AppCompatActivity {
             //Once the user finishes choosing a value populate the next one.
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 //Loop through the carModel Array list so we can get the list of Models based on make they chose
-                Log.d("Car list is ", makeList.get(0));
+                //debug
+                //Log.d("Car list is ", makeList.get(0));
                 makeSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, makeList);
                 makeSpinner.setAdapter(makeSpinnerAdapter);
             }
@@ -226,6 +234,7 @@ public class FindSpecificModel extends AppCompatActivity {
                         userMake = makeSpinner.getSelectedItem().toString();
                     }catch (Exception e){
                         userMake = "Audi";
+
                     }
                     if(carModel.getMake().equals(userMake)){
                         modelList.add(carModel.getModel());
@@ -234,11 +243,48 @@ public class FindSpecificModel extends AppCompatActivity {
                 modelSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
                 modelSpinner.setAdapter(modelSpinnerAdapter);
             }
-
-            //modelSpinnerAdapter.notifyDataSetChanged();
             return false;
         }
     };
+
+    /*
+     * This Event Handler is paired so when the user clicks the Trim spinners it will check if a
+     * value is chosen. If a value is chosen for the Make Spinner it will populate the Year spinner
+     *
+     * The Function is created to populate The Year based on what value is returned from the Trim.
+     * If the user chooses a make, this function will be called to populate the year, once that file is populated,
+     * the function will populate the years that are available
+     *
+     * This function will return None
+     */
+    private View.OnTouchListener onTouchTrimSpinner = new View.OnTouchListener() {
+        public boolean onTouch(View v, MotionEvent event) {
+            //Once the user finishes choosing a value populate the next one.
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                //Clear the list so it can re calculate the years we have
+                trimList.clear();
+                //Loop through the carModel Array list so we can get the list of Models based on make they chose
+                for (CarModel carModel : vehicleList){
+                    //for every model, look for the model that the user chose
+                    String userModel;
+                    try {
+                        userModel = modelSpinner.getSelectedItem().toString();
+                    }catch (Exception e){
+                        userModel = "quattro 2Point0T Progressiv";
+                    }
+                    if(carModel.getModel().equals(userModel)){
+                        trimList.add(carModel.getTrim());
+                    }
+                }
+                trimSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, trimList);
+                trimSpinner.setAdapter(trimSpinnerAdapter);
+            }
+            return false;
+        }
+    };
+
+
+
     /*
      * This Event Handler is paired so when the user clicks the Make spinners it will check if a
      * value is chosen. If a value is chosen for the Make Spinner it will populate the year spinner
@@ -257,21 +303,21 @@ public class FindSpecificModel extends AppCompatActivity {
                 yearList.clear();
                 for (CarModel carModel : vehicleList){
                     //for every model, look for the model that the user chose
-                    String userModel;
+                    String userTrim;
                     try {
-                        userModel = modelSpinner.getSelectedItem().toString();
+                        userTrim = trimSpinner.getSelectedItem().toString();
                     }catch (Exception e){
-                        userModel = "A4";
+                        userTrim = "";
                     }
                     //String userModel = modelSpinner.getSelectedItem().toString();
-                    if(carModel.getModel().equals(userModel)){
+                    if(carModel.getTrim().equals(userTrim)){
                         //Workaround for .toString() possible error...
+                        //if the year is already in the list no need to add it.
                         yearList.add(String.valueOf(carModel.getYear()));
                     }
-                    yearSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, yearList);
-                    yearSpinner.setAdapter(yearSpinnerAdapter);
-                   // yearSpinnerAdapter.notifyDataSetChanged();
                 }
+                yearSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, yearList);
+                yearSpinner.setAdapter(yearSpinnerAdapter);
             }
             return false;
         }
@@ -293,7 +339,9 @@ public class FindSpecificModel extends AppCompatActivity {
             //Getting the users selection from the spinners
             String userMake = makeSpinner.getSelectedItem().toString();
             String userModel = modelSpinner.getSelectedItem().toString();
+            String userTrim = trimSpinner.getSelectedItem().toString();
             String userYear = yearSpinner.getSelectedItem().toString();
+
             //Checking if the spinners are all selected.
             if (userMake.isEmpty()) {
                 //Display Error Toast
@@ -306,8 +354,12 @@ public class FindSpecificModel extends AppCompatActivity {
                 Toast.makeText(context, "Please Choose a Valid Year", Toast.LENGTH_SHORT).show();
             } else {
                 CarModel carModel = new CarModel();
-                if (event.getAction() == MotionEvent.ACTION_UP) {
 
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //Setting the Make, Year, Model in the object
+                    carModel.setMake(userMake);
+                    carModel.setModel(userModel);
+                    carModel.setTrim(userTrim);
                     //DatabaseReference getValueFromDb =  FirebaseDatabase.getInstance().getReference().child("Vehicle");
                     listener = dbRef.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -320,6 +372,8 @@ public class FindSpecificModel extends AppCompatActivity {
                              *      Description         <String>
                              *      Recalls             [List]
                              *      Category            <String>
+                             *      Drivetrain          <String>
+                             *      Cylinders           <int>
                              *      CommonProblems      [List]
                              *      Doors               <int>
                              *      Engine              <String>
@@ -328,89 +382,104 @@ public class FindSpecificModel extends AppCompatActivity {
                              *      Price               <int>
                              *      Seats               <int>
                              */
-                            String category = "";
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                //Loop through the categories until you find the car
-                                category = snapshot.getKey();
-                                //Create a Car Model for the descriptions
-                                for (DataSnapshot aMake : dataSnapshot.child(category).child(userMake).child(userModel).child(userYear).getChildren()) {
-                                    //The Key of each description (Category,CommonProblems,Description...)
-                                    String descName = aMake.getKey();
-                                    //Temporary varible to convert the data from a string, to an int.
-                                    int convertToInt =0;
-                                    //Creating the list to contain the Recalls and Common Problems
-                                    String[] items;
-                                    //Setting the Make, Year, Model in the object
-                                    carModel.setMake(userMake);
-                                    carModel.setModel(userModel);
-                                    carModel.setYear(Integer.parseInt(userYear));
 
-                                    //Check what it is and put it into the correct value
-                                    switch (descName){
-                                        case "Category":
-                                            carModel.setCategory(aMake.getValue().toString());
-                                            break;
-                                        case "CommonProblems":
-                                            //Debug
-                                            Log.d("FindSpecificModel", "The Car information for Common Problems is" + aMake.getValue().toString());
-                                            //Convert the string into a list
-                                             items = aMake.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-                                            carModel.setCommonProblems(items);
-                                            break;
-                                        case "Description":
-                                            //Create a Car Model for the descriptions
-                                            carModel.setDescription(aMake.getValue().toString()) ;
-                                            break;
-                                        case "Doors":
-                                            //Convert it to a string then parse for the int
-                                            convertToInt = Integer.parseInt(aMake.getValue().toString());
-                                            carModel.setDoors(convertToInt);
-                                            break;
-                                        case "Engine":
-                                            //Create a Car Model for the descriptions
-                                            carModel.setEngine(aMake.getValue().toString()); ;
-                                            break;
-                                        case "HorsePower":
-                                            //Convert it to a string then parse for the int
-                                            convertToInt = Integer.parseInt(aMake.getValue().toString());
-                                            carModel.setHorsePower(convertToInt);
-                                            break;
-                                        case "MPG":
-                                            //Convert it to a string then parse for the int
-                                            convertToInt = Integer.parseInt(aMake.getValue().toString());
-                                            carModel.setMPG(convertToInt);
-                                            break;
-                                        case "Price":
-                                            //Convert it to a string then parse for the int
-                                            convertToInt = Integer.parseInt(aMake.getValue().toString());
-                                            carModel.setPrice(convertToInt);
-                                            break;
-                                        case "Recall":
-                                            //Debug
-                                            Log.d("FindSpecificModel", "The Car information for Recalls are" + aMake.getValue().toString());
-                                            //Convert the string into a list
-                                            items = aMake.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-                                            carModel.setRecalls(items);
-                                            break;
-                                        case "Seats":
-                                            //Convert it to a string then parse for the int
-                                            convertToInt = Integer.parseInt(aMake.getValue().toString());
-                                            carModel.setSeats(convertToInt);
-                                            break;
-                                    }//End Of Switch
+                            //Create a Car Model for the descriptions
+                            for (DataSnapshot ssCarDesc : dataSnapshot.child(userMake).child(userModel).child(userTrim).child(userYear).getChildren()) {
+                                //The Key of each description (Category,CommonProblems,Description...)
+                                String descName = ssCarDesc.getKey();
+                                //Temporary varible to convert the data from a string, to an int.
+                                int convertToInt =0;
+                                //Creating the list to contain the Recalls and Common Problems
+                                String[] descArray;
 
-                                }
-                            }//End Of Snapshot
-                            //if the category is not empty
-                            if(!carModel.getCategory().isEmpty()){
+
+                                carModel.setYear(Integer.parseInt(userYear));
+                                Log.d("EachDataSnapshot", "Data Snapshot " + userYear );
+
+                                //Check what it is and put it into the correct value
+                                switch (descName){
+                                    case "Category":
+                                        //convert to list and store in Category. (for futureproofing)
+
+                                        carModel.setCategory(ssCarDesc.getValue().toString());
+                                        break;
+                                    case "CommonProblems":
+                                        //Debug
+                                        Log.d("FindSpecificModel", "The Car information for Common Problems is" + ssCarDesc.getValue().toString());
+                                        //Convert the string into a list
+                                        descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                                        carModel.setCommonProblems(descArray);
+                                        break;
+                                    case "Ratings":
+                                        //Debug
+                                        //Convert the string into a list
+                                        descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                                        carModel.setRatings(descArray);
+                                        break;
+                                    case "Description":
+                                        //Create a Car Model for the descriptions
+                                        carModel.setDescription(ssCarDesc.getValue().toString()) ;
+                                        break;
+                                    case "Doors":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setDoors(convertToInt);
+                                        break;
+                                    case "Engine":
+                                        //Create a Car Model for the descriptions
+                                        carModel.setEngine(ssCarDesc.getValue().toString()); ;
+                                        break;
+                                    case "Horsepower":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setHorsePower(convertToInt);
+                                        break;
+                                    case "MPG":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setMPG(convertToInt);
+                                        break;
+                                    case "Price":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setPrice(convertToInt);
+                                        break;
+                                    case "Recalls":
+                                        //Convert the string into a list
+                                        descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                                        carModel.setRecalls(descArray);
+                                        break;
+                                    case "Seats":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setSeats(convertToInt);
+                                        break;
+                                    case "Drivetrain":
+                                        //Convert it to a string then parse for the int
+                                        carModel.setDrivetrain(ssCarDesc.getValue().toString());
+                                        break;
+                                    case "Cylinders":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setCylinders(convertToInt);
+                                        break;
+                                    case "Torque ft-lb":
+                                        //Convert it to a string then parse for the int
+                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                                        carModel.setTorque(convertToInt);
+                                        break;
+                                    default:
+                                        //Debug
+                                        Log.d("NoModelFound", ssCarDesc.getValue().toString());
+
+                                }//End Of Switch
+                            }
                                 //Send the model to the next page
                                 Intent intent = new Intent(context, SpecificModel.class);
                                 intent.putExtra("CarModel", carModel);
                                 //Setting the carModel Object to the next page.
                                 startActivity(intent);
-                            }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 

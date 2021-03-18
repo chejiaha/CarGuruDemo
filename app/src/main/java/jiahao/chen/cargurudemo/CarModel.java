@@ -16,13 +16,18 @@ public class CarModel implements Serializable {
     public String Category;
     public String[] CommonProblems;
     public String[]  Recalls;
+    private String[]  Ratings;
     public String Description;
     public int Doors;
     public int MPG;
     public int HorsePower;
     public String Engine;
     public int Seats;
-    private int Price;
+    public int Price;
+    public String Trim;
+    private int Cylinders;
+    private String Drivetrain;
+    private int Torque;
 
     public CarModel() {
     }
@@ -143,6 +148,46 @@ public class CarModel implements Serializable {
 
     public void setPrice(int price) {
         Price = price;
+    }
+
+    public String getTrim() {
+        return Trim;
+    }
+
+    public void setTrim(String trim) {
+        Trim = trim;
+    }
+
+    public String[] getRatings() {
+        return Ratings;
+    }
+
+    public void setRatings(String[] ratings) {
+        Ratings = ratings;
+    }
+
+    public int getCylinders() {
+        return Cylinders;
+    }
+
+    public void setCylinders(int cylinders) {
+        Cylinders = cylinders;
+    }
+
+    public String getDrivetrain() {
+        return Drivetrain;
+    }
+
+    public void setDrivetrain(String drivetrain) {
+        Drivetrain = drivetrain;
+    }
+
+    public int getTorque() {
+        return Torque;
+    }
+
+    public void setTorque(int torque) {
+        Torque = torque;
     }
 
     //public int getYear() {

@@ -1,6 +1,7 @@
 package jiahao.chen.cargurudemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -15,6 +16,7 @@ public class MyGarageSplash extends AppCompatActivity {
     //Creating View Objects
     Button btnSignIn;
     Button btnSignUp;
+    boolean loggedIn = false;
 
     //This list will hold the Question IDs so we can go forwards and back to get the questions.
     int[] questionIDs;
@@ -25,8 +27,18 @@ public class MyGarageSplash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guru_question_page);
         //Creating context
         context = getApplicationContext();
+
+        if (loggedIn == true){
+            //If the user is logged in, Send them Directly to the MyGarage Page.
+            Intent intent = new Intent(context, MyGaragePage.class);
+            startActivity(intent);
+        }else{
+            //Otherwise send them to the splash page
+            setContentView(R.layout.activity_mygarage_splash);
+        }
+
+
     }
 }

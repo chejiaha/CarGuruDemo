@@ -6,15 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/fragment"
+    <!--<fragment
+        android:id="@+id/fmMyGarageSpashFragment"
         android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
         android:layout_width="413dp"
         android:layout_height="609dp"
-        app:layout_constraintBottom_toTopOf="@+id/fmNavigationFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <fragment
         android:id="@+id/fmNavigationFragment"
@@ -24,6 +23,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
+        android:layout_width="414dp"
+        android:layout_height="603dp"
+        app:layout_constraintBottom_toTopOf="@+id/fmNavigationFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

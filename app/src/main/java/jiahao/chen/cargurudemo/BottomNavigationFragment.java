@@ -91,9 +91,8 @@ public class BottomNavigationFragment extends Fragment {
         }
         // To Garage Page
         public void onClickToMyGarage (View view){
-            Intent intent = new Intent(context, MyGaragePage.class);
+            Intent intent = new Intent(context, MyGarageSplash.class);
             startActivity(intent);
-
         }
 
 

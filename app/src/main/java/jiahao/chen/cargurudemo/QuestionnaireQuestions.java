@@ -46,8 +46,8 @@ public class QuestionnaireQuestions extends AppCompatActivity {
         rbAnswer3 = findViewById(R.id.rbAnswer3);
         rbAnswer4 = findViewById(R.id.rbAnswer4);
         pbQuestionProgress = findViewById(R.id.pbProgress);
-        btnNext.setOnClickListener(this::onClickNextQuestion);
-        btnBack.setOnClickListener(this::onClickPreviousQuestion);
+       // btnNext.setOnClickListener(this::onClickNextQuestion);
+        //btnBack.setOnClickListener(this::onClickPreviousQuestion);
     }
 
 /*    public void OnClickAnswerQuestion(View view){

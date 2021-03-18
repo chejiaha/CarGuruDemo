@@ -21,8 +21,9 @@
         android:id="@+id/spMake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/spModel"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
 
@@ -30,13 +31,12 @@
         android:id="@+id/spYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnFindSpecificModelSearch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="84dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnFindSpecificModelSearch"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spMake" />
 
     <Spinner
         android:id="@+id/spModel"
@@ -44,20 +44,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
+
+    <Spinner
+        android:id="@+id/spTrim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toEndOf="@+id/spModel"
         app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
 
     <Button
         android:id="@+id/btnFindSpecificModelSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="39dp"
         android:layout_marginTop="12dp"
         android:text="Search"
-        android:textSize="15dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMake"/>
+        app:layout_constraintTop_toBottomOf="@+id/spMake" />
    <!-- <TextView
         android:id="@+id/tvFindSpecificModelSearch"
         android:layout_width="wrap_content"
