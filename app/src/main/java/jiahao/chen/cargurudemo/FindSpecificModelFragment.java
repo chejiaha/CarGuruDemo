@@ -3,16 +3,21 @@ package jiahao.chen.cargurudemo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class FindSpecificModel extends AppCompatActivity {
+
+public class FindSpecificModelFragment extends Fragment {
+
+
     //Creating the context
     Context context;
     //List of carModel Objects so I can pass the one they choose to the users.
@@ -51,14 +59,24 @@ public class FindSpecificModel extends AppCompatActivity {
     //Creating my referenced to the database
     DatabaseReference dbRef;
     ValueEventListener listener;
+    public FindSpecificModelFragment() {
+        // Required empty public constructor
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_specific_model_list);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_find_specific_model, container, false);
+
         //Setting the context
-        context = getApplicationContext();
+        context = getActivity();
         //getting all of the items from the Vehicle portion of the database.
         dbRef = FirebaseDatabase.getInstance().getReference().child("Vehicle");
         //List of carModel Objects so I can pass the one they choose to the users.
@@ -68,11 +86,11 @@ public class FindSpecificModel extends AppCompatActivity {
         yearList = new ArrayList<>();
         vehicleList = new ArrayList<>();
         //Creating the Spinner Objects
-        makeSpinner = findViewById(R.id.spMake);
-        modelSpinner = findViewById(R.id.spModel);
-        trimSpinner = findViewById(R.id.spTrim);
-        yearSpinner = findViewById(R.id.spYear);
-        searchVehicle = findViewById(R.id.btnFindSpecificModelSearch);
+        makeSpinner = view.findViewById(R.id.spMake);
+        modelSpinner = view.findViewById(R.id.spModel);
+        trimSpinner = view.findViewById(R.id.spTrim);
+        yearSpinner = view.findViewById(R.id.spYear);
+        searchVehicle = view.findViewById(R.id.btnFindSpecificModelSearch);
 
         //Getting the data from the database
         vehicleList = getMakeModelYear();
@@ -96,7 +114,10 @@ public class FindSpecificModel extends AppCompatActivity {
 
         //Setting the onTap Event Listener for Model
         searchVehicle.setOnTouchListener(onClickSearchVehicle);
-    }
+
+        // Inflate the layout for this fragment
+        return view;
+    }//end of on create
 
 
     /*
@@ -111,9 +132,9 @@ public class FindSpecificModel extends AppCompatActivity {
         //List of carModel Objects so I can pass the one they choose to the users.
 
 //        //Creating a List to hold all of the Names of the Make
-         makeList = new ArrayList<>();
+        makeList = new ArrayList<>();
 //        //Creating a List to hold all of the Names of the Models
-         modelList = new ArrayList<>();
+        modelList = new ArrayList<>();
 //        //Creating a List to hold all of the Names of the Years
 //        yearList = new ArrayList<>();
 
@@ -201,7 +222,7 @@ public class FindSpecificModel extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             //Once the user finishes choosing a value populate the next one.
             if (event.getAction() == MotionEvent.ACTION_UP) {
-               //If the user clicks make, clear all of the other selection fields.
+                //If the user clicks make, clear all of the other selection fields.
                 modelSpinner.setAdapter(null);
                 trimSpinner.setAdapter(null);
                 yearSpinner.setAdapter(null);
@@ -485,11 +506,21 @@ public class FindSpecificModel extends AppCompatActivity {
 
                                 }//End Of Switch
                             }
-                                //Send the model to the next page
-                                Intent intent = new Intent(context, SpecificModel.class);
-                                intent.putExtra("CarModel", carModel);
-                                //Setting the carModel Object to the next page.
-                                startActivity(intent);
+                            //Send the model to the next page
+                            Fragment fragment = new SpecificModelFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("CarModel", carModel);
+                            fragment.setArguments(bundle);
+
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                            // Replace whatever is in the fragment_container view with this fragment,
+                            // and add the transaction to the back stack if needed
+                            transaction.replace(R.id.fragmentSpecificCar, fragment);
+                            transaction.addToBackStack(null);
+                            // Commit the transaction
+                            transaction.commit();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -502,5 +533,7 @@ public class FindSpecificModel extends AppCompatActivity {
             return false;
         }//End of ontouch
     };//end of class
+
+
 
 }
