@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SortingTop3 extends AppCompatActivity {
-
     ArrayList<CarModel> commuterCarModels = new ArrayList<>();
     ArrayList<CarModel> sportCarModels = new ArrayList<>();
     ArrayList<String> carCommuterString = new ArrayList<>();
@@ -103,7 +102,7 @@ public class SortingTop3 extends AppCompatActivity {
                             carModel.Model = modelSS.getKey();
                             model = modelSS.getKey();
                             for (DataSnapshot yearSS: dataSnapshot.child(make).child(model).getChildren()) {
-                                carModel.Year = yearSS.getKey();
+                               // carModel.Year = yearSS.getKey();
                                 year = yearSS.getKey();
 
                                 if ("Commuter".equals((String)dataSnapshot.child(make).child(model).child(year).child("Category").getValue())){

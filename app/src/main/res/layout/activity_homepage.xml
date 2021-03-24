@@ -7,10 +7,14 @@
     android:layout_height="match_parent">
 
     <!--Heading for Home Page-->
+    <!-- Main Section in HomePage -->
+    <!-- Footer For Every Page -->
+    <!-- First Row Find A Car -->
+
     <ImageView
         android:id="@+id/ivHomeGuruImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@mipmap/ic_launcher"
@@ -21,40 +25,35 @@
         android:id="@+id/tvHomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="@string/app_name"
-        android:textSize="35dp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintHorizontal_bias="0.631"
         app:layout_constraintStart_toEndOf="@+id/ivHomeGuruImage"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <!-- Main Section in HomePage -->
-    <!-- Footer For Every Page -->
-    <!-- First Row Find A Car -->
-
     <ImageView
         android:id="@+id/ivFindACarForYou"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="65dp"
         android:layout_column="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:src="@mipmap/ic_launcher"
         android:onClick="onClickToGuru"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHomeExplination" />
 
     <ImageView
         android:id="@+id/ivBrowseByCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="66dp"
+        android:layout_height="70dp"
         android:layout_column="0"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="24dp"
         android:onClick="onClickToCategories"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFindSpecificModel" />
 
@@ -62,49 +61,26 @@
         android:id="@+id/tvBrowseByCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:onClick="onClickToCategories"
         android:text="Browse By Category"
         android:textSize="25dp"
-        android:onClick="onClickToCategories"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivBrowseByCategory"
         app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModel" />
 
     <ImageView
         android:id="@+id/ivFindSpecificModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="62dp"
+        android:layout_height="72dp"
         android:layout_column="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_launcher"
         android:onClick="onClickToSpecificModel"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFindACarForYou" />
-
-    <TextView
-        android:id="@+id/tvCarNews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="68dp"
-        android:text="Car News"
-        android:textSize="25dp"
-        android:onClick="onClickToNews"
-        app:layout_constraintStart_toEndOf="@+id/ivCarNews"
-        app:layout_constraintTop_toBottomOf="@+id/tvBrowseByCategory" />
-
-    <ImageView
-        android:id="@+id/ivCarNews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="0"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_launcher"
-        android:onClick="onClickToNews"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBrowseByCategory" />
 
     <!-- Second Row Find Specific Model -->
 
@@ -114,14 +90,40 @@
 
 
     <TextView
+        android:id="@+id/tvCarNews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="48dp"
+        android:onClick="onClickToNews"
+        android:text="Article's"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNews"
+        app:layout_constraintTop_toBottomOf="@+id/tvBrowseByCategory" />
+
+    <ImageView
+        android:id="@+id/ivCarNews"
+        android:layout_width="65dp"
+        android:layout_height="68dp"
+        android:layout_column="0"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onClickToNews"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBrowseByCategory" />
+
+    <TextView
         android:id="@+id/tvFindSpecificModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
+        android:onClick="onClickToSpecificModel"
         android:text="Find Specific Model"
         android:textSize="25dp"
-        android:onClick="onClickToSpecificModel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivFindSpecificModel"
         app:layout_constraintTop_toBottomOf="@+id/tvFindACarForYou" />
 
@@ -130,136 +132,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="160dp"
+        android:onClick="onClickToGuru"
         android:text="Find A Car For You"
         android:textSize="25dp"
-        android:onClick="onClickToGuru"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivFindACarForYou"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivFooterSettings"
-        android:layout_width="40dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toEndOf="@+id/ivFooterMyGarage"
-        app:layout_constraintTop_toBottomOf="@+id/ivCarNews" />
-
-    <ImageView
-        android:id="@+id/ivFooterFindMeACar"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:src="@mipmap/ic_launcher"
-        android:onClick="onClickToGuru"
-        app:layout_constraintStart_toEndOf="@+id/ivFooterHome"
-        app:layout_constraintTop_toBottomOf="@+id/ivCarNews" />
-
-    <ImageView
-        android:id="@+id/ivFooterSearchForCar"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="32dp"
-        android:src="@mipmap/ic_launcher"
-        android:onClick="onClickToSpecificModel"
-        app:layout_constraintStart_toEndOf="@+id/ivFooterFindMeACar"
-        app:layout_constraintTop_toBottomOf="@+id/ivCarNews" />
-
-    <TextView
-        android:id="@+id/tvFooterHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        android:text="Home"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivFooterHome" />
-
-    <TextView
-        android:id="@+id/tvFooterMyGarage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="My Garage"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/tvFooterSearchForCar"
-        app:layout_constraintTop_toBottomOf="@+id/ivFooterMyGarage" />
-
-    <ImageView
-        android:id="@+id/ivFooterHome"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="36dp"
-        android:src="@mipmap/ic_launcher"
-        android:onClick="onClickToHomePage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCarNews" />
-
-    <ImageView
-        android:id="@+id/ivFooterMyGarage"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintStart_toEndOf="@+id/ivFooterSearchForCar"
-        app:layout_constraintTop_toBottomOf="@+id/ivCarNews" />
-
-    <TextView
-        android:id="@+id/tvFooterSearchForCar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        android:text="Search For Car"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/tvFooterFindMeACar"
-        app:layout_constraintTop_toBottomOf="@+id/ivFooterSearchForCar" />
-
-    <TextView
-        android:id="@+id/tvFooterFindMeACar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:text="Find Me A Car"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/tvFooterHome"
-        app:layout_constraintTop_toBottomOf="@+id/ivFooterFindMeACar" />
-
-    <TextView
-        android:id="@+id/tvFooterSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:text="Settings"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvFooterMyGarage"
-        app:layout_constraintTop_toBottomOf="@+id/ivFooterSettings" />
 
     <TextView
         android:id="@+id/tvHomeExplination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="28dp"
+        android:layout_margin="15dp"
         android:text="@string/AppExplination"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHomeTitle" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

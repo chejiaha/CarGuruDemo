@@ -66,7 +66,6 @@ public class Activity2 extends AppCompatActivity {
         listModel = new ArrayList<>();
         listYear = new ArrayList<>();
         listSpecs = new ArrayList<>();
-
         // appending ArrayAdapter to spinner object. Allows for use of lists in spinner object
         spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listParent);
         spinnerAdapterChild = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listChild);

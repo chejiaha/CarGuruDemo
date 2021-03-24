@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Context context = getApplicationContext();
-        Button moveToPage2 = (Button)findViewById(R.id.pageTwoBtn);
-        moveToPage2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SortingTop3.class);
-                startActivity(intent);
-            }
-        });
+//        Button moveToPage2 = (Button)findViewById(R.id.pageTwoBtn);
+//        moveToPage2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, SortingTop3.class);
+//                startActivity(intent);
+//            }
+//        });
 
         Button home = (Button)findViewById(R.id.pageHomeBtn);
         home.setOnClickListener(new View.OnClickListener() {

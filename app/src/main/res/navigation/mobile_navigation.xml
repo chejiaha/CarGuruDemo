@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+<!--Home Fragment-->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="jiahao.chen.cargurudemo.HomePage_Fragment"
+        android:label="Home"
+        tools:layout="@layout/activity_homepage" />
+<!--Fragment for Find a car for me-->
+    <fragment
+        android:id="@+id/navigation_CarGuru"
+        android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
+        android:label="CarGuru"
+        tools:layout="@layout/activity_guru_splash_page" />
+<!--Fragment to Find a specific Model-->
+    <fragment
+        android:id="@+id/navigation_SearchCar"
+        android:name="jiahao.chen.cargurudemo.FindSpecificModelFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_find_specific_model" >
+        <action
+            android:id="@+id/action_navigation_SearchCar_to_fragment_specificModel2"
+            app:destination="@id/fragment_specificModel" />
+        <argument
+            android:name="CarModel"
+            app:argType="jiahao.chen.cargurudemo.CarModel" />
+
+    </fragment>
+<!--Fragment for My Garage Splash Page-->
+    <fragment
+        android:id="@+id/navigation_MyGarage"
+        android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
+        android:label="MyGarage"
+        tools:layout="@layout/activity_mygarage_splash" />
+<!--    Fragment for Settings-->
+    <fragment
+           android:id="@+id/navigation_Settings"
+           android:name="jiahao.chen.cargurudemo.SettingsFragment"
+           android:label="Settings"
+           tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/fragment_specificModel"
+        android:name="jiahao.chen.cargurudemo.SpecificModelFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_specific_model" />
+
+
+</navigation>

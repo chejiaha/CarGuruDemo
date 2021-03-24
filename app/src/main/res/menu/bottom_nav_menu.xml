@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_CarGuru"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Car Guru" />
+
+   <item
+        android:id="@+id/navigation_SearchCar"
+        android:icon="@drawable/searchicon"
+        android:title="Find Car Specs" />
+       <item
+           android:id="@+id/navigation_MyGarage"
+           android:icon="@drawable/mygarageicon"
+           android:title="My Garage" />
+      <item
+           android:id="@+id/navigation_Settings"
+           android:icon="@drawable/settingsicon"
+           android:title="Settings" />
+
+</menu>

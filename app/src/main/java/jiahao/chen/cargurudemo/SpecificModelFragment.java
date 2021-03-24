@@ -1,31 +1,26 @@
 package jiahao.chen.cargurudemo;
-/*
-    Name: Luka Necajev
-    Student_ID: 991475972
-    Program:PROG36944
-    Section#: 1211_34776
 
-    This class is used to
- */
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.slider.Slider;
 
-import java.text.Format;
 import java.util.ArrayList;
 
-public class SpecificModel extends AppCompatActivity {
+
+public class SpecificModelFragment extends Fragment {
+
     Context context;
     //Setting all of the variables
     TextView tvCompareCars;
@@ -52,33 +47,47 @@ public class SpecificModel extends AppCompatActivity {
     ArrayAdapter descriptionListAdapter;
     CarModel carModel;
 
+    public SpecificModelFragment() {
+        // Required empty public constructor
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_specific_car_page);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_specific_model, container, false);
+
         //Setting the context
-        context = getApplicationContext();
+        context = getActivity();
         //Pairing the View Objects with the respected View
-        tvCompareCars = findViewById(R.id.tvChooseCarsToCompare);
-        tvCarName = findViewById(R.id.tvSpecificCarTitle);
-        tvDescriptionText = findViewById(R.id.tvSpecificCarDescriptionText);
-        tvAproximateCost = findViewById(R.id.tvspecificCarApproxCost);
-        ivCompareCars = findViewById(R.id.ivChooseCarsToCompare);
-        ivCarImage = findViewById(R.id.ivSpecificCarPic);
+        tvCompareCars = view.findViewById(R.id.tvChooseCarsToCompare);
+        tvCarName = view.findViewById(R.id.tvSpecificCarTitle);
+        tvDescriptionText = view.findViewById(R.id.tvSpecificCarDescriptionText);
+        tvAproximateCost = view.findViewById(R.id.tvspecificCarApproxCost);
+        ivCompareCars = view.findViewById(R.id.ivChooseCarsToCompare);
+        ivCarImage = view.findViewById(R.id.ivSpecificCarPic);
         //ivOtherCarImages = findViewById(R.id.tvChooseCarsToCompare);
-        ivResult1 = findViewById(R.id.ivSpecificCarGasRating);
-        ivResult2 = findViewById(R.id.ivSpecificCarCosts);
-        ivResult3 = findViewById(R.id.ivSpecificCarSpeed);
-        ivResult4 = findViewById(R.id.ivSpecificCarWildcard);
-        tvResult1 = findViewById(R.id.tvSpecificCarGasRating);
-        tvResult2 = findViewById(R.id.tvSpecificCarCosts);
-        tvResult3 = findViewById(R.id.tvSpecificCarSpeed);
-        tvResult4 = findViewById(R.id.tvSpecificCarWildcard);
-        lvCommonProblems = findViewById(R.id.lvSpecificCarCommonProblemList);
-        lvRecalls = findViewById(R.id.lvSpecificCarRecallsList);
-        lvDescription = findViewById(R.id.lvSpecificCarDescriptionList);
+        ivResult1 = view.findViewById(R.id.ivSpecificCarGasRating);
+        ivResult2 = view.findViewById(R.id.ivSpecificCarCosts);
+        ivResult3 = view.findViewById(R.id.ivSpecificCarSpeed);
+        ivResult4 = view.findViewById(R.id.ivSpecificCarWildcard);
+        tvResult1 = view.findViewById(R.id.tvSpecificCarGasRating);
+        tvResult2 = view.findViewById(R.id.tvSpecificCarCosts);
+        tvResult3 = view.findViewById(R.id.tvSpecificCarSpeed);
+        tvResult4 = view.findViewById(R.id.tvSpecificCarWildcard);
+        lvCommonProblems = view.findViewById(R.id.lvSpecificCarCommonProblemList);
+        lvRecalls = view.findViewById(R.id.lvSpecificCarRecallsList);
+        lvDescription = view.findViewById(R.id.lvSpecificCarDescriptionList);
         //Get the vehicle details and populate arrays
         populateCarDetails();
+
+
+        return view;
     }
 
     /*
@@ -90,8 +99,12 @@ public class SpecificModel extends AppCompatActivity {
      * Returns None
      */
     private void populateCarDetails(){
+
         //Get CarModel Object from the Specific Car Page
-        carModel = (CarModel) this.getIntent().getSerializableExtra("CarModel");
+        Bundle bundle = new Bundle();
+        carModel = (CarModel) bundle.getSerializable("CarModel");
+
+        carModel = ((CarModel) getArguments().getSerializable("CarModel"));
         //debug
         Log.d("SpecificModel", "CarModel Make is" + carModel.getMake());
         Log.d("SpecificModel", "CarModel Model is" + carModel.getModel());
@@ -113,7 +126,7 @@ public class SpecificModel extends AppCompatActivity {
 
         //A method to check if the fields are null
         CheckFields();
-       //Check if ratings are supplied
+        //Check if ratings are supplied
         if (carModel.getRatings() != null){
             tvResult1.setText(carModel.getRatings()[0]);
             tvResult2.setText(carModel.getRatings()[1]);
@@ -146,28 +159,6 @@ public class SpecificModel extends AppCompatActivity {
         lvRecalls.setAdapter(recallsAdapter);
         lvDescription.setAdapter(descriptionListAdapter);
     }
-
-    private View.OnClickListener onClickCompareCars= new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(context, CompareCars.class);
-            intent.putExtra("CarModel", carModel);
-            //Setting the carModel Object to the next page.
-            startActivity(intent);
-        }
-    };
-    private View.OnClickListener onClickCalculateAproxCost= new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-        }
-    };
-    private View.OnClickListener onPopulateRatingFields= new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-        }
-    };
 
     /*
      * A method that will Check if the fields are empty or null
@@ -251,18 +242,19 @@ public class SpecificModel extends AppCompatActivity {
         //Checking if the variable for Horsepower is set is 0
         if (carModel.getHorsePower() == 0){
             carModel.setHorsePower(-1);
-           // throw new NullPointerException("The HorsePower Variable is not set in SpecificModel") ;
+            // throw new NullPointerException("The HorsePower Variable is not set in SpecificModel") ;
         }
         //Checking if the variable for MPG is set is 0
         if (carModel.getMPG() == 0){
             carModel.setMPG(-1);
-         //   throw new NullPointerException("The MPG Variable is not set in SpecificModel") ;
+            //   throw new NullPointerException("The MPG Variable is not set in SpecificModel") ;
         }
         //Checking if the variable for Cylinders is set is 0
         if (carModel.getCylinders() == 0){
             carModel.setCylinders(-1);
-         //   throw new NullPointerException("The Cylinders Variable is not set in SpecificModel") ;
+            //   throw new NullPointerException("The Cylinders Variable is not set in SpecificModel") ;
         }
     }
+
 
 }
