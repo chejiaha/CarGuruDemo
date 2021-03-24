@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "351577114803",
-    "firebase_url": "https://juliedemo-56db8-default-rtdb.firebaseio.com",
-    "project_id": "juliedemo-56db8",
-    "storage_bucket": "juliedemo-56db8.appspot.com"
+    "project_number": "369037997749",
+    "project_id": "car-guru-demo",
+    "storage_bucket": "car-guru-demo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:351577114803:android:85f0f79e33f1e1a42008c6",
+        "mobilesdk_app_id": "1:369037997749:android:16b645f4c9c5e463d970fc",
         "android_client_info": {
           "package_name": "jiahao.chen.cargurudemo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "351577114803-275cah7ngu9lforcblie3b4ltpob7oem.apps.googleusercontent.com",
+          "client_id": "369037997749-ersv1ff81skb4pr5dlsaho2ht1see8si.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jiahao.chen.cargurudemo",
+            "certificate_hash": "b8c9ae65bffda499c80f467f41b500ff91bedac1"
+          }
+        },
+        {
+          "client_id": "369037997749-8pfn05ssl79bl1qrsuqbeejce48sor2m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAExjoS5Vb8wWgz4a2C-vcNk-X5I8evdaY"
+          "current_key": "AIzaSyC79WC8MGSOtXvyxYoU-btg3Ufd17NqeGs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "351577114803-275cah7ngu9lforcblie3b4ltpob7oem.apps.googleusercontent.com",
+              "client_id": "369037997749-8pfn05ssl79bl1qrsuqbeejce48sor2m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

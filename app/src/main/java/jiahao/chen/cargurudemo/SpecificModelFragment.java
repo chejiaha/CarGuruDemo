@@ -99,9 +99,12 @@ public class SpecificModelFragment extends Fragment {
      * Returns None
      */
     private void populateCarDetails(){
+
         //Get CarModel Object from the Specific Car Page
         Bundle bundle = new Bundle();
         carModel = (CarModel) bundle.getSerializable("CarModel");
+
+        carModel = ((CarModel) getArguments().getSerializable("CarModel"));
         //debug
         Log.d("SpecificModel", "CarModel Make is" + carModel.getMake());
         Log.d("SpecificModel", "CarModel Model is" + carModel.getModel());

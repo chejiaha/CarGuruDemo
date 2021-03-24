@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,6 +61,8 @@ public class FindSpecificModelFragment extends Fragment {
     //Creating my referenced to the database
     DatabaseReference dbRef;
     ValueEventListener listener;
+    //Creating a Navigation View
+    View view;
     public FindSpecificModelFragment() {
         // Required empty public constructor
     }
@@ -73,7 +77,7 @@ public class FindSpecificModelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_find_specific_model, container, false);
+        view = inflater.inflate(R.layout.fragment_find_specific_model, container, false);
 
         //Setting the context
         context = getActivity();
@@ -506,21 +510,14 @@ public class FindSpecificModelFragment extends Fragment {
 
                                 }//End Of Switch
                             }
-                            //Send the model to the next page
-                            Fragment fragment = new SpecificModelFragment();
+                            //NextSend the model to the next page
+                            //Adding the arguments into the class
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("CarModel", carModel);
-                            fragment.setArguments(bundle);
 
-                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+                            //Going from SearchCarFragment to Specific model fragment
+                            Navigation.findNavController(view).navigate(R.id.action_navigation_SearchCar_to_fragment_specificModel2, bundle);
 
-                            // Replace whatever is in the fragment_container view with this fragment,
-                            // and add the transaction to the back stack if needed
-                            transaction.replace(R.id.fragmentSpecificCar, fragment);
-                            transaction.addToBackStack(null);
-                            // Commit the transaction
-                            transaction.commit();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
