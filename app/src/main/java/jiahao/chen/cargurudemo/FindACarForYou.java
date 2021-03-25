@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
+
 /*
  * This is connected to the guru activity. This page is used to help the user find a car that they
  * want to buy.
@@ -37,20 +39,15 @@ public class FindACarForYou extends AppCompatActivity {
 
     // Navigate to ChooseCarByCategory Page
     public void onClickToCategories (View view){
-        Intent intent = new Intent(context, BrowseByCategory.class);
-        startActivity(intent);
+        Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_MyGarage);
     }
-
     // Start Questionnaire
     public void onClickStartQuestionnaire (View view){
-        Intent intent = new Intent(context, QuestionnaireQuestions.class);
-        startActivity(intent);
+        Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_fragment_questionnaire_splashPage2);
     }
-
     // View Results Page.
     public void onClickViewResults (View view){
-       // Intent intent = new Intent(context, ViewResults.class);
-        //startActivity(intent);
+        Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire_splashPage_to_fragment_questionnaire_questionPage3);
     }
 
 

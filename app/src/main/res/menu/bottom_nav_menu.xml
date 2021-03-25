@@ -7,8 +7,8 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/navigation_CarGuru"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/fragment_questionnaire_splashPage"
+        android:icon="@drawable/crewmascot"
         android:title="Car Guru" />
 
    <item

@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 public class HomePage_Fragment extends Fragment {
 
@@ -30,6 +31,7 @@ public class HomePage_Fragment extends Fragment {
     TextView tvSearchForCar;
     TextView tvBrowseByCategory;
     TextView tvNews;
+    View view;
 
 
     @Override
@@ -42,35 +44,36 @@ public class HomePage_Fragment extends Fragment {
         //Creating context
         Context context = getActivity();
         //Getting the view
-        View theView = inflater.inflate(R.layout.activity_homepage, container, false);
+        view = inflater.inflate(R.layout.activity_homepage, container, false);
         //
-        ivFindMeACar = (ImageView) theView.findViewById(R.id.ivFindACarForYou);
-        ivSearchForCar = (ImageView) theView.findViewById(R.id.ivFindSpecificModel);
-        ivBrowseByCategory = (ImageView) theView.findViewById(R.id.ivBrowseByCategory);
-        ivNews = (ImageView) theView.findViewById(R.id.ivCarNews);
-        tvFindMeACar = (TextView) theView.findViewById(R.id.tvFindACarForYou);
-        tvSearchForCar = (TextView) theView.findViewById(R.id.tvFindSpecificModel);
-        tvBrowseByCategory = (TextView) theView.findViewById(R.id.tvBrowseByCategory);
-        tvNews = (TextView) theView.findViewById(R.id.tvCarNews);
+        ivFindMeACar = (ImageView) view.findViewById(R.id.ivFindACarForYou);
+        ivSearchForCar = (ImageView) view.findViewById(R.id.ivFindSpecificModel);
+        ivBrowseByCategory = (ImageView) view.findViewById(R.id.ivBrowseByCategory);
+        ivNews = (ImageView) view.findViewById(R.id.ivCarNews);
+        tvFindMeACar = (TextView) view.findViewById(R.id.tvFindACarForYou);
+        tvSearchForCar = (TextView) view.findViewById(R.id.tvFindSpecificModel);
+        tvBrowseByCategory = (TextView) view.findViewById(R.id.tvBrowseByCategory);
+        tvNews = (TextView) view.findViewById(R.id.tvCarNews);
 
         //Setting the onclick Listeners
         tvFindMeACar.setOnClickListener(onClickFindMeACar);
         tvSearchForCar.setOnClickListener(onClickToSpecificModel);
         tvBrowseByCategory.setOnClickListener(onClickToCategories);
         tvNews.setOnClickListener(onClickToNews);
-        tvFindMeACar.setOnClickListener(onClickFindMeACar);
-        tvSearchForCar.setOnClickListener(onClickToSpecificModel);
-        tvBrowseByCategory.setOnClickListener(onClickToCategories);
-        tvNews.setOnClickListener(onClickToNews);
+        ivFindMeACar.setOnClickListener(onClickFindMeACar);
+        ivSearchForCar.setOnClickListener(onClickToSpecificModel);
+        ivBrowseByCategory.setOnClickListener(onClickToCategories);
+        ivNews.setOnClickListener(onClickToNews);
 
-        return theView;
+        return view;
     }
 
     // To Find me a car
     public View.OnClickListener  onClickFindMeACar = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            //Going from SearchCarFragment to Specific model fragment
+            Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_fragment_questionnaire_splashPage2);
 /*            Intent intent = new Intent(getActivity(), FindSpecificModel.class);
             startActivity(intent);*/
         }
@@ -79,6 +82,7 @@ public class HomePage_Fragment extends Fragment {
     public View.OnClickListener  onClickToSpecificModel = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_SearchCar);
 
 /*            Intent intent = new Intent(getActivity(), FindSpecificModel.class);
             startActivity(intent);*/
@@ -89,8 +93,7 @@ public class HomePage_Fragment extends Fragment {
     public View.OnClickListener  onClickToCategories = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-           /* Intent intent = new Intent(getActivity(), BrowseByCategory.class);
-            startActivity(intent);*/
+            Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_fragment_searchByCategory);
         }
     };
 
@@ -98,6 +101,7 @@ public class HomePage_Fragment extends Fragment {
     public View.OnClickListener  onClickToNews = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             /*Intent intent = new Intent(getActivity(), NewsPage.class);
             startActivity(intent);*/
         }
@@ -124,6 +128,7 @@ public class HomePage_Fragment extends Fragment {
     public View.OnClickListener  onClickToMyGarage = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_SearchCar);
             /*Intent intent = new Intent(getActivity(), MyGaragePage.class);
             startActivity(intent);*/
         }

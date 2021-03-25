@@ -40,7 +40,6 @@
         android:layout_column="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:onClick="onClickToGuru"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHomeExplination" />
@@ -52,7 +51,6 @@
         android:layout_column="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:onClick="onClickToCategories"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFindSpecificModel" />
@@ -63,7 +61,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
-        android:onClick="onClickToCategories"
         android:text="Browse By Category"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +74,6 @@
         android:layout_column="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:onClick="onClickToSpecificModel"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFindACarForYou" />
@@ -95,7 +91,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="48dp"
-        android:onClick="onClickToNews"
         android:text="Article's"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +104,6 @@
         android:layout_column="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:onClick="onClickToNews"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivBrowseByCategory" />
@@ -120,7 +114,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
-        android:onClick="onClickToSpecificModel"
         android:text="Find Specific Model"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +126,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="160dp"
-        android:onClick="onClickToGuru"
         android:text="Find A Car For You"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
