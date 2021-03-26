@@ -56,13 +56,11 @@ public class QuestionnaireQuestions extends AppCompatActivity {
 
     // Navigate to ChooseCarByCategory Page
     public void onClickNextQuestion (View view){
-        Intent intent = new Intent(context, BrowseByCategory.class);
-        startActivity(intent);
+
     }
     // Navigate to ChooseCarByCategory Page
     public void onClickPreviousQuestion (View view){
-        Intent intent = new Intent(context, BrowseByCategory.class);
-        startActivity(intent);
+
     }
 
     public void getNextQuestion(){
