@@ -9,24 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class SettingsFragment extends Fragment {
+public class QuestionnaireQuestionsFragment2 extends Fragment {
 
-
-    public SettingsFragment() {
+    public QuestionnaireQuestionsFragment2() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
+    View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        view = inflater.inflate(R.layout.fragment_questionnaire_questions2, container, false);
+        return view;
     }
 }

@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_home_to_fragment_searchByCategory"
             app:destination="@id/fragment_searchByCategory" />
+        <action
+            android:id="@+id/action_navigation_home_to_fragment_newsArticles"
+            app:destination="@id/fragment_newsArticles" />
     </fragment>
 <!--Fragment for Find a car for me-->
     <!--Fragment to Find a specific Model-->
@@ -76,9 +79,19 @@
         android:id="@+id/fragment_searchByCategory"
         android:name="jiahao.chen.cargurudemo.SearchByCategoryFragment"
         android:label="Search For Car"
-        tools:layout="@layout/fragment_search_by_category" />
+        tools:layout="@layout/fragment_search_by_category"/>
+    <!--    The Category Page (Questions2)-->
+<!--    <fragment
+        android:id="@+id/fragment_searchByCategory"
+        android:name="jiahao.chen.cargurudemo.SearchByCategoryFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_search_by_category" />-->
 
-
-
+    <!--    News Article Page     -->
+    <fragment
+        android:id="@+id/fragment_newsArticles"
+        android:name="jiahao.chen.cargurudemo.NewsArticleFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_news_article" />
 
 </navigation>
