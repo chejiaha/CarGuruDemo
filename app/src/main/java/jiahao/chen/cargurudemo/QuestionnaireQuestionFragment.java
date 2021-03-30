@@ -45,9 +45,13 @@ public class QuestionnaireQuestionFragment extends Fragment {
     ValueEventListener listener;
 
     // Variables
-    List<String> questionsList;
+
+    Question questionObj;
+    // Total list of questions
+    List<Question> questionsList;
+    // Setting up one question
     List<String> answersList;
-    List<String> valueList;
+    List<String> answerValueList;
     String question = "";
     String category = "";
 
@@ -62,8 +66,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
         rgQuestion = view.findViewById(R.id.rgQuestions);
         btnBack = view.findViewById(R.id.BtnPreviousPage);
         btnNext = view.findViewById(R.id.BtnNextPage);
-
-
 
         // Get the Answers from the database put them in a list
         dbRef = FirebaseDatabase.getInstance().getReference().child("Questions");
@@ -88,12 +90,12 @@ public class QuestionnaireQuestionFragment extends Fragment {
                     category = "";
                 }*/
 
-                //Used when the user is placed in the category to go into the db to find the questions
+                // Used when the user is placed in the category to go into the db to find the questions
                 String DBcategory = "";
                 String categoryString;
                 String questionData;
                 // NOTE : If there is no category chosen, The Category = MainQuestions.
-                //Finding the Category
+                // Finding the Category
                 if (category.equals("") || category == null){
                     DBcategory = "MainQuestion";
                 }else if (category.equals("Commuter")){
@@ -109,44 +111,51 @@ public class QuestionnaireQuestionFragment extends Fragment {
                     categoryString = QuestionCategory.getKey();
                     for (DataSnapshot QuestionInfo : dataSnapshot.child(DBcategory).child(categoryString).getChildren()){
                         // Children: Answers, DBFiled, Description
-                        //Depending on the question number get the respective question.
+                        // Depending on the question number get the respective question.
                         questionData = QuestionInfo.getKey();
                         // Get the Question String
                         if (categoryString.equals("Description")){
                             //Debug
                             Log.d("QuestionnaireQuestion", "The Question String: " + QuestionCategory.getValue().toString());
-                            questionsList.add(QuestionCategory.getValue().toString());
+                            question = QuestionCategory.getValue().toString();
+                            questionObj.setQuestion(question);
                         } else if (categoryString.equals("DBField")){
-                            //Do nothing for now
+                            // Do nothing for now
+                            category = QuestionCategory.getValue().toString();
+                            questionObj.setQuestion(category);
                         }
-                        else if (categoryString.equals("Answers")){
+                        else if (categoryString.equals("Answers")) {
                             //for each question in this section get the answers
                             for (DataSnapshot QuestionAnswers : dataSnapshot.child(DBcategory).child(categoryString).child(questionData).getChildren()) {
                                 // Children: mqa11, mqa12....
                                 String answerNumber = QuestionAnswers.getKey();
-                                //for each answer get the Description and value.
+                                // for each answer get the Description and value.
                                 for (DataSnapshot QuestionAnswer : dataSnapshot.child(DBcategory).child(categoryString).child(questionData).child(answerNumber).getChildren()) {
-                                    //I got lazy please fix name...
-                                    String questionAnswer =  QuestionAnswer.getKey();
+                                    // I got lazy please fix name...
+                                    String questionAnswer = QuestionAnswer.getKey();
                                     String answer = "";
                                     String value = "";
                                     // If the name is Description add it into the answer array.
-                                    if (questionAnswer.equals("Description")){
+                                    if (questionAnswer.equals("Description")) {
                                         answer = QuestionAnswer.getValue().toString();
                                         answersList.add(answer);
-                                    } else{
+                                    } else {
                                         // It will be value
                                         value = QuestionAnswer.getValue().toString();
-                                        valueList.add(value);
+                                        answerValueList.add(value);
                                     }
                                 }
                                 //Add the answers into a question List with answer array == List<Question>
                                 //Question includes: String question;, List<Answers>Answers;, String Value;
                             }
+                            // For every Question add the answer and Value into the answer/Value Lists
+                            questionObj.setAnswers(answersList);
+                            questionObj.setValues(answerValueList);
                         }
                     }
+                    // Adding the questions to the question List
+                    questionsList.add(questionObj);
                 }
-
             }
 
             @Override

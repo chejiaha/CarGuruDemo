@@ -6,9 +6,10 @@ import java.util.Locale;
 public class Question {
     //Question includes: String question;, List<Answers> answers;, List<String> values;
     private String question;
-    private List<String> values;
     private String category;
+    private List<String> values;
     private List<String> answers;
+
 
     public String getQuestion() {
         return question;
