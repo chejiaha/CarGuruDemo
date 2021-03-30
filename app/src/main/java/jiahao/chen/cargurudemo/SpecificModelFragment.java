@@ -85,8 +85,6 @@ public class SpecificModelFragment extends Fragment {
         lvDescription = view.findViewById(R.id.lvSpecificCarDescriptionList);
         //Get the vehicle details and populate arrays
         populateCarDetails();
-
-
         return view;
     }
 
