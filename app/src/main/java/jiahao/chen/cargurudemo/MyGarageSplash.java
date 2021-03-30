@@ -32,8 +32,8 @@ public class MyGarageSplash extends AppCompatActivity {
 
         if (loggedIn == true){
             //If the user is logged in, Send them Directly to the MyGarage Page.
-            Intent intent = new Intent(context, MyGaragePage.class);
-            startActivity(intent);
+           /* Intent intent = new Intent(context, MyGaragePage.class);
+            startActivity(intent);*/
         }else{
             //Otherwise send them to the splash page
             setContentView(R.layout.activity_mygarage_splash);
