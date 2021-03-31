@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="OneOrMore"
+        android:text="Please Choose One"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,23 +38,11 @@
 
     <TextView
         android:id="@+id/tvQuestion"
-        android:layout_width="147dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="108dp"
-        android:text="Would do you like best?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pbProgress" />
-
-    <TextView
-        android:id="@+id/tvQuestionNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
-        android:text="Q1"
-        app:layout_constraintEnd_toStartOf="@+id/tvQuestion"
-        app:layout_constraintHorizontal_bias="0.166"
+        android:text="Would do you like best?"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pbProgress" />
 
@@ -66,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/crewmascot" />
 
     <RadioGroup
         android:id="@+id/rgQuestions"

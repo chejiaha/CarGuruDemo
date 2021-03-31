@@ -150,10 +150,10 @@ public class SpecificModel extends AppCompatActivity {
     private View.OnClickListener onClickCompareCars= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, CompareCars.class);
+           /* Intent intent = new Intent(context, CompareCars.class);
             intent.putExtra("CarModel", carModel);
             //Setting the carModel Object to the next page.
-            startActivity(intent);
+            startActivity(intent);*/
         }
     };
     private View.OnClickListener onClickCalculateAproxCost= new View.OnClickListener() {
