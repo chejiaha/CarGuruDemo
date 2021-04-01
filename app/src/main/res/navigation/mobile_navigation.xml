@@ -72,20 +72,29 @@
     <fragment
         android:id="@+id/fragment_questionnaire_questionPage"
         android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionFragment"
-        android:label="Search For Car"
-        tools:layout="@layout/activity_guru_question_page" />
-    <!--    The Category Page (Questions1)-->
+        android:label="Start"
+        tools:layout="@layout/fragment_questionnaire_question" >
+        <action
+            android:id="@+id/action_fragment_questionnaire_questionPage_to_questionnaireQuestionsFragment2"
+            app:destination="@id/questionnaireQuestionsFragment2" />
+    </fragment>
+    <!--    The Questionnaire Page (Questions2)-->
+    <fragment
+        android:id="@+id/questionnaireQuestionsFragment2"
+        android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionsFragment2"
+        android:label="fragment_questionnaire_questions2"
+        tools:layout="@layout/fragment_questionnaire_questions2"
+        >
+        <argument
+            android:name="Question"
+            app:argType="jiahao.chen.cargurudemo.Question" />
+    </fragment>
+    <!--    The Category Page -->
     <fragment
         android:id="@+id/fragment_searchByCategory"
         android:name="jiahao.chen.cargurudemo.SearchByCategoryFragment"
         android:label="Search For Car"
         tools:layout="@layout/fragment_search_by_category"/>
-    <!--    The Category Page (Questions2)-->
-<!--    <fragment
-        android:id="@+id/fragment_searchByCategory"
-        android:name="jiahao.chen.cargurudemo.SearchByCategoryFragment"
-        android:label="Search For Car"
-        tools:layout="@layout/fragment_search_by_category" />-->
 
     <!--    News Article Page     -->
     <fragment
@@ -93,5 +102,6 @@
         android:name="jiahao.chen.cargurudemo.NewsArticleFragment"
         android:label="Search For Car"
         tools:layout="@layout/fragment_news_article" />
+
 
 </navigation>
