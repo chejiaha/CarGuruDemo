@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -106,8 +109,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
              */
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-
                //Checking if the Category is null
                 /* if (category == null){
                     category = "";
@@ -132,10 +133,14 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 for (DataSnapshot QuestionCategory : dataSnapshot.child(DBcategory).getChildren()) {
                     // Children (dependent on category): mq1, mq2, mq3, or cq1, cq2 or sq1, sq2.....
                     categoryString = QuestionCategory.getKey();
+                    answersList = new ArrayList<>();
+                    answerValueList = new ArrayList<>();
+                    questionObj = new Question();
                     //debug
                     Log.d("QuestionnaireCategory", "The Category string is " + categoryString);
                     for (DataSnapshot QuestionInfo : dataSnapshot.child(DBcategory).child(categoryString).getChildren()){
                         // Children: Answers, DBFiled, Description
+
                         // Depending on the question number get the respective question.
                         questionData = QuestionInfo.getKey();
                         //debug
@@ -152,12 +157,14 @@ public class QuestionnaireQuestionFragment extends Fragment {
                             questionObj.setQuestion(category);
                         }
                         else if (questionData.equals("Answers")) {
+                            Log.d("TestAnswerLoop", "This should loop for answers: " + questionData);
                             //for each question in this section get the answers
                             for (DataSnapshot QuestionAnswers : dataSnapshot.child(DBcategory).child(categoryString).child(questionData).getChildren()) {
                                 // Children: mqa11, mqa12....
                                 //debug
                                 Log.d("QuestionnaireAnswerQ", "The AnswerQuestion string is " + questionData);
                                 String answerNumber = QuestionAnswers.getKey();
+                                Log.d("QuestionnaireAnswerQ", "The AnswerNumber string is " + answerNumber);
                                 // for each answer get the Description and value.
                                 for (DataSnapshot QuestionAnswer : dataSnapshot.child(DBcategory).child(categoryString).child(questionData).child(answerNumber).getChildren()) {
                                     // Children: Description, value
@@ -188,12 +195,14 @@ public class QuestionnaireQuestionFragment extends Fragment {
                     }
                     Log.d("Question", "The Question " + questionObj.getQuestion());
                     Log.d("Question", "The Question " + questionObj.getCategory());
+                    //Resetting the category variable.
+                    category = "";
                     // Adding the questions to the question List
                     questionsList.add(questionObj);
                 }
                 // Based on the QuestionList, Display the first question
                 //Test if this will actually work
-                questionObj = questionsList.get(questionNum);
+                questionObj = questionsList.get(questionNum - 1);
                 tvQuestion.setText(String.format("Q%s. %s", questionNum, questionObj.getQuestion()));
                 answersList = questionObj.getAnswers();
                 answerValueList = questionObj.getValues();
@@ -205,6 +214,10 @@ public class QuestionnaireQuestionFragment extends Fragment {
                     rbanswer.setId(View.generateViewId());
                     //rbanswer.setId("Q" + questionNum);
                     rbanswer.setText(answersList.get(i));
+                    //debug
+                    for (String answer : answersList) {
+                        Log.d("AsnwerList", "Answer: " + answer);
+                    }
                     rgQuestion.addView(rbanswer);
                 }
             }
@@ -215,33 +228,121 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }
         });
 
-        // Based on the QuestionList, Display the first question
-        /*
-        questionObj = questionsList.get(questionNum);
-        tvQuestion.setText(String.format("Q%s. %s", questionObj.getQuestion(), questionObj.getQuestion()));
-        answersList = questionObj.getAnswers();
-        answerValueList = questionObj.getValues();
-        //Populate the radio buttons with the question descriptions.
-        //rgQuestion is the radio group its being added to.
-        int numAnswers = answersList.size();
-        for (int i = 0; i < numAnswers ; i++) {
-            RadioButton rbanswer = new RadioButton(getActivity());
-            rbanswer.setId(View.generateViewId());
-            //rbanswer.setId("Q" + questionNum);
-            rbanswer.setText(answersList.get(i));
-            rgQuestion.addView(rbanswer);
-        }*/
-
+        btnNext.setOnTouchListener(onClickNext);
         //returning the view.
         return view;
     }
     /*
-     *
+     * This method is created to check if the user provided an answer and will move them to the next question.
+     * This method will also keep a count of the number of points per category. Once the number for a specific
+     * category reaches 3 (THIS WILL CHANGE) we can place them into the specified category.
      *
      */
     private View.OnTouchListener onClickNext = new View.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+            // The number that will represent how many questions until category is determined
+            int FALLTHROUGH_NUM = 3;
+            boolean categoryDetermined = false;
+            // If the user clicks next, check if an option was checked
+            int radioId;
+            try{
+                radioId = rgQuestion.getCheckedRadioButtonId();
+            }catch (NullPointerException err){
+                radioId = 0;
+                Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            // Add up the values for each category
+            int sportsCategory = 0;
+            int commuterCategory = 0;
+            //TODO These will be implemented once they are added in
+            int familyCategory = 0;
+            int utilityCategory = 0;
+            int beaterCategory = 0;
+            int luxuryCategory = 0;
+            // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
+            for (String value : questionObj.getValues()){
+                switch (value){
+                    case "Commuter":
+                        commuterCategory++;
+                        Log.d("COMMUTER", "Determained its a COMUTTER" + commuterCategory);
+                        break;
+                    case "Sports":
+                        sportsCategory++;
+                        Log.d("SPORTS", "Determained its a SPORTS" + sportsCategory);
+                        break;
+                    case "Family":
+                        familyCategory++;
+                        break;
+                    case "Beater":
+                        beaterCategory++;
+                        break;
+                    case "Utility":
+                        utilityCategory++;
+                        break;
+                    case "Luxury":
+                        luxuryCategory++;
+                        break;
+                }
+                if (commuterCategory >= FALLTHROUGH_NUM){
+                    categoryDetermined = true;
+                    category = "Commuter";
+                    break;
+                }else if (sportsCategory >= FALLTHROUGH_NUM){
+                    category = "Sports";
+                    categoryDetermined = true;
+                    break;
+                }else if (familyCategory >= FALLTHROUGH_NUM){
+                    category = "Family";
+                    categoryDetermined = true;
+                    break;
+                }else if (beaterCategory >= FALLTHROUGH_NUM){
+                    category = "Beater";
+                    categoryDetermined = true;
+                    break;
+                }else if (utilityCategory >= FALLTHROUGH_NUM){
+                    category = "Utility";
+                    categoryDetermined = true;
+                    break;
+                }else if (luxuryCategory >= FALLTHROUGH_NUM){
+                    category = "Luxury";
+                    categoryDetermined = true;
+                    break;
+                }
+            }
+
+
+            // If the category was determined push onto the next questions
+            if (categoryDetermined){
+                //TODO pass all the values and go to the next category pages.
+            }else{
+                /*
+                   LUKA NOTES
+                   Continue to the next question in the same category.
+                   Pass the questionList to the next page to be displayed by the user
+                   Pass the questionNum
+                   TODO Pass the progress bar
+                */
+
+                //Adding the arguments into the class
+                Bundle bundle = new Bundle();
+                bundle.putInt("QuestionNumber",++questionNum);
+
+                //bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
+                //Passing the next question
+                //TODO PASS THE ARRAY LIST INSTEAD OF THIS CRAP
+                //DEBUG WILL BE REMOVED
+//                questionObj = questionsList.get(questionNum);
+//                //Putting the object into the bundle
+//                bundle.putSerializable("Question", questionObj);
+//                //Going from SearchCarFragment to Specific model fragment
+//                Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire_splashPage_to_fragment_questionnaire_questionPage3, bundle);
+            }
+            //The Value has been determined and
+
+            //
             return false;
         }
     };
