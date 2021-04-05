@@ -1,11 +1,11 @@
 package jiahao.chen.cargurudemo;
 
-        import android.os.Parcel;
-        import android.os.Parcelable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-        import java.io.Serializable;
-        import java.util.List;
-        import java.util.Locale;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Locale;
 
 public class Question implements Serializable {
     //Question includes: String question;, List<Answers> answers;, List<String> values;

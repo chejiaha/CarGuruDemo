@@ -110,13 +110,6 @@ public class CarModel implements Serializable {
     public void setHorsePower(int horsePower) {
         HorsePower = horsePower;
     }
-    //public String getModel() {
-    //    return Model;
-    //}
-
-    //public void setModel(String model) {
-    //    Model = model;
-    //}
 
     public int getMPG() {
         return MPG;
@@ -190,11 +183,4 @@ public class CarModel implements Serializable {
         Torque = torque;
     }
 
-    //public int getYear() {
-     //   return Year;
-    //}
-
-    //public void setYear(int year) {
-      //  Year = year;
-    //}
 }

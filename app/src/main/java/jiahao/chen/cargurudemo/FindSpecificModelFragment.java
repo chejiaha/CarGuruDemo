@@ -514,7 +514,6 @@ public class FindSpecificModelFragment extends Fragment {
                             //Adding the arguments into the class
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("CarModel", carModel);
-
                             //Going from SearchCarFragment to Specific model fragment
                             Navigation.findNavController(view).navigate(R.id.action_navigation_SearchCar_to_fragment_specificModel2, bundle);
 

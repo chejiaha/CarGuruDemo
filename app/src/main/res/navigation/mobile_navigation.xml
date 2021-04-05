@@ -9,14 +9,28 @@
         android:id="@+id/navigation_home"
         android:name="jiahao.chen.cargurudemo.HomePage_Fragment"
         android:label="Home"
-        tools:layout="@layout/activity_homepage" />
+        tools:layout="@layout/activity_homepage" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_MyGarage"
+            app:destination="@id/navigation_MyGarage" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_SearchCar"
+            app:destination="@id/navigation_SearchCar" />
+        <action
+            android:id="@+id/action_navigation_home_to_fragment_questionnaire_splashPage2"
+            app:destination="@id/fragment_questionnaire_splashPage" />
+        <action
+            android:id="@+id/action_navigation_home_to_fragment_searchByCategory"
+            app:destination="@id/fragment_searchByCategory" />
+        <action
+            android:id="@+id/action_navigation_home_to_fragment_newsArticles"
+            app:destination="@id/fragment_newsArticles" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_Settings"
+            app:destination="@id/navigation_Settings" />
+    </fragment>
 <!--Fragment for Find a car for me-->
-    <fragment
-        android:id="@+id/navigation_CarGuru"
-        android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
-        android:label="CarGuru"
-        tools:layout="@layout/activity_guru_splash_page" />
-<!--Fragment to Find a specific Model-->
+    <!--Fragment to Find a specific Model-->
     <fragment
         android:id="@+id/navigation_SearchCar"
         android:name="jiahao.chen.cargurudemo.FindSpecificModelFragment"
@@ -28,7 +42,6 @@
         <argument
             android:name="CarModel"
             app:argType="jiahao.chen.cargurudemo.CarModel" />
-
     </fragment>
 <!--Fragment for My Garage Splash Page-->
     <fragment
@@ -42,12 +55,59 @@
            android:name="jiahao.chen.cargurudemo.SettingsFragment"
            android:label="Settings"
            tools:layout="@layout/fragment_settings" />
-
+<!--Specific Model Information Page-->
     <fragment
         android:id="@+id/fragment_specificModel"
         android:name="jiahao.chen.cargurudemo.SpecificModelFragment"
         android:label="Search For Car"
         tools:layout="@layout/fragment_specific_model" />
+<!--     The Questionnaire Splash Page-->
+    <fragment
+        android:id="@+id/fragment_questionnaire_splashPage"
+        android:name="jiahao.chen.cargurudemo.QuestionnaireSplashFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_questionnaire_splash" >
+        <action
+            android:id="@+id/action_fragment_questionnaire_splashPage_to_fragment_questionnaire_questionPage3"
+            app:destination="@id/fragment_questionnaire_questionPage" />
+    </fragment>
+<!--    The Questionnaire Page (Questions1)-->
+    <fragment
+        android:id="@+id/fragment_questionnaire_questionPage"
+        android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionFragment"
+        android:label="Start"
+        tools:layout="@layout/fragment_questionnaire_question" >
+        <action
+            android:id="@+id/action_fragment_questionnaire_questionPage_to_questionnaireQuestionsFragment2"
+            app:destination="@id/questionnaireQuestionsFragment2" />
+    </fragment>
+    <!--    The Questionnaire Page (Questions2)-->
+    <fragment
+        android:id="@+id/questionnaireQuestionsFragment2"
+        android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionsFragment2"
+        android:label="fragment_questionnaire_questions2"
+        tools:layout="@layout/fragment_questionnaire_questions2"
+        >
+<!--        <argument
+            android:name="Question"
+            app:argType="jiahao.chen.cargurudemo.Question" />-->
+        <argument
+            android:name="QuestionNum"
+            app:argType="integer" />
+    </fragment>
+    <!--    The Category Page -->
+    <fragment
+        android:id="@+id/fragment_searchByCategory"
+        android:name="jiahao.chen.cargurudemo.SearchByCategoryFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_search_by_category"/>
+
+    <!--    News Article Page     -->
+    <fragment
+        android:id="@+id/fragment_newsArticles"
+        android:name="jiahao.chen.cargurudemo.NewsArticleFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_news_article" />
 
 
 </navigation>

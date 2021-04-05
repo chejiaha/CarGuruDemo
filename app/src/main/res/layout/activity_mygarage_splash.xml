@@ -16,20 +16,11 @@
         app:layout_constraintTop_toTopOf="parent" />-->
 
     <fragment
-        android:id="@+id/fmNavigationFragment"
-        android:name="jiahao.chen.cargurudemo.BottomNavigationFragment"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <fragment
         android:id="@+id/fragment"
         android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
-        android:layout_width="414dp"
-        android:layout_height="603dp"
-        app:layout_constraintBottom_toTopOf="@+id/fmNavigationFragment"
+        android:layout_width="417dp"
+        android:layout_height="736dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

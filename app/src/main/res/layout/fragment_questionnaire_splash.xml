@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".QuestionnaireSplashFragment">
 
     <TextView
         android:id="@+id/tvFindACarTitle"
@@ -22,7 +23,7 @@
         android:layout_width="303dp"
         android:layout_height="126dp"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/crewmascot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFindACarTitle" />
@@ -39,15 +40,15 @@
 
     <ImageView
         android:id="@+id/ivStartQuestionnaire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
         android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/questionnairestartbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFindACarForYouDescription" />
-
+    
     <Button
         android:id="@+id/btnViewByCategory"
         android:layout_width="wrap_content"
@@ -69,14 +70,5 @@
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivStartQuestionnaire" />
-
-    <fragment
-        android:id="@+id/fmNavigationFragment"
-        android:name="jiahao.chen.cargurudemo.BottomNavigationFragment"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

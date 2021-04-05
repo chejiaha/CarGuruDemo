@@ -85,8 +85,6 @@ public class SpecificModelFragment extends Fragment {
         lvDescription = view.findViewById(R.id.lvSpecificCarDescriptionList);
         //Get the vehicle details and populate arrays
         populateCarDetails();
-
-
         return view;
     }
 
@@ -103,7 +101,6 @@ public class SpecificModelFragment extends Fragment {
         //Get CarModel Object from the Specific Car Page
         Bundle bundle = new Bundle();
         carModel = (CarModel) bundle.getSerializable("CarModel");
-
         carModel = ((CarModel) getArguments().getSerializable("CarModel"));
         //debug
         Log.d("SpecificModel", "CarModel Make is" + carModel.getMake());
@@ -115,10 +112,6 @@ public class SpecificModelFragment extends Fragment {
         Log.d("SpecificModel", "CarModel Category is" + carModel.getCategory());
         Log.d("SpecificModel", "CarModel Drivetrain is" + carModel.getDrivetrain());
         Log.d("SpecificModel", "CarModel Doors is" + carModel.getDoors());
-        /*for(String item : carModel.getRecalls()){
-            //Debug
-            Log.d("FindSpecificModel", "The Car information for Common Problems is" + item);
-        }*/
 
         //Setting the Model information into the View
         tvCarName.setText(String.format("%s %s %s",carModel.getMake(),carModel.getModel(), carModel.getYear() ));
