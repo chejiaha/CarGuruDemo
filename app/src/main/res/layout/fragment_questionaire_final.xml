@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionaireFinalFragment">
+
+    <TextView
+        android:id="@+id/tvQuestionnaireFinalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Congratulations"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tvFindACarGuruImage"
+        android:layout_width="303dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/crewmascot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireFinalTitle" />
+
+    <TextView
+        android:id="@+id/tvQuestionnaireFinalBased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Based on questions you answered Guru has placed you in the "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFindACarGuruImage" />
+
+    <TextView
+        android:id="@+id/tvQuestionnaireFinalCategoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Category "
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireFinalBased" />
+
+    <TextView
+        android:id="@+id/tvQuestionnaireFinalCategoryExplanation"
+        android:layout_width="306dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Append This is becaause you... + Reason"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireFinalCategoryTitle" />
+
+    <TextView
+        android:id="@+id/tvQuestionnaireFinalTryAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:text="Try Again"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireFinalCategoryExplanation" />
+
+    <TextView
+        android:id="@+id/tvQuestionnaireFinalToCars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="To Suggested Cars"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintStart_toEndOf="@+id/tvQuestionnaireFinalTryAgain"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireFinalCategoryExplanation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
