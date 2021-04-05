@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.os.Parcelable;
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -326,19 +328,20 @@ public class QuestionnaireQuestionFragment extends Fragment {
                    TODO Pass the progress bar
                 */
 
-                //Adding the arguments into the class
+                //Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
                 bundle.putInt("QuestionNumber",++questionNum);
 
                 //bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
                 //Passing the next question
                 //TODO PASS THE ARRAY LIST INSTEAD OF THIS CRAP
-                //DEBUG WILL BE REMOVED
-//                questionObj = questionsList.get(questionNum);
-//                //Putting the object into the bundle
-//                bundle.putSerializable("Question", questionObj);
-//                //Going from SearchCarFragment to Specific model fragment
-//                Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire_splashPage_to_fragment_questionnaire_questionPage3, bundle);
+                //Putting the object into the bundle
+                bundle.putSerializable("Questions",(Serializable) questionsList);
+                questionObj = questionsList.get(1);
+                //Going from SearchCarFragment to Specific model fragment
+                NavDirections action = QuestionnaireQuestionFragmentDirections.actionFragmentQuestionnaireQuestionPageToQuestionnaireQuestionsFragment2(++questionNum);
+                Navigation.findNavController(view).navigate(action);
+                //Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire_splashPage_to_fragment_questionnaire_questionPage3,bundle);
             }
             //The Value has been determined and
 

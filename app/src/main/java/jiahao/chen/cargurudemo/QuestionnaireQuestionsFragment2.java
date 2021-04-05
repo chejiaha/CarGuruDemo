@@ -32,33 +32,34 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
     }
 
     View view;
-//    RadioGroup rgQuestion;
-//    Button btnNext;
-//    Button btnBack;
-//    RadioButton rbAnswerbutton;
-//    TextView tvQuestion;
-//    TextView tvQuestionNumber;
-//    TextView tvQuestionChoice;
-//    //Creating my referenced to the database
-//    DatabaseReference dbRef;
-//    ValueEventListener listener;
-//
-//    // Variables
-//    Question questionObj;
-//    // Total list of questions
-//    List<Question> questionsList;
-//    // Setting up one question
-//    List<String> answersList;
-//    List<String> answerValueList;
-//    String question = "";
-//    String category = "";
-//    // Int that will be the question Number
-//    int questionNum = 1;
+    RadioGroup rgQuestion;
+    Button btnNext;
+    Button btnBack;
+    RadioButton rbAnswerbutton;
+    TextView tvQuestion;
+    TextView tvQuestionNumber;
+    TextView tvQuestionChoice;
+    //Creating my referenced to the database
+    DatabaseReference dbRef;
+    ValueEventListener listener;
+
+    // Variables
+    Question questionObj;
+    // Total list of questions
+    List<Question> questionsList;
+    // Setting up one question
+    List<String> answersList;
+    List<String> answerValueList;
+    String question = "";
+    String category = "";
+    // Int that will be the question Number
+    int questionNum = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_questionnaire_questions2, container, false);
+        //
         // Inflate the layout for this fragment
 
         // Set the View Items

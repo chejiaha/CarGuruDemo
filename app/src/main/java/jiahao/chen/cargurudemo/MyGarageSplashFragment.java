@@ -1,5 +1,6 @@
 package jiahao.chen.cargurudemo;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,10 +8,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 public class MyGarageSplashFragment extends Fragment {
 
+    //creating Page context
+    Context context;
+    //Creating View Objects
+    Button btnSignIn;
+    Button btnSignUp;
+    boolean loggedIn = false;
+
+    //This list will hold the Question IDs so we can go forwards and back to get the questions.
+    int[] questionIDs;
+    String[] questionAnswer;
 
 
     public MyGarageSplashFragment() {

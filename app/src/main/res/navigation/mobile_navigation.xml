@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_navigation_home_to_fragment_newsArticles"
             app:destination="@id/fragment_newsArticles" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_Settings"
+            app:destination="@id/navigation_Settings" />
     </fragment>
 <!--Fragment for Find a car for me-->
     <!--Fragment to Find a specific Model-->
@@ -85,9 +88,12 @@
         android:label="fragment_questionnaire_questions2"
         tools:layout="@layout/fragment_questionnaire_questions2"
         >
-        <argument
+<!--        <argument
             android:name="Question"
-            app:argType="jiahao.chen.cargurudemo.Question" />
+            app:argType="jiahao.chen.cargurudemo.Question" />-->
+        <argument
+            android:name="QuestionNum"
+            app:argType="integer" />
     </fragment>
     <!--    The Category Page -->
     <fragment
