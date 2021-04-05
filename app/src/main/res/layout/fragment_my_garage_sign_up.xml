@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:id="@+id/tvMyGarageSplashTitle"
+        android:id="@+id/tvMyGarageSignUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -18,103 +18,161 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ivMyGarageSplashPageGarage"
-        android:layout_width="267dp"
-        android:layout_height="142dp"
+        android:id="@+id/ivMyGarageSignUpPageGarage"
+        android:layout_width="258dp"
+        android:layout_height="106dp"
         android:layout_marginTop="16dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSplashTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpTitle" />
 
     <TextView
-        android:id="@+id/tvMyGarageSignInDescription"
+        android:id="@+id/tvMyGarageSignUpDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="Sign in to access MyGarage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSplashPageGarage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignUpPageGarage" />
 
-
-    <EditText
-        android:id="@+id/etMyGarageSignInEmail"
-        android:layout_width="203dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="36dp"
-        android:text="placeholder"
-        android:hint="Enter Email Here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription" />
 
     <TextView
-        android:id="@+id/tvMySignInGarageEmail"
+        android:id="@+id/tvMyGarageSignUpError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="16dp"
+
+        android:text="Error Message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpDescription" />
+
+
+    <TextView
+        android:id="@+id/tvMySignUpGarageEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
         android:text="Email: "
-        app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignInEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription" />
+        app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignUpEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpFirstName" />
 
     <ImageView
-        android:id="@+id/ivMyGarageSignInEmail"
+        android:id="@+id/ivMyGarageSignUpPassword"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toStartOf="@+id/tvMySignInGarageEmail"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/tvMyGarageSignUpPassword"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignUpEmail" />
 
     <EditText
-        android:id="@+id/etMyGarageSignInPassword"
-        android:layout_width="195dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="60dp"
+        android:id="@+id/etMyGarageSignUpPassword"
+        android:layout_width="135dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:hint="Enter Password Here"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignUpEmail" />
 
     <TextView
-        android:id="@+id/tvMyGarageSignInPassword"
+        android:id="@+id/tvMyGarageSignUpPassword"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="28dp"
 
+        android:layout_marginEnd="24dp"
         android:text="Password: "
-        app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignInEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvMySignInGarageEmail" />
+        app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignUpPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvMySignUpGarageEmail" />
 
     <ImageView
-        android:id="@+id/ivMyGarageSignInPassword"
+        android:id="@+id/ivMyGarageSignUpEmail"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="12dp"
         android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toStartOf="@+id/tvMyGarageSignInPassword"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/tvMySignUpGarageEmail"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignUpFirstName" />
+
+    <EditText
+        android:id="@+id/etMyGarageSignUpEmail"
+        android:layout_width="135dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:hint="Enter Email Here"
+        android:text="placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignUpFirstName" />
+
+
+    <EditText
+        android:id="@+id/etMyGarageSignUpConfirmPassword"
+        android:layout_width="132dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="36dp"
+        android:hint="Confirm Password Here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignUpPassword" />
 
     <TextView
-        android:id="@+id/tvMyGarageSignInForgotPassword"
+        android:id="@+id/tvMyGarageSignUpConfirmPassword"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="56dp"
-        android:text="Forgot Password?"
-        android:textColor="@color/black"
+        android:layout_height="18dp"
+        android:layout_marginTop="40dp"
+        android:text="Confirm Password: "
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpPassword"
+        tools:layout_editor_absoluteX="51dp" />
+
+    <ImageView
+        android:id="@+id/ivMyGarageSignUpConfirmPassword"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toStartOf="@+id/tvMyGarageSignUpConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignUpPassword" />
+
+    <EditText
+        android:id="@+id/etMyGarageSignUpFirstName"
+        android:layout_width="132dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="36dp"
+        android:hint="Confirm Password Here"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignInPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpError" />
+
+    <ImageView
+        android:id="@+id/ivMyGarageSignUpFirstName"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toStartOf="@+id/tvMyGarageSignUpConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpError" />
+
+    <TextView
+        android:id="@+id/tvMyGarageSignUpFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="FirstName: "
+        app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignUpFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignUpError" />
 
     <TextView
         android:id="@+id/btnSignIn"
@@ -126,20 +184,18 @@
         app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInForgotPassword"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignUpConfirmPassword" />
 
     <TextView
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="Sign Up"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInForgotPassword"
-        app:layout_constraintVertical_bias="0.323" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSignUpConfirmPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

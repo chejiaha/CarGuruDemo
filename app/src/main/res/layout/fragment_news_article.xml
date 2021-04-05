@@ -8,15 +8,196 @@
     tools:context=".NewsArticleFragment">
 
     <TextView
-        android:id="@+id/tvSettingsTitle"
+        android:id="@+id/tvCarNewsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Settings"
+        android:text="Articles"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCarNewsColumn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="Electric Car News"
+        app:layout_constraintEnd_toStartOf="@+id/tvCarNewsColumn2"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsTitle" />
+
+    <TextView
+        android:id="@+id/tvCarNewsColumn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        android:text="Race Car News"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsTitle" />
+
+    <TextView
+        android:id="@+id/tvCarNewsColumn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="New Car News"
+        app:layout_constraintEnd_toStartOf="@+id/tvCarNewsColumn3"
+        app:layout_constraintHorizontal_bias="0.734"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsTitle" />
+
+    <ImageView
+        android:id="@+id/ivCarNewsDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsColumn1" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:text="NEW BMW"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsColumn3" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="Can you tell I like BMW?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsDisplayTitle" />
+
+    <ImageView
+        android:id="@+id/ivCarNewsDisplay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:text="NEW AUDI"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayDescription2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="So Cool!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsDisplayTitle2" />
+
+    <ImageView
+        android:id="@+id/ivCarNewsDisplay3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay2" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:text="Ford Fiesta"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay2" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayDescription3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="A Fiesta For Everyone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsDisplayTitle3" />
+
+    <ImageView
+        android:id="@+id/ivCarNewsDisplay4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay3" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayDescription4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="Almost as Mini as the Fiesta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarNewsDisplayTitle4" />
+
+    <TextView
+        android:id="@+id/tvCarNewsDisplayTitle4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:text="Mini Cooper"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivCarNewsDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay3" />
+
+    <ImageView
+        android:id="@+id/ivCarNewsMoreNewsArrow"
+        android:layout_width="48dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCarNewsDisplay4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

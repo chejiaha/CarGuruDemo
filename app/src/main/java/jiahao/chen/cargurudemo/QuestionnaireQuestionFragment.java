@@ -87,7 +87,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
         btnBack = view.findViewById(R.id.BtnPreviousPage);
         btnNext = view.findViewById(R.id.BtnNextPage);
         tvQuestion = view.findViewById(R.id.tvQuestion);
-        tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
+        //tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
         tvQuestionChoice = view.findViewById(R.id.tvQuestionChoice);
         questionsList = new ArrayList<>();
         answersList = new ArrayList<>();
