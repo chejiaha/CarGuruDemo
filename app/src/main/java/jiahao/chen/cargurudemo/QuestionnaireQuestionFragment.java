@@ -244,6 +244,8 @@ public class QuestionnaireQuestionFragment extends Fragment {
      * This method is created to check if the user provided an answer and will move them to the next question.
      * This method will also keep a count of the number of points per category. Once the number for a specific
      * category reaches 3 (THIS WILL CHANGE) we can place them into the specified category.
+     * To determine this number we are checking what values the database returns for the question,
+     * and are adding them to each categories totals.
      *
      */
     public View.OnClickListener  onClickNext = new View.OnClickListener() {
@@ -340,26 +342,26 @@ public class QuestionnaireQuestionFragment extends Fragment {
                    TODO Pass the progress bar
                 */
 
-                //Adding the arguments into the bundle
+                // Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
+                // Adding the question number that will specify the question from the list
                 bundle.putInt("QuestionNumber", questionNum);
+                // Adding all of the category points into an array
+                int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
 
-                //bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
-                //Passing the next question
-                //TESTING
-                //PassArrayListTest testing = new PassArrayListTest(questionsList);
-                //bundle.putSerializable("QuestionList", testing);
-                //Putting the object into the bundle
-                // bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
+                // Passing the Counts of all of the categories
+                bundle.putIntArray("CategoryPoints", categoryPointsArray);
+                // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
+                // Replacing the current fragment with the next Question.
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
                 fragment.setArguments(bundle);
-                // create a FragmentManager
+                // Create a FragmentManager
                 FragmentManager fm = getFragmentManager();
-                // create a FragmentTransaction to begin the transaction and replace the Fragment
+                // Create a FragmentTransaction to begin the transaction and replace the Fragment
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                // replace the FrameLayout with new Fragment
+                // Replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                 fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes

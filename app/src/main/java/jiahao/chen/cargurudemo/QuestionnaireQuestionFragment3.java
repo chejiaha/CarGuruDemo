@@ -51,6 +51,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
     // Setting up one question
     ArrayList<String> answersList;
     ArrayList<String> answerValueList;
+    int[] categoryPoints;
     String question = "";
     String category = "";
     // Int that will be the question Number
@@ -75,9 +76,8 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
         //debug
         Log.d("QuestionnaireQuestions2", "QuestionNum" + questionNum);
         questionsList = (ArrayList<Question>) getArguments().getSerializable("QuestionList");
-        //questionsList = ((ArrayList) getArguments().getParcelableArrayList("QuestionList"));
-        //answersList = new ArrayList<>();
-        //answerValueList = new ArrayList<>();
+        // Getting the category points
+        categoryPoints = getArguments().getIntArray("CategoryPoints");
 
         //Placing the Question into a Question object
         questionObj = questionsList.get(questionNum);
@@ -97,8 +97,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 rgQuestion.addView(rbanswer);
             }
         }
-
-
 
         //Setup the Onclick Listener
         btnNext.setOnClickListener(onClickNext);
@@ -128,59 +126,66 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 return;
             }
 
-            // Add up the values for each category
-            int sportsCategory = 0;
-            int commuterCategory = 0;
-            //TODO These will be implemented once they are added in
-            int familyCategory = 0;
-            int utilityCategory = 0;
-            int beaterCategory = 0;
-            int luxuryCategory = 0;
+//            // Add up the values for each category
+//            int sportsCategory = 0;
+//            int commuterCategory = 0;
+//            //TODO These will be implemented once they are added in
+//            int familyCategory = 0;
+//            int utilityCategory = 0;
+//            int beaterCategory = 0;
+//            int luxuryCategory = 0;
+
+
+
             // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
+            /*
+             * This switch statement will add the category point directly to the array.
+             *  int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
+             */
             for (String value : questionObj.getValues()){
                 switch (value){
                     case "Commuter":
-                        commuterCategory++;
-                        Log.d("COMMUTER", "Determained its a COMUTTER" + commuterCategory);
+                        categoryPoints[0] = categoryPoints[0] + 1;
+                        Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
                         break;
                     case "Sports":
-                        sportsCategory++;
-                        Log.d("SPORTS", "Determained its a SPORTS" + sportsCategory);
-                        break;
-                    case "Family":
-                        familyCategory++;
+                        categoryPoints[1] = categoryPoints[1] + 1;
+                        //Log.d("SPORTS", "Determained its a SPORTS" + sportsCategory);
                         break;
                     case "Beater":
-                        beaterCategory++;
+                        categoryPoints[2] = categoryPoints[2] + 1;
                         break;
                     case "Utility":
-                        utilityCategory++;
+                        categoryPoints[3] = categoryPoints[3] + 1;
+                        break;
+                    case "Family":
+                        categoryPoints[4] = categoryPoints[4] + 1;
                         break;
                     case "Luxury":
-                        luxuryCategory++;
+                        categoryPoints[5] = categoryPoints[5] + 1;
                         break;
                 }
-                if (commuterCategory >= FALLTHROUGH_NUM){
+                if (categoryPoints[0] >= FALLTHROUGH_NUM){
                     categoryDetermined = true;
                     category = "Commuter";
                     break;
-                }else if (sportsCategory >= FALLTHROUGH_NUM){
+                }else if (categoryPoints[1] >= FALLTHROUGH_NUM){
                     category = "Sports";
                     categoryDetermined = true;
                     break;
-                }else if (familyCategory >= FALLTHROUGH_NUM){
-                    category = "Family";
-                    categoryDetermined = true;
-                    break;
-                }else if (beaterCategory >= FALLTHROUGH_NUM){
+                }else if (categoryPoints[2] >= FALLTHROUGH_NUM){
                     category = "Beater";
                     categoryDetermined = true;
                     break;
-                }else if (utilityCategory >= FALLTHROUGH_NUM){
+                }else if (categoryPoints[3] >= FALLTHROUGH_NUM){
                     category = "Utility";
                     categoryDetermined = true;
                     break;
-                }else if (luxuryCategory >= FALLTHROUGH_NUM){
+                }else if (categoryPoints[4] >= FALLTHROUGH_NUM){
+                    category = "Family";
+                    categoryDetermined = true;
+                    break;
+                }else if (categoryPoints[5] >= FALLTHROUGH_NUM){
                     category = "Luxury";
                     categoryDetermined = true;
                     break;
@@ -210,12 +215,18 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                    TODO Pass the progress bar
                 */
 
-                //Adding the arguments into the bundle
+                // Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
+                // Adding the question number that will specify the question from the list
                 bundle.putInt("QuestionNumber", ++questionNum);
+
+//
+                // Passing the Counts of all of the categories
+                bundle.putIntArray("CategoryPoints", categoryPoints);
+                // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
-                //Setting up the Fragment
+                // Replacing the current fragment with the next Question.
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
                 fragment.setArguments(bundle);
                 // create a FragmentManager
@@ -238,10 +249,31 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
      * This method will subtract one from the count of points based on the category they chose last.
      * This value is passed as a string so it knows what points to take off.
      *
+     * Passes:
+     *  ArrayList<Questions> : The Array List of Questions
+     *  QuestionNumber <String> : The question Number subtracted by 1
      */
     private View.OnTouchListener onClickBack = new View.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+
+            //TODO Get the last category that was added and subtract it
+            //Adding the arguments into the bundle
+            Bundle bundle = new Bundle();
+            bundle.putInt("QuestionNumber", ++questionNum);
+            bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+
+            //Setting up the Fragment
+            Fragment fragment = new QuestionnaireQuestionsFragment2();
+            fragment.setArguments(bundle);
+            // create a FragmentManager
+            FragmentManager fm = getFragmentManager();
+            // create a FragmentTransaction to begin the transaction and replace the Fragment
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            // replace the FrameLayout with new Fragment
+            fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+            fragmentTransaction.addToBackStack(fragment.toString());
+            fragmentTransaction.commit(); // save the changes
 
             return false;
         }
