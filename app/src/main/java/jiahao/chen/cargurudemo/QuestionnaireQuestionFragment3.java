@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavType;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,19 +21,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+
+public class QuestionnaireQuestionFragment3 extends Fragment {
 
 
-public class QuestionnaireQuestionsFragment2 extends Fragment {
 
-    public QuestionnaireQuestionsFragment2() {
-        // Required empty public constructor
+    public QuestionnaireQuestionFragment3() {
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+        super.onCreate(savedInstanceState);}
 
     View view;
     RadioGroup rgQuestion;
@@ -58,12 +54,12 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
     String question = "";
     String category = "";
     // Int that will be the question Number
-    int questionNum;
+    int questionNum = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_questionnaire_questions2, container, false);
+        view = inflater.inflate(R.layout.fragment_questionnaire_question3, container, false);
 
         // Set the View Items
         rgQuestion = view.findViewById(R.id.rgQuestions);
@@ -87,7 +83,6 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
         questionObj = questionsList.get(questionNum);
         if (questionObj != null) {
             //Adding the Question so we can populate the interface
-
             tvQuestion.setText(String.format("Q%s. %s", questionNum, questionObj.getQuestion()));
             answersList = questionObj.getAnswers();
             answerValueList = questionObj.getValues();
@@ -102,6 +97,9 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                 rgQuestion.addView(rbanswer);
             }
         }
+
+
+
         //Setup the Onclick Listener
         btnNext.setOnClickListener(onClickNext);
         // Inflate the layout for this fragment
@@ -212,11 +210,11 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
 
                 //Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
-                bundle.putInt("QuestionNumber", ++questionNum);
+                bundle.putInt("QuestionNumber", questionNum);
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
                 //Setting up the Fragment
-                Fragment fragment = new QuestionnaireQuestionFragment3();
+                Fragment fragment = new QuestionnaireQuestionsFragment2();
                 fragment.setArguments(bundle);
                 // create a FragmentManager
                 FragmentManager fm = getFragmentManager();
@@ -228,6 +226,7 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
 
             }
             //The Value has been determined and
+
         }
     };
 
@@ -244,6 +243,4 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
             return false;
         }
     };
-
-
 }

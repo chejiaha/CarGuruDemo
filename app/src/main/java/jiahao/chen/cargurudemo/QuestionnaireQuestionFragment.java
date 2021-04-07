@@ -236,7 +236,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }
         });
 
-        btnNext.setOnTouchListener(onClickNext);
+        btnNext.setOnClickListener(onClickNext);
         //returning the view.
         return view;
     }
@@ -246,9 +246,9 @@ public class QuestionnaireQuestionFragment extends Fragment {
      * category reaches 3 (THIS WILL CHANGE) we can place them into the specified category.
      *
      */
-    private View.OnTouchListener onClickNext = new View.OnTouchListener(){
+    public View.OnClickListener  onClickNext = new View.OnClickListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        public void onClick(View v) {
             // The number that will represent how many questions until category is determined
             int FALLTHROUGH_NUM = 3;
             boolean categoryDetermined = false;
@@ -259,7 +259,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }catch (NullPointerException err){
                 radioId = 0;
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
-                return false;
+                return;
             }
 
             // Add up the values for each category
@@ -324,6 +324,14 @@ public class QuestionnaireQuestionFragment extends Fragment {
 
             // If the category was determined push onto the next questions
             if (categoryDetermined){
+                Fragment fragment = new HomePage_Fragment();
+                // create a FragmentManager
+                FragmentManager fm = getFragmentManager();
+                // create a FragmentTransaction to begin the transaction and replace the Fragment
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                // replace the FrameLayout with new Fragment
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit(); // save the changes
                 //TODO pass all the values and go to the next category pages.
             }else{
                 /*
@@ -336,12 +344,15 @@ public class QuestionnaireQuestionFragment extends Fragment {
 
                 //Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
-                bundle.putInt("QuestionNumber",++questionNum);
+                bundle.putInt("QuestionNumber", questionNum);
 
                 //bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
                 //Passing the next question
-                //TODO PASS THE ARRAY LIST INSTEAD OF THIS CRAP
+                //TESTING
+                //PassArrayListTest testing = new PassArrayListTest(questionsList);
+                //bundle.putSerializable("QuestionList", testing);
                 //Putting the object into the bundle
+               // bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
@@ -377,8 +388,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }
             //The Value has been determined and
 
-            //
-            return false;
         }
     };
 
