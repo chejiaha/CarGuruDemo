@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavType;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +49,8 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
     // Total list of questions
     List<Question> questionsList;
     // Setting up one question
-    List<String> answersList;
-    List<String> answerValueList;
+    ArrayList<String> answersList;
+    ArrayList<String> answerValueList;
     String question = "";
     String category = "";
     // Int that will be the question Number
@@ -60,7 +61,8 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_questionnaire_questions2, container, false);
         //
-        // Inflate the layout for this fragment
+
+
 
         // Set the View Items
 //        rgQuestion = view.findViewById(R.id.rgQuestions);
@@ -71,16 +73,22 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
 //        tvQuestionChoice = view.findViewById(R.id.tvQuestionChoice);
 
         //Get the items from the bundle.
-        //Bundle bundle = new Bundle();
-        //questionObj = ((Question) getArguments().getSerializable("Question"));
-        //questionsList = (CarModel) bundle.getParcelableArrayList("QuestionList");
-
+        Bundle bundle = new Bundle();
+        questionNum = ((int) getArguments().getInt("QuestionNumber"));
+        //debug
+        Log.d("QuestionnaireQuestions2", "QuestionNum" + questionNum);
+        questionsList = (ArrayList<Question>) bundle.getSerializable("QuestionList");
         //questionsList = ((ArrayList) getArguments().getParcelableArrayList("QuestionList"));
-//        answersList = new ArrayList<>();
-//        answerValueList = new ArrayList<>();
-//        questionObj = new Question();
+        //answersList = new ArrayList<>();
+        //answerValueList = new ArrayList<>();
+
+        //Placing the Question into a Question object
+        questionObj = questionsList.get(questionNum);
+
 
         //Get the values from the bundle
+
+        // Inflate the layout for this fragment
         return view;
     }
 }

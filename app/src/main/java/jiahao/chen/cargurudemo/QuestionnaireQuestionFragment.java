@@ -4,8 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.ListFragment;
+import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
+import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Parcelable;
 import android.util.Log;
@@ -67,10 +73,10 @@ public class QuestionnaireQuestionFragment extends Fragment {
     // Variables
     Question questionObj;
     // Total list of questions
-    List<Question> questionsList;
+    ArrayList<Question> questionsList;
     // Setting up one question
-    List<String> answersList;
-    List<String> answerValueList;
+    ArrayList<String> answersList;
+    ArrayList<String> answerValueList;
     String question = "";
     String category = "";
     // Int that will be the question Number
@@ -336,12 +342,38 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 //Passing the next question
                 //TODO PASS THE ARRAY LIST INSTEAD OF THIS CRAP
                 //Putting the object into the bundle
-                bundle.putSerializable("Questions",(Serializable) questionsList);
-                questionObj = questionsList.get(1);
-                //Going from SearchCarFragment to Specific model fragment
-                NavDirections action = QuestionnaireQuestionFragmentDirections.actionFragmentQuestionnaireQuestionPageToQuestionnaireQuestionsFragment2(++questionNum);
-                Navigation.findNavController(view).navigate(action);
-                //Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire_splashPage_to_fragment_questionnaire_questionPage3,bundle);
+                bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+
+                Fragment fragment = new QuestionnaireQuestionsFragment2();
+                fragment.setArguments(bundle);
+                // create a FragmentManager
+                FragmentManager fm = getFragmentManager();
+                // create a FragmentTransaction to begin the transaction and replace the Fragment
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                // replace the FrameLayout with new Fragment
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit(); // save the changes
+
+                //Going from Question1 to next Question fragment
+//                NavHostFragment navHostFragment =
+//                        (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+//                NavController navController = navHostFragment.getNavController();
+
+
+
+
+              /*  NavDirections action =
+                        getActivity().SpecifyAmountFragmentDirections
+                                .actionSpecifyAmountFragmentToConfirmationFragment();
+                Navigation.findNavController(view).navigate(action);*/
+
+
+                //NavDirections action = QuestionnaireQuestionFragmentDirections.actionFragmentQuestionnaireQuestionPageToQuestionnaireQuestionsFragment2(++questionNum);
+                //Navigation.findNavController(view).navigate(action);
+//                if (navController.currentDestination?.id == R.id.fragmentA) {
+//                    Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire1_to_questionnaire2);
+//                }
+
             }
             //The Value has been determined and
 

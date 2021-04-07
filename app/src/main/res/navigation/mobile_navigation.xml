@@ -78,23 +78,27 @@
         android:label="Start"
         tools:layout="@layout/fragment_questionnaire_question" >
         <action
-            android:id="@+id/action_fragment_questionnaire_questionPage_to_questionnaireQuestionsFragment2"
+            android:id="@+id/action_fragment_questionnaire1_to_questionnaire2"
             app:destination="@id/questionnaireQuestionsFragment2" />
     </fragment>
+
+
     <!--    The Questionnaire Page (Questions2)-->
-    <fragment
-        android:id="@+id/questionnaireQuestionsFragment2"
-        android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionsFragment2"
-        android:label="fragment_questionnaire_questions2"
-        tools:layout="@layout/fragment_questionnaire_questions2"
-        >
+<!--    <fragment-->
+<!--        android:id="@+id/questionnaireQuestionsFragment2"-->
+<!--        android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionsFragment2"-->
+<!--        android:label="fragment_questionnaire_questions2"-->
+<!--        tools:layout="@layout/fragment_questionnaire_questions2"-->
+<!--        >
+    </fragment>
+    -->
 <!--        <argument
             android:name="Question"
             app:argType="jiahao.chen.cargurudemo.Question" />-->
-        <argument
-            android:name="QuestionNum"
-            app:argType="integer" />
-    </fragment>
+<!--        <argument-->
+<!--            android:name="QuestionNum"-->
+<!--            app:argType="integer" />-->
+
     <!--    The Category Page -->
     <fragment
         android:id="@+id/fragment_searchByCategory"
@@ -108,6 +112,31 @@
         android:name="jiahao.chen.cargurudemo.NewsArticleFragment"
         android:label="Search For Car"
         tools:layout="@layout/fragment_news_article" />
+    <fragment
+        android:id="@+id/questionnaireQuestionsFragment2"
+        android:name="jiahao.chen.cargurudemo.QuestionnaireQuestionsFragment2"
+        android:label="fragment_questionnaire_questions2"
+        tools:layout="@layout/fragment_questionnaire_questions2" />
+    <fragment
+        android:id="@+id/myGarageSignInFragment"
+        android:name="jiahao.chen.cargurudemo.MyGarageSignInFragment"
+        android:label="fragment_my_garage_sign_in"
+        tools:layout="@layout/fragment_my_garage_sign_in" />
+    <fragment
+        android:id="@+id/myGarageSignUpFragment"
+        android:name="jiahao.chen.cargurudemo.MyGarageSignUpFragment"
+        android:label="fragment_my_garage_sign_up"
+        tools:layout="@layout/fragment_my_garage_sign_up" />
+    <fragment
+        android:id="@+id/questionaireFinalFragment"
+        android:name="jiahao.chen.cargurudemo.QuestionaireFinalFragment"
+        android:label="fragment_questionaire_final"
+        tools:layout="@layout/fragment_questionaire_final" />
+    <fragment
+        android:id="@+id/myGarageMainFragment"
+        android:name="jiahao.chen.cargurudemo.MyGarageMainFragment"
+        android:label="fragment_my_garage_main"
+        tools:layout="@layout/fragment_my_garage_main" />
 
 
 </navigation>
