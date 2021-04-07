@@ -197,7 +197,9 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
+
                 //TODO pass all the values and go to the next category pages.
             }else{
                 /*
@@ -210,7 +212,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
 
                 //Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
-                bundle.putInt("QuestionNumber", questionNum);
+                bundle.putInt("QuestionNumber", ++questionNum);
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
                 //Setting up the Fragment
@@ -222,6 +224,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
 
             }

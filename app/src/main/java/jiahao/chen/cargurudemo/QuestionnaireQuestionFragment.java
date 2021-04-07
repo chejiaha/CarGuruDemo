@@ -320,8 +320,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
                     break;
                 }
             }
-
-
             // If the category was determined push onto the next questions
             if (categoryDetermined){
                 Fragment fragment = new HomePage_Fragment();
@@ -352,7 +350,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 //PassArrayListTest testing = new PassArrayListTest(questionsList);
                 //bundle.putSerializable("QuestionList", testing);
                 //Putting the object into the bundle
-               // bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
+                // bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
@@ -363,27 +361,11 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
 
-                //Going from Question1 to next Question fragment
-//                NavHostFragment navHostFragment =
-//                        (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-//                NavController navController = navHostFragment.getNavController();
 
 
-
-
-              /*  NavDirections action =
-                        getActivity().SpecifyAmountFragmentDirections
-                                .actionSpecifyAmountFragmentToConfirmationFragment();
-                Navigation.findNavController(view).navigate(action);*/
-
-
-                //NavDirections action = QuestionnaireQuestionFragmentDirections.actionFragmentQuestionnaireQuestionPageToQuestionnaireQuestionsFragment2(++questionNum);
-                //Navigation.findNavController(view).navigate(action);
-//                if (navController.currentDestination?.id == R.id.fragmentA) {
-//                    Navigation.findNavController(view).navigate(R.id.action_fragment_questionnaire1_to_questionnaire2);
-//                }
 
             }
             //The Value has been determined and

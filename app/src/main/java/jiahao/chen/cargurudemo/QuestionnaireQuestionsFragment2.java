@@ -199,6 +199,7 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
                 //TODO pass all the values and go to the next category pages.
             }else{
@@ -224,6 +225,7 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
 
             }
