@@ -83,7 +83,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
         questionObj = questionsList.get(questionNum);
         if (questionObj != null) {
             //Adding the Question so we can populate the interface
-            tvQuestion.setText(String.format("Q%s. %s", ++questionNum, questionObj.getQuestion()));
+            tvQuestion.setText(String.format("Q%s. %s", questionNum, questionObj.getQuestion()));
             answersList = questionObj.getAnswers();
             answerValueList = questionObj.getValues();
             //Populate the radio buttons with the question descriptions.
@@ -101,7 +101,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
 
 
         //Setup the Onclick Listener
-        btnNext.setOnTouchListener(onTouchNext);
+        btnNext.setOnClickListener(onClickNext);
         // Inflate the layout for this fragment
         return view;
     }
@@ -112,9 +112,9 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
      * category reaches 3 (THIS WILL CHANGE) we can place them into the specified category.
      *
      */
-    private View.OnTouchListener onTouchNext = new View.OnTouchListener(){
+    public View.OnClickListener  onClickNext = new View.OnClickListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        public void onClick(View v) {
             // The number that will represent how many questions until category is determined
             int FALLTHROUGH_NUM = 3;
             boolean categoryDetermined = false;
@@ -125,7 +125,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             }catch (NullPointerException err){
                 radioId = 0;
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
-                return false;
+                return;
             }
 
             // Add up the values for each category
@@ -190,6 +190,14 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
 
             // If the category was determined push onto the next questions
             if (categoryDetermined){
+                Fragment fragment = new HomePage_Fragment();
+                // create a FragmentManager
+                FragmentManager fm = getFragmentManager();
+                // create a FragmentTransaction to begin the transaction and replace the Fragment
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                // replace the FrameLayout with new Fragment
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit(); // save the changes
                 //TODO pass all the values and go to the next category pages.
             }else{
                 /*
@@ -219,8 +227,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             }
             //The Value has been determined and
 
-            //
-            return false;
         }
     };
 

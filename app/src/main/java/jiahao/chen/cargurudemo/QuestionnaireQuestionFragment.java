@@ -236,7 +236,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }
         });
 
-        btnNext.setOnTouchListener(onClickNext);
+        btnNext.setOnClickListener(onClickNext);
         //returning the view.
         return view;
     }
@@ -246,9 +246,9 @@ public class QuestionnaireQuestionFragment extends Fragment {
      * category reaches 3 (THIS WILL CHANGE) we can place them into the specified category.
      *
      */
-    private View.OnTouchListener onClickNext = new View.OnTouchListener(){
+    public View.OnClickListener  onClickNext = new View.OnClickListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        public void onClick(View v) {
             // The number that will represent how many questions until category is determined
             int FALLTHROUGH_NUM = 3;
             boolean categoryDetermined = false;
@@ -259,7 +259,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }catch (NullPointerException err){
                 radioId = 0;
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
-                return false;
+                return;
             }
 
             // Add up the values for each category
@@ -388,8 +388,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
             }
             //The Value has been determined and
 
-            //
-            return false;
         }
     };
 
