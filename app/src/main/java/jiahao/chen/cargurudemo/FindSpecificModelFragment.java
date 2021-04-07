@@ -68,6 +68,7 @@ public class FindSpecificModelFragment extends Fragment {
     }
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -529,6 +530,8 @@ public class FindSpecificModelFragment extends Fragment {
             return false;
         }//End of ontouch
     };//end of class
+
+
 
 
 
