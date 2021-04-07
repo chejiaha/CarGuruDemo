@@ -47,7 +47,7 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
     // Variables
     Question questionObj;
     // Total list of questions
-    List<Question> questionsList;
+    ArrayList<Question> questionsList;
     // Setting up one question
     ArrayList<String> answersList;
     ArrayList<String> answerValueList;
@@ -65,25 +65,42 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
 
 
         // Set the View Items
-//        rgQuestion = view.findViewById(R.id.rgQuestions);
-//        btnBack = view.findViewById(R.id.BtnPreviousPage);
-//        btnNext = view.findViewById(R.id.BtnNextPage);
-//        tvQuestion = view.findViewById(R.id.tvQuestion);
+        rgQuestion = view.findViewById(R.id.rgQuestions);
+        btnBack = view.findViewById(R.id.BtnPreviousPage);
+        btnNext = view.findViewById(R.id.BtnNextPage);
+        tvQuestion = view.findViewById(R.id.tvQuestion);
 //        tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
-//        tvQuestionChoice = view.findViewById(R.id.tvQuestionChoice);
+        tvQuestionChoice = view.findViewById(R.id.tvQuestionChoice);
 
         //Get the items from the bundle.
         Bundle bundle = new Bundle();
         questionNum = ((int) getArguments().getInt("QuestionNumber"));
         //debug
         Log.d("QuestionnaireQuestions2", "QuestionNum" + questionNum);
-        questionsList = (ArrayList<Question>) bundle.getSerializable("QuestionList");
+        questionsList = (ArrayList<Question>) getArguments().getSerializable("QuestionList");
         //questionsList = ((ArrayList) getArguments().getParcelableArrayList("QuestionList"));
         //answersList = new ArrayList<>();
         //answerValueList = new ArrayList<>();
 
         //Placing the Question into a Question object
         questionObj = questionsList.get(questionNum);
+        if (questionObj != null) {
+            //Adding the Question so we can populate the interface
+            tvQuestion.setText(String.format("Q%s. %s", questionNum, questionObj.getQuestion()));
+            answersList = questionObj.getAnswers();
+            answerValueList = questionObj.getValues();
+            //Populate the radio buttons with the question descriptions.
+            //rgQuestion is the radio group its being added to.
+            int numAnswers = answersList.size();
+            for (int i = 0; i < numAnswers; i++) {
+                RadioButton rbanswer = new RadioButton(getActivity());
+                rbanswer.setId(View.generateViewId());
+                //rbanswer.setId("Q" + questionNum);
+                rbanswer.setText(answersList.get(i));
+                rgQuestion.addView(rbanswer);
+            }
+        }
+
 
 
         //Get the values from the bundle

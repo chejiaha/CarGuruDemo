@@ -336,12 +336,15 @@ public class QuestionnaireQuestionFragment extends Fragment {
 
                 //Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
-                bundle.putInt("QuestionNumber",++questionNum);
+                bundle.putInt("QuestionNumber", questionNum);
 
                 //bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
                 //Passing the next question
-                //TODO PASS THE ARRAY LIST INSTEAD OF THIS CRAP
+                //TESTING
+                //PassArrayListTest testing = new PassArrayListTest(questionsList);
+                //bundle.putSerializable("QuestionList", testing);
                 //Putting the object into the bundle
+               // bundle.putParcelableArrayList("QuestionList", (ArrayList<? extends Parcelable>) questionsList);
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
