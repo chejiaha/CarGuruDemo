@@ -324,6 +324,14 @@ public class QuestionnaireQuestionFragment extends Fragment {
 
             // If the category was determined push onto the next questions
             if (categoryDetermined){
+                Fragment fragment = new HomePage_Fragment();
+                // create a FragmentManager
+                FragmentManager fm = getFragmentManager();
+                // create a FragmentTransaction to begin the transaction and replace the Fragment
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                // replace the FrameLayout with new Fragment
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit(); // save the changes
                 //TODO pass all the values and go to the next category pages.
             }else{
                 /*
