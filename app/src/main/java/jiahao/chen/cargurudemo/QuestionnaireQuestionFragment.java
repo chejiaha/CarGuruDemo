@@ -79,6 +79,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
     ArrayList<String> answerValueList;
     String question = "";
     String category = "";
+    String passedCategory;
 
     // Int that will be the question Number
     int questionNum = 1;
@@ -103,9 +104,9 @@ public class QuestionnaireQuestionFragment extends Fragment {
         // If the item is passed to this fragment, it means that it has already discovered a category.
         // This field will be checked in the onClick Method if it is null or not.
         try{
-            category = getArguments().getString("Category");
+            passedCategory = getArguments().getString("Category");
         }catch (NullPointerException err){
-            category = "";
+            passedCategory = "";
         }
 
 
@@ -133,11 +134,11 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 String questionData;
                 // NOTE : If there is no category chosen, The Category = MainQuestions.
                 // Finding the Category
-                if (category.equals("") || category == null){
+                if (passedCategory.equals("") || category == null){
                     DBcategory = "MainQuestion";
-                }else if (category.equals("Commuter")){
+                }else if (passedCategory.equals("Commuter")){
                     DBcategory = "CommuterQuestion";
-                }else if (category.equals("Sports")){
+                }else if (passedCategory.equals("Sports")){
                     DBcategory = "SportsQuestion";
                 }
                 // Get the question from the database
@@ -362,7 +363,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // Replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
             }
             //The Value has been determined and

@@ -142,28 +142,73 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
              * This switch statement will add the category point directly to the array.
              *  int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
              */
+            // Variable used to check if its a array.
+            String[] valueArray = null;
+            // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
+
+            //TODO Change the items in the database to always be a List! (Array) whatever you wanna call it.
             for (String value : questionObj.getValues()){
-                switch (value){
-                    case "Commuter":
-                        categoryPoints[0] = categoryPoints[0] + 1;
-                        Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
-                        break;
-                    case "Sports":
-                        categoryPoints[1] = categoryPoints[1] + 1;
-                        //Log.d("SPORTS", "Determained its a SPORTS" + sportsCategory);
-                        break;
-                    case "Beater":
-                        categoryPoints[2] = categoryPoints[2] + 1;
-                        break;
-                    case "Utility":
-                        categoryPoints[3] = categoryPoints[3] + 1;
-                        break;
-                    case "Family":
-                        categoryPoints[4] = categoryPoints[4] + 1;
-                        break;
-                    case "Luxury":
-                        categoryPoints[5] = categoryPoints[5] + 1;
-                        break;
+                //Checking if the value is actually a array
+                if(value.contains("[")){
+                    //If its a String Array, convert it to a Array
+                    value = value.replace("["," ");
+                    value = value.replace("]"," ");
+                    //Then Split it by commas to create the array.
+                    valueArray = value.split(",");
+                }
+                //If its a list go through each item, otherwise just find out what it is.
+                if(valueArray != null){
+                    // For each item in the list add the value.
+                    for (String arrayValue : valueArray){
+                        switch (arrayValue.trim()){
+                            case "Commuter":
+                                categoryPoints[0] = categoryPoints[0] + 1;
+                                Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
+                                break;
+                            case "Sport":
+                                categoryPoints[1] = categoryPoints[1] + 1;
+                                Log.d("SPORTS", "Determained its a SPORTS" +  categoryPoints[1]);
+                                break;
+                            case "Beater":
+                                categoryPoints[2] = categoryPoints[2] + 1;
+                                break;
+                            case "Utility":
+                                categoryPoints[3] = categoryPoints[3] + 1;
+                                break;
+                            case "Family":
+                                categoryPoints[4] = categoryPoints[4] + 1;
+                                break;
+                            case "Luxury":
+                                categoryPoints[5] = categoryPoints[5] + 1;
+                                break;
+                        }
+                    }
+                }else{
+                    //debug
+                    //TODO Make this a function.
+                    Log.d("CHECKVALUE", "THE Value of the string is " + value.toString());
+                    switch (value){
+                        case "Commuter":
+                            categoryPoints[0] = categoryPoints[0] + 1;
+                            Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
+                            break;
+                        case "Sport":
+                            categoryPoints[1] = categoryPoints[1] + 1;
+                            Log.d("SPORTS", "Determained its a SPORTS" +  categoryPoints[1]);
+                            break;
+                        case "Beater":
+                            categoryPoints[2] = categoryPoints[2] + 1;
+                            break;
+                        case "Utility":
+                            categoryPoints[3] = categoryPoints[3] + 1;
+                            break;
+                        case "Family":
+                            categoryPoints[4] = categoryPoints[4] + 1;
+                            break;
+                        case "Luxury":
+                            categoryPoints[5] = categoryPoints[5] + 1;
+                            break;
+                    }
                 }
                 if (categoryPoints[0] >= FALLTHROUGH_NUM){
                     categoryDetermined = true;
@@ -219,7 +264,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
                 //TODO pass all the values and go to the next category pages.
             }else{
@@ -251,7 +295,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
 
             }
@@ -288,7 +331,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             // replace the FrameLayout with new Fragment
             fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-            fragmentTransaction.addToBackStack(fragment.toString());
             fragmentTransaction.commit(); // save the changes
 
             return false;
