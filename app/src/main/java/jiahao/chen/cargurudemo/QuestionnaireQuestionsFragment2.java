@@ -271,8 +271,6 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
             /* TODO the fragment will pass...
              */
             fragment.setArguments(bundle);
-
-
             //TODO This can also Be a function.
             //TODO functionName(Fragment FragmentName, Bundle bundle, int IdOfNavHostUI**Optional)
 
@@ -326,6 +324,9 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
     private View.OnTouchListener onClickBack = new View.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+            // subtract one from the question count
+            --questionNum;
+            // Delete one from the values that they added before.
 
             return false;
         }
