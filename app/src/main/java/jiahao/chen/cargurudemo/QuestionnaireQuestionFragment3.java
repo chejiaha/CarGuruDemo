@@ -195,7 +195,24 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
 
             // If the category was determined push onto the next questions
             if (categoryDetermined){
-                Fragment fragment = new HomePage_Fragment();
+                Fragment fragment = new QuestionnaireQuestionFragment();
+                //TODO PUT THIS AS  A FUNCTION TO SEND TO OTHER FRAGMENTS
+                //TODO functionName(questionNum, categoryPoints, questionList, Category**Optional.)
+
+                // Adding the arguments into the bundle
+                Bundle bundle = new Bundle();
+                // Adding the question number that will specify the question from the list
+                bundle.putInt("QuestionNumber", ++questionNum);
+                // Passing the Counts of all of the categories
+                bundle.putIntArray("CategoryPoints", categoryPoints);
+                // Passing the List of Questions to the next value.
+                bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+                //Passing the category that was determined
+                bundle.putString("Category", category);
+
+                //TODO This can also Be a function.
+                //TODO functionName(Fragment FragmentName, Bundle bundle, int IdOfNavHostUI**Optional)
+
                 // create a FragmentManager
                 FragmentManager fm = getFragmentManager();
                 // create a FragmentTransaction to begin the transaction and replace the Fragment
@@ -204,7 +221,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                 fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
-
                 //TODO pass all the values and go to the next category pages.
             }else{
                 /*

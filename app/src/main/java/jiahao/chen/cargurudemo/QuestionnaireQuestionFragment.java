@@ -79,6 +79,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
     ArrayList<String> answerValueList;
     String question = "";
     String category = "";
+
     // Int that will be the question Number
     int questionNum = 1;
 
@@ -99,6 +100,15 @@ public class QuestionnaireQuestionFragment extends Fragment {
         answersList = new ArrayList<>();
         answerValueList = new ArrayList<>();
         questionObj = new Question();
+        // If the item is passed to this fragment, it means that it has already discovered a category.
+        // This field will be checked in the onClick Method if it is null or not.
+        try{
+            category = getArguments().getString("Category");
+        }catch (NullPointerException err){
+            category = "";
+        }
+
+
 
         // Get the Answers from the database put them in a list
         dbRef = FirebaseDatabase.getInstance().getReference().child("Questions");
@@ -117,11 +127,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
              */
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               //Checking if the Category is null
-                /* if (category == null){
-                    category = "";
-                }*/
-
                 // Used when the user is placed in the category to go into the db to find the questions
                 String DBcategory = "";
                 String categoryString;
@@ -135,7 +140,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 }else if (category.equals("Sports")){
                     DBcategory = "SportsQuestion";
                 }
-
                 // Get the question from the database
                 //dataSnapshot Children: MainQuestions, Commuter Questions, Sports Questions...
                 for (DataSnapshot QuestionCategory : dataSnapshot.child(DBcategory).getChildren()) {
@@ -235,7 +239,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
 
             }
         });
-
         btnNext.setOnClickListener(onClickNext);
         //returning the view.
         return view;
@@ -263,7 +266,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
                 return;
             }
-
             // Add up the values for each category
             int sportsCategory = 0;
             int commuterCategory = 0;
@@ -341,19 +343,16 @@ public class QuestionnaireQuestionFragment extends Fragment {
                    Pass the questionNum
                    TODO Pass the progress bar
                 */
-
                 // Adding the arguments into the bundle
                 Bundle bundle = new Bundle();
                 // Adding the question number that will specify the question from the list
                 bundle.putInt("QuestionNumber", questionNum);
                 // Adding all of the category points into an array
                 int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
-
                 // Passing the Counts of all of the categories
                 bundle.putIntArray("CategoryPoints", categoryPointsArray);
                 // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
-
                 // Replacing the current fragment with the next Question.
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
                 fragment.setArguments(bundle);
@@ -365,13 +364,8 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                 fragmentTransaction.addToBackStack(fragment.toString());
                 fragmentTransaction.commit(); // save the changes
-
-
-
-
             }
             //The Value has been determined and
-
         }
     };
 
@@ -380,7 +374,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
      *
      */
     private View.OnTouchListener onClickBack = new View.OnTouchListener(){
-
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             return false;
