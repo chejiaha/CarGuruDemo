@@ -125,69 +125,53 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
                 return;
             }
+            // Find the correct answer
+            RadioButton rbChosenAnswer = view.findViewById(radioId);
+            // Variable to hold the answer index. so we can match the value index.
+            int answerIndex = 0;
+            // Get the answer String
+            String answerDescription = rbChosenAnswer.getText().toString();
+            // Variable used to hold the answer Values
+            ArrayList<String> valueString = questionObj.getValues();
+            //Compare the answer string with our answers to find the values to add.
+            for (int i = 0; i <= valueString.size(); i++){
+                // Compare the string values to find the chosen answer
+                if (questionObj.getAnswers().get(i).equals(answerDescription)){
+                    //If the answers are the same then return the index.
+                    answerIndex = i;
+                    break;
+                }
+            }
 
-//            // Add up the values for each category
-//            int sportsCategory = 0;
-//            int commuterCategory = 0;
-//            //TODO These will be implemented once they are added in
-//            int familyCategory = 0;
-//            int utilityCategory = 0;
-//            int beaterCategory = 0;
-//            int luxuryCategory = 0;
 
 
-
-            // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
-            /*
-             * This switch statement will add the category point directly to the array.
-             *  int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
-             */
             // Variable used to check if its a array.
             String[] valueArray = null;
             // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
-
             //TODO Change the items in the database to always be a List! (Array) whatever you wanna call it.
-            for (String value : questionObj.getValues()){
-                //Checking if the value is actually a array
-                if(value.contains("[")){
-                    //If its a String Array, convert it to a Array
-                    value = value.replace("["," ");
-                    value = value.replace("]"," ");
-                    //Then Split it by commas to create the array.
-                    valueArray = value.split(",");
-                }
-                //If its a list go through each item, otherwise just find out what it is.
-                if(valueArray != null){
-                    // For each item in the list add the value.
-                    for (String arrayValue : valueArray){
-                        switch (arrayValue.trim()){
-                            case "Commuter":
-                                categoryPoints[0] = categoryPoints[0] + 1;
-                                Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
-                                break;
-                            case "Sport":
-                                categoryPoints[1] = categoryPoints[1] + 1;
-                                Log.d("SPORTS", "Determained its a SPORTS" +  categoryPoints[1]);
-                                break;
-                            case "Beater":
-                                categoryPoints[2] = categoryPoints[2] + 1;
-                                break;
-                            case "Utility":
-                                categoryPoints[3] = categoryPoints[3] + 1;
-                                break;
-                            case "Family":
-                                categoryPoints[4] = categoryPoints[4] + 1;
-                                break;
-                            case "Luxury":
-                                categoryPoints[5] = categoryPoints[5] + 1;
-                                break;
-                        }
-                    }
-                }else{
-                    //debug
-                    //TODO Make this a function.
-                    Log.d("CHECKVALUE", "THE Value of the string is " + value.toString());
-                    switch (value){
+
+            // Can be a string or a list in a string ("[Category,Sport, ...]")
+            String value = valueString.get(answerIndex);
+
+            //Checking if the value is actually a array
+            if(value.contains("[")){
+                //If its a String Array, convert it to a Array
+                value = value.replace("["," ");
+                value = value.replace("]"," ");
+                //Then Split it by commas to create the array.
+                valueArray = value.split(",");
+            }
+
+            //If its a list go through each item, otherwise its a string and no iteration needed.
+            // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
+            if(valueArray != null){
+                /*
+                 * This switch statement will add the category point directly to the array.
+                 *  int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
+                 */
+                // For each item in the list add the value.
+                for (String arrayValue : valueArray){
+                    switch (arrayValue.trim()){
                         case "Commuter":
                             categoryPoints[0] = categoryPoints[0] + 1;
                             Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
@@ -210,37 +194,62 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                             break;
                     }
                 }
-                if (categoryPoints[0] >= FALLTHROUGH_NUM){
-                    categoryDetermined = true;
-                    category = "Commuter";
-                    break;
-                }else if (categoryPoints[1] >= FALLTHROUGH_NUM){
-                    category = "Sports";
-                    categoryDetermined = true;
-                    break;
-                }else if (categoryPoints[2] >= FALLTHROUGH_NUM){
-                    category = "Beater";
-                    categoryDetermined = true;
-                    break;
-                }else if (categoryPoints[3] >= FALLTHROUGH_NUM){
-                    category = "Utility";
-                    categoryDetermined = true;
-                    break;
-                }else if (categoryPoints[4] >= FALLTHROUGH_NUM){
-                    category = "Family";
-                    categoryDetermined = true;
-                    break;
-                }else if (categoryPoints[5] >= FALLTHROUGH_NUM){
-                    category = "Luxury";
-                    categoryDetermined = true;
-                    break;
+            }else{
+                //debug
+                //TODO Make this a function.
+                Log.d("CHECKVALUE", "THE Value of the string is " + value.toString());
+                switch (value){
+                    case "Commuter":
+                        categoryPoints[0] = categoryPoints[0] + 1;
+                        Log.d("COMMUTER", "Determained its a COMUTTER" + categoryPoints[0]);
+                        break;
+                    case "Sport":
+                        categoryPoints[1] = categoryPoints[1] + 1;
+                        Log.d("SPORTS", "Determained its a SPORTS" +  categoryPoints[1]);
+                        break;
+                    case "Beater":
+                        categoryPoints[2] = categoryPoints[2] + 1;
+                        break;
+                    case "Utility":
+                        categoryPoints[3] = categoryPoints[3] + 1;
+                        break;
+                    case "Family":
+                        categoryPoints[4] = categoryPoints[4] + 1;
+                        break;
+                    case "Luxury":
+                        categoryPoints[5] = categoryPoints[5] + 1;
+                        break;
                 }
             }
+            //debug
+            Log.d("COMMUTER", "The COMUTTER Points " + categoryPoints[0]);
+            Log.d("SPORTS", "The SPORTS Points " +  categoryPoints[1]);
 
+            //TODO this can be moved outside the for loop.
+            if (categoryPoints[0] >= FALLTHROUGH_NUM){
+                categoryDetermined = true;
+                category = "Commuter";
+            }else if (categoryPoints[1] >= FALLTHROUGH_NUM){
+                category = "Sports";
+                categoryDetermined = true;
+            }else if (categoryPoints[2] >= FALLTHROUGH_NUM){
+                category = "Beater";
+                categoryDetermined = true;
+            }else if (categoryPoints[3] >= FALLTHROUGH_NUM){
+                category = "Utility";
+                categoryDetermined = true;
+            }else if (categoryPoints[4] >= FALLTHROUGH_NUM){
+                category = "Family";
+                categoryDetermined = true;
+            }else if (categoryPoints[5] >= FALLTHROUGH_NUM){
+                category = "Luxury";
+                categoryDetermined = true;
+            }
 
             // If the category was determined push onto the next questions
             if (categoryDetermined){
                 Fragment fragment = new QuestionnaireQuestionFragment();
+
                 //TODO PUT THIS AS  A FUNCTION TO SEND TO OTHER FRAGMENTS
                 //TODO functionName(questionNum, categoryPoints, questionList, Category**Optional.)
 
@@ -254,6 +263,8 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
                 //Passing the category that was determined
                 bundle.putString("Category", category);
+                fragment.setArguments(bundle);
+
 
                 //TODO This can also Be a function.
                 //TODO functionName(Fragment FragmentName, Bundle bundle, int IdOfNavHostUI**Optional)
@@ -279,15 +290,13 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 Bundle bundle = new Bundle();
                 // Adding the question number that will specify the question from the list
                 bundle.putInt("QuestionNumber", ++questionNum);
-
-//
                 // Passing the Counts of all of the categories
                 bundle.putIntArray("CategoryPoints", categoryPoints);
                 // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
 
                 // Replacing the current fragment with the next Question.
-                Fragment fragment = new QuestionnaireQuestionsFragment2();
+                Fragment fragment = new QuestionnaireQuestionFragment3();
                 fragment.setArguments(bundle);
                 // create a FragmentManager
                 FragmentManager fm = getFragmentManager();
@@ -296,10 +305,8 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 // replace the FrameLayout with new Fragment
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                 fragmentTransaction.commit(); // save the changes
-
             }
             //The Value has been determined and
-
         }
     };
 

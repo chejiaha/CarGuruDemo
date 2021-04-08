@@ -125,6 +125,10 @@ public class QuestionnaireQuestionFragment extends Fragment {
              *
              *   Will Populate:
              *       ArrayList <Question> questionList
+             *       Will Populate
+             *          Question Number
+             *          Question Description
+             *          Question Answers
              */
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -139,7 +143,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 }else if (passedCategory.equals("Commuter")){
                     DBcategory = "CommuterQuestion";
                 }else if (passedCategory.equals("Sports")){
-                    DBcategory = "SportsQuestion";
+                    DBcategory = "SportQuestion";
                 }
                 // Get the question from the database
                 //dataSnapshot Children: MainQuestions, Commuter Questions, Sports Questions...
