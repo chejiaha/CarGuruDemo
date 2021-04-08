@@ -97,7 +97,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 rgQuestion.addView(rbanswer);
             }
         }
-
         //Setup the Onclick Listener
         btnNext.setOnClickListener(onClickNext);
         // Inflate the layout for this fragment

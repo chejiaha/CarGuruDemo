@@ -45,7 +45,7 @@ public class DisplayCategoryCarsFragment extends Fragment {
         tvCategory = view.findViewById(R.id.tvCategory);
         listView = view.findViewById(R.id.category_cars_list);
         // setting the string that was passed form the previous activity
-        String category = getArguments().getString("category");
+        String category = getArguments().getString("Category");
         cars = new ArrayList<>();
 
         //getting all of the items from the Vehicle portion of the database.
