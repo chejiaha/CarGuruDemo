@@ -10,9 +10,13 @@ import java.util.Locale;
 
 public class Question implements Serializable {
     //Question includes: String question;, List<Answers> answers;, List<String> values;
+    // Question: "The Car you want is?"
     private String question;
+    //Category: "Commuter"
     private String category;
+    // Values: ["Commuter", "Family", ....]
     private ArrayList<String> values;
+    // Answer:
     private ArrayList<String> answers;
 
 
