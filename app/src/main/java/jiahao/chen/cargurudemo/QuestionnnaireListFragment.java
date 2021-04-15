@@ -37,6 +37,7 @@ public class QuestionnnaireListFragment extends Fragment {
     ArrayList<CarModel> cars;
     ListView listView;
     ArrayAdapter carArr;
+    String category;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +47,9 @@ public class QuestionnnaireListFragment extends Fragment {
         tvCategory = view.findViewById(R.id.tvCategory);
         listView = view.findViewById(R.id.category_cars_list);
         // setting the string that was passed form the previous activity
-        String category = getArguments().getString("Category");
+
+        category = getArguments().getString("Category");
+        category = "Commuter";
         cars = new ArrayList<>();
 
         //getting all of the items from the Vehicle portion of the database.

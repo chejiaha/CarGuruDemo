@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.ListFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.snapshot.Index;
 
 import java.util.ArrayList;
 
@@ -54,6 +56,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
     int[] categoryPoints;
     String question = "";
     String category = "";
+    String passedCategory = "";
     // Int that will be the question Number
     int questionNum = 1;
 
@@ -79,8 +82,34 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
         // Getting the category points
         categoryPoints = getArguments().getIntArray("CategoryPoints");
 
+        passedCategory = getArguments().getString("Category");
+
         //Placing the Question into a Question object
-        questionObj = questionsList.get(questionNum);
+        //If there are no more questions push it to the list of vehicles
+        try{
+            questionObj = questionsList.get(questionNum);
+        }catch (IndexOutOfBoundsException err){
+            Bundle bundle1 = new Bundle();
+            Fragment fragment = new QuestionnnaireListFragment();
+            //Passing the category that was determined
+            bundle.putString("Category", passedCategory);
+            fragment.setArguments(bundle1);
+
+
+            //TODO This can also Be a function.
+            //TODO functionName(Fragment FragmentName, Bundle bundle, int IdOfNavHostUI**Optional)
+            // Adding the arguments into the bundle
+
+            // create a FragmentManager
+            FragmentManager fm = getFragmentManager();
+            // create a FragmentTransaction to begin the transaction and replace the Fragment
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            // replace the FrameLayout with new Fragment
+            fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+            fragmentTransaction.commit(); // save the changes
+            //TODO pass all the values and go to the next category pages.
+        }
+
         if (questionObj != null) {
             //Adding the Question so we can populate the interface
             tvQuestion.setText(String.format("Q%s. %s", questionNum, questionObj.getQuestion()));
@@ -92,7 +121,6 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             for (int i = 0; i < numAnswers; i++) {
                 RadioButton rbanswer = new RadioButton(getActivity());
                 rbanswer.setId(View.generateViewId());
-                //rbanswer.setId("Q" + questionNum);
                 rbanswer.setText(answersList.get(i));
                 rgQuestion.addView(rbanswer);
             }
@@ -224,27 +252,27 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             Log.d("COMMUTER", "The COMUTTER Points " + categoryPoints[0]);
             Log.d("SPORTS", "The SPORTS Points " +  categoryPoints[1]);
 
+
             //TODO this can be moved outside the for loop.
             if (categoryPoints[0] >= FALLTHROUGH_NUM){
                 categoryDetermined = true;
-                category = "Commuter";
+                passedCategory = "Commuter";
             }else if (categoryPoints[1] >= FALLTHROUGH_NUM){
-                category = "Sports";
+                passedCategory = "Sports";
                 categoryDetermined = true;
             }else if (categoryPoints[2] >= FALLTHROUGH_NUM){
-                category = "Beater";
+                passedCategory = "Beater";
                 categoryDetermined = true;
             }else if (categoryPoints[3] >= FALLTHROUGH_NUM){
-                category = "Utility";
+                passedCategory = "Utility";
                 categoryDetermined = true;
             }else if (categoryPoints[4] >= FALLTHROUGH_NUM){
-                category = "Family";
+                passedCategory = "Family";
                 categoryDetermined = true;
             }else if (categoryPoints[5] >= FALLTHROUGH_NUM){
-                category = "Luxury";
+                passedCategory = "Luxury";
                 categoryDetermined = true;
             }
-
             // If the category was determined push onto the next questions
             if (categoryDetermined){
                 Fragment fragment = new QuestionnaireQuestionFragment();
@@ -261,7 +289,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
                 //Passing the category that was determined
-                bundle.putString("Category", category);
+                bundle.putString("Category", passedCategory);
                 fragment.setArguments(bundle);
 
 
@@ -293,6 +321,8 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
                 bundle.putIntArray("CategoryPoints", categoryPoints);
                 // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+                //Passing the category that was determined
+                bundle.putString("Category", passedCategory);
 
                 // Replacing the current fragment with the next Question.
                 Fragment fragment = new QuestionnaireQuestionFragment3();
@@ -325,8 +355,11 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             //TODO Get the last category that was added and subtract it
             //Adding the arguments into the bundle
             Bundle bundle = new Bundle();
-            bundle.putInt("QuestionNumber", ++questionNum);
+            bundle.putInt("QuestionNumber", --questionNum);
             bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+            //TODO Subtract the next one
+            categoryPoints = getArguments().getIntArray("CategoryPoints");
+
 
             //Setting up the Fragment
             Fragment fragment = new QuestionnaireQuestionsFragment2();
@@ -338,6 +371,7 @@ public class QuestionnaireQuestionFragment3 extends Fragment {
             // replace the FrameLayout with new Fragment
             fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
             fragmentTransaction.commit(); // save the changes
+
 
             return false;
         }

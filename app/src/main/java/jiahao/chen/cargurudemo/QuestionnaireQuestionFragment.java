@@ -38,16 +38,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
+ * This class is a major part of our Questionnaire Algorithm. It is this page which will pull the
+ * questions that are available from the Database. The Type of question is determined by the category
+ * that is passed to the method. If the method does not get anything from the arguments, then the
+ * algorithm is still determining the category. If it passes "Category" to the algorithm, then we can
+ * pull all of the category questions based on the value. Once it is found it will populate the first
+ * question and then pass the list of questions to the next fragment.
+ * TODO Find a way to use the this fragment, and one more to pass data between the files AND to NOT
+ *  pull data from the database every time this fragment runs. This will improve efficiency.
  *
+ * This Class will receive:
+ *      "Category"          <String> : The category that the algorithm has decided to assign to the user.
+ * NOTE: This Category argument will only be set once the users find it in their heart
  *
- */
+ * This Class will Pass:
+ *      "questionsList"     ArrayList<Question> : The Array of Questions Based on the Category Passed.
+ *      "questionNum"       <int> : The Question Number that will be used to get the question number from the array.
+ *      "Category"          <String> : The category that the algorithm has decided to assign to the user.
+ *      "CategoryPoints"    ArrayList<int> : The points for each of the categories.
+ *      TODO "stringQuestionNum"       <int> : The Question Number that will displayed to the user.
+ *
+ * */
 public class QuestionnaireQuestionFragment extends Fragment {
 
 
     public QuestionnaireQuestionFragment() {
         // Required empty public constructor
     }
-
 
     /*
      *
@@ -77,13 +94,22 @@ public class QuestionnaireQuestionFragment extends Fragment {
     // Setting up one question
     ArrayList<String> answersList;
     ArrayList<String> answerValueList;
+    //<TODO Make Category only one variable, and fix the figure out where it gets reset and why.>
     String question = "";
     String category = "";
     String passedCategory;
 
     // Int that will be the question Number
     int questionNum = 1;
+    //<TODO Implement Question Number>
+    // Int that will display the number of the question array that we will use.
+    int arrayQuestionNum = 0;
 
+    /*
+     * This Method will create the view. It will assign the View Objects and get the passed arguments
+     * Once it gets everything, it will Pull the data from the database based on if the Category is set.
+     *
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -95,7 +121,6 @@ public class QuestionnaireQuestionFragment extends Fragment {
         btnBack = view.findViewById(R.id.BtnPreviousPage);
         btnNext = view.findViewById(R.id.BtnNextPage);
         tvQuestion = view.findViewById(R.id.tvQuestion);
-        //tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
         tvQuestionChoice = view.findViewById(R.id.tvQuestionChoice);
         questionsList = new ArrayList<>();
         answersList = new ArrayList<>();
@@ -109,11 +134,9 @@ public class QuestionnaireQuestionFragment extends Fragment {
             passedCategory = "";
         }
 
-
-
         // Get the Answers from the database put them in a list
         dbRef = FirebaseDatabase.getInstance().getReference().child("Questions");
-        //Create radio buttons with id's that are
+        // Create a listener to get the items and store them from the database
         listener = dbRef.addValueEventListener(new ValueEventListener() {
             /*
              *   This method is used to get the Question information from the database.
@@ -126,9 +149,11 @@ public class QuestionnaireQuestionFragment extends Fragment {
              *   Will Populate:
              *       ArrayList <Question> questionList
              *       Will Populate
-             *          Question Number
-             *          Question Description
-             *          Question Answers
+             *          int questionNum                     : Question Number
+             *          String question                     : Question Description
+             *          ArrayList<String> answersList       : Question Answers
+             *          ArrayList<String> answerValueList   : Answer Values
+             *
              */
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -210,6 +235,7 @@ public class QuestionnaireQuestionFragment extends Fragment {
                             questionObj.setValues(answerValueList);
                         }
                     }
+                    //debug
                     Log.d("Question", "The Question " + questionObj.getQuestion());
                     Log.d("Question", "The Question " + questionObj.getCategory());
                     //Resetting the category variable.
@@ -284,10 +310,12 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 switch (value){
                     case "Commuter":
                         commuterCategory++;
+                        //debug
                         Log.d("COMMUTER", "Determained its a COMUTTER" + commuterCategory);
                         break;
                     case "Sports":
                         sportsCategory++;
+                        //debug
                         Log.d("SPORTS", "Determained its a SPORTS" + sportsCategory);
                         break;
                     case "Family":
@@ -329,6 +357,39 @@ public class QuestionnaireQuestionFragment extends Fragment {
                     break;
                 }
             }
+            //TESTING
+            if (passedCategory != ""){
+                 /*
+                   LUKA NOTES
+                   Continue to the next question in the same category.
+                   Pass the questionList to the next page to be displayed by the user
+                   Pass the questionNum
+                   TODO Pass the progress bar
+                */
+                // Adding the arguments into the bundle
+                Bundle bundle = new Bundle();
+                // Adding the question number that will specify the question from the list
+                bundle.putInt("QuestionNumber", questionNum);
+                // Adding all of the category points into an array
+                int[] categoryPointsArray= {commuterCategory, sportsCategory, beaterCategory, utilityCategory, familyCategory, luxuryCategory};
+                // Passing the Counts of all of the categories
+                bundle.putIntArray("CategoryPoints", categoryPointsArray);
+                // Passing the List of Questions to the next value.
+                bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+                //Passing the category that was determined
+                bundle.putString("Category", passedCategory);
+
+                // Replacing the current fragment with the next Question.
+                Fragment fragment = new QuestionnaireQuestionsFragment2();
+                fragment.setArguments(bundle);
+                // Create a FragmentManager
+                FragmentManager fm = getFragmentManager();
+                // Create a FragmentTransaction to begin the transaction and replace the Fragment
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                // Replace the FrameLayout with new Fragment
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit(); // save the changes
+            }
             // If the category was determined push onto the next questions
             if (categoryDetermined){
                 Fragment fragment = new HomePage_Fragment();
@@ -358,6 +419,10 @@ public class QuestionnaireQuestionFragment extends Fragment {
                 bundle.putIntArray("CategoryPoints", categoryPointsArray);
                 // Passing the List of Questions to the next value.
                 bundle.putSerializable("QuestionList",(ArrayList<Question>) questionsList);
+                //Passing the category that was determined
+                bundle.putString("Category", passedCategory);
+
+
                 // Replacing the current fragment with the next Question.
                 Fragment fragment = new QuestionnaireQuestionsFragment2();
                 fragment.setArguments(bundle);
@@ -383,4 +448,65 @@ public class QuestionnaireQuestionFragment extends Fragment {
             return false;
         }
     };
+
+
+    /*
+     * This method is created to send a fragment from one fragment to the other.
+     *
+     * Takes in:
+     *  Fragment FragmentName : The name of the Fragment you want to change to
+     *  Bundle bundle         : The bundle with all of the objects already populated.
+     *  int IdOfNavHostUI     : This is used to specify which view you want to replace.
+     *          BY default in our application set to the id of the "navigation_host_fragment" ID
+     *  NOTE:
+     */
+    public void SwitchFragments (Fragment fragmentName,  int idOfNavHostUI){
+        int hostNav;
+        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+        // Create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+        fragmentTransaction.commit(); // save the changes
+    }
+    /*
+     * This method is created to send a fragment from one fragment to the other.
+     * This method will pass the below arguments to the next method.
+     *
+     * Takes in :
+     *          Fragment FragmentName               : The name of the Fragment you want to change to
+     *          int questionNum                     : Question Number
+     *          String question                     : Question Description
+     *          ArrayList<String> answersList       : Question Answers
+     *          ArrayList<String> answerValueList   : Answer Values
+     *          String category                     : The Category the question belongs to
+     *
+     */
+    public void SwitchToNextQuestion(Fragment fragment, int questionNum, int[] categoryPoints, ArrayList<Question> questionList, String category){
+        //Fragment fragment = new QuestionnaireQuestionFragment();
+
+        // If the category is empty set it to an empty string.
+        category = category != null ? category : "";
+
+        // Adding the arguments into the bundle
+        Bundle bundle = new Bundle();
+        // Adding the question number that will specify the question from the list
+        bundle.putInt("QuestionNumber", ++questionNum);
+        // Passing the Counts of all of the categories
+        bundle.putIntArray("CategoryPoints", categoryPoints);
+        // Passing the List of Questions to the next value.
+        bundle.putSerializable("QuestionList",(ArrayList<Question>) questionList);
+        //Passing the category that was determined
+        bundle.putString("Category", category);
+        // Setting the Arguments for the Fragment by passing the bundle
+        fragment.setArguments(bundle);
+        // Switch from one Fragment to the other. Note: the second variable can be 0 and it should work
+        SwitchFragments(fragment,R.id.nav_host_fragment);
+    }
+
+
+
 }
