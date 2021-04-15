@@ -49,7 +49,10 @@ public class QuestionnnaireListFragment extends Fragment {
         // setting the string that was passed form the previous activity
 
         category = getArguments().getString("Category");
-        category = "Commuter";
+        if (category.equals("Sports")){
+            category = "Sport";
+        }
+        //category = "Commuter";
         cars = new ArrayList<>();
 
         //getting all of the items from the Vehicle portion of the database.
