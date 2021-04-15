@@ -12,7 +12,7 @@ firebase_admin.initialize_app(cred,{"databaseURL":"https://car-guru-demo-default
 
 #get data reference
 vehicleRef = db.reference("Vehicle").get()
-testingDataRef = db.reference("TestBranch").get()
+testingDataRef = db.reference("NewCars").get()
 
 #write to demoData.data file
 trainningDataFile = open("demoData.data", "w")
@@ -30,14 +30,14 @@ for make in vehicleRef.values():
                 # Boolean values: Sport(1)-Commuter(0), Yes(1)-No(0)
                 if (str(year["Convertible"]) == "Yes"):
                     convertible = 1
-                elif (str(year["Convertible"]) == "Both"): 
+                elif (str(year["Convertible"]) == "Both"):
                     convertible = 0.5
                 else:
                     convertible = 0
 
                 trainningWriter.writerow((str(year["MPG"]), str(year["Cylinders"]), str(year["Engine"]), str(year["Doors"]), str(year["Seats"]), str(year["Horsepower"]), str(year["Weight"]), str(year["GroundClearance"]), str(year["Torque ft-lb"]), (str(1) if str(year["EV"]) == "Yes" else str(0)), str(convertible), (str(1) if str(year["Category"]) == "Sport" else str(0))))
 
-#close file                
+#close file
 trainningDataFile.close()
 
 #write to testingData.data file
@@ -52,7 +52,7 @@ for makeKey, make in testingDataRef.items():
     for modelKey, model in make.items():
         for trimKey, trim in model.items():
             for yearKey, year in trim.items():
-                testingWriter.writerow((makeKey, modelKey, trimKey, yearKey, str(year["MPG"]), str(year["Cylinders"]), str(year["Engine"]), str(year["Doors"]), str(year["Seats"]), str(year["Horsepower"]), str(year["Torque ft-lb"]), str(year["Weight"]), str(year["GroundClearance"]), (str(1) if str(year["EV"]) == "Yes" else str(0)), (str(1) if str(year["Convertible"]) == "Yes" else str(0))))
+                testingWriter.writerow((makeKey, modelKey, trimKey, yearKey, str(year["MPG"]), str(year["Cylinders"]), str(year["Engine"]), str(year["Doors"]), str(year["Seats"]), str(year["Horsepower"]), str(year["Weight"]), str(year["GroundClearance"]), str(year["Torque ft-lb"]), str(1) if str(year["EV"]) == "Yes" else str(0), str(1) if str(year["Convertible"]) == "Yes" else str(0)))
 
 #close file 
 testingDataFile.close()
