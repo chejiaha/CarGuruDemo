@@ -48,7 +48,14 @@
         android:id="@+id/navigation_MyGarage"
         android:name="jiahao.chen.cargurudemo.MyGarageSplashFragment"
         android:label="MyGarage"
-        tools:layout="@layout/activity_mygarage_splash" />
+        tools:layout="@layout/activity_mygarage_splash" >
+        <action
+            android:id="@+id/action_navigation_MyGarage_to_myGarageSignInFragment"
+            app:destination="@id/myGarageSignInFragment" />
+        <action
+            android:id="@+id/action_navigation_MyGarage_to_myGarageSignUpFragment"
+            app:destination="@id/myGarageSignUpFragment" />
+    </fragment>
 <!--    Fragment for Settings-->
     <fragment
            android:id="@+id/navigation_Settings"
@@ -121,7 +128,11 @@
         android:id="@+id/myGarageSignInFragment"
         android:name="jiahao.chen.cargurudemo.MyGarageSignInFragment"
         android:label="fragment_my_garage_sign_in"
-        tools:layout="@layout/fragment_my_garage_sign_in" />
+        tools:layout="@layout/fragment_my_garage_sign_in" >
+        <action
+            android:id="@+id/action_myGarageSignInFragment_to_myGarageMainFragment"
+            app:destination="@id/myGarageMainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myGarageSignUpFragment"
         android:name="jiahao.chen.cargurudemo.MyGarageSignUpFragment"

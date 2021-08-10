@@ -187,7 +187,7 @@
         android:layout_height="76dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="28dp"
-        android:src="@drawable/crewmascot"
+        android:src="@drawable/sport_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
 
@@ -210,10 +210,8 @@
         android:layout_width="75dp"
         android:layout_height="76dp"
         android:layout_marginStart="16dp"
-
-
         android:layout_marginTop="12dp"
-        android:src="@drawable/crewmascot"
+        android:src="@drawable/commuter_category"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
 

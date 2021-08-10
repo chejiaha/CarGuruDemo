@@ -57,10 +57,7 @@ public class QuestionnnaireListFragment extends Fragment {
 
         //getting all of the items from the Vehicle portion of the database.
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
-
-
         ValueEventListener listener = reference.addValueEventListener(new ValueEventListener() {
-
             /*
              *   This method is used to get the vehicle information from the database.
              *   The Information is stored into the cars ArrayList. This list will contain the make,
@@ -73,7 +70,6 @@ public class QuestionnnaireListFragment extends Fragment {
              *   Will Return:
              *       ArrayList <CarModel> cars (**only make, model, year and trim are filled out**)
              */
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String make = "";
@@ -100,9 +96,7 @@ public class QuestionnnaireListFragment extends Fragment {
                                 year = ssYear.getKey();
                                 // setting the value for the category of car, so it can be compared to the category that was passed in
                                 databaseCategory = ssYear.child("Category").getValue().toString();
-
                                 Log.d("Category", "The category of the car is: " + databaseCategory);
-
                                 // checking to see if the category that was passed in matches the category of the current car
                                 if (databaseCategory.equalsIgnoreCase(category)) {
                                     // adding the car values to the CarModel object

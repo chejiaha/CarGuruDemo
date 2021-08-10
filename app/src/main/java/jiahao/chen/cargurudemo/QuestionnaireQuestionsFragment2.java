@@ -84,7 +84,15 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
     String passedCategory = "";
     // Int that will be the question Number
     int questionNum = 1;
+    //<TODO Implement Question Number>
+    // Int that will display the number of the question array that we will use.
+    int arrayQuestionNum = 0;
 
+    /*
+     * This Method will create the view. It will assign the View Objects and get the passed arguments
+     * Once it gets everything, it will Pull the data from the database based on if the Category is set.
+     *
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,7 +105,6 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
         tvQuestion = view.findViewById(R.id.tvQuestion);
 //        tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
         tvQuestionChoice = view.findViewById(R.id.tvQuestionChoice);
-
         //Get the items from the bundle.
         Bundle bundle = new Bundle();
         questionNum = ((int) getArguments().getInt("QuestionNumber"));
@@ -181,7 +188,6 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                 return;
             }
 
-
             // Find the correct answer
             RadioButton rbChosenAnswer = view.findViewById(radioId);
             // Variable to hold the answer index. so we can match the value index.
@@ -216,7 +222,6 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                 //Then Split it by commas to create the array.
                 valueArray = value.split(",");
             }
-
 
             //If its a list go through each item, otherwise its a string and no iteration needed.
             // Go through the values list and compare strings Values ["CategoryName", "CategoryName", "CategoryName"]
@@ -257,7 +262,6 @@ public class QuestionnaireQuestionsFragment2 extends Fragment {
                    Pass the questionNum
                    TODO Pass the progress bar
                 */
-
                 Fragment fragment = new QuestionnaireQuestionFragment3();
                 SwitchToNextQuestion(fragment, questionNum, categoryPoints, questionsList, passedCategory);
         }
