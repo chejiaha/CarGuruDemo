@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.questionnaire.QuestionnaireFragment">
+
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="281dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionProgressCompleted" />
+
+    <TextView
+        android:id="@+id/tvQuestionProgressCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress Completed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvQuestionChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Please Choose One"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivQuestionImage" />
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Would do you like best?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbProgress" />
+
+    <ImageView
+        android:id="@+id/ivQuestionImage"
+        android:layout_width="315dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
+        android:src="@drawable/crewmascot" />
+
+    <RadioGroup
+        android:id="@+id/rgQuestions"
+        android:layout_width="261dp"
+        android:layout_height="194dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionChoice">
+
+        <!-- <RadioButton
+             android:id="@+id/rbAnswer1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="RadioButton" />
+
+         <RadioButton
+             android:id="@+id/rbAnswer2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="RadioButton" />
+
+         <RadioButton
+             android:id="@+id/rbAnswer3"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="RadioButton" />
+
+         <RadioButton
+             android:id="@+id/rbAnswer4"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="RadioButton" />-->
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/BtnNextPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgQuestions" />
+
+    <Button
+        android:id="@+id/BtnPreviousPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgQuestions" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
