@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -132,29 +133,35 @@ public class QuestionnaireFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-            //TODO: make sure the user selects an answer before displaying the next question
+            //Makes sure the user selects an answer before displaying the next question
+            if (rdoGroup.getCheckedRadioButtonId() == -1){
+                //The button is not checked, ask the user to check a box
+                Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
+            }else{
 
-            // calling the addTally method to add the tally to the category that was chosen
-            addTally(questions.get(listIt.nextIndex()).getAnswers());
+                // calling the addTally method to add the tally to the category that was chosen
+                addTally(questions.get(listIt.nextIndex()).getAnswers());
 
-            //If the item crashes due to a "NullPointerError" then we will push it to the next section based on the highest score.
-            try {
+                //If the item crashes due to a "NullPointerError" then we will push it to the next section based on the highest score.
+                try {
 
-                // checking to see if the list has a next question (hasNext Not working Try catch workaround.)
-                if (listIt.hasNext()) {
+                    // checking to see if the list has a next question (hasNext Not working Try catch workaround.)
+                    if (listIt.hasNext()) {
 
-                    // debug
-                    Log.d("onClickNextQuestion", "Why does hasNext not worK? : " + questions.get(listIt.nextIndex() + 1));
+                        // debug
+                        Log.d("onClickNextQuestion", "Why does hasNext not worK? : " + questions.get(listIt.nextIndex() + 1));
 
-                    // displaying the question that is next in the list
-                    displayQuestion(questions.get(listIt.nextIndex() + 1));
-                    // setting the value of the iterator to the next question in the list
-                    listIt = questions.listIterator(listIt.nextIndex() + 1);
-                }
-                else{
-                    // Determine what Category the user belongs in
-                    // Send it to the same page, and pass information?
-                }
+                        // displaying the question that is next in the list
+                        displayQuestion(questions.get(listIt.nextIndex() + 1));
+                        // setting the value of the iterator to the next question in the list
+                        listIt = questions.listIterator(listIt.nextIndex() + 1);
+                        //Clear the check of the radio Group so the user has to choose again
+                        rdoGroup.clearCheck();
+                    }
+                    else{
+                        // Determine what Category the user belongs in
+                        //Note this is done in the catch instead this part is pretty useless right now.
+                    }
 //            }catch (NullPointerException err ){
 //                //Send the users to the next page dependent on the highest score
 //                // debug
@@ -162,31 +169,33 @@ public class QuestionnaireFragment extends Fragment {
 //                Log.d("NextPageTriggered", "\n Highest Category == " + getHighestCategoryTally(carCategories) );
 //
 //                Log.d("NextPageTriggered", "New Question Page Initiaited ");
-            }catch (Exception err) {
+                }catch (Exception err) {
 
-                //Send the users to the next page dependent on the highest score
-                String highestCategory = getHighestCategoryTally(carCategories);
-                //debug
-                Log.d("NextPageTriggered", "\n Highest Category == " + highestCategory  );
-                //Send the user to the same fragment and pass the category to pull next.
-                Bundle bundle = new Bundle();
-                // Adding the category with the highest Tally based on the questions they answered
-                bundle.putString("highestCategory", highestCategory);
-
-
-                // Creating the same fragment just updating the Question section.
-                Fragment fragment = new QuestionnaireFragment();
-                fragment.setArguments(bundle);
-                // Create a FragmentManager
-                FragmentManager fm = getFragmentManager();
-                // Create a FragmentTransaction to begin the transaction and replace the Fragment
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                // Replace the FrameLayout with new Fragment
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.commit(); // save the changes
+                    //Send the users to the next page dependent on the highest score
+                    String highestCategory = getHighestCategoryTally(carCategories);
+                    //debug
+                    Log.d("NextPageTriggered", "\n Highest Category == " + highestCategory  );
+                    //Send the user to the same fragment and pass the category to pull next.
+                    Bundle bundle = new Bundle();
+                    // Adding the category with the highest Tally based on the questions they answered
+                    bundle.putString("highestCategory", highestCategory);
 
 
+                    // Creating the same fragment just updating the Question section.
+                    Fragment fragment = new QuestionnaireFragment();
+                    fragment.setArguments(bundle);
+                    // Create a FragmentManager
+                    FragmentManager fm = getFragmentManager();
+                    // Create a FragmentTransaction to begin the transaction and replace the Fragment
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    // Replace the FrameLayout with new Fragment
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                    fragmentTransaction.commit(); // save the changes
+
+
+                }
             }
+
         }
     };
 
