@@ -28,6 +28,25 @@ import owen.ross.carguru.models.Database;
 import owen.ross.carguru.models.FirebaseCallback;
 import owen.ross.carguru.models.Question;
 
+/*
+ * This class is a major part of our Questionnaire Algorithm. It is this page which will pull the
+ * questions that are available from the Database. The Type of questions that are pulled fromt he database
+ *  is determined by the category that is passed from the previous fragment. If nothing is passed,
+ * Then the default MainQuestions are displayed. Once it is found it will fetch the data from our
+ * Firebase Database. Once that is fetched it will use a list Iterator called "listIt" that holds
+ * the questions/answers in a list. The list will be iterated through until we reach the last question
+ * in the main loop. Once we reach that, we pass the string category to the next Fragment which is a
+ * New instance of the QuestionaireFragment.
+ * //TODO Incorporate a way to get push the user into a vehicle section.
+ *
+ * This Class will receive:
+ *      "Category"          <String> : The category that the algorithm has decided to assign to the user.
+ * NOTE: This Category argument will only be set once the users find it in their heart
+ *
+ * This Class will Pass:
+ *      "Category"          <String> : The category that the algorithm has decided to assign to the user.
+ *
+ * */
 public class QuestionnaireFragment extends Fragment {
 
     // setting the global variables that will be used throughout the class
@@ -142,36 +161,21 @@ public class QuestionnaireFragment extends Fragment {
                 // calling the addTally method to add the tally to the category that was chosen
                 addTally(questions.get(listIt.nextIndex()).getAnswers());
 
-                //If the item crashes due to a "NullPointerError" then we will push it to the next section based on the highest score.
-                try {
+                //This try Catch is not needed anymore... so we can remove it.
+                listIt.next();
+                // checking to see if the list has a next question (hasNext Not working Try catch workaround.)
+                if (listIt.hasNext()) {
 
-                    // checking to see if the list has a next question (hasNext Not working Try catch workaround.)
-                    if (listIt.hasNext()) {
-
-                        // debug
-                        Log.d("onClickNextQuestion", "Why does hasNext not worK? : " + questions.get(listIt.nextIndex() + 1));
-
-                        // displaying the question that is next in the list
-                        displayQuestion(questions.get(listIt.nextIndex() + 1));
-                        // setting the value of the iterator to the next question in the list
-                        listIt = questions.listIterator(listIt.nextIndex() + 1);
-                        //Clear the check of the radio Group so the user has to choose again
-                        rdoGroup.clearCheck();
-                    }
-                    else{
-                        // Determine what Category the user belongs in
-                        //Note this is done in the catch instead this part is pretty useless right now.
-                    }
-//            }catch (NullPointerException err ){
-//                //Send the users to the next page dependent on the highest score
-//                // debug
-//                Log.d("NextPageTriggered", "New Question Page Initiaited \n Category Tallies " + carCategories.toString());
-//                Log.d("NextPageTriggered", "\n Highest Category == " + getHighestCategoryTally(carCategories) );
-//
-//                Log.d("NextPageTriggered", "New Question Page Initiaited ");
-                }catch (Exception err) {
-
-                    //Send the users to the next page dependent on the highest score
+                    // displaying the question that is next in the list
+                    displayQuestion(questions.get(listIt.nextIndex()));
+                    // setting the value of the iterator to the next question in the list
+                    listIt = questions.listIterator(listIt.nextIndex());
+                    //Clear the check of the radio Group so the user has to choose again
+                    rdoGroup.clearCheck();
+                }
+                else{
+                    //
+                    //Determine what Category the user belongs in
                     String highestCategory = getHighestCategoryTally(carCategories);
                     //debug
                     Log.d("NextPageTriggered", "\n Highest Category == " + highestCategory  );
@@ -179,20 +183,10 @@ public class QuestionnaireFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     // Adding the category with the highest Tally based on the questions they answered
                     bundle.putString("highestCategory", highestCategory);
-
-
                     // Creating the same fragment just updating the Question section.
                     Fragment fragment = new QuestionnaireFragment();
-                    fragment.setArguments(bundle);
-                    // Create a FragmentManager
-                    FragmentManager fm = getFragmentManager();
-                    // Create a FragmentTransaction to begin the transaction and replace the Fragment
-                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                    // Replace the FrameLayout with new Fragment
-                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                    fragmentTransaction.commit(); // save the changes
-
-
+                    // Send the users to the next page dependent on the highest score
+                    switchFragments(fragment, R.id.nav_host_fragment, bundle);
                 }
             }
 
@@ -298,4 +292,32 @@ public class QuestionnaireFragment extends Fragment {
         }
         return highestString;
     }
+
+    /*
+     * This method is created to send a fragment from one fragment to the other.
+     *
+     * Takes in:
+     *  Fragment FragmentName : The Fragment That you want to instantiate.
+     *  Bundle bundle         : The bundle with all of the objects already populated.
+     *  int IdOfNavHostUI     : This is used to specify which view you want to replace.
+     *          BY default in our application set to the id of the "navigation_host_fragment" ID
+     *  NOTE:
+     */
+    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+        //If the bundle is not empty add the argument
+        if (bundle.isEmpty() == false){
+            fragmentName.setArguments(bundle);
+        }
+        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+
+        // Create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+        fragmentTransaction.commit(); // save the changes
+    }
+
 }
