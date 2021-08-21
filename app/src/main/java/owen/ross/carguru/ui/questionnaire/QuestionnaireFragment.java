@@ -18,12 +18,14 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
 import owen.ross.carguru.R;
 import owen.ross.carguru.models.Answer;
+import owen.ross.carguru.models.AnswerParser;
 import owen.ross.carguru.models.Database;
 import owen.ross.carguru.models.FirebaseCallback;
 import owen.ross.carguru.models.Question;
@@ -63,6 +65,14 @@ public class QuestionnaireFragment extends Fragment {
     // The Category that we will pull the questions from the database.
     String questionCategory = "";
 
+    //TODO (Once Approved) MOVE TO TOP
+    //This variable will be appeneded to every time the user answers a specific category question.
+    // This variable will contain all of the values that we will search for at the end of the questionnaire
+    // Key == DBField Value == Answer Value
+    Hashtable<String, String> queryDB = new Hashtable<String, String>();
+    // This Array List will hold the names of the DBField that the user selects.
+    ArrayList<String> previousSpecificCategoryAnswer = new ArrayList<>();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_questionnaire, container, false);
@@ -74,7 +84,6 @@ public class QuestionnaireFragment extends Fragment {
 
         //Checking if the category was passed to the Fragment (this will be done when they complete the initial questions.
         try {
-            Bundle bundle = new Bundle();
             questionCategory = (getArguments().getString("highestCategory"));
             //We need to append 'Question' To the end because that is how it is in the database...
             questionCategory = questionCategory + "Question";
@@ -104,6 +113,7 @@ public class QuestionnaireFragment extends Fragment {
             }
         });
 
+        //Setup for MainQuestions
         // adding all the categories and their values to the hashmap
         carCategories = new HashMap<>();
         carCategories.put("Commuter", 0);
@@ -114,6 +124,8 @@ public class QuestionnaireFragment extends Fragment {
         carCategories.put("Luxury", 0);
 
         previousCategories = new ArrayList<>();
+        //Setup for CommuterQuestions
+
 
         // setting the listeners for the next and back buttons
         nextBtn.setOnClickListener(nextQuestion);
@@ -157,15 +169,15 @@ public class QuestionnaireFragment extends Fragment {
                 //The button is not checked, ask the user to check a box
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
             }else{
-
+                //TODO Create a switch statement and have each Answer parser with the argument being the questionCategory. (If its MainQuestions, CommuterQuestions...)
                 // calling the addTally method to add the tally to the category that was chosen
-                addTally(questions.get(listIt.nextIndex()).getAnswers());
 
+                //Add the Category or Specific Categories answer
+                    addTally(questions.get(listIt.nextIndex()).getAnswers());
                 //This try Catch is not needed anymore... so we can remove it.
                 listIt.next();
                 // checking to see if the list has a next question (hasNext Not working Try catch workaround.)
                 if (listIt.hasNext()) {
-
                     // displaying the question that is next in the list
                     displayQuestion(questions.get(listIt.nextIndex()));
                     // setting the value of the iterator to the next question in the list
@@ -189,7 +201,6 @@ public class QuestionnaireFragment extends Fragment {
                     switchFragments(fragment, R.id.nav_host_fragment, bundle);
                 }
             }
-
         }
     };
 
@@ -208,33 +219,63 @@ public class QuestionnaireFragment extends Fragment {
     }
     };
 
+
+
     // method gets the value of the answer that was selected and adds the tally to the category that was selected
     public void addTally (ArrayList<Answer> answers) {
+
         // getting the value of the answer that the user selected
-        String category = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
+        //used to be  String category = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
+        String questionAnswer = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
+        //If we are in the first iteration, add the categories and decide the category for users
+        if (questionCategory.equals("MainQuestion")){
+            // debug
+            Log.d("addTally" , "CAR ANSWERS!!!!!!" + answers.toString());
+            Log.d( "addTally" ,"Car Categories Tallies" + questionAnswer);
 
-        // debug
-        Log.d("Car Categories Tallies", category);
-
-        // checking to see if the category has a comma in it
-        if(category.contains(",")) {
-            // creating a list form the category string seperated by the commas
-            List<String> categories = Arrays.asList(category.split("\\s*,\\s*"));
-            // iterating through the list
-            for (String carCategory: categories) {
-                // removing the square brackets from the string
-                carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
-                // increasing the count of the category that was in the list
-                carCategories.put(carCategory, carCategories.get(carCategory) + 1);
+            // checking to see if there is more then one category
+            if(questionAnswer.contains(",")) {
+                // creating a list form the category string seperated by the commas
+                List<String> categories = Arrays.asList(questionAnswer.split("\\s*,\\s*"));
+                // iterating through the list
+                for (String carCategory: categories) {
+                    // removing the square brackets from the string
+                    carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
+                    // increasing the count of the category that was in the list
+                    carCategories.put(carCategory, carCategories.get(carCategory) + 1);
+                }
+                //Otherwise Add the single string category
+            } else {
+                // increasing the count of the category that was selected
+                carCategories.put(questionAnswer, carCategories.get(questionAnswer) + 1);
             }
-        } else {
-            // increasing the count of the category that was selected
-            carCategories.put(category, carCategories.get(category) + 1);
-        }
-
             // adds the category that was selected to this list
-            previousCategories.add(category);
+            previousCategories.add(questionAnswer);
+        }else{
+            //If the user is already put into a category, add the tally to a different hashTable.
+            // Get the Users Answer
+            String commuterAnswer = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
+            //TODO FIND OUT HOW TO GET DBFIELD!!!
+            //Get the Category/Type of car that is being decided by the question
+            String DBField = questions.get(listIt.nextIndex()).getCategory();
+            //Adding the Name so we can delete it if the user goes back a question
+            //DEBUG TODO TAKE THIS OUT ONCE YOU FIND DBField
+            if (DBField == null){
+                DBField = "asd";
+            }
+            previousSpecificCategoryAnswer.add(DBField);
 
+
+            //debug
+            Log.d("addTally", "DBField " + DBField);
+            Log.d("addTally", "Question Answer " + commuterAnswer);
+
+            //This variable will contain the DB field once we are put into a category
+            // Add the DBField and Answer to the question to be queried after the questionnaire.
+            queryDB.put(DBField, questionAnswer);
+            //TEST IT !
+            AnswerParser.CommuterCategoryAnswerParser(queryDB, previousSpecificCategoryAnswer);
+        }
     }
 
     // method removes a tally form the previous answer that the user selected
@@ -242,24 +283,39 @@ public class QuestionnaireFragment extends Fragment {
         // getting the last category in the previousCategories list
         String category = previousCategories.get(previousCategories.size() - 1);
 
-        // checking to see if the category string has a comma in it
-        if(category.contains(",")) {
-            // creating a list form the category string seperated by the commas
-            List<String> categories = Arrays.asList(category.split("\\s*,\\s*"));
-            // iterating through the list
-            for (String carCategory: categories) {
-                // removing the square brackets from the string
-                carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
-                // decreasing the count of the category that was in the list
-                carCategories.put(carCategory, carCategories.get(carCategory) - 1);
+        //If we are in the first iteration, add the categories and decide the category for users
+        if (questionCategory.equals("MainQuestion")){
+            // checking to see if the category string has a comma in it
+            if(category.contains(",")) {
+                // creating a list form the category string seperated by the commas
+                List<String> categories = Arrays.asList(category.split("\\s*,\\s*"));
+                // iterating through the list
+                for (String carCategory: categories) {
+                    // removing the square brackets from the string
+                    carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
+                    // decreasing the count of the category that was in the list
+                    carCategories.put(carCategory, carCategories.get(carCategory) - 1);
+                }
+            } else {
+                // decreasing the count of the category that was selected
+                carCategories.put(category, carCategories.get(category) - 1);
             }
-        } else {
-            // decreasing the count of the category that was selected
-            carCategories.put(category, carCategories.get(category) - 1);
-        }
+            // removing the last item from the array of previous categories
+            previousCategories.remove(previousCategories.size() - 1);
+        }else{
+            //If the user is already put into a category, add the tally to a different hashTable.
+            // Get the last answer from the user
+            int sizeOfQuestionList = previousSpecificCategoryAnswer.size();
+            String DBField = previousSpecificCategoryAnswer.get(sizeOfQuestionList);
 
-        // removing the last item from the array of previous categories
-        previousCategories.remove(previousCategories.size() - 1);
+            //debug
+            Log.d("removeTally", "Removing DBField from Hashmap" + DBField);
+
+
+            //This variable will contain the DB field once we are put into a category TODO ( DBField NEEDS TO BE RESET AT THE END OF THE LOOP)
+            // Add the DBField and Answer to the question to be queried after the questionnaire.
+            queryDB.remove(DBField);
+        }
 
     }
 
@@ -319,5 +375,36 @@ public class QuestionnaireFragment extends Fragment {
         fragmentTransaction.replace(idOfNavHostUI, fragmentName);
         fragmentTransaction.commit(); // save the changes
     }
+
+    public String CommuterCategoryAnswerParser(ArrayList<Answer> commuterAnswers){
+        //String commuterAnswer = "";
+        // getting the value of the answer that the user selected
+        String commuterAnswer = commuterAnswers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
+        // debug
+        Log.d("Car Categories Tallies", commuterAnswer);
+
+//        // checking to see if the category has a comma in it
+//        if(commuterAnswer.contains("")) {
+//            // creating a list form the category string seperated by the commas
+//            List<String> categories = Arrays.asList(commuterAnswer.split("\\s*,\\s*"));
+//            // iterating through the list
+//            for (String carCategory: categories) {
+//                // removing the square brackets from the string
+//                carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
+//                // increasing the count of the category that was in the list
+//                carCategories.put(carCategory, carCategories.get(carCategory) + 1);
+//            }
+//        } else {
+//            // increasing the count of the category that was selected
+//            carCategories.put(category, carCategories.get(category) + 1);
+//        }
+//
+//        // adds the category that was selected to this list
+//        previousCategories.add(category);
+
+        return commuterAnswer;
+    }
+
+
 
 }

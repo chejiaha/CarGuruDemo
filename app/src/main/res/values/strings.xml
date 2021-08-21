@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_questionnaire">Questionnaire</string>
+    <string name="app_explanation">This Application was created for you to easily find what car is best for you! You are also able to view all the available information about specific vehicle’s</string>
+
 </resources>

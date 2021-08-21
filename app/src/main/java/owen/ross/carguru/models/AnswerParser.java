@@ -3,7 +3,11 @@ package owen.ross.carguru.models;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+
 /*
  * This class is used to get the answers from the users and provide an output based on the category
  * of questions they are answering.
@@ -55,13 +59,71 @@ public class AnswerParser {
         return highestString;
     }
 
-    public String CommuterCategoryAnswerParser(HashMap commuterAnswers){
-        String carCategory = "";
+    public static ArrayList<String> CommuterCategoryAnswerParser(Hashtable<String,String> commuterAnswers, ArrayList<String> hashtableKeys){
+        ArrayList<String> ListofCars = new ArrayList<>();
+        for (int i = 0; i <= hashtableKeys.size(); i ++) {
+            //Switch Going through all possibilities of answers given
+            //debug
+            Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  commuterAnswers.get(hashtableKeys.get(i)));
+            //User Answer
+            String questionAnswer = commuterAnswers.get(hashtableKeys.get(i));
+            String DBField = hashtableKeys.get(i);
 
 
+            switch(DBField) {
+                case "EV" :
+                    // Figure out how to siphon this into results
+                    break;
+                case "MPG":
+                    // Figure out how to siphon this into results
+                    break;
+                case "Year":
+                    // Figure out how to siphon this into results
+                    break;
+                case "Convertible":
+                    // Figure out how to siphon this into results
+                    break;
+                default:
+                    // Default will Log a message
+                    Log.d("CommuterCategoryParser" , "This Field was not found in the list: " + DBField);
+                    throw new StringIndexOutOfBoundsException("This Field was not found in the list: " + DBField);
+            }
+        }
 
-        return carCategory;
+
+        return ListofCars;
     }
+
+    // method gets the value of the answer that was selected and adds the tally to the category that was selected
+//    public void addTally (ArrayList<Answer> answers) {
+//        // getting the value of the answer that the user selected
+//        String category = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
+//
+//        // debug
+//        Log.d("CAR ANSWERS!!!!!!", answers.toString());
+//        Log.d("Car Categories Tallies", category);
+//
+//        // checking to see if the category has a comma in it
+//        if(category.contains(",")) {
+//            // creating a list form the category string seperated by the commas
+//            List<String> categories = Arrays.asList(category.split("\\s*,\\s*"));
+//            // iterating through the list
+//            for (String carCategory: categories) {
+//                // removing the square brackets from the string
+//                carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
+//                // increasing the count of the category that was in the list
+//                carCategories.put(carCategory, carCategories.get(carCategory) + 1);
+//            }
+//        } else {
+//            // increasing the count of the category that was selected
+//            carCategories.put(category, carCategories.get(category) + 1);
+//        }
+//
+//        // adds the category that was selected to this list
+//        previousCategories.add(category);
+//
+//    }
+
 
 
 
