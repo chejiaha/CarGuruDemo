@@ -59,7 +59,7 @@ public class AnswerParser {
         return highestString;
     }
 
-    public static ArrayList<String> CommuterCategoryAnswerParser(Hashtable<String,String> commuterAnswers, ArrayList<String> hashtableKeys){
+    public static ArrayList<String> CommuterCategoryAnswerParser(Hashtable<String,String> commuterAnswers, ArrayList<String> hashtableKeys, String questionCategory){
         ArrayList<String> ListofCars = new ArrayList<>();
         for (int i = 0; i <= hashtableKeys.size(); i ++) {
             //Switch Going through all possibilities of answers given
@@ -69,25 +69,58 @@ public class AnswerParser {
             String questionAnswer = commuterAnswers.get(hashtableKeys.get(i));
             String DBField = hashtableKeys.get(i);
 
+            //If the item is a commuter
+            if (questionCategory.equals("CommuterQuestion")){
+                switch(DBField) {
+                    case "EV" :
+                        // Figure out how to siphon this into results
+                        break;
+                    case "MPG":
+                        // Figure out how to siphon this into results
+                        break;
+                    case "Year":
+                        // Figure out how to siphon this into results
+                        break;
+                    case "Convertible":
+                        // Figure out how to siphon this into results
+                        break;
+                    default:
+                        // Default will Log a message
+                        Log.d("CommuterCategoryParser" , "This Field was not found in the list: Commuter" + DBField);
+                        throw new StringIndexOutOfBoundsException("This Field was not found in the list: Commuter" + DBField);
+                }
+            }else if (questionCategory.equals("SportQuestion")){
+                switch(DBField) {
+                    case "Weight" :
+                        // Figure out how to siphon this into results
+                        break;
+                    case "GroundClearance":
+                        // Figure out how to siphon this into results
+                        break;
+                    case "Year":
+                        // Figure out how to siphon this into results
+                        break;
+                    case "Convertible":
+                        // Figure out how to siphon this into results
+                        break;
+                    case "Cylinders":
+                        // Figure out how to siphon this into results
+                        break;
+                    default:
+                        // Default will Log a message
+                        Log.d("CommuterCategoryParser" , "This Field was not found in the list Sports: " + DBField);
+                        throw new StringIndexOutOfBoundsException("This Field was not found in the list Sports: " + DBField);
+            }else if (questionCategory.equals("LuxuryQuestion")){
 
-            switch(DBField) {
-                case "EV" :
-                    // Figure out how to siphon this into results
-                    break;
-                case "MPG":
-                    // Figure out how to siphon this into results
-                    break;
-                case "Year":
-                    // Figure out how to siphon this into results
-                    break;
-                case "Convertible":
-                    // Figure out how to siphon this into results
-                    break;
-                default:
-                    // Default will Log a message
-                    Log.d("CommuterCategoryParser" , "This Field was not found in the list: " + DBField);
-                    throw new StringIndexOutOfBoundsException("This Field was not found in the list: " + DBField);
+            }else if (questionCategory.equals("UtilityQuestion")){
+
+            }else if (questionCategory.equals("BeaterQuestion")){
+
+            }else if (questionCategory.equals("FamilyQuestion")){
+
             }
+
+
         }
 
 
