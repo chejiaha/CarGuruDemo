@@ -91,7 +91,7 @@ public class AnswerParser {
                 }
             }else if (questionCategory.equals("SportQuestion")){
                 switch(DBField) {
-                    case "Weight" :
+                    case "Weight":
                         // Figure out how to siphon this into results
                         break;
                     case "GroundClearance":
@@ -108,8 +108,9 @@ public class AnswerParser {
                         break;
                     default:
                         // Default will Log a message
-                        Log.d("CommuterCategoryParser" , "This Field was not found in the list Sports: " + DBField);
+                        Log.d("CommuterCategoryParser", "This Field was not found in the list Sports: " + DBField);
                         throw new StringIndexOutOfBoundsException("This Field was not found in the list Sports: " + DBField);
+                }
             }else if (questionCategory.equals("LuxuryQuestion")){
 
             }else if (questionCategory.equals("UtilityQuestion")){
@@ -118,7 +119,9 @@ public class AnswerParser {
 
             }else if (questionCategory.equals("FamilyQuestion")){
 
-            }
+            }else{
+                    continue;
+                }
 
 
         }

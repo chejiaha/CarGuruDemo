@@ -273,8 +273,7 @@ public class QuestionnaireFragment extends Fragment {
             //This variable will contain the DB field once we are put into a category
             // Add the DBField and Answer to the question to be queried after the questionnaire.
             queryDB.put(DBField, questionAnswer);
-            //TEST IT !
-            AnswerParser.CommuterCategoryAnswerParser(queryDB, previousSpecificCategoryAnswer);
+
         }
     }
 

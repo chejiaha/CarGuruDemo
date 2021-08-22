@@ -17,7 +17,7 @@ import java.util.List;
 public class Database implements FirebaseCallback {
 
     private static DatabaseReference questionsReference = FirebaseDatabase.getInstance().getReference().child("Questions");
-
+    private static DatabaseReference vehicleReference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
 
 
     // a method that will get all the questions of a specific category, and return them in a list
@@ -116,4 +116,96 @@ public class Database implements FirebaseCallback {
     public void onCallback(List<Question> list) {
 
     }
+
+    /*
+     * This Function is created to get all of the Cars Makes Models and years, and put them in the
+     * respective ComboBox's (Spinners). This will populate the public arrays from the class
+     * (1. makeList, 2.  modelList, 3. YearList)
+     * The selected vehicle information will be passed to the next class.
+     */
+    public static ArrayList<Car> getMakeModelYear() {
+        //getting all of the items from the Vehicle portion of the database.
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
+        //List of car Objects so I can pass the one they choose to the users.
+
+//        //Creating a List to hold all of the Names of the Make
+        ArrayList<String> makeList = new ArrayList<>();
+//        //Creating a List to hold all of the Names of the Models
+        ArrayList<String> modelList = new ArrayList<>();
+
+        //List of car Objects so I can pass the one they choose to the users.
+        ArrayList<Car> vehicleList = new ArrayList<>();
+
+        ValueEventListener listener = vehicleReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                /*
+                 *   This method is used to get the vehicle information from the database.
+                 *   The Information is stored into the VehicleList. This list will contain the make,
+                 *   model, year and category. This will be used in the onCreate method to look through
+                 *   the information and populate the Spinners(ComboBoxes)
+                 *
+                 *   Will Populate:
+                 *       ArrayList<String> makeList ()
+                 *   Will Return:
+                 *       ArrayList <car> vehicleList (**only make, model, year and category are filled out**)
+                 */
+                String make = "";
+                String model = "";
+                String trim = "";
+                String year = "";
+
+
+                for (DataSnapshot ssMake : dataSnapshot.getChildren()) {
+                    make = ssMake.getKey();
+                    //Adding the Make to the Make List
+                    makeList.add(make);
+                    //Get the makes list Once they get this list then populate the others
+                    //for each make in the Given Category (Category is passed)
+                    for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
+                        //setting the make so we can iterate through them
+                        model = ssModel.getKey();
+                        //Go through each year and add the models for that year
+                        for (DataSnapshot ssTrim : dataSnapshot.child(make).child(model).getChildren()) {
+                            //setting the year so we can iterate through each year and get the models
+                            trim = ssTrim.getKey();
+                            //debug
+                            Log.d("testTrim", "The Trim is" + trim);
+                            //Go through each model of each make
+                            for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
+                                Car car = new Car();
+                                //Getting the model
+                                year = ssYear.getKey();
+                                //Adding the make to the car Object
+                                car.setMake(make);
+                                //add the models name to the car Object
+                                car.setModel(model);
+                                //add the models name to the car Object
+                                car.setTrim(trim);
+                                //Get the year and add it to the car Object
+                                car.setYear(Integer.parseInt(year));
+                                //Check if the model is already in the models array list
+                                if (!modelList.contains(model)){
+                                    //if it is not in the list add it
+                                    modelList.add(model);
+                                }
+                                //Adding the car to the car List
+                                vehicleList.add(car);
+                            }
+                        }
+                    }
+                }
+                //Clearing the modelList
+                modelList.clear();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return vehicleList;
+    }
+
 }
