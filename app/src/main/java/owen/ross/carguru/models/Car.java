@@ -1,6 +1,8 @@
 package owen.ross.carguru.models;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
 
 
     // do we need all of these variables?

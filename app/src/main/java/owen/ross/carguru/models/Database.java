@@ -16,8 +16,11 @@ import java.util.List;
 
 public class Database implements FirebaseCallback {
 
+    //This references the Main Questions Branch
     private static DatabaseReference questionsReference = FirebaseDatabase.getInstance().getReference().child("Questions");
+    //This References the Vehicl
     private static DatabaseReference vehicleReference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
+    private static ValueEventListener listener;
 
 
     // a method that will get all the questions of a specific category, and return them in a list
@@ -125,7 +128,7 @@ public class Database implements FirebaseCallback {
      */
     public static ArrayList<Car> getMakeModelYear() {
         //getting all of the items from the Vehicle portion of the database.
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
+        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
         //List of car Objects so I can pass the one they choose to the users.
 
 //        //Creating a List to hold all of the Names of the Make
@@ -158,8 +161,11 @@ public class Database implements FirebaseCallback {
 
                 for (DataSnapshot ssMake : dataSnapshot.getChildren()) {
                     make = ssMake.getKey();
+                    //debug
+                    Log.d("vehicleReference", "The Make is" + make);
                     //Adding the Make to the Make List
                     makeList.add(make);
+
                     //Get the makes list Once they get this list then populate the others
                     //for each make in the Given Category (Category is passed)
                     for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
@@ -170,7 +176,7 @@ public class Database implements FirebaseCallback {
                             //setting the year so we can iterate through each year and get the models
                             trim = ssTrim.getKey();
                             //debug
-                            Log.d("testTrim", "The Trim is" + trim);
+                            Log.d("vehicleReference", "The Trim is" + trim);
                             //Go through each model of each make
                             for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
                                 Car car = new Car();
@@ -206,6 +212,145 @@ public class Database implements FirebaseCallback {
             }
         });
         return vehicleList;
+    }
+
+    /*
+     *      *
+     * The Function is created to get the SINGLE vehicle data that the user requested. It will look through
+     * The database Reference and get the item information that has the same make,model and year.
+     * This function will Send the user to the specific cars page and will pass the Specific Vehicle
+     * Information received from the Database
+     *
+     * This function will return a Car Object
+     */
+    public static Car getSpecificCarInfo(Car car) {
+        //DatabaseReference getValueFromDb =  FirebaseDatabase.getInstance().getReference().child("Vehicle");
+        listener = vehicleReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                /*
+                 *   This method is used to get the vehicle information from the users selection.
+
+                 *   Will Return:
+                 *      car OBJECT!
+                 *      Description         <String>
+                 *      Recalls             [List]
+                 *      Category            <String>
+                 *      Drivetrain          <String>
+                 *      Cylinders           <int>
+                 *      CommonProblems      [List]
+                 *      Doors               <int>
+                 *      Engine              <String>
+                 *      Horsepower          <int>
+                 *      MPG                 <int>
+                 *      Price               <int>
+                 *      Seats               <int>
+                 */
+                String carMake = car.getMake();
+                String carModel = car.getModel() ;
+                String carTrim = car.getTrim();
+                String carYear = car.getYear() + "";
+
+                //Create a Car Model for the descriptions
+                for (DataSnapshot ssCarDesc : dataSnapshot.child(carMake).child(carModel).child(carTrim).child(carYear).getChildren()) {
+                    //The Key of each description (Category,CommonProblems,Description...)
+                    String descName = ssCarDesc.getKey();
+                    //Temporary varible to convert the data from a string, to an int.
+                    int convertToInt = 0;
+                    //Creating the list to contain the Recalls and Common Problems
+                    String[] descArray;
+
+
+                    car.setYear(Integer.parseInt(carYear));
+                    Log.d("getSpecificCarInfo", "Data Snapshot " + carYear);
+
+                    //Check what it is and put it into the correct value
+                    switch (descName) {
+                        case "Category":
+                            //convert to list and store in Category. (for futureproofing)
+
+                            car.setCategory(ssCarDesc.getValue().toString());
+                            break;
+                        case "CommonProblems":
+                            //Debug
+                            Log.d("FindSpecificModel", "The Car information for Common Problems is" + ssCarDesc.getValue().toString());
+                            //Convert the string into a list
+                            descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                            car.setCommonProblems(descArray);
+                            break;
+                        case "Ratings":
+                            //Debug
+                            //Convert the string into a list
+                            descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                            car.setRatings(descArray);
+                            break;
+                        case "Description":
+                            //Create a Car Model for the descriptions
+                            car.setDescription(ssCarDesc.getValue().toString());
+                            break;
+                        case "Doors":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setDoors(convertToInt);
+                            break;
+                        case "Engine":
+                            //Create a Car Model for the descriptions
+                            car.setEngine(ssCarDesc.getValue().toString());
+                            ;
+                            break;
+                        case "Horsepower":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setHorsePower(convertToInt);
+                            break;
+                        case "MPG":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setMPG(convertToInt);
+                            break;
+                        case "Price":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setPrice(convertToInt);
+                            break;
+                        case "Recalls":
+                            //Convert the string into a list
+                            descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                            car.setRecalls(descArray);
+                            break;
+                        case "Seats":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setSeats(convertToInt);
+                            break;
+                        case "Drivetrain":
+                            //Convert it to a string then parse for the int
+                            car.setDrivetrain(ssCarDesc.getValue().toString());
+                            break;
+                        case "Cylinders":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setCylinders(convertToInt);
+                            break;
+                        case "Torque ft-lb":
+                            //Convert it to a string then parse for the int
+                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
+                            car.setTorque(convertToInt);
+                            break;
+                        default:
+                            //Debug
+                            Log.d("NoModelFound", ssCarDesc.getValue().toString());
+
+                    }//End Of Switch
+                } // End Of Data Snapshot
+            }// End of OnDataChanged
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        }); //End of Listener
+        return car;
     }
 
 }

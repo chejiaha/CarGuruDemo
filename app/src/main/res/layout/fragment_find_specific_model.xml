@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.FindSpecificModel.FindSpecificModelFragment">
+        <TextView
+            android:id="@+id/tvFindSpecificModelTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="28dp"
+            android:text="Find Specific Model"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spMake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toStartOf="@+id/spModel"
+            app:layout_constraintHorizontal_bias="0.521"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
+
+        <Spinner
+            android:id="@+id/spYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="84dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnFindSpecificModelSearch"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spMake" />
+
+        <Spinner
+            android:id="@+id/spModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.523"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
+
+        <Spinner
+            android:id="@+id/spTrim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.592"
+            app:layout_constraintStart_toEndOf="@+id/spModel"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
+
+        <Button
+            android:id="@+id/btnFindSpecificModelSearch"
+            android:layout_width="84dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="12dp"
+            android:text="Search"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spMake" />
+        <!-- <TextView
+             android:id="@+id/tvFindSpecificModelSearch"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="12dp"
+             android:text="Search"
+             android:textSize="15dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.887"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/spMake" />-->
+
+        <TextView
+            android:id="@+id/tvFindSpecificModelLeftInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="5dp"
+            android:text="-Information on Recalls \n -Information on Gas Milage"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnFindSpecificModelSearch" />
+
+        <TextView
+            android:id="@+id/tvFindSpecificModelRightInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="5dp"
+            android:text="-Approximagte Mechanical Costs \n -Approximate Yearly Costs"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnFindSpecificModelSearch" />
+
+        <TextView
+            android:id="@+id/tvFindSpecificModelRecentSearches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Recent Searches"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelRightInfo" />
+
+        <ImageView
+            android:id="@+id/ivFindSpecificModelRecentSearches0"
+            android:layout_width="45dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelRecentSearches"
+            app:layout_constraintVertical_bias="0.021" />
+
+        <TextView
+            android:id="@+id/tvRecentSearchesCarType0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Category"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ivFindSpecificModelRecentSearches0"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecentSearchesCarCategory0" />
+
+        <TextView
+            android:id="@+id/tvRecentSearchesCarCategory0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Car Name and Year"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ivFindSpecificModelRecentSearches0"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecentSearchesCarTitle0" />
+
+        <TextView
+            android:id="@+id/tvRecentSearchesCarTitle0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:text="Recent Searches"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ivFindSpecificModelRecentSearches0"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelRecentSearches" />
+
+        <TextView
+            android:id="@+id/tvRecentSearchesAvgSpeed0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="68dp"
+            android:text="Average Speed"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvRecentSearchesCarCosts0"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelRecentSearches" />
+
+        <TextView
+            android:id="@+id/tvRecentSearchesCarCosts0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="68dp"
+            android:text="Costs"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/tvRecentSearchesCarGas0"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelRecentSearches" />
+
+        <TextView
+            android:id="@+id/tvRecentSearchesCarGas0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="68dp"
+            android:text="Gas Rating"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/tvRecentSearchesCarType0"
+            app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelRecentSearches" />
+
+        <TextView
+            android:id="@+id/tvTEMPORARY"
+            android:layout_width="162dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="40dp"
+            android:text="MORE WILL COME SOON"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecentSearchesCarGas0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

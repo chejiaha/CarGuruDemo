@@ -1,11 +1,12 @@
-package owen.ross.carguru.ui.Catagories;
+package owen.ross.carguru.ui.FindSpecificModel;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import owen.ross.carguru.R;
@@ -30,9 +32,10 @@ import owen.ross.carguru.models.Car;
 import owen.ross.carguru.models.Database;
 
 
-public class SearchForSpecificModel extends Fragment {
+public class FindSpecificModelFragment extends Fragment {
 
-    public SearchForSpecificModel() {
+
+    public FindSpecificModelFragment() {
         // Required empty public constructor
     }
 
@@ -43,7 +46,7 @@ public class SearchForSpecificModel extends Fragment {
     //Creating the context
     Context context;
     //List of car Objects so I can pass the one they choose to the users.
-    ArrayList<Car> vehicleList;
+    ArrayList<Car> vehicleList = new ArrayList<>();
     //Creating a List to hold all of the Names of the Make
     ArrayList<String> makeList;
     //Creating a List to hold all of the Names of the Models
@@ -67,14 +70,14 @@ public class SearchForSpecificModel extends Fragment {
     //TextView searchVehicle;
     //Creating my referenced to the database
     DatabaseReference dbRef;
-    ValueEventListener listener;
+
     //Creating a Navigation View
     View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        inflater.inflate(R.layout.fragment_search_for_specific_model, container, false);
-
+        view = inflater.inflate(R.layout.fragment_find_specific_model, container, false);
         //Setting the context
         context = getActivity();
         //getting all of the items from the Vehicle portion of the database.
@@ -115,9 +118,10 @@ public class SearchForSpecificModel extends Fragment {
         //Setting the onTap Event Listener for Model
         searchVehicle.setOnTouchListener(onClickSearchVehicle);
 
-        // Inflate the layout for this fragment
+
+
         return view;
-    } //End of Create view
+    }
 
     /*
      * This Event Handler is paired so when the user clicks the Make spinners it will check if a
@@ -129,6 +133,19 @@ public class SearchForSpecificModel extends Fragment {
      */
     private View.OnTouchListener onTouchMakeSpinner= new View.OnTouchListener() {
         public boolean onTouch(View v, MotionEvent event) {
+
+
+            /*
+             *  iterating through all of the items in the cars array list, to save the data into
+             *  the carModels array list to be displayed
+             */
+            for (Car car : vehicleList) {
+                String carMake = car.getMake();
+                if (!makeList.contains(carMake)) {
+                    // adding the make if the make list does not already contain the item
+                    makeList.add(carMake);
+                }
+            }
             //Once the user finishes choosing a value populate the next one.
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 //If the user clicks make, clear all of the other selection fields.
@@ -299,141 +316,39 @@ public class SearchForSpecificModel extends Fragment {
                     car.setMake(userMake);
                     car.setModel(userModel);
                     car.setTrim(userTrim);
-                    //DatabaseReference getValueFromDb =  FirebaseDatabase.getInstance().getReference().child("Vehicle");
-                    listener = dbRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            /*
-                             *   This method is used to get the vehicle information from the users selection.
+                    //TODO Reference the database
+                    car = Database.getSpecificCarInfo(car);
 
-                             *   Will Return:
-                             *      car OBJECT!
-                             *      Description         <String>
-                             *      Recalls             [List]
-                             *      Category            <String>
-                             *      Drivetrain          <String>
-                             *      Cylinders           <int>
-                             *      CommonProblems      [List]
-                             *      Doors               <int>
-                             *      Engine              <String>
-                             *      Horsepower          <int>
-                             *      MPG                 <int>
-                             *      Price               <int>
-                             *      Seats               <int>
-                             */
-
-                            //Create a Car Model for the descriptions
-                            for (DataSnapshot ssCarDesc : dataSnapshot.child(userMake).child(userModel).child(userTrim).child(userYear).getChildren()) {
-                                //The Key of each description (Category,CommonProblems,Description...)
-                                String descName = ssCarDesc.getKey();
-                                //Temporary varible to convert the data from a string, to an int.
-                                int convertToInt = 0;
-                                //Creating the list to contain the Recalls and Common Problems
-                                String[] descArray;
-
-
-                                car.setYear(Integer.parseInt(userYear));
-                                Log.d("EachDataSnapshot", "Data Snapshot " + userYear);
-
-                                //Check what it is and put it into the correct value
-                                switch (descName) {
-                                    case "Category":
-                                        //convert to list and store in Category. (for futureproofing)
-
-                                        car.setCategory(ssCarDesc.getValue().toString());
-                                        break;
-                                    case "CommonProblems":
-                                        //Debug
-                                        Log.d("FindSpecificModel", "The Car information for Common Problems is" + ssCarDesc.getValue().toString());
-                                        //Convert the string into a list
-                                        descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-                                        car.setCommonProblems(descArray);
-                                        break;
-                                    case "Ratings":
-                                        //Debug
-                                        //Convert the string into a list
-                                        descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-                                        car.setRatings(descArray);
-                                        break;
-                                    case "Description":
-                                        //Create a Car Model for the descriptions
-                                        car.setDescription(ssCarDesc.getValue().toString());
-                                        break;
-                                    case "Doors":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setDoors(convertToInt);
-                                        break;
-                                    case "Engine":
-                                        //Create a Car Model for the descriptions
-                                        car.setEngine(ssCarDesc.getValue().toString());
-                                        ;
-                                        break;
-                                    case "Horsepower":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setHorsePower(convertToInt);
-                                        break;
-                                    case "MPG":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setMPG(convertToInt);
-                                        break;
-                                    case "Price":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setPrice(convertToInt);
-                                        break;
-                                    case "Recalls":
-                                        //Convert the string into a list
-                                        descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-                                        car.setRecalls(descArray);
-                                        break;
-                                    case "Seats":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setSeats(convertToInt);
-                                        break;
-                                    case "Drivetrain":
-                                        //Convert it to a string then parse for the int
-                                        car.setDrivetrain(ssCarDesc.getValue().toString());
-                                        break;
-                                    case "Cylinders":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setCylinders(convertToInt);
-                                        break;
-                                    case "Torque ft-lb":
-                                        //Convert it to a string then parse for the int
-                                        convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-                                        car.setTorque(convertToInt);
-                                        break;
-                                    default:
-                                        //Debug
-                                        Log.d("NoModelFound", ssCarDesc.getValue().toString());
-
-                                }//End Of Switch
-                            }
-                            //NextSend the model to the next page
-                            //Adding the arguments into the class
-                            Bundle bundle = new Bundle();
-                            //bundle.putSerializable("car", car);
-                            //Going from SearchCarFragment to Specific model fragment
-                            //Navigation.findNavController(view).navigate(R.id.action_navigation_SearchCar_to_fragment_specificModel2, bundle);
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
+                    //NextSend the model to the next page
+                    //Adding the arguments into the class
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("car", (Serializable) car);
+                    //Going from SearchCarFragment to Specific model fragment
+                    Fragment SpecificCarInformation = new SpecificVehicleInfoFragment();
+                    switchFragments(SpecificCarInformation, R.id.nav_host_fragment, bundle);
                 }
             }//end of else
             return false;
         }//End of ontouch
     };// End of onClickSearchVehicle
 
+
+    //TODO Move this method into Helper Methods.
+    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+        //If the bundle is not empty add the argument
+        if (bundle.isEmpty() == false){
+            fragmentName.setArguments(bundle);
+        }
+        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+
+        // Create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+        fragmentTransaction.commit(); // save the changes
+    }
 
 }

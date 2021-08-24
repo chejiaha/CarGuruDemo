@@ -375,34 +375,6 @@ public class QuestionnaireFragment extends Fragment {
         fragmentTransaction.commit(); // save the changes
     }
 
-    public String CommuterCategoryAnswerParser(ArrayList<Answer> commuterAnswers){
-        //String commuterAnswer = "";
-        // getting the value of the answer that the user selected
-        String commuterAnswer = commuterAnswers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
-        // debug
-        Log.d("Car Categories Tallies", commuterAnswer);
-
-//        // checking to see if the category has a comma in it
-//        if(commuterAnswer.contains("")) {
-//            // creating a list form the category string seperated by the commas
-//            List<String> categories = Arrays.asList(commuterAnswer.split("\\s*,\\s*"));
-//            // iterating through the list
-//            for (String carCategory: categories) {
-//                // removing the square brackets from the string
-//                carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
-//                // increasing the count of the category that was in the list
-//                carCategories.put(carCategory, carCategories.get(carCategory) + 1);
-//            }
-//        } else {
-//            // increasing the count of the category that was selected
-//            carCategories.put(category, carCategories.get(category) + 1);
-//        }
-//
-//        // adds the category that was selected to this list
-//        previousCategories.add(category);
-
-        return commuterAnswer;
-    }
 
 
 
