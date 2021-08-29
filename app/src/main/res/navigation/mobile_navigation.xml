@@ -12,14 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="owen.ross.carguru.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_search_car"
+        android:name="owen.ross.carguru.ui.FindSpecificModel.FindSpecificModelFragment"
+        android:label="Search For Car"
+        tools:layout="@layout/fragment_find_specific_model" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_questionnaire"
         android:name="owen.ross.carguru.ui.questionnaire.QuestionnaireFragment"
         android:label="@string/title_questionnaire"
         tools:layout="@layout/fragment_questionnaire" />
+
+    <fragment
+        android:id="@+id/navigation_list_of_cars_based_on_category"
+        android:name="owen.ross.carguru.ui.Catagories.ListOfCarsBasedOnCategory"
+        android:label="Search By Category"
+        tools:layout="@layout/fragment_questionnaire" />
+
+
 </navigation>

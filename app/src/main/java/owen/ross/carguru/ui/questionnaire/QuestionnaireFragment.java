@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -52,7 +53,7 @@ import owen.ross.carguru.models.Question;
 public class QuestionnaireFragment extends Fragment {
 
     // setting the global variables that will be used throughout the class
-    View root;
+    View view;
     RadioGroup rdoGroup;
     LinkedList<Question> questions = new LinkedList<>();
     //ListIterator listIt = questions.listIterator();
@@ -61,9 +62,15 @@ public class QuestionnaireFragment extends Fragment {
     HashMap<String, Integer> carCategories;
     // stores the values of the answers that the user chose in previous questions
     ArrayList<String> previousCategories;
-
     // The Category that we will pull the questions from the database.
     String questionCategory = "";
+    // Progress bar
+    ProgressBar simpleProgressBar;
+    // Progress to be passed through the fragments to move the progress bar
+    int progress;
+    //Passing the Highest Category to the next page
+    String highestCategory = "";
+
 
     //TODO (Once Approved) MOVE TO TOP
     //This variable will be appeneded to every time the user answers a specific category question.
@@ -75,16 +82,37 @@ public class QuestionnaireFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_questionnaire, container, false);
+        view = inflater.inflate(R.layout.fragment_questionnaire, container, false);
         // storing the RadioGroup on teh questionnaire fragment in this variable
-        rdoGroup = root.findViewById(R.id.rgQuestions);
+        rdoGroup = view.findViewById(R.id.rgQuestions);
         // storing the next and previous buttons in these variables
-        Button nextBtn = root.findViewById(R.id.BtnNextPage);
-        Button previousBtn = root.findViewById(R.id.BtnPreviousPage);
+        Button nextBtn = view.findViewById(R.id.BtnNextPage);
+        Button previousBtn = view.findViewById(R.id.BtnPreviousPage);
+        simpleProgressBar= view.findViewById(R.id.pbProgress);
+
+        //Setting the progress bar up
+        try {
+            progress = getArguments().getInt("progress");
+            // debug
+            Log.d("onCreateView", "The progress was successfully passed: " + progress);
+
+        }catch (NullPointerException err){
+            // If its the first iteration make the progress 5
+            progress = 50;
+            Log.d("onCreateView", " The progress is not passed to this fragment ");
+        }
+
+        // TODO How Do I update the progress bar?
+        simpleProgressBar.setProgress(progress);
+
 
         //Checking if the category was passed to the Fragment (this will be done when they complete the initial questions.
         try {
             questionCategory = (getArguments().getString("highestCategory"));
+            if(questionCategory.isEmpty()){
+                questionCategory = "MainQuestion";
+                Log.d("onCreateView", " The Category was not passed: ");
+            }
             //We need to append 'Question' To the end because that is how it is in the database...
             questionCategory = questionCategory + "Question";
             // debug
@@ -94,7 +122,6 @@ public class QuestionnaireFragment extends Fragment {
             questionCategory = "MainQuestion";
             Log.d("onCreateView", " The Category was not passed: ");
         }
-
 
         // Calling the getQuestions method from the Database class to get the questions from the database
         Database.getQuestions(questionCategory, new FirebaseCallback() {
@@ -131,7 +158,7 @@ public class QuestionnaireFragment extends Fragment {
         nextBtn.setOnClickListener(nextQuestion);
         previousBtn.setOnClickListener(previousQuestion);
 
-        return root;
+        return view;
     }
 
     // will display the question, and the answers of the question that is passed into the method
@@ -156,6 +183,8 @@ public class QuestionnaireFragment extends Fragment {
             id++;
         }
 
+
+
     }
 
     // method that is executed when the next button is pressed
@@ -169,14 +198,12 @@ public class QuestionnaireFragment extends Fragment {
                 //The button is not checked, ask the user to check a box
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
             }else{
-                //TODO Create a switch statement and have each Answer parser with the argument being the questionCategory. (If its MainQuestions, CommuterQuestions...)
-                // calling the addTally method to add the tally to the category that was chosen
-
-                //Add the Category or Specific Categories answer
-                    addTally(questions.get(listIt.nextIndex()).getAnswers());
+               // If there is a checked value then check if there is a next question
+                //Add the Category or Specific Categories answer to the answer list.
+                addTally(questions.get(listIt.nextIndex()).getAnswers());
                 //This try Catch is not needed anymore... so we can remove it.
                 listIt.next();
-                // checking to see if the list has a next question (hasNext Not working Try catch workaround.)
+                // checking to see if the list has a next question
                 if (listIt.hasNext()) {
                     // displaying the question that is next in the list
                     displayQuestion(questions.get(listIt.nextIndex()));
@@ -186,19 +213,31 @@ public class QuestionnaireFragment extends Fragment {
                     rdoGroup.clearCheck();
                 }
                 else{
-                    //
-                    //Determine what Category the user belongs in
-                    String highestCategory = getHighestCategoryTally(carCategories);
-                    //debug
-                    Log.d("NextPageTriggered", "\n Highest Category == " + highestCategory  );
-                    //Send the user to the same fragment and pass the category to pull next.
-                    Bundle bundle = new Bundle();
-                    // Adding the category with the highest Tally based on the questions they answered
-                    bundle.putString("highestCategory", highestCategory);
-                    // Creating the same fragment just updating the Question section.
-                    Fragment fragment = new QuestionnaireFragment();
-                    // Send the users to the next page dependent on the highest score
-                    switchFragments(fragment, R.id.nav_host_fragment, bundle);
+                    //If there are no questions left, check if its the first round or second round of questions.
+                    if (questionCategory.equals("MainQuestion")){
+                        //Determine what Category the user belongs in
+                        highestCategory = getHighestCategoryTally(carCategories);
+                        //debug
+                        Log.d("NextPageTriggered", "\n Highest Category == " + highestCategory  );
+                        //Send the user to the same fragment and pass the category to pull next.
+                        Bundle bundle = new Bundle();
+                        // Adding the category with the highest Tally based on the questions they answered
+                        bundle.putString("highestCategory", highestCategory);
+                        // Adding the progression to the bar
+                        progress = simpleProgressBar.getProgress() + 5;
+                        bundle.putInt("progress", progress);
+                        // Creating the same fragment just updating the Question section.
+                        Fragment fragment = new QuestionnaireFragment();
+                        // Send the users to the next page dependent on the highest score
+                        switchFragments(fragment, R.id.nav_host_fragment, bundle);
+                    }else{
+                        // If its on the second round of questions, use the other parser
+                        AnswerParser.CategoryAnswerParser(queryDB, previousCategories, questionCategory);
+
+
+                    }
+
+
                 }
             }
         }
@@ -265,7 +304,6 @@ public class QuestionnaireFragment extends Fragment {
             }
             previousSpecificCategoryAnswer.add(DBField);
 
-
             //debug
             Log.d("addTally", "DBField " + DBField);
             Log.d("addTally", "Question Answer " + commuterAnswer);
@@ -310,9 +348,16 @@ public class QuestionnaireFragment extends Fragment {
             //debug
             Log.d("removeTally", "Removing DBField from Hashmap" + DBField);
 
+            //Send the user to the same fragment and pass the category to pull next.
+            Bundle bundle = new Bundle();
+            // Adding the category with the highest Tally based on the questions they answered
+            bundle.putString("highestCategory", highestCategory);
+            // Adding the progression to the bar
+            progress = simpleProgressBar.getProgress() - 5;
+            bundle.putInt("progress", progress);
 
             //This variable will contain the DB field once we are put into a category TODO ( DBField NEEDS TO BE RESET AT THE END OF THE LOOP)
-            // Add the DBField and Answer to the question to be queried after the questionnaire.
+            // Remove the DBField and Answer to the question to be queried after the questionnaire.
             queryDB.remove(DBField);
         }
 

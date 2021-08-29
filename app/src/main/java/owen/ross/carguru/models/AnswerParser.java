@@ -59,14 +59,14 @@ public class AnswerParser {
         return highestString;
     }
 
-    public static ArrayList<String> CommuterCategoryAnswerParser(Hashtable<String,String> commuterAnswers, ArrayList<String> hashtableKeys, String questionCategory){
+    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, ArrayList<String> hashtableKeys, String questionCategory){
         ArrayList<String> ListofCars = new ArrayList<>();
         for (int i = 0; i <= hashtableKeys.size(); i ++) {
             //Switch Going through all possibilities of answers given
             //debug
-            Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  commuterAnswers.get(hashtableKeys.get(i)));
+            Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  questionAnswers.get(hashtableKeys.get(i)));
             //User Answer
-            String questionAnswer = commuterAnswers.get(hashtableKeys.get(i));
+            String questionAnswer = questionAnswers.get(hashtableKeys.get(i));
             String DBField = hashtableKeys.get(i);
 
             //If the item is a commuter

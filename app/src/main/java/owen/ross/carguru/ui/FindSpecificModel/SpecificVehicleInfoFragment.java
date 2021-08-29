@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import owen.ross.carguru.R;
 import owen.ross.carguru.models.Car;
+import owen.ross.carguru.models.HelperFunctions;
 
 
 public class SpecificVehicleInfoFragment extends Fragment {
@@ -88,7 +89,13 @@ public class SpecificVehicleInfoFragment extends Fragment {
         lvCommonProblems = view.findViewById(R.id.lvSpecificCarCommonProblemList);
         lvRecalls = view.findViewById(R.id.lvSpecificCarRecallsList);
         lvDescription = view.findViewById(R.id.lvSpecificCarDescriptionList);
-        //Get the vehicle details and populate arrays
+
+        //Get CarModel Object from the Specific Car Page
+        Bundle bundle = new Bundle();
+        car = (Car) bundle.getSerializable("car");
+        car = ((Car) getArguments().getSerializable("car"));
+
+        //Get the vehicle details and populate arrays and View Data
         populateCarDetails();
 
         // Inflate the layout for this fragment
@@ -105,10 +112,7 @@ public class SpecificVehicleInfoFragment extends Fragment {
      */
     private void populateCarDetails(){
 
-        //Get CarModel Object from the Specific Car Page
-        Bundle bundle = new Bundle();
-        car = (Car) bundle.getSerializable("car");
-        car = ((Car) getArguments().getSerializable("car"));
+
         //debug
         Log.d("SpecificModel", "CarModel Make is" + car.getMake());
         Log.d("SpecificModel", "CarModel Model is" + car.getModel());
@@ -125,7 +129,7 @@ public class SpecificVehicleInfoFragment extends Fragment {
         tvDescriptionText.setText(car.getDescription());
 
         //A method to check if the fields are null
-        CheckFields();
+        HelperFunctions.CheckFields(car);
         //Check if ratings are supplied
         if (car.getRatings() != null){
             tvResult1.setText(car.getRatings()[0]);
@@ -161,101 +165,7 @@ public class SpecificVehicleInfoFragment extends Fragment {
     }
 
 
-    /*
-     * A method that will Check if the fields are empty or null
-     *
-     * This will prevent and handle the event of a null pointer or empty fields occuring
-     *
-     * Checks for
-     *  <String>
-     *      If its Null or "" Empty
-     *  <int>
-     *      If its 0 throw an error TODO(Since its in beta do not throw yet.)
-     *  [List]
-     *      If its Empty, or if it is null Supply a string to display.
-     *
-     *      CARMODEL OBJECT!
-     *      Description         <String>
-     *      Recalls             [List]
-     *      Category            <String>
-     *      Drivetrain          <String>
-     *      Cylinders           <int>
-     *      CommonProblems      [List]
-     *      Doors               <int>
-     *      Engine              <String>
-     *      Horsepower          <int>
-     *      MPG                 <int>
-     *      Price               <int>
-     *      Seats               <int>
-     *
-     * Returns None.
-     */
-    public void CheckFields() throws NullPointerException{
-        //Check if the arrays are null, if they are, just populate the empty array
-        //Checking the Common problems Array, if it is null or less then one.
-        if (car.getCommonProblems() == null){
-            String[] emptyList = {"No Common Problems Allocated"};
-            car.setRecalls(emptyList);
-        }
-        //Checking the Recalls Array, if it is null or less then one.
-        if (car.getRecalls() == null){
-            String[] emptyList = {"No Recalls"};
-            car.setRecalls(emptyList);
-        }
-        //Checking the Category  Array, if it is null or less then one.
-        //TODO When the categories are arrays implement the code!
 
-        //Checking if the Number of Engine is set null or is empty
-        if (car.getEngine() == null || car.getEngine().trim().equals("")){
-            car.setEngine("The Engine Type has not been Set!");
-            //throw new NullPointerException("The Engine String is not set in SpecificModel");
-        }
-        //Checking if the Number of Engine is set null or is empty
-        if (car.getCategory() == null || car.getCategory().trim().equals("")){
-            car.setCategory("The Category Type has not been Set!");
-            //throw new NullPointerException("The Category String is not set in SpecificModel");
-        }
-        //Checking if the Number of Engine is set null or is empty
-        if (car.getDrivetrain() == null || car.getDrivetrain().trim().equals("")){
-            car.setDrivetrain("The Drivetrain Type has not been Set!");
-            //throw new NullPointerException("The Drivetrain String is not set in SpecificModel");
-        }
-        //Checking if the variable for Price is null or a string
-        if (car.getPrice() == 0){
-            car.setPrice(-1);
-            //throw new NullPointerException("The Price is not set in SpecificModel") ;
-        }
-        //Checking if the variable for Seats is set is 0
-        if (car.getSeats() == 0){
-            car.setSeats(-1);
-            //throw new NullPointerException("The Seats Variable is not set in SpecificModel") ;
-        }
-        //Checking if the variable for Torque is set is 0
-        if (car.getTorque() == 0){
-            car.setTorque(-1);
-            //throw new NullPointerException("The Torque Variable is not set in SpecificModel") ;
-        }
-        //Checking if the Number of Doors is set is 0
-        if (car.getDoors() == 0){
-            car.setDoors(-1);
-            //throw new NullPointerException("The Doors Variable is not set in SpecificModel") ;
-        }
-        //Checking if the variable for Horsepower is set is 0
-        if (car.getHorsePower() == 0){
-            car.setHorsePower(-1);
-            // throw new NullPointerException("The HorsePower Variable is not set in SpecificModel") ;
-        }
-        //Checking if the variable for MPG is set is 0
-        if (car.getMPG() == 0){
-            car.setMPG(-1);
-            //   throw new NullPointerException("The MPG Variable is not set in SpecificModel") ;
-        }
-        //Checking if the variable for Cylinders is set is 0
-        if (car.getCylinders() == 0){
-            car.setCylinders(-1);
-            //   throw new NullPointerException("The Cylinders Variable is not set in SpecificModel") ;
-        }
-    }
 
 
 }

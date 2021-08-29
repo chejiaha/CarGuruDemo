@@ -350,5 +350,4 @@ public class FindSpecificModelFragment extends Fragment {
         fragmentTransaction.replace(idOfNavHostUI, fragmentName);
         fragmentTransaction.commit(); // save the changes
     }
-
 }
