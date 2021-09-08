@@ -72,10 +72,10 @@ public class AnswerParser {
                 continue;
             }
         }
+
         //Todo
         //Check if there is more then one category that has the same value if so display another question
 //        if (highestValue ){
-//
 //        }
         return highestString;
     }
@@ -155,12 +155,8 @@ public class AnswerParser {
 
             }else{
                     continue;
-                }
-
-
+            }
         }
-
-
         return ListofCars;
     }
 
