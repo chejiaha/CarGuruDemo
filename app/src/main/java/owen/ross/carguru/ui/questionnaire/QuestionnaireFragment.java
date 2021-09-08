@@ -291,7 +291,8 @@ public class QuestionnaireFragment extends Fragment {
      *                                                how many answers the user has completed
      * <HashMap String, Integer> carCategories: Is used to add the Category Answer and pair it with the interfaces.
      *
-     *
+     * Modifies carCategories: by adding one to the category score
+     * Returns none
      */
     public void addTally (ArrayList<Answer> answers) {
 
@@ -362,6 +363,7 @@ public class QuestionnaireFragment extends Fragment {
      *                                                to a String Array list which will be used to see
      *                                                how many answers the user has completed
      * <HashMap String, Integer> carCategories: Is used to add the Category Answer and pair it with the interfaces.
+     *
      *
      *
      */

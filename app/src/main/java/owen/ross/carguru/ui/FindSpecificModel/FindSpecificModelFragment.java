@@ -118,8 +118,6 @@ public class FindSpecificModelFragment extends Fragment {
         //Setting the onTap Event Listener for Model
         searchVehicle.setOnTouchListener(onClickSearchVehicle);
 
-
-
         return view;
     }
 
@@ -316,6 +314,7 @@ public class FindSpecificModelFragment extends Fragment {
                     car.setMake(userMake);
                     car.setModel(userModel);
                     car.setTrim(userTrim);
+                    car.setYear(Integer.parseInt(userYear));
                     //TODO Reference the database
                     car = Database.getSpecificCarInfo(car);
 
