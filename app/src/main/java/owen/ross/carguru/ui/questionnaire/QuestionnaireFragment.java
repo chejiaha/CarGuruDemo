@@ -80,6 +80,14 @@ public class QuestionnaireFragment extends Fragment {
     // This Array List will hold the names of the DBField that the user selects.
     ArrayList<String> previousSpecificCategoryAnswer = new ArrayList<>();
 
+    /*
+     * This Method will create the view.
+     * We will get the arguments from the Previous class
+     *   <int> Progress Bar Progress
+     *   <String> Category that we are pulling the questions from
+     * Then it will get the questions based on the category chosen
+     *
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_questionnaire, container, false);
@@ -153,7 +161,6 @@ public class QuestionnaireFragment extends Fragment {
         previousCategories = new ArrayList<>();
         //Setup for CommuterQuestions
 
-
         // setting the listeners for the next and back buttons
         nextBtn.setOnClickListener(nextQuestion);
         previousBtn.setOnClickListener(previousQuestion);
@@ -161,6 +168,9 @@ public class QuestionnaireFragment extends Fragment {
         return view;
     }
 
+    /*
+     * This Method is used to populates the question based on the Question Passed to the method.
+     */
     // will display the question, and the answers of the question that is passed into the method
     public void displayQuestion(Question question) {
 
@@ -179,15 +189,21 @@ public class QuestionnaireFragment extends Fragment {
             rbAnswer.setText(answer.getDescription());
             // adding the radio button to the radio group
             rdoGroup.addView(rbAnswer);
-
             id++;
         }
-
-
-
     }
 
-    // method that is executed when the next button is pressed
+    /*
+     * This Method is activated when the user clicks the next question button.
+     * This question will get the checked checkboxes value and depending on if its the Main Question
+     * Category or a Specific Question Category will act accordingly
+     *
+     * Main Question
+     *  Will calculate the highest category and send it to the next page
+     *
+     * Specific Category Question
+     *  Will use the Category Answer Parser in the AnswerParser Class to parse the answers.
+     */
     public View.OnClickListener nextQuestion = new View.OnClickListener() {
 
         @Override
@@ -216,7 +232,7 @@ public class QuestionnaireFragment extends Fragment {
                     //If there are no questions left, check if its the first round or second round of questions.
                     if (questionCategory.equals("MainQuestion")){
                         //Determine what Category the user belongs in
-                        highestCategory = getHighestCategoryTally(carCategories);
+                        highestCategory = AnswerParser.MainCategoryAnswerParser(carCategories);
                         //debug
                         Log.d("NextPageTriggered", "\n Highest Category == " + highestCategory  );
                         //Send the user to the same fragment and pass the category to pull next.
@@ -233,17 +249,17 @@ public class QuestionnaireFragment extends Fragment {
                     }else{
                         // If its on the second round of questions, use the other parser
                         AnswerParser.CategoryAnswerParser(queryDB, previousCategories, questionCategory);
-
-
                     }
-
-
                 }
             }
         }
     };
 
-    // method the is executed when the back button is pressed
+    /*
+     *  The method the is executed when the back button is pressed.
+     * This method will remove the categories from the last question and display the previous
+     * question
+     */
     public View.OnClickListener previousQuestion = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -260,7 +276,23 @@ public class QuestionnaireFragment extends Fragment {
 
 
 
-    // method gets the value of the answer that was selected and adds the tally to the category that was selected
+    /*
+     *  This method gets the value of the answer that was selected and adds the tally to the category
+     *  that was selected.
+     *
+     *  The Add Tally Main Question method will add the tally for the Main Category Questions based
+     *  on the categories it Parses from the database Category values for the answers the users chose.
+     *
+     *  The Add Tally Specific Category Question portion will get the answer and the DBField for that
+     *  category.
+     *
+     * <String Array> previousSpecificCategoryAnswer: adds all of the Keys(Specific Question categories//"DBField")
+     *                                                to a String Array list which will be used to see
+     *                                                how many answers the user has completed
+     * <HashMap String, Integer> carCategories: Is used to add the Category Answer and pair it with the interfaces.
+     *
+     *
+     */
     public void addTally (ArrayList<Answer> answers) {
 
         // getting the value of the answer that the user selected
@@ -315,7 +347,24 @@ public class QuestionnaireFragment extends Fragment {
         }
     }
 
-    // method removes a tally form the previous answer that the user selected
+    //
+    /*
+     *  This method removes a tally form the previous answer that the user selected and removes the tally to the category
+     *  that was selected.
+     *
+     *  The Remove Tally Main Question method will remove the tally for the Main Category Questions based
+     *  on the categories it Parses from the database Category values for the answers the users chose.
+     *
+     *  The Remove Tally Specific Category Question portion will get the answer and the DBField for that
+     *  category.
+     *
+     * <String Array> previousSpecificCategoryAnswer: adds all of the Keys(Specific Question categories//"DBField")
+     *                                                to a String Array list which will be used to see
+     *                                                how many answers the user has completed
+     * <HashMap String, Integer> carCategories: Is used to add the Category Answer and pair it with the interfaces.
+     *
+     *
+     */
     public void removeTally () {
         // getting the last category in the previousCategories list
         String category = previousCategories.get(previousCategories.size() - 1);
@@ -360,10 +409,11 @@ public class QuestionnaireFragment extends Fragment {
             // Remove the DBField and Answer to the question to be queried after the questionnaire.
             queryDB.remove(DBField);
         }
-
     }
 
-    // method gets the highest number from all of the categories and passes the string to put the user into the next category questions section.
+    /*
+     method gets the highest number from all of the categories and passes the string to put the user into the next category questions section.
+     */
     public String getHighestCategoryTally (HashMap carCategories) {
         //Go through each category and get the number 
         //debug looking at all of the categories

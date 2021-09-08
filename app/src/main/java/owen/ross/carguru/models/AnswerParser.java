@@ -29,8 +29,15 @@ import java.util.List;
 public class AnswerParser {
     //This class is created to host the answer parsers for each category.
 
-    // method gets the highest number from all of the categories and passes the string to put the user into the next category questions section.
-    public String MainCategoryAnswerParser(HashMap carCategories) {
+    /*
+      * This method goes through the Hash map containing the categories and pulls the highest number
+      *  from all of that the user's answers contained and returns the string to put the user into
+      * the specific category questions section.
+      *
+      *
+      * returns <String> highestString: The determined highest Category to place the user into a category
+     */
+    public static String MainCategoryAnswerParser(HashMap carCategories) {
         //Go through each category and get the number
         //debug looking at all of the categories
         Log.d("getHighestCategory",  carCategories.toString());
@@ -59,6 +66,19 @@ public class AnswerParser {
         return highestString;
     }
 
+    /*
+     * This method is used to get and return the string that we will search our database with.
+     * To do this, it will check what the vehicle category that the user was placed into
+     *
+     *   questionCategory <String>: check what the vehicle category that the user was placed into
+     *   Hashtable<String,String> questionAnswers: Will hold the { DBField, questionAnswer }
+     *      DBField is what we are targeting for when the user answers the question.
+     *              So if the question is do you care about gas? it DBField will be MPG
+     *      questionAnswer being the answer that the user chose to the question
+     *   ArrayList<String> hashtableKeys: This is used to get the size of items in the hashtable
+     *
+     * returns A List of Vehicles that the program finds.
+     */
     public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, ArrayList<String> hashtableKeys, String questionCategory){
         ArrayList<String> ListofCars = new ArrayList<>();
         for (int i = 0; i <= hashtableKeys.size(); i ++) {
@@ -129,40 +149,5 @@ public class AnswerParser {
 
         return ListofCars;
     }
-
-    // method gets the value of the answer that was selected and adds the tally to the category that was selected
-//    public void addTally (ArrayList<Answer> answers) {
-//        // getting the value of the answer that the user selected
-//        String category = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
-//
-//        // debug
-//        Log.d("CAR ANSWERS!!!!!!", answers.toString());
-//        Log.d("Car Categories Tallies", category);
-//
-//        // checking to see if the category has a comma in it
-//        if(category.contains(",")) {
-//            // creating a list form the category string seperated by the commas
-//            List<String> categories = Arrays.asList(category.split("\\s*,\\s*"));
-//            // iterating through the list
-//            for (String carCategory: categories) {
-//                // removing the square brackets from the string
-//                carCategory = carCategory.replaceAll("\\[", "").replaceAll("\\]", "");
-//                // increasing the count of the category that was in the list
-//                carCategories.put(carCategory, carCategories.get(carCategory) + 1);
-//            }
-//        } else {
-//            // increasing the count of the category that was selected
-//            carCategories.put(category, carCategories.get(category) + 1);
-//        }
-//
-//        // adds the category that was selected to this list
-//        previousCategories.add(category);
-//
-//    }
-
-
-
-
-
 
 }

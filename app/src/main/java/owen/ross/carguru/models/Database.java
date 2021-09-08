@@ -16,6 +16,7 @@ import java.util.List;
 
 public class Database implements FirebaseCallback {
 
+
     //This references the Main Questions Branch
     private static DatabaseReference questionsReference = FirebaseDatabase.getInstance().getReference().child("Questions");
     //This References the Vehicle
@@ -110,7 +111,7 @@ public class Database implements FirebaseCallback {
     public static ArrayList<Car> getMakeModelYear() {
         //getting all of the items from the Vehicle portion of the database.
         //DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
-        //List of car Objects so I can pass the one they choose to the users.
+        //List of car Objects so I can pass the one they choose to the .
 
 //        //Creating a List to hold all of the Names of the Make
         ArrayList<String> makeList = new ArrayList<>();
@@ -206,12 +207,15 @@ public class Database implements FirebaseCallback {
         String carModel = car.getModel() ;
         String carTrim = car.getTrim();
         String carYear = car.getYear() + "";
-        DatabaseReference tempDBReference = vehicleReference.child(carMake).child(carModel).child(carTrim).child("2017");
+        DatabaseReference tempDBReference = vehicleReference.child(carMake).child(carModel).child(carTrim).child(carYear);
+        //Debug
+        //Maybe we will have to do a listener for each key we are taking from the database
+
         listener = tempDBReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 /*
-                 *   This method is used to get the vehicle information from the users selection.
+                 *   This method is used to get ONE vehicles information from the users selection.
 
                  *   Will Return:
                  *      car OBJECT!
@@ -247,19 +251,25 @@ public class Database implements FirebaseCallback {
                     switch (descName) {
                         case "Category":
                             //convert to list and store in Category. (for futureproofing)
-
                             car.setCategory(ssCarDesc.getValue().toString());
+                            break;
+                        case "Convertable":
+                            //Create a Car Model for the descriptions
+                            //car.isConvertible(Boolean(ssCarDesc.getValue().toString()));
                             break;
                         case "CommonProblems":
                             //Debug
                             //Convert the string into a list
                             descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                            Log.d("getSpecificCarInfo", "\n Common Problems == " + descArray  );
                             car.setCommonProblems(descArray);
                             break;
+                        //Todo Add Ratings to all of the cars we have.
                         case "Ratings":
-                            //Debug
                             //Convert the string into a list
                             descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                            //Debug
+                            Log.d("getSpecificCarInfo", "\n Ratings == " + descArray  );
                             car.setRatings(descArray);
                             break;
                         case "Description":
@@ -274,7 +284,6 @@ public class Database implements FirebaseCallback {
                         case "Engine":
                             //Create a Car Model for the descriptions
                             car.setEngine(ssCarDesc.getValue().toString());
-                            ;
                             break;
                         case "Horsepower":
                             //Convert it to a string then parse for the int
@@ -291,7 +300,7 @@ public class Database implements FirebaseCallback {
                             convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
                             car.setPrice(convertToInt);
                             break;
-                        case "Recalls":
+                        case "Recall":
                             //Convert the string into a list
                             descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                             car.setRecalls(descArray);

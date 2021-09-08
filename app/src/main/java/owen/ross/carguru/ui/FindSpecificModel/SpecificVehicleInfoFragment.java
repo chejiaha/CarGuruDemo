@@ -74,7 +74,7 @@ public class SpecificVehicleInfoFragment extends Fragment {
         tvCompareCars = view.findViewById(R.id.tvChooseCarsToCompare);
         tvCarName = view.findViewById(R.id.tvSpecificCarTitle);
         tvDescriptionText = view.findViewById(R.id.tvSpecificCarDescriptionText);
-        tvAproximateCost = view.findViewById(R.id.tvspecificCarApproxCost);
+        //tvAproximateCost = view.findViewById(R.id.tvspecificCarApproxCost);
         ivCompareCars = view.findViewById(R.id.ivChooseCarsToCompare);
         ivCarImage = view.findViewById(R.id.ivSpecificCarPic);
         //ivOtherCarImages = findViewById(R.id.tvChooseCarsToCompare);
@@ -155,6 +155,8 @@ public class SpecificVehicleInfoFragment extends Fragment {
         descriptionList.add(String.format("Cylinders: %s",String.valueOf(car.getCylinders())));
 
         //Setting the List Adapters to display the vehicle information.
+        //debug
+        Log.d("EndALL", "CarModel commonProblems" + car.getCommonProblems());
         commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getCommonProblems());
         recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRecalls());
         descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
