@@ -65,7 +65,6 @@ public class Database implements FirebaseCallback {
                                 String answerNumber = QuestionAnswers.getKey();
                                 for (DataSnapshot QuestionAnswer : snapshot.child(questionCategory).child(categoryString).child(questionData).child(answerNumber).getChildren()) {
                                     questionAnswers = QuestionAnswer.getKey();
-
                                     if (questionAnswers.equals("Description")) {
                                         // storing the answer description in this variable
                                         answer = QuestionAnswer.getValue().toString();

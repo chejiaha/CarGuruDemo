@@ -9,7 +9,7 @@ firebase_admin.initialize_app(cred,{"databaseURL":"https://car-guru-demo-default
 
 #get parent branches references 
 questionRef = db.reference("Questions").get()
-vehicleRef = db.reference("Vehicle").get()
+vehicleRef = db.reference("TestBranch").get()
 
 #initialize
 commuterCount = 0
@@ -136,9 +136,8 @@ for makeKey, make in vehicleRef.items():
                         elif (val == "All"):
                             allList.add("%s %s %s %s" %(makeKey, modelKey, trimKey, yearKey))
                         else:
-                            if(comparedValue == val or comparedValue == "Both"):
+                            if(comparedValue == val):
                                 normalList.add("%s %s %s %s" %(makeKey, modelKey, trimKey, yearKey))
-
 
 list_of_sets = [smallerList, greaterList, smallerThanList, greaterThanList, allList, normalList, yearList]
 
@@ -146,6 +145,4 @@ list_of_sets = [smallerList, greaterList, smallerThanList, greaterThanList, allL
 # so will be excluded from list comp.
 non_empties = [x for x in list_of_sets if x]
 solution_set = set.intersection(*non_empties)                   
-#print(list(solution_set))
-for car in list(solution_set):
-    print(car)
+print(list(solution_set))

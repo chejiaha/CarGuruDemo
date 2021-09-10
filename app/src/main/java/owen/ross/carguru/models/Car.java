@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Car implements Serializable {
 
-
     // do we need all of these variables?
     // should we use a dictionary like Kevin suggested?
     private String Make;
