@@ -248,7 +248,7 @@ public class QuestionnaireFragment extends Fragment {
                         switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }else{
                         // If its on the second round of questions, use the other parser
-                        AnswerParser.CategoryAnswerParser(queryDB, previousCategories, questionCategory);
+                        AnswerParser.CategoryAnswerParser(queryDB, questionCategory);
                     }
                 }
             }

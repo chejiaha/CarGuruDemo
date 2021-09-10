@@ -1,6 +1,7 @@
 package owen.ross.carguru.models;
 
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +13,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 public class Database implements FirebaseCallback {
 
@@ -206,11 +210,10 @@ public class Database implements FirebaseCallback {
         String carModel = car.getModel() ;
         String carTrim = car.getTrim();
         String carYear = car.getYear() + "";
-        DatabaseReference tempDBReference = vehicleReference.child(carMake).child(carModel).child(carTrim).child(carYear);
         //Debug
         //Maybe we will have to do a listener for each key we are taking from the database
 
-        listener = tempDBReference.addValueEventListener(new ValueEventListener() {
+        listener = vehicleReference.child(carMake).child(carModel).child(carTrim).child(carYear).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 /*
@@ -336,6 +339,329 @@ public class Database implements FirebaseCallback {
             }
         }); //End of Listener
     return car;
+    }
+
+    /*
+     *   This method is used to get the vehicle information of all vehicles based on the category
+     *   chosen by the user.
+     *   The Information is stored into the a Car object and then inside an ArrayList of cars.
+     *   as the category that was selected in the previous screen. This will be used in the
+     *   onCreate method to look through the information and populate the Spinners(ComboBoxes)
+     *
+     *   Will Return:
+     *      ArrayList<Carl> cars () (**all fields of car should have values**) : All cars in a specified category.
+     */
+
+    public static ArrayList<Car> QueryListResults(Hashtable<String,String> questionAnswers, String questionCategory){
+        ArrayList<Car> suggestedVehicles = new ArrayList<>();
+        // Getting keySets of Hashtable andstoring it into Set (only one item of the same type allowed.
+        Set<String> setOfKeys = questionAnswers.keySet();
+
+        listener = vehicleReference.child(questionCategory).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String make = "";
+                String model = "";
+                String trim = "";
+                String year = "";
+                String databaseCategory = "";
+                //ArrayList<Car> carModels = new ArrayList<>();
+                Car car = new Car();
+
+                //Go through each make -> model -> trim -> year -> and Description of each vehicle to create a list of all vehicles in a specific category.
+                for (DataSnapshot carMakes : snapshot.getChildren()) {
+                    //setting the make so we can iterate through them
+                    make = carMakes.getKey();
+                    //Get the makes list Once they get this list then populate the others
+                    //for each make in the Given Category (Category is passed)
+                    for (DataSnapshot carModels : snapshot.child(make).getChildren()) {
+                        //setting the model so we can iterate through them
+                        model = carModels.getKey();
+                        for (DataSnapshot carTrims : snapshot.child(make).child(model).getChildren()) {
+                            //setting the trim so we can iterate through each year and get the models
+                            trim = carTrims.getKey();
+                            car.setTrim(trim);
+                            for (DataSnapshot carYears : snapshot.child(make).child(model).child(trim).getChildren()) {
+                                //Check if the car is a match to the query we are looking for
+                                //setting the year so we can get the data of its children
+                                year = carYears.getKey();
+                                // adding the car values to the car object
+                                car = new Car();
+                                car.setMake(make);
+                                car.setModel(model);
+                                car.setTrim(trim);
+                                car.setYear(Integer.parseInt(year));
+
+                                //Going through each of the descriptions of the vehicle, and then adding them to the object.
+                                for (DataSnapshot carDesc : snapshot.child(make).child(model).child(trim).child(year).getChildren()) {
+                                    //TODO IS it more efficient to Pull all vehicles and then go through each field? or should we keep it and go through each item once it comes out of the db?
+                                    //The Key of each description (Category,CommonProblems,Description...)
+                                    String descName = carDesc.getKey();
+                                    //Temporary varible to convert the data from a string, to an int.
+                                    int convertToInt = 0;
+                                    //Creating the list to contain the Recalls and Common Problems
+                                    String[] descArray;
+                                    car.setYear(Integer.parseInt(year));
+
+                                    //Check what it is and put it into the correct value
+                                    switch (descName) {
+                                        case "Category":
+                                            //convert to list and store in Category. (for futureproofing)
+                                            car.setCategory(carDesc.getValue().toString());
+                                            break;
+                                        case "Convertable":
+                                            //Create a Car Model for the descriptions
+                                            //car.isConvertible(Boolean(ssCarDesc.getValue().toString()));
+                                            break;
+                                        case "CommonProblems":
+                                            //Debug
+                                            //Convert the string into a list
+                                            descArray = carDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                                            Log.d("getSpecificCarInfo", "\n Common Problems == " + descArray);
+                                            car.setCommonProblems(descArray);
+                                            break;
+                                        //Todo Add Ratings to all of the cars we have.
+                                        case "Ratings":
+                                            //Convert the string into a list
+                                            descArray = carDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                                            //Debug
+                                            Log.d("getSpecificCarInfo", "\n Ratings == " + descArray);
+                                            car.setRatings(descArray);
+                                            break;
+                                        case "Description":
+                                            //Create a Car Model for the descriptions
+                                            car.setDescription(carDesc.getValue().toString());
+                                            break;
+                                        case "Doors":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setDoors(convertToInt);
+                                            break;
+                                        case "Engine":
+                                            //Create a Car Model for the descriptions
+                                            car.setEngine(carDesc.getValue().toString());
+                                            break;
+                                        case "Horsepower":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setHorsePower(convertToInt);
+                                            break;
+                                        case "MPG":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setMPG(convertToInt);
+                                            break;
+                                        case "Price":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setPrice(convertToInt);
+                                            break;
+                                        case "Recall":
+                                            //Convert the string into a list
+                                            descArray = carDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                                            car.setRecalls(descArray);
+                                            break;
+                                        case "Seats":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setSeats(convertToInt);
+                                            break;
+                                        case "Drivetrain":
+                                            //Convert it to a string then parse for the int
+                                            car.setDrivetrain(carDesc.getValue().toString());
+                                            break;
+                                        case "Cylinders":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setCylinders(convertToInt);
+                                            break;
+                                        case "Torque ft-lb":
+                                            //Convert it to a string then parse for the int
+                                            convertToInt = Integer.parseInt(carDesc.getValue().toString());
+                                            car.setTorque(convertToInt);
+                                            break;
+                                        default:
+                                            //Log something if there was an item not found in the description.
+                                            Log.d("getSpecificCarInfo", "NoModelFound" + carDesc.getValue().toString());
+
+                                    }//End Of Switch
+                                } // End Of Data Snapshot
+                            }
+                        }
+                    }
+                }//End of Makes For loop
+            }//End of OnData changed
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Log something if there was an item not found in the description.
+                Log.d("QueryListResults", "Problem getting information from the DB");
+            }
+        });//End of DB reference
+
+
+        return suggestedVehicles;
+    }
+
+    /*
+     * This method is used to get and return the string that we will search our database with.
+     * To do this, it will check what the vehicle category that the user was placed into
+     *
+     *   questionCategory <String>: check what the vehicle category that the user was placed into
+     *   Hashtable<String,String> questionAnswers: Will hold the { DBField, questionAnswer }
+     *      DBField is what we are targeting for when the user answers the question.
+     *              So if the question is do you care about gas? it DBField will be MPG
+     *      questionAnswer being the answer that the user chose to the question
+     *
+     * returns A List of Vehicles that the program finds.
+     */
+    public static ArrayList<Car> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+        ArrayList<Car> allCarsInCategory = new ArrayList<>();
+        ArrayList<Car> listofCars = new ArrayList<>();
+
+        // Getting keySets of Hashtable and
+        // storing it into Set (only one item of the same type allowed.
+        Set<String> setOfKeys = questionAnswers.keySet();
+
+        for (Car car : allCarsInCategory ){
+            for (String DBField :  setOfKeys) {
+                //Switch Going through all possibilities of answers given and make all fields true if they are a valid vehicle.
+                //debug
+                Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  questionAnswers.get(DBField));
+                //User Answer value (Example DBField: "questionAnswer" == EV: "Yes")
+                String questionAnswer = questionAnswers.get(questionAnswers.get(DBField));
+
+                //Commuter DBFields
+                boolean MPG = false;
+                boolean Year = false;
+                boolean Convertable = false;
+                boolean EV = false;
+
+                //Sports DBFields
+                boolean Weight = false;
+                boolean GroundClearance = false;
+//          boolean Year = false;
+//          boolean Convertable = false;
+                boolean Cylinders = false;
+
+                //If the item is a commuter
+                if (questionCategory.equals("CommuterQuestion")){
+                    //Go through every car in the database and check if it is a valid vehicle
+                    //Creating all of the variables for each answer.
+                    switch(DBField) {
+                        case "EV" :
+                            if (questionAnswer.equals("Yes")){
+                                //If they said yes to an electric car.
+                                if(car.getEngine().equals("EV")){
+                                    EV = true;
+                                }
+                                //if the car engine is not EV keep it false.
+                            }else{
+                                //If the answer to if they want an electric car is no
+                                if(!car.getEngine().equals("EV")){
+                                    EV = true;
+                                }
+                            }
+                            break;
+                        case "MPG":
+                            // Check if they care about fuel efficiency
+                            if (questionAnswer.equals(">35")){
+                                //Check if its above 35 MPG
+                                if (car.getMPG() > 35){
+                                    MPG = true;
+                                }
+
+                            }else if ((questionAnswer.equals("<25"))){
+                                if (car.getMPG() < 25){
+                                    MPG = true;
+                                }
+
+                            }else if((questionAnswer.equals("25-35"))){
+                                if (car.getMPG() > 25 && car.getMPG() <35){
+                                    MPG = true;
+                                }
+                            }else{
+                                Log.d("CategoryAnswerParser", "\n There was no field for DBField: " + DBField + " With the answer : " + questionAnswer);
+                            }
+                            break;
+                        case "Year":
+                            // Check if its in the correct range of years requested
+                            if (questionAnswer.equals("<2015")){
+                                if (car.getYear() < 2015){
+                                    Year = true;
+                                }
+                            }else if(questionAnswer.equals("All")){
+                                //If they decided they want an automatic
+                                Year = true;
+                            }
+                            break;
+                        case "Convertible":
+                            //If they want a convertable
+                            if (questionAnswer.equals("Yes")){
+                                if(car.isConvertible() == true) {
+                                    Convertable = true;
+                                }
+                            }else{
+                                // They do not want an convertable
+                                if (questionAnswer.equals("No")){
+                                    if(car.isConvertible() == false) {
+                                        Convertable = true;
+                                    }
+                                }
+                            }
+                            break;
+                        default:
+                            // Default will Log a message
+                            Log.d("CommuterCategoryParser" , "This Field was not found in the list: Commuter" + DBField);
+                            throw new StringIndexOutOfBoundsException("This Field was not found in the list: Commuter" + DBField);
+                    }//end of switch
+
+                    // If the vehicle is a valid choice for the users wants, add it to the list. (For Commuter Vehicles)
+                    if (EV == true && MPG == true && Year == true && Convertable == true){
+                        // Add the vehicle to the Show Vehicle List
+                        listofCars.add(car);
+                    }
+
+                }else if (questionCategory.equals("SportQuestion")){
+                    switch(DBField) {
+                        case "Weight":
+                            // Figure out how to siphon this into results
+                            break;
+                        case "GroundClearance":
+                            // Figure out how to siphon this into results
+                            break;
+                        case "Year":
+                            // Figure out how to siphon this into results
+                            break;
+                        case "Convertible":
+                            // Figure out how to siphon this into results
+                            break;
+                        case "Cylinders":
+                            // Figure out how to siphon this into results
+                            break;
+                        default:
+                            // Default will Log a message
+                            Log.d("CommuterCategoryParser", "This Field was not found in the list Sports: " + DBField);
+                            throw new StringIndexOutOfBoundsException("This Field was not found in the list Sports: " + DBField);
+                    }
+                }else if (questionCategory.equals("LuxuryQuestion")){
+
+                }else if (questionCategory.equals("UtilityQuestion")){
+
+                }else if (questionCategory.equals("BeaterQuestion")){
+
+                }else if (questionCategory.equals("FamilyQuestion")){
+
+                }else{
+                    continue;
+                }
+            }
+        }
+
+
+
+
+        return listofCars;
     }
 
 

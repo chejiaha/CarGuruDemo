@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 /*
  * This class is used to get the answers from the users and provide an output based on the category
@@ -89,28 +90,59 @@ public class AnswerParser {
      *      DBField is what we are targeting for when the user answers the question.
      *              So if the question is do you care about gas? it DBField will be MPG
      *      questionAnswer being the answer that the user chose to the question
-     *   ArrayList<String> hashtableKeys: This is used to get the size of items in the hashtable
      *
      * returns A List of Vehicles that the program finds.
      */
-    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, ArrayList<String> hashtableKeys, String questionCategory){
-        ArrayList<String> ListofCars = new ArrayList<>();
-        for (int i = 0; i <= hashtableKeys.size(); i ++) {
+    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+        ArrayList<String> listofCars = new ArrayList<>();
+
+        // Getting keySets of Hashtable and
+        // storing it into Set (only one item of the same type allowed.
+        Set<String> setOfKeys = questionAnswers.keySet();
+
+
+        for (String DBField :  setOfKeys) {
             //Switch Going through all possibilities of answers given
             //debug
-            Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  questionAnswers.get(hashtableKeys.get(i)));
-            //User Answer
-            String questionAnswer = questionAnswers.get(hashtableKeys.get(i));
-            String DBField = hashtableKeys.get(i);
+            Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  questionAnswers.get(DBField));
+            //User Answer value (Example DBField: "questionAnswer" == EV: "Yes")
+            String questionAnswer = questionAnswers.get(questionAnswers.get(DBField));
+
+            //Commuter DBFields
+            //If the MPG is lt25
+            boolean MPGlt25 = false;
+            boolean MPGgt35 = false;
+            //
+            boolean MPGmid = false;
+            boolean Year = false;
+            boolean Convertable = false;
+            boolean EV = false;
+
+            //Sports DBFields
+            boolean Weight = false;
+            boolean GroundClearance = false;
+//          boolean Year = false;
+//          boolean Convertable = false;
+            boolean Cylinders = false;
 
             //If the item is a commuter
             if (questionCategory.equals("CommuterQuestion")){
+                //Go through every car in the database and check if it checks all of the boxes.
+                //Creating all of the variables for each answer.
+
+
                 switch(DBField) {
                     case "EV" :
-                        // Figure out how to siphon this into results
+                        if (questionAnswer.equals("Yes")){
+                            EV = true;
+                        }
                         break;
                     case "MPG":
-                        // Figure out how to siphon this into results
+                        // Check if they care about fuel efficiency
+                        if (questionAnswer.equals(">35")){
+
+                        }
+
                         break;
                     case "Year":
                         // Figure out how to siphon this into results
@@ -157,7 +189,7 @@ public class AnswerParser {
                     continue;
             }
         }
-        return ListofCars;
+        return listofCars;
     }
 
 }
