@@ -26,9 +26,11 @@ driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semes
 # Go through each make and go through the list one by one until you get all vehicle models, makes, and trims information
 
 # List of all makes in selector.
-# make_selector = driver.find_element_by_class_name("auto-finder__select--make")
-# make_options = make_selector.find_elements_by_tag_name("option")
+make_selector = driver.find_element_by_class_name("auto-finder__select--make")
+make_options = make_selector.find_elements_by_tag_name("option")
 
+for make in make_options:
+    make.text
 
 # List of all models
 

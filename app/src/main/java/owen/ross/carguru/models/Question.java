@@ -15,6 +15,9 @@ public class Question {
     // will this store the possible answers for the question or the answer the user chose?
     private ArrayList<Answer> answers;
 
+    // This will be the db field of a question (prevously known as category)
+    private String dbField;
+
 
     public Question() {
     }
@@ -52,4 +55,11 @@ public class Question {
     }
 
 
+    public String getDbField() {
+        return dbField;
+    }
+
+    public void setDbField(String dbField) {
+        this.dbField = dbField;
+    }
 }

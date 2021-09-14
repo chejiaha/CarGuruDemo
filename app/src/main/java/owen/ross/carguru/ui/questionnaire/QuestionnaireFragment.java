@@ -328,8 +328,10 @@ public class QuestionnaireFragment extends Fragment {
             // Get the Users Answer
             String commuterAnswer = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
             //TODO FIND OUT HOW TO GET DBFIELD!!!
+            //The first one is empty so skip it
+            listIt.next();
             //Get the Category/Type of car that is being decided by the question
-            String DBField = questions.get(listIt.nextIndex()).getCategory();
+            String DBField = questions.get(listIt.nextIndex()).getDbField();
             //Adding the Name so we can delete it if the user goes back a question
             //DEBUG TODO TAKE THIS OUT ONCE YOU FIND DBField
             if (DBField == null){

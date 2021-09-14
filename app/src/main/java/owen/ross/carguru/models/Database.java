@@ -47,6 +47,7 @@ public class Database implements FirebaseCallback {
             String description = "";
             String value = "";
             String answer = "";
+            String dbField = "";
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -61,9 +62,10 @@ public class Database implements FirebaseCallback {
                             question.setQuestion(description);
                         } else if (questionData.equals("DBField")) {
                             // storing the question category in this variable
-                            category = questionInfo.getValue().toString();
+                            dbField = questionInfo.getValue().toString();
                             // setting the question category to the question object
-                            question.setQuestion(category);
+                            question.setDbField(dbField);
+                            //Todo Get the DB field from the question and pass it
                         } else if (questionData.equals("Answers")) {
                             for (DataSnapshot QuestionAnswers : snapshot.child(questionCategory).child(categoryString).child(questionData).getChildren()) {
                                 String answerNumber = QuestionAnswers.getKey();
@@ -352,10 +354,8 @@ public class Database implements FirebaseCallback {
      *      ArrayList<Carl> cars () (**all fields of car should have values**) : All cars in a specified category.
      */
 
-    public static ArrayList<Car> QueryListResults(Hashtable<String,String> questionAnswers, String questionCategory){
-        ArrayList<Car> suggestedVehicles = new ArrayList<>();
-        // Getting keySets of Hashtable andstoring it into Set (only one item of the same type allowed.
-        Set<String> setOfKeys = questionAnswers.keySet();
+    public static ArrayList<Car> QueryListResults(String questionCategory){
+        ArrayList<Car> categoryVehicles = new ArrayList<>();
 
         listener = vehicleReference.child(questionCategory).addValueEventListener(new ValueEventListener() {
             @Override
@@ -500,7 +500,7 @@ public class Database implements FirebaseCallback {
         });//End of DB reference
 
 
-        return suggestedVehicles;
+        return categoryVehicles;
     }
 
     /*
