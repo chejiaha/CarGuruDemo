@@ -22,6 +22,20 @@ trim = ""
 #driver.get("https://cars.usnews.com/cars-trucks/ford/focus/2014/specs")
 driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semester5/PythonScripts/WebScrappers/test2.html")
 
+
+# Go through each make and go through the list one by one until you get all vehicle models, makes, and trims information
+
+# List of all makes in selector.
+# make_selector = driver.find_element_by_class_name("auto-finder__select--make")
+# make_options = make_selector.find_elements_by_tag_name("option")
+
+
+# List of all models
+
+# List of all years
+
+
+
 # 1. Set the make and model variables they will not change until next iteration
 #   We are making    {"Make": {Model: {Trim: {Year: { Category: xyz, Doors:2 ...}}}}}
 web_title = driver.find_element_by_class_name("hero-title__header").text
@@ -165,7 +179,8 @@ def test ():
                 #web_trimName = element.text()
                 #html_link = element.get_attribute('href')
             # print(" THE href is %s and the trim is % " % (html_link, web_trimName))
-            
+
+
 
 
 
