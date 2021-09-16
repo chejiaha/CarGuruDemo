@@ -519,8 +519,7 @@ public class Database implements FirebaseCallback {
         ArrayList<Car> allCarsInCategory = new ArrayList<>();
         ArrayList<Car> listofCars = new ArrayList<>();
 
-        // Getting keySets of Hashtable and
-        // storing it into Set (only one item of the same type allowed.
+        // Getting keySets of Hashtable and storing it into Set (only one item of the same type allowed.
         Set<String> setOfKeys = questionAnswers.keySet();
 
         for (Car car : allCarsInCategory ){
@@ -540,8 +539,6 @@ public class Database implements FirebaseCallback {
                 //Sports DBFields
                 boolean Weight = false;
                 boolean GroundClearance = false;
-//          boolean Year = false;
-//          boolean Convertable = false;
                 boolean Cylinders = false;
 
                 //If the item is a commuter
