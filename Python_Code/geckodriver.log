@@ -1,0 +1,23 @@
+1631800652245	geckodriver	INFO	Listening on 127.0.0.1:63457
+1631800655297	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofile1B3cFb"
+1631800655608	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofile1B3cFb\\search.json.mozlz4", (void 0)))
+1631800658022	Marionette	INFO	Listening on port 63465
+1631800658480	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://connect.facebook.net/en_US/fbevents.js, line 20: ReferenceError: fbq is not defined
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0laMBStFIjGDX-Lbokpit1PiwVNzXcztY6qwAF7AamA.js line 1 > eval line 6990 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0laMBStFIjGDX-Lbokpit1PiwVNzXcztY6qwAF7AamA.js line 1 > eval line 4633 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: uncaught exception: 7
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 2: TypeError: c.options[c.selectedIndex] is undefined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: uncaught exception: 7
+1631812691321	Marionette	INFO	Stopped listening on port 63465
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

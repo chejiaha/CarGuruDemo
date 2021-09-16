@@ -25,17 +25,36 @@ driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semes
 
 # Go through each make and go through the list one by one until you get all vehicle models, makes, and trims information
 
-# List of all makes in selector.
-make_selector = driver.find_element_by_class_name("auto-finder__select--make")
-make_options = make_selector.find_elements_by_tag_name("option")
+# List of all makes in selector and get the names of the vehicles.
+make_selector = driver.find_element_by_name("auto_make")
 
-for make in make_options:
-    make.text
+
+## TEST
+# make_options = make_selector.find_elements_by_tag_name("option")
+# for i in make_options.size():
+#     # Select Select combobox containing Makes
+#     make_selector.select_by_index(i)
+#     #sleep for 3 seconds while the other combobox populates
+#     time.sleep(3)
+#     #Select combobox containing the models
+#     model_selector = driver.find_element_by_name("auto_model")
+#     for i in make_options.size():
+#         # Select Select combobox containing Makes
+#         make_selector.select_by_index(i)
+#         #sleep for 3 seconds while the other combobox populates
+#         time.sleep(3)
+        #Select combobox containing the models
+    
+# We can also get all of the makes models and years from the website and then change the url and then run the script. This might be better.
+
+
+#Wait for the call to get the makes of the selected index.
+
 
 # List of all models
 
-# List of all years
 
+# List of all years
 
 
 # 1. Set the make and model variables they will not change until next iteration
@@ -137,7 +156,7 @@ def test ():
             •	Torque
             •	(Car type [sedan, converable…])
             •	TODO (Description) ** Need to go to review page to get this 
-            •	TODO (Drivetrain) 
+            •	(Drivetrain) 
             •	(Category) ** Added with 'Category Algorithm'
             •	(Common Problems)** Another Parser
             •	(Recalls)** Another parser
@@ -181,12 +200,7 @@ def test ():
                 #web_trimName = element.text()
                 #html_link = element.get_attribute('href')
             # print(" THE href is %s and the trim is % " % (html_link, web_trimName))
-
-
-
-
-
-
+    
     # web_title = driver.find_element_by_class_name("hero-title__header--overview")
     # web_cost = driver.find_element_by_class_name("bpp-widget__avg-price-paid nowrap")
     # web_horsepower = driver.find_element_by_id("hp")

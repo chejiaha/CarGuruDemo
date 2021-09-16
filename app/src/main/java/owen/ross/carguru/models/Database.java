@@ -596,7 +596,7 @@ public class Database implements FirebaseCallback {
                             }
                             break;
                         case "Convertible":
-                            //If they want a convertable
+                            //TODO This is not correct. We do not have doors so we cannot check if its a convertable.
                             if (questionAnswer.equals("Yes")){
                                 if(car.isConvertible() == true) {
                                     Convertable = true;
@@ -625,24 +625,70 @@ public class Database implements FirebaseCallback {
                 }else if (questionCategory.equals("SportQuestion")){
                     switch(DBField) {
                         case "Weight":
-                            // Figure out how to siphon this into results
+                            if (questionAnswer.equals("<3000")){
+                                //They want a lighter car
+                                //Todo Get weight from the cars in the database...
+                                if (car.getWeight() < 3000){
+                                    //They want a heavier car
+                                    Weight = true;
+                                }
+                            }else if ((questionAnswer.equals(">=3000"))){
+                                if (car.getWeight() <= 3000){
+                                    Weight = true;
+                                }
+                            }
                             break;
                         case "GroundClearance":
                             // Figure out how to siphon this into results
                             break;
                         case "Year":
-                            // Figure out how to siphon this into results
+                            // Check if its in the correct range of years requested
+                            if (questionAnswer.equals("<2015")){
+                                if (car.getYear() < 2015){
+                                    Year = true;
+                                }
+                            }else if(questionAnswer.equals("All")){
+                                //If they decided they want an automatic
+                                Year = true;
+                            }
                             break;
                         case "Convertible":
-                            // Figure out how to siphon this into results
+                            if (questionAnswer.equals("Yes")){
+                                if(car.isConvertible() == true) {
+                                    Convertable = true;
+                                }
+                            }else{
+                                // They do not want an convertable
+                                if (questionAnswer.equals("No")){
+                                    if(car.isConvertible() == false) {
+                                        Convertable = true;
+                                    }
+                                }
+                            }
                             break;
                         case "Cylinders":
-                            // Figure out how to siphon this into results
+                            if (questionAnswer.equals("<=6")){
+                                //They want a lighter car
+                                //Todo Get weight from the cars in the database...
+                                if (car.getCylinders() <= 6){
+                                    //They want a heavier car
+                                    Cylinders = true;
+                                }
+                            }else if ((questionAnswer.equals("8-12"))){
+                                if (car.getCylinders() < 12 && car.getCylinders() > 8 ){
+                                    Cylinders = true;
+                                }
+                            }
                             break;
                         default:
                             // Default will Log a message
                             Log.d("CommuterCategoryParser", "This Field was not found in the list Sports: " + DBField);
                             throw new StringIndexOutOfBoundsException("This Field was not found in the list Sports: " + DBField);
+                    }
+                    // If the vehicle is a valid choice for the users wants, add it to the list. (For Commuter Vehicles)
+                    if (Cylinders == true && Weight == true && Year == true ){
+                        // Add the vehicle to the Show Vehicle List
+                        listofCars.add(car);
                     }
                 }else if (questionCategory.equals("LuxuryQuestion")){
 
@@ -657,10 +703,6 @@ public class Database implements FirebaseCallback {
                 }
             }
         }
-
-
-
-
         return listofCars;
     }
 

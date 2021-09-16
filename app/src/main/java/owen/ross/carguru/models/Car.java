@@ -25,6 +25,7 @@ public class Car implements Serializable {
     private String Drivetrain;
     private int Torque;
     private boolean Convertible;
+    private int Weight;
 
     public Car() {
     }
@@ -179,5 +180,13 @@ public class Car implements Serializable {
 
     public void setConvertible(boolean convertible) {
         Convertible = convertible;
+    }
+
+    public int getWeight() {
+        return Weight;
+    }
+
+    public void setWeight(int weight) {
+        Weight = weight;
     }
 }
