@@ -26,10 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import owen.ross.carguru.R;
 import owen.ross.carguru.models.Car;
 import owen.ross.carguru.models.Database;
+import owen.ross.carguru.models.FirebaseCallback;
+import owen.ross.carguru.models.VehicleDatabase;
+import owen.ross.carguru.models.VehicleFirebaseCallback;
 
 
 public class FindSpecificModelFragment extends Fragment {
@@ -96,7 +100,16 @@ public class FindSpecificModelFragment extends Fragment {
         searchVehicle = view.findViewById(R.id.btnFindSpecificModelSearch);
 
         //Getting the data from the database
-        vehicleList = Database.getMakeModelYear();
+        vehicleList = VehicleDatabase.getMakeModelYear(new VehicleFirebaseCallback() {
+            @Override
+            public void onCallback(List<Car> list) {
+                // checking if the questions linkedlist is already populated with questions
+                if (vehicleList.isEmpty()) {
+                    // the questions returned from the database will be added to the list if the list is empty
+                    vehicleList.addAll(list);
+                }
+            }
+        });
         //Creating the spinner adapters and setting the lists that are used.
         makeSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, makeList);
         trimSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
@@ -316,7 +329,7 @@ public class FindSpecificModelFragment extends Fragment {
                     car.setTrim(userTrim);
                     car.setYear(Integer.parseInt(userYear));
                     //TODO Reference the database
-                    car = Database.getSpecificCarInfo(car);
+                    car = VehicleDatabase.getSpecificCarInfo(car);
 
                     //NextSend the model to the next page
                     //Adding the arguments into the class

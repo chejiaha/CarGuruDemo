@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CarGuru.iml" filepath="$PROJECT_DIR$/.idea/CarGuru.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CarGuru.iml" filepath="$PROJECT_DIR$/.idea/modules/CarGuru.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CarGuru.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CarGuru.app.iml" />
     </modules>
   </component>

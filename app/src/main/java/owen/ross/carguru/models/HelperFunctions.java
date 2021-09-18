@@ -158,134 +158,93 @@ public class HelperFunctions {
      *
      * This function will return a Car Object
      */
-//    public static Car getSpecificCarInfo(Car car) {
-//        //DatabaseReference getValueFromDb =  FirebaseDatabase.getInstance().getReference().child("Vehicle");
-//        listener = vehicleReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                /*
-//                 *   This method is used to get the vehicle information from the users selection.
-//
-//                 *   Will Return:
-//                 *      car OBJECT!
-//                 *      Description         <String>
-//                 *      Recalls             [List]
-//                 *      Category            <String>
-//                 *      Drivetrain          <String>
-//                 *      Cylinders           <int>
-//                 *      CommonProblems      [List]
-//                 *      Doors               <int>
-//                 *      Engine              <String>
-//                 *      Horsepower          <int>
-//                 *      MPG                 <int>
-//                 *      Price               <int>
-//                 *      Seats               <int>
-//                 */
-//                String carMake = car.getMake();
-//                String carModel = car.getModel() ;
-//                String carTrim = car.getTrim();
-//                String carYear = car.getYear() + "";
-//
-//                //Create a Car Model for the descriptions
-//                for (DataSnapshot ssCarDesc : dataSnapshot.child(carMake).child(carModel).child(carTrim).child(carYear).getChildren()) {
-//                    //The Key of each description (Category,CommonProblems,Description...)
-//                    String descName = ssCarDesc.getKey();
-//                    //Temporary varible to convert the data from a string, to an int.
-//                    int convertToInt = 0;
-//                    //Creating the list to contain the Recalls and Common Problems
-//                    String[] descArray;
-//
-//
-//                    car.setYear(Integer.parseInt(carYear));
-//                    Log.d("getSpecificCarInfo", "Data Snapshot " + carYear);
-//
-//                    //Check what it is and put it into the correct value
-//                    switch (descName) {
-//                        case "Category":
-//                            //convert to list and store in Category. (for futureproofing)
-//
-//                            car.setCategory(ssCarDesc.getValue().toString());
-//                            break;
-//                        case "CommonProblems":
-//                            //Debug
-//                            Log.d("FindSpecificModel", "The Car information for Common Problems is" + ssCarDesc.getValue().toString());
-//                            //Convert the string into a list
-//                            descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-//                            car.setCommonProblems(descArray);
-//                            break;
-//                        case "Ratings":
-//                            //Debug
-//                            //Convert the string into a list
-//                            descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-//                            car.setRatings(descArray);
-//                            break;
-//                        case "Description":
-//                            //Create a Car Model for the descriptions
-//                            car.setDescription(ssCarDesc.getValue().toString());
-//                            break;
-//                        case "Doors":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setDoors(convertToInt);
-//                            break;
-//                        case "Engine":
-//                            //Create a Car Model for the descriptions
-//                            car.setEngine(ssCarDesc.getValue().toString());
-//                            ;
-//                            break;
-//                        case "Horsepower":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setHorsePower(convertToInt);
-//                            break;
-//                        case "MPG":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setMPG(convertToInt);
-//                            break;
-//                        case "Price":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setPrice(convertToInt);
-//                            break;
-//                        case "Recalls":
-//                            //Convert the string into a list
-//                            descArray = ssCarDesc.getValue().toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-//                            car.setRecalls(descArray);
-//                            break;
-//                        case "Seats":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setSeats(convertToInt);
-//                            break;
-//                        case "Drivetrain":
-//                            //Convert it to a string then parse for the int
-//                            car.setDrivetrain(ssCarDesc.getValue().toString());
-//                            break;
-//                        case "Cylinders":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setCylinders(convertToInt);
-//                            break;
-//                        case "Torque ft-lb":
-//                            //Convert it to a string then parse for the int
-//                            convertToInt = Integer.parseInt(ssCarDesc.getValue().toString());
-//                            car.setTorque(convertToInt);
-//                            break;
-//                        default:
-//                            //Debug
-//                            Log.d("NoModelFound", ssCarDesc.getValue().toString());
-//
-//                    }//End Of Switch
-//                } // End Of Data Snapshot
-//            }// End of OnDataChanged
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        }); //End of Listener
-//        return car;
-//    }
+public static Car getSpecs(String descName, String descValue, Car car){
+    //Creating the list to contain the Recalls and Common Problems
+    String[] descArray;
+    //Temporary varible to convert the data from a string, to an int.
+    int convertToInt = 0;
+    //Check what it is and put it into the correct value
+    switch (descName) {
+        case "Category":
+            //convert to list and store in Category. (for futureproofing)
+            car.setCategory(descValue);
+            break;
+        case "Convertable":
+            //Create a Car Model for the descriptions
+            //car.isConvertible(Boolean(ssCarDesc.getValue().toString()));
+            break;
+        case "CommonProblems":
+            //Convert the string into a list
+            descArray = descValue.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+            Log.d("getSpecificCarInfo", "\n Common Problems == " + descArray  );
+            car.setCommonProblems(descArray);
+            break;
+        //Todo Add Ratings to all of the cars we have.
+        case "Ratings":
+            //Convert the string into a list
+            descArray = descValue.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+            //Debug
+            Log.d("getSpecificCarInfo", "\n Ratings == " + descArray  );
+            car.setRatings(descArray);
+            break;
+        case "Description":
+            //Create a Car Model for the descriptions
+            car.setDescription(descValue);
+            break;
+        case "Doors":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setDoors(convertToInt);
+            break;
+        case "Engine":
+            //Create a Car Model for the descriptions
+            car.setEngine(descValue);
+            break;
+        case "Horsepower":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setHorsePower(convertToInt);
+            break;
+        case "MPG":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setMPG(convertToInt);
+            break;
+        case "Price":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setPrice(convertToInt);
+            break;
+        case "Recall":
+            //Convert the string into a list
+            descArray = descValue.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+            car.setRecalls(descArray);
+            break;
+        case "Seats":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setSeats(convertToInt);
+            break;
+        case "Drivetrain":
+            //Convert it to a string then parse for the int
+            car.setDrivetrain(descValue);
+            break;
+        case "Cylinders":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setCylinders(convertToInt);
+            break;
+        case "Torque ft-lb":
+            //Convert it to a string then parse for the int
+            convertToInt = Integer.parseInt(descValue);
+            car.setTorque(convertToInt);
+            break;
+        default:
+            //Log something if there was an item not found in the description.
+            Log.d("getSpecificCarInfo", "NoModelFound" + descValue);
+
+    }//End Of Switch
+    return car;
+}
 
 }

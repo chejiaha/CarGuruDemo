@@ -30,6 +30,7 @@ import owen.ross.carguru.models.AnswerParser;
 import owen.ross.carguru.models.Database;
 import owen.ross.carguru.models.FirebaseCallback;
 import owen.ross.carguru.models.Question;
+import owen.ross.carguru.models.VehicleDatabase;
 
 /*
  * This class is a major part of our Questionnaire Algorithm. It is this page which will pull the
@@ -248,7 +249,7 @@ public class QuestionnaireFragment extends Fragment {
                         switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }else{
                         // If its on the second round of questions, use the other parser
-                        AnswerParser.CategoryAnswerParser(queryDB, questionCategory);
+                        VehicleDatabase.CategoryAnswerParser(queryDB, questionCategory);
                     }
                 }
             }
