@@ -294,6 +294,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
         // Getting keySets of Hashtable and storing it into Set (only one item of the same type allowed.
         Set<String> setOfKeys = questionAnswers.keySet();
 
+        //all cars in array list is 0. they are not being passed.
         for (Car car : allCarsInCategory ){
             for (String DBField :  setOfKeys) {
                 //Switch Going through all possibilities of answers given and make all fields true if they are a valid vehicle.
