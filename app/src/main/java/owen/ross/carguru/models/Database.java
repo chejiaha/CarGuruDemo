@@ -52,17 +52,30 @@ public class Database implements FirebaseCallback {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot QuestionCategory : snapshot.child(questionCategory).getChildren()) {
+                    //The values are the question numbers (Mq1, Mq2....)
                     String categoryString = QuestionCategory.getKey();
                     for (DataSnapshot questionInfo : snapshot.child(questionCategory).child(categoryString).getChildren()) {
                         questionData = questionInfo.getKey();
                         if (questionData.equals("Description")) {
                             // storing the description of the question to this variable
                             description = questionInfo.getValue().toString();
+                            //debug
+                            if(dbField.equals("How much do you care about air pollution?")){
+                                Log.d("getQuestions", "Convertable Question is found " + description );
+                            }
+                            //debug
+                            if(dbField.equals("Do you want to feel the wind in your hair when you drive down the road/do you want to feel the sun?")){
+                                Log.d("getQuestions", "Convertable Question is found " + description );
+                            }
                             // setting the question description to the question object
                             question.setQuestion(description);
                         } else if (questionData.equals("DBField")) {
                             // storing the question category in this variable
                             dbField = questionInfo.getValue().toString();
+                            //debug
+                            if(dbField.equals("Convertible")){
+                                Log.d("getQuestions", "Convertable is found " + dbField );
+                            }
                             // setting the question category to the question object
                             question.setDbField(dbField);
                             //Todo Get the DB field from the question and pass it
@@ -85,13 +98,15 @@ public class Database implements FirebaseCallback {
                             // setting the arraylist of answers to the question object
                             question.setAnswers(answers);
                             // adding the question object to the arraylist of questions
-                            questions.add(question);
+                            //questions.add(question);
                             // setting the value of the question object to a new question object
-                            question = new Question();
+                            //question = new Question();
                             // setting the value of the answers arraylist to a new arraylist
                             answers = new ArrayList<>();
                         }
                     }
+                    questions.add(question);
+                    question = new Question();
                 }
                 // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
                 firebaseCallback.onCallback(questions);

@@ -45,7 +45,7 @@ public class AnswerParser {
         Log.d("getHighestCategory",  carCategories.toString());
 
         //DEBUG
-        String[] allCategories = {"Sports", "Commuter", "Luxury", "Beater", "Family", "Utility" };
+        String[] allCategories = {"Sport", "Commuter", "Luxury", "Beater", "Family", "Utility" };
         //String[] allCategories = {"Sports", "Commuter"};
         int highestValue =0;
         //Returns the category that was chosen

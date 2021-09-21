@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,8 @@ public class QuestionnaireFragment extends Fragment {
     // setting the global variables that will be used throughout the class
     View view;
     RadioGroup rdoGroup;
+    //String for the questions
+    TextView tvQuestion;
     LinkedList<Question> questions = new LinkedList<>();
     //ListIterator listIt = questions.listIterator();
     ListIterator listIt;
@@ -71,6 +74,7 @@ public class QuestionnaireFragment extends Fragment {
     int progress;
     //Passing the Highest Category to the next page
     String highestCategory = "";
+
 
 
     //TODO (Once Approved) MOVE TO TOP
@@ -94,6 +98,8 @@ public class QuestionnaireFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_questionnaire, container, false);
         // storing the RadioGroup on teh questionnaire fragment in this variable
         rdoGroup = view.findViewById(R.id.rgQuestions);
+        // Setting the Question Text
+        tvQuestion = view.findViewById(R.id.tvQuestion);
         // storing the next and previous buttons in these variables
         Button nextBtn = view.findViewById(R.id.BtnNextPage);
         Button previousBtn = view.findViewById(R.id.BtnPreviousPage);
@@ -174,6 +180,8 @@ public class QuestionnaireFragment extends Fragment {
      */
     // will display the question, and the answers of the question that is passed into the method
     public void displayQuestion(Question question) {
+        //Switch the question text
+        tvQuestion.setText(question.getQuestion());
 
         // removes all of the radio buttons that were previously added to the radio group
         rdoGroup.removeAllViews();
@@ -218,7 +226,7 @@ public class QuestionnaireFragment extends Fragment {
                // If there is a checked value then check if there is a next question
                 //Add the Category or Specific Categories answer to the answer list.
                 addTally(questions.get(listIt.nextIndex()).getAnswers());
-                //This try Catch is not needed anymore... so we can remove it.
+
                 listIt.next();
                 // checking to see if the list has a next question
                 if (listIt.hasNext()) {
@@ -328,15 +336,20 @@ public class QuestionnaireFragment extends Fragment {
             //If the user is already put into a category, add the tally to a different hashTable.
             // Get the Users Answer
             String commuterAnswer = answers.get(rdoGroup.getCheckedRadioButtonId()).getValue();
-            //TODO FIND OUT HOW TO GET DBFIELD!!!
+            //testing if the first question in the list index
             //The first one is empty so skip it
-            listIt.next();
+            //listIt.next();
+            Log.d("addTally", "list nextIndex() = " + listIt.nextIndex() + 1);
+            Log.d("addTally", "Question = " + questions.get(listIt.nextIndex()).getQuestion());
+            Log.d("addTally", "Answers = " + questions.get(listIt.nextIndex()).getAnswers().toString() );
             //Get the Category/Type of car that is being decided by the question
             String DBField = questions.get(listIt.nextIndex()).getDbField();
+
+            //listIt = questions.listIterator(listIt.nextIndex() + 1)
             //Adding the Name so we can delete it if the user goes back a question
             //DEBUG TODO TAKE THIS OUT ONCE YOU FIND DBField
             if (DBField == null){
-                DBField = "asd";
+                DBField = "Convertible";
             }
             previousSpecificCategoryAnswer.add(DBField);
 

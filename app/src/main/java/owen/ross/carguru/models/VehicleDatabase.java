@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
@@ -270,210 +271,159 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *
      * returns A List of Vehicles that the program finds.
      */
-    public static ArrayList<Car> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
-        ArrayList<Car> allCarsInCategory = new ArrayList<>();
-        GetAllCarsInCategory(questionCategory, new VehicleFirebaseCallback() {
+    public static void CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+
+        listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onCallback(List<Car> vehicleList) {
-                try{
-                    // checking if the questions linkedlist is already populated with questions
-                    if (allCarsInCategory.isEmpty()) {
-                        // the questions returned from the database will be added to the list if the list is empty
-                        allCarsInCategory.addAll(vehicleList);
-                    }
-                }catch (Exception err){
-                    allCarsInCategory.addAll(vehicleList);
-                }
-            }
-        });
-        ArrayList<Car> listofCars = new ArrayList<>();
-        // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
-        //VehicleFirebaseCallback.onCallback(allCarsInCategory);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String make = "";
+                String model = "";
+                String trim = "";
+                String year = "";
 
+                Set<String> smallerList = new HashSet<String>();
+                Set<String> greaterList = new HashSet<String>();
+                Set<String> smallerThanList = new HashSet<String>();
+                Set<String> greaterThanList = new HashSet<String>();
+                Set<String> allList = new HashSet<String>();
+                Set<String> normalList = new HashSet<String>();
+                Set<String> resultList = new HashSet<String>();
 
-        // Getting keySets of Hashtable and storing it into Set (only one item of the same type allowed.
-        Set<String> setOfKeys = questionAnswers.keySet();
+                for (DataSnapshot ssMake : dataSnapshot.getChildren()) {
+                    make = ssMake.getKey();
+                    //Get the makes list Once they get this list then populate the others
+                    //for each make in the Given Category (Category is passed)
+                    for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
+                        //setting the make so we can iterate through them
+                        model = ssModel.getKey();
+                        //Go through each year and add the models for that year
+                        for (DataSnapshot ssTrim : dataSnapshot.child(make).child(model).getChildren()) {
+                            //setting the year so we can iterate through each year and get the models
+                            trim = ssTrim.getKey();
+                            //Go through each model of each make
+                            for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
+                                year = ssYear.getKey();
+                                Log.d("AllCar",make+model+trim+year);
+                                if (questionCategory.contains(ssYear.child("Category").getValue().toString())){
+                                    Set<String> setOfKeys = questionAnswers.keySet();
 
-        //all cars in array list is 0. they are not being passed.
-        for (Car car : allCarsInCategory ){
-            for (String DBField :  setOfKeys) {
-                //Switch Going through all possibilities of answers given and make all fields true if they are a valid vehicle.
-                //debug
-                Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  questionAnswers.get(DBField));
-                //User Answer value (Example DBField: "questionAnswer" == EV: "Yes")
-                String questionAnswer = questionAnswers.get(questionAnswers.get(DBField));
+                                    // Iterating questionCategorythrough the Hahstable
+                                    // object using for-Each loop
+                                    String comparedValue = "";
+                                    for (String key : setOfKeys) {
 
-                //Commuter DBFields
-                boolean MPG = false;
-                boolean Year = false;
-                boolean Convertable = false;
-                boolean EV = false;
+                                        if (key.equals("Year")){
+                                            comparedValue = year;
+                                        } else {
+                                            comparedValue = ssYear.child(key).getValue().toString();
+                                        }
+                                        if (questionAnswers.get(key).contains("<=")){
+                                            if (Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(key).substring(2))){
+                                                smallerThanList.add(make + model + trim + year);
+                                                Log.d("smallerThan", smallerThanList.toString());
+                                            }
+                                        } else if (questionAnswers.get(key).contains(">=")){
+                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(key).substring(2))){
+                                                greaterThanList.add(make + model + trim + year);
+                                                Log.d("greaterThan", greaterThanList.toString());
+                                            }
+                                        } else if (questionAnswers.get(key).contains("<")){
+                                            if (Integer.parseInt(comparedValue) < Integer.parseInt(questionAnswers.get(key).substring(1))){
+                                                smallerList.add(make + model + trim + year);
+                                                Log.d("smaller", smallerList.toString());
+                                            }
+                                        } else if (questionAnswers.get(key).contains(">")){
+                                            if (Integer.parseInt(comparedValue) > Integer.parseInt(questionAnswers.get(key).substring(1))){
+                                                greaterList.add(make + model + trim + year);
+                                                Log.d("greater", greaterList.toString());
+                                            }
+                                        } else if (questionAnswers.get(key).contains("-")){
 
-                //Sports DBFields
-                boolean Weight = false;
-                boolean GroundClearance = false;
-                boolean Cylinders = false;
-
-                //If the item is a commuter
-                if (questionCategory.equals("CommuterQuestion")){
-                    //Go through every car in the database and check if it is a valid vehicle
-                    //Creating all of the variables for each answer.
-                    switch(DBField) {
-                        case "EV" :
-                            if (questionAnswer.equals("Yes")){
-                                //If they said yes to an electric car.
-                                if(car.getEngine().equals("EV")){
-                                    EV = true;
-                                }
-                                //if the car engine is not EV keep it false.
-                            }else{
-                                //If the answer to if they want an electric car is no
-                                if(!car.getEngine().equals("EV")){
-                                    EV = true;
-                                }
-                            }
-                            break;
-                        case "MPG":
-                            // Check if they care about fuel efficiency
-                            if (questionAnswer.equals(">35")){
-                                //Check if its above 35 MPG
-                                if (car.getMPG() > 35){
-                                    MPG = true;
-                                }
-
-                            }else if ((questionAnswer.equals("<25"))){
-                                if (car.getMPG() < 25){
-                                    MPG = true;
-                                }
-
-                            }else if((questionAnswer.equals("25-35"))){
-                                if (car.getMPG() > 25 && car.getMPG() <35){
-                                    MPG = true;
-                                }
-                            }else{
-                                Log.d("CategoryAnswerParser", "\n There was no field for DBField: " + DBField + " With the answer : " + questionAnswer);
-                            }
-                            break;
-                        case "Year":
-                            // Check if its in the correct range of years requested
-                            if (questionAnswer.equals("<2015")){
-                                if (car.getYear() < 2015){
-                                    Year = true;
-                                }
-                            }else if(questionAnswer.equals("All")){
-                                //If they decided they want an automatic
-                                Year = true;
-                            }
-                            break;
-                        case "Convertible":
-                            //TODO This is not correct. We do not have doors so we cannot check if its a convertable.
-                            if (questionAnswer.equals("Yes")){
-                                if(car.isConvertible() == true) {
-                                    Convertable = true;
-                                }
-                            }else{
-                                // They do not want an convertable
-                                if (questionAnswer.equals("No")){
-                                    if(car.isConvertible() == false) {
-                                        Convertable = true;
+                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(key).split("-")[0])
+                                                    && Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(key).split("-")[1])){
+                                                allList.add(make + model + trim + year);
+                                                Log.d("dash", allList.toString());
+                                            }
+                                        } else if (questionAnswers.get(key).equals("All")){
+                                            allList.add(make + model + trim + year);
+                                            Log.d("all", allList.toString());
+                                        } else {
+                                            if (questionAnswers.get(key).equals(comparedValue) || comparedValue.equals("Both")){
+                                                normalList.add(make + model + trim + year);
+                                                Log.d("both", normalList.toString());
+                                            }
+                                        }
                                     }
                                 }
                             }
-                            break;
-                        default:
-                            // Default will Log a message
-                            Log.d("CommuterCategoryParser" , "This Field was not found in the list: Commuter" + DBField);
-                            throw new StringIndexOutOfBoundsException("This Field was not found in the list: Commuter" + DBField);
-                    }//end of switch
-
-                    // If the vehicle is a valid choice for the users wants, add it to the list. (For Commuter Vehicles)
-                    if (EV == true && MPG == true && Year == true && Convertable == true){
-                        // Add the vehicle to the Show Vehicle List
-                        listofCars.add(car);
+                        }
                     }
-
-                }else if (questionCategory.equals("SportQuestion")){
-                    switch(DBField) {
-                        case "Weight":
-                            if (questionAnswer.equals("<3000")){
-                                //They want a lighter car
-                                //Todo Get weight from the cars in the database...
-                                if (car.getWeight() < 3000){
-                                    //They want a heavier car
-                                    Weight = true;
-                                }
-                            }else if ((questionAnswer.equals(">=3000"))){
-                                if (car.getWeight() <= 3000){
-                                    Weight = true;
-                                }
-                            }
-                            break;
-                        case "GroundClearance":
-                            // Figure out how to siphon this into results
-                            break;
-                        case "Year":
-                            // Check if its in the correct range of years requested
-                            if (questionAnswer.equals("<2015")){
-                                if (car.getYear() < 2015){
-                                    Year = true;
-                                }
-                            }else if(questionAnswer.equals("All")){
-                                //If they decided they want an automatic
-                                Year = true;
-                            }
-                            break;
-                        case "Convertible":
-                            if (questionAnswer.equals("Yes")){
-                                if(car.isConvertible() == true) {
-                                    Convertable = true;
-                                }
-                            }else{
-                                // They do not want an convertable
-                                if (questionAnswer.equals("No")){
-                                    if(car.isConvertible() == false) {
-                                        Convertable = true;
-                                    }
-                                }
-                            }
-                            break;
-                        case "Cylinders":
-                            if (questionAnswer.equals("<=6")){
-                                //They want a lighter car
-                                //Todo Get weight from the cars in the database...
-                                if (car.getCylinders() <= 6){
-                                    //They want a heavier car
-                                    Cylinders = true;
-                                }
-                            }else if ((questionAnswer.equals("8-12"))){
-                                if (car.getCylinders() < 12 && car.getCylinders() > 8 ){
-                                    Cylinders = true;
-                                }
-                            }
-                            break;
-                        default:
-                            // Default will Log a message
-                            Log.d("CommuterCategoryParser", "This Field was not found in the list Sports: " + DBField);
-                            throw new StringIndexOutOfBoundsException("This Field was not found in the list Sports: " + DBField);
-                    }
-                    // If the vehicle is a valid choice for the users wants, add it to the list. (For Commuter Vehicles)
-                    if (Cylinders == true && Weight == true && Year == true ){
-                        // Add the vehicle to the Show Vehicle List
-                        listofCars.add(car);
-                    }
-                }else if (questionCategory.equals("LuxuryQuestion")){
-
-                }else if (questionCategory.equals("UtilityQuestion")){
-
-                }else if (questionCategory.equals("BeaterQuestion")){
-
-                }else if (questionCategory.equals("FamilyQuestion")){
-
-                }else{
-                    continue;
                 }
+                boolean isFirstNonEmptyList = false;
+                Set<String> resultSet = new HashSet<String>();
+                if (smallerList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = smallerList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(smallerList);
+                    }
+                }
+                if (greaterList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = greaterList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(greaterList);
+                    }
+                }
+                if (smallerThanList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = smallerThanList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(smallerThanList);
+                    }
+                }
+                if (greaterThanList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = greaterThanList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(greaterThanList);
+                    }
+                }
+                if (allList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = allList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(allList);
+                    }
+                }
+                if (normalList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = normalList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(normalList);
+                    }
+                }
+
+//                resultList.retainAll(allSets);
+//                Log.d("RES", resultList.toString());
+                Log.d("RES", resultSet.toString());
+                for (String car : resultSet){
+                    Log.d("Car: ", car);
+                }
+
+            }// End of OnDataChanged
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
-        }
-        return listofCars;
+        }); //End of Listener
+
     }
 
 
