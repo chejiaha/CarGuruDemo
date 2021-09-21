@@ -21,7 +21,6 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
     private static DatabaseReference vehicleReference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
     private static ValueEventListener listener;
 
-
     @Override
     public void onCallback(List<Car> vehicleList) {
     }
@@ -296,10 +295,13 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
                         //setting the make so we can iterate through them
                         model = ssModel.getKey();
+                        // This variable is the compent we are comparing from the current car in the database and the users queried statement (MPG, horsepower..)
+                        String comparedValue = "";
                         //Go through each year and add the models for that year
                         for (DataSnapshot ssTrim : dataSnapshot.child(make).child(model).getChildren()) {
                             //setting the year so we can iterate through each year and get the models
                             trim = ssTrim.getKey();
+                            comparedValue = trim;
                             //Go through each model of each make
                             for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
                                 year = ssYear.getKey();
@@ -308,47 +310,48 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                                     Set<String> setOfKeys = questionAnswers.keySet();
 
                                     // Iterating questionCategorythrough the Hahstable
-                                    // object using for-Each loop
-                                    String comparedValue = "";
-                                    for (String key : setOfKeys) {
+                                    for (String DBField : setOfKeys) {
 
-                                        if (key.equals("Year")){
+                                        if (DBField.equals("Year")){
                                             comparedValue = year;
-                                        } else {
-                                            comparedValue = ssYear.child(key).getValue().toString();
+                                        }else if(!DBField.equals("Trim")) {
+                                            comparedValue = ssYear.child(DBField).getValue().toString();
+                                        }else{
+                                            //do nothing
                                         }
-                                        if (questionAnswers.get(key).contains("<=")){
-                                            if (Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(key).substring(2))){
+                                        // If the
+                                        if (questionAnswers.get(DBField).contains("<=")){
+                                            if (Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).substring(2))){
                                                 smallerThanList.add(make + model + trim + year);
                                                 Log.d("smallerThan", smallerThanList.toString());
                                             }
-                                        } else if (questionAnswers.get(key).contains(">=")){
-                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(key).substring(2))){
+                                        } else if (questionAnswers.get(DBField).contains(">=")){
+                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).substring(2))){
                                                 greaterThanList.add(make + model + trim + year);
                                                 Log.d("greaterThan", greaterThanList.toString());
                                             }
-                                        } else if (questionAnswers.get(key).contains("<")){
-                                            if (Integer.parseInt(comparedValue) < Integer.parseInt(questionAnswers.get(key).substring(1))){
+                                        } else if (questionAnswers.get(DBField).contains("<")){
+                                            if (Integer.parseInt(comparedValue) < Integer.parseInt(questionAnswers.get(DBField).substring(1))){
                                                 smallerList.add(make + model + trim + year);
                                                 Log.d("smaller", smallerList.toString());
                                             }
-                                        } else if (questionAnswers.get(key).contains(">")){
-                                            if (Integer.parseInt(comparedValue) > Integer.parseInt(questionAnswers.get(key).substring(1))){
+                                        } else if (questionAnswers.get(DBField).contains(">")){
+                                            if (Integer.parseInt(comparedValue) > Integer.parseInt(questionAnswers.get(DBField).substring(1))){
                                                 greaterList.add(make + model + trim + year);
                                                 Log.d("greater", greaterList.toString());
                                             }
-                                        } else if (questionAnswers.get(key).contains("-")){
+                                        } else if (questionAnswers.get(DBField).contains("-")){
 
-                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(key).split("-")[0])
-                                                    && Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(key).split("-")[1])){
+                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).split("-")[0])
+                                                    && Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).split("-")[1])){
                                                 allList.add(make + model + trim + year);
                                                 Log.d("dash", allList.toString());
                                             }
-                                        } else if (questionAnswers.get(key).equals("All")){
+                                        } else if (questionAnswers.get(DBField).equals("All")){
                                             allList.add(make + model + trim + year);
                                             Log.d("all", allList.toString());
                                         } else {
-                                            if (questionAnswers.get(key).equals(comparedValue) || comparedValue.equals("Both")){
+                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.contains(questionAnswers.get(DBField)) || comparedValue.equals("Both")){
                                                 normalList.add(make + model + trim + year);
                                                 Log.d("both", normalList.toString());
                                             }
@@ -416,7 +419,6 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                 for (String car : resultSet){
                     Log.d("Car: ", car);
                 }
-
             }// End of OnDataChanged
 
             @Override
