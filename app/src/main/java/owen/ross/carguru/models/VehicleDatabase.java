@@ -270,7 +270,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *
      * returns A List of Vehicles that the program finds.
      */
-    public static void CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+    public static ArrayList<Car> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
 
         listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -363,6 +363,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     }
                 }
                 boolean isFirstNonEmptyList = false;
+                //TODO Find a way to pass this to the method above..
                 Set<String> resultSet = new HashSet<String>();
                 if (smallerList.size() > 0){
                     if (isFirstNonEmptyList == false) {
@@ -426,6 +427,15 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             }
         }); //End of Listener
 
+        //TODO IF WE CAN MAKE THIS SET INTO An ARRAY LIST OF CARS THAT WOULD BE GREAT!
+        ArrayList<Car> vehicleList = new ArrayList<>();
+        //Result set === vehicle List
+
+
+        //TODO Once this result set is returned I am throwing it in a bundle and passing it to the next fragment.
+        // I will create a parcable or serializable class to pass the Array list of cars.
+
+        return vehicleList;
     }
 
 

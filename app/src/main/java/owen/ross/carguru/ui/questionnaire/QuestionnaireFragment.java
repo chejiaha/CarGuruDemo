@@ -28,6 +28,7 @@ import java.util.ListIterator;
 import owen.ross.carguru.R;
 import owen.ross.carguru.models.Answer;
 import owen.ross.carguru.models.AnswerParser;
+import owen.ross.carguru.models.Car;
 import owen.ross.carguru.models.Database;
 import owen.ross.carguru.models.FirebaseCallback;
 import owen.ross.carguru.models.Question;
@@ -256,8 +257,23 @@ public class QuestionnaireFragment extends Fragment {
                         // Send the users to the next page dependent on the highest score
                         switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }else{
+                        //TODO MAKE SURE ITS A ARRAYLIST BEING PASSED!
                         // If its on the second round of questions, use the other parser
-                        VehicleDatabase.CategoryAnswerParser(queryDB, questionCategory);
+                        ArrayList<Car> vehicleList = VehicleDatabase.CategoryAnswerParser(queryDB, questionCategory);
+
+                        //Send the user to the Finished Questionnaire Fragment to sift through the results
+                        Bundle bundle = new Bundle();
+                        // Adding the category with the highest Tally based on the questions they answered
+                        bundle.putString("category", questionCategory);
+                        //TODO Create a class to pass the array list of user vehicles
+
+//                        // Adding the progression to the bar
+//                        progress = simpleProgressBar.getProgress() + 5;
+//                        bundle.putInt("progress", progress);
+                        // Creating the same fragment just updating the Question section.
+                        Fragment fragment = new FinishedQuestionnaireFragment();
+                        // Send the users to the next page dependent on the highest score
+                        switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }
                 }
             }
