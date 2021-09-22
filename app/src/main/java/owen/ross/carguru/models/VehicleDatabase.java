@@ -257,6 +257,18 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
         return categoryVehicles;
     }
 
+    //TEST DEBUG
+    //This is testing setting the result set when we find all of the vehicles, as I cannot return
+    //a value from inside another function
+    private Set<String> finalResultSet;
+    public Set<String> getResultSet() {
+        return finalResultSet;
+    }
+
+    public void setResultSet(Set<String> resultSet) {
+        finalResultSet = resultSet;
+    }
+
 
     /*
      * This method is used to get and return the string that we will search our database with.
@@ -271,6 +283,8 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      * returns A List of Vehicles that the program finds.
      */
     public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+
+
 
         listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -364,6 +378,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                 }
                 boolean isFirstNonEmptyList = false;
                 //TODO Find a way to pass this to the method above..
+
                 Set<String> resultSet = new HashSet<String>();
                 if (smallerList.size() > 0){
                     if (isFirstNonEmptyList == false) {
@@ -426,20 +441,22 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         }); //End of Listener
-
-        //TODO IF WE CAN MAKE THIS SET INTO An ARRAY LIST OF CARS THAT WOULD BE GREAT!
+        // An array list to hold all of the vehicles
         ArrayList<String> vehicleList = new ArrayList<>();
         //Result set === vehicle List
+        //TODO Return the right list of cars
 
-        //DEBUG TESTING!!!
-        vehicleList.add("Car1");
-        vehicleList.add("Car2");
-        vehicleList.add("Car3");
-        vehicleList.add("Car4");
-        vehicleList.add("Car5");
+        if (vehicleList.isEmpty()){
+            //DEBUG TESTING!!!
+            vehicleList.add("Car1");
+            vehicleList.add("Car2");
+            vehicleList.add("Car3");
+            vehicleList.add("Car4");
+            vehicleList.add("Car5");
+        }
 
-        //TODO Once this result set is returned I am throwing it in a bundle and passing it to the next fragment.
-        // I will create a parcable or serializable class to pass the Array list of cars.
+
+
 
         return vehicleList;
     }

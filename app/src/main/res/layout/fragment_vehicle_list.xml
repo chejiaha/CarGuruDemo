@@ -25,7 +25,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFragmentListTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFragmentListTitle"
+        app:layout_constraintVertical_bias="0.789" />
 
     <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:id="@+id/rvFragmentListCars"-->

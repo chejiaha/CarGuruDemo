@@ -63,7 +63,6 @@ public class VehicleListFragment extends Fragment {
         ArrayAdapter stringArrayAdaptor = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, stringList);
         lvList1.setAdapter(stringArrayAdaptor);
 
-
         // Inflate the layout for this fragment
         return view;
     }
