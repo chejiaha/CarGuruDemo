@@ -92,6 +92,8 @@ public class Database implements FirebaseCallback {
                             answers = new ArrayList<>();
                         }
                     }
+
+
                 }
                 // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
                 firebaseCallback.onCallback(questions);
