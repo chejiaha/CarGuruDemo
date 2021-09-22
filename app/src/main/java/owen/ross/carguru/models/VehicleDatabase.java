@@ -270,7 +270,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *
      * returns A List of Vehicles that the program finds.
      */
-    public static ArrayList<Car> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
 
         listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -428,9 +428,15 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
         }); //End of Listener
 
         //TODO IF WE CAN MAKE THIS SET INTO An ARRAY LIST OF CARS THAT WOULD BE GREAT!
-        ArrayList<Car> vehicleList = new ArrayList<>();
+        ArrayList<String> vehicleList = new ArrayList<>();
         //Result set === vehicle List
 
+        //DEBUG TESTING!!!
+        vehicleList.add("Car1");
+        vehicleList.add("Car2");
+        vehicleList.add("Car3");
+        vehicleList.add("Car4");
+        vehicleList.add("Car5");
 
         //TODO Once this result set is returned I am throwing it in a bundle and passing it to the next fragment.
         // I will create a parcable or serializable class to pass the Array list of cars.

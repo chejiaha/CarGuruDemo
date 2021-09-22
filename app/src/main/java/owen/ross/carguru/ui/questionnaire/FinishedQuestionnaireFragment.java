@@ -3,16 +3,18 @@ package owen.ross.carguru.ui.questionnaire;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import owen.ross.carguru.R;
+import owen.ross.carguru.ui.VehicleList.VehicleListFragment;
 
 
 public class FinishedQuestionnaireFragment extends Fragment {
@@ -34,6 +36,8 @@ public class FinishedQuestionnaireFragment extends Fragment {
     TextView tvQuestionnaireCategoryExplanation;
     TextView tvQuestionnaireTryAgain;
     TextView tvQuestionnaireToCars;
+    // Creating a new array list
+    ArrayList<String> vehicleList;
 
 
     @Override
@@ -50,15 +54,17 @@ public class FinishedQuestionnaireFragment extends Fragment {
         // See results button
         tvQuestionnaireToCars = view.findViewById(R.id.tvQuestionnaireToCars);
 
-        //Function called to change the features based on Questionnaire Fragments response
+        //Setting the onClick Listeners
+        tvQuestionnaireToCars.setOnClickListener(onClickSuggestedCars);
+        tvQuestionnaireTryAgain.setOnClickListener(onClickFindMeACar);
+        
+
+        //Get the category and List of cars from the previous page.
         /*
-         * Questionnaire fragment response includes
-         * ArrayList <Cars> carsPassed : a list of cars for the user
-         * String category : The category that the user was placed into
-         *
+         * 
          */
         String questionCategory = (getArguments().getString("category"));
-        //ArrayList<String> vehicleList = (getArguments().getStringArrayList("allCars"));
+        vehicleList = (getArguments().getStringArrayList("carList"));
 
         // Setting the title
         tvQuestionnaireCategoryTitle.setText(questionCategory);
@@ -81,8 +87,77 @@ public class FinishedQuestionnaireFragment extends Fragment {
             tvQuestionnaireCategoryExplanation.setText("There was no Category found Category: " + questionCategory);
         }
 
-
         // Inflate the layout for this fragment
         return view;
     }
+
+    /*
+     * This Method is activated when the user clicks the next question button.
+     * This question will get the checked checkboxes value and depending on if its the Main Question
+     * Category or a Specific Question Category will act accordingly
+     *
+     * Main Question
+     *  Will calculate the highest category and send it to the next page
+     *
+     * Specific Category Question
+     *  Will use the Category Answer Parser in the AnswerParser Class to parse the answers.
+     */
+    public View.OnClickListener onClickSuggestedCars = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            //Creating the Fragment
+            Fragment viewCars = new VehicleListFragment();
+//Send the user to the Finished Questionnaire Fragment to sift through the results
+            Bundle bundle = new Bundle();
+            // Passing the list of vehicles to the next page.
+            bundle.putStringArrayList("carList", vehicleList);
+            // Passing the title to the next page.
+            bundle.putString("title", "Recommended Cars");
+
+            switchFragments(viewCars, R.id.nav_host_fragment, bundle);
+        }
+    };
+
+    // To Find me a car
+    public View.OnClickListener  onClickFindMeACar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //TODO Questionnaire fragment
+            //Going from SearchCarFragment to Specific model fragment
+            Fragment findMeACar = new QuestionnaireFragment();
+            switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
+        }
+    };
+
+    /*
+    //TODO GET RID OF THIS
+
+     * This method is created to send a fragment from one fragment to the other.
+     *
+     * Takes in:
+     *  Fragment FragmentName : The Fragment That you want to instantiate.
+     *  Bundle bundle         : The bundle with all of the objects already populated.
+     *  int IdOfNavHostUI     : This is used to specify which view you want to replace.
+     *          BY default in our application set to the id of the "navigation_host_fragment" ID
+     *  NOTE:
+     */
+    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+        //If the bundle is not empty add the argument
+        if (bundle.isEmpty() == false){
+            fragmentName.setArguments(bundle);
+        }
+        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+
+        // Create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+        fragmentTransaction.commit(); // save the changes
+    }
+
+
 }
