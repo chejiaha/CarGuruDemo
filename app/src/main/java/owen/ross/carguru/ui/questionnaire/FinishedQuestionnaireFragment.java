@@ -114,7 +114,6 @@ public class FinishedQuestionnaireFragment extends Fragment {
             bundle.putStringArrayList("carList", vehicleList);
             // Passing the title to the next page.
             bundle.putString("title", "Recommended Cars");
-
             switchFragments(viewCars, R.id.nav_host_fragment, bundle);
         }
     };
