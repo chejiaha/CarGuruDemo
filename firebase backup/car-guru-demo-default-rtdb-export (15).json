@@ -1,0 +1,1787 @@
+{
+  "Questions" : {
+    "BeaterQuestion" : {
+      "bq1" : {
+        "Answers" : {
+          "bqa11" : {
+            "Description" : "< $5000",
+            "value" : "<5000"
+          },
+          "bqa12" : {
+            "Description" : "$5000 - $10000",
+            "value" : "5000-10000"
+          },
+          "bqa13" : {
+            "Description" : "> $10000",
+            "value" : ">10000"
+          }
+        },
+        "DBField" : "Price",
+        "Description" : "What is your current budget?"
+      },
+      "bq2" : {
+        "Answers" : {
+          "bqa21" : {
+            "Description" : "Leather me up",
+            "value" : [ "BMW, Audi, Mercedes" ]
+          },
+          "bqa22" : {
+            "Description" : "Just don’t break down on me",
+            "value" : [ "Honda, Toyota, Mazda, Subaru, Ford, Chevrolet, GMC, Nissan, Dodge" ]
+          }
+        },
+        "DBField" : "Make",
+        "Description" : "I am willing to sacrifice reliability for creature comforts in my vehicle"
+      },
+      "bq3" : {
+        "Answers" : {
+          "bqa31" : {
+            "Description" : "Mainly bumper to bumper traffic ",
+            "value" : ">35"
+          },
+          "bqa32" : {
+            "Description" : "Highway driving ",
+            "value" : ">20"
+          }
+        },
+        "DBField" : "MPG",
+        "Description" : "Your daily commute consists of…"
+      }
+    },
+    "CommuterQuestion" : {
+      "cq1" : {
+        "Answers" : {
+          "cqa11" : {
+            "Description" : "I do care about the environment/I am environmentally conscious",
+            "Value" : "Yes"
+          },
+          "cqa12" : {
+            "Description" : "I am ok with gas car for now",
+            "Value" : "No"
+          }
+        },
+        "DBField" : "EV",
+        "Description" : "How much do you care about air pollution?"
+      },
+      "cq2" : {
+        "Answers" : {
+          "cqa21" : {
+            "Description" : "I’m always maximizing my fuel economy",
+            "Value" : ">35"
+          },
+          "cqa22" : {
+            "Description" : "I want to sacrifice a bit of gas mileage for fun",
+            "Value" : "<25"
+          },
+          "cqa23" : {
+            "Description" : "I’m a pretty balanced driver",
+            "Value" : "25-35"
+          }
+        },
+        "DBField" : "MPG",
+        "Description" : "When I drive…"
+      },
+      "cq3" : {
+        "Answers" : {
+          "cqa31" : {
+            "Description" : "I’m comfortable fixing my own car",
+            "Value" : "All"
+          },
+          "cqa32" : {
+            "Description" : "To the mechanic it goes!",
+            "Value" : ">2015"
+          }
+        },
+        "DBField" : "Year",
+        "Description" : "When it comes to maintenance …"
+      },
+      "cq4" : {
+        "Answers" : {
+          "cqa41" : {
+            "Description" : "Yes",
+            "Value" : "Yes"
+          },
+          "cqa42" : {
+            "Description" : "No",
+            "Value" : "No"
+          }
+        },
+        "DBField" : "Convertible",
+        "Description" : "Do you want to feel the wind in your hair when you drive down the road/do you want to feel the sun?"
+      }
+    },
+    "FamilyQuestion" : {
+      "fq1" : {
+        "Answers" : {
+          "fqa11" : {
+            "Description" : "Yes",
+            "value" : "<=2013"
+          },
+          "fqa12" : {
+            "Description" : "No",
+            "value" : ">2013"
+          }
+        },
+        "DBField" : "Year",
+        "Description" : "My Kids can keep themselves entertained on road trips"
+      },
+      "fq2" : {
+        "Answers" : {
+          "fqa21" : {
+            "Description" : "Yes! Give me a sporty car that does it all ",
+            "value" : "Sedan"
+          },
+          "fqa22" : {
+            "Description" : "I’m willing to sacrifice some looks for functionality ",
+            "value" : "SUV"
+          },
+          "fqa23" : {
+            "Description" : "Don’t care what it looks like as long as the kids are entertained and quiet",
+            "value" : "Minivan"
+          }
+        },
+        "DBField" : "Description",
+        "Description" : "I care about the appearance of my family car"
+      }
+    },
+    "LuxuryQuestion" : {
+      "lq1" : {
+        "Answers" : {
+          "lqa11" : {
+            "Description" : "Great cost to value in while shopping",
+            "Value" : "Lexus, Acura"
+          },
+          "lqa12" : {
+            "Description" : "The finest build quality and engineering",
+            "Value" : "Audi, BMW, Mercedes"
+          }
+        },
+        "DBField" : "Make",
+        "Description" : "I enjoy..."
+      }
+    },
+    "MainQuestion" : {
+      "mq1" : {
+        "Answers" : {
+          "mqa11" : {
+            "Description" : "Gets you from point A to point B",
+            "Value" : "Commuter"
+          },
+          "mqa12" : {
+            "Description" : "Provides an adventurous and dangerous lifestyle",
+            "Value" : "Sport"
+          },
+          "mqa13" : {
+            "Description" : "Is the cheapest thing that runs",
+            "Value" : "Beater"
+          },
+          "mqa14" : {
+            "Description" : " Is a utility vehicle ",
+            "Value" : "Utility"
+          },
+          "mqa15" : {
+            "Description" : " Fits all my kids and pets comfortably",
+            "Value" : "Family"
+          },
+          "mqa16" : {
+            "Description" : " Provides eloquent and smooth ride ",
+            "Value" : "Luxury"
+          }
+        },
+        "DBField" : "Category",
+        "Description" : "Your ideal car …"
+      },
+      "mq2" : {
+        "Answers" : {
+          "mqa21" : {
+            "Description" : "I want to drive as fast as I can on open roads",
+            "Value" : "Sport"
+          },
+          "mqa22" : {
+            "Description" : "I want to run errands mainly",
+            "Value" : "Commuter"
+          },
+          "mqa23" : {
+            "Description" : " I want to carry my tools around for work ",
+            "Value" : "Utility"
+          },
+          "mqa24" : {
+            "Description" : " I want to drive along the coast and enjoy the view ",
+            "Value" : "Luxury"
+          }
+        },
+        "DBField" : "Category",
+        "Description" : "What kind of driving do you like to do?"
+      },
+      "mq3" : {
+        "Answers" : {
+          "mqa31" : {
+            "Description" : "Speed",
+            "Value" : [ "Sport", "Luxury" ]
+          },
+          "mqa32" : {
+            "Description" : "Safety",
+            "Value" : [ "Commuter", "Luxury", "Family" ]
+          },
+          "mqa33" : {
+            "Description" : "Low fuel costs",
+            "Value" : [ "Commuter", "Utility", "Family", "Beater" ]
+          },
+          "mqa34" : {
+            "Description" : "Low maintenance costs",
+            "Value" : [ "Commuter", "Utility", "Beater" ]
+          }
+        },
+        "DBField" : "Category",
+        "Description" : "What do you care about the most in a car?"
+      },
+      "mq4" : {
+        "Answers" : {
+          "mqa41" : {
+            "Description" : "Yes, I want to feel the roads",
+            "Value" : "Sport"
+          },
+          "mqa42" : {
+            "Description" : "Kinda, I don’t mind if the road is a little bumpy",
+            "Value" : [ "Commuter", "Beater" ]
+          },
+          "mqa43" : {
+            "Description" : "I want to feel like driving on a cloud",
+            "Value" : "Luxury"
+          }
+        },
+        "DBField" : "Category",
+        "Description" : "I value an engaging driving experience"
+      }
+    },
+    "SportQuestion" : {
+      "sq1" : {
+        "Answers" : {
+          "sqa11" : {
+            "Description" : "Manual",
+            "Value" : "<2015"
+          },
+          "sqa12" : {
+            "Description" : "Automatic",
+            "Value" : "All"
+          }
+        },
+        "DBField" : "Year",
+        "Description" : "Do you prefer driving manual or automatic transmission?"
+      },
+      "sq2" : {
+        "Answers" : {
+          "sqa21" : {
+            "Description" : "Yes",
+            "Value" : "<3000"
+          },
+          "sqa22" : {
+            "Description" : "No",
+            "Value" : ">=3000"
+          }
+        },
+        "DBField" : "Weight",
+        "Description" : "Do you want a lightweight car?"
+      },
+      "sq3" : {
+        "Answers" : {
+          "sqa31" : {
+            "Description" : "Yes",
+            "Value" : "Yes"
+          },
+          "sqa32" : {
+            "Description" : "No",
+            "Value" : "No"
+          }
+        },
+        "DBField" : "Convertible",
+        "Description" : "Do you want to feel the wind in your hair when you drive down the road/do you want to feel the sun?"
+      },
+      "sq4" : {
+        "Answers" : {
+          "sqa41" : {
+            "Description" : "Everyday",
+            "Value" : ">5"
+          },
+          "sqa42" : {
+            "Description" : "Never",
+            "Value" : "All"
+          }
+        },
+        "DBField" : "GroundClearance",
+        "Description" : "Do you drive on a lot of residential roads/speed bumps?"
+      },
+      "sq5" : {
+        "Answers" : {
+          "sqa51" : {
+            "Description" : "Yes",
+            "Value" : "<=6"
+          },
+          "sqa52" : {
+            "Description" : "No, I only want to drive this car on the track",
+            "Value" : "8-12"
+          }
+        },
+        "DBField" : "Cylinders",
+        "Description" : "Would you drive your car every day?"
+      }
+    },
+    "UtilityQuestion" : {
+      "uq1" : {
+        "Answers" : {
+          "uqa11" : {
+            "Description" : "Small Boat",
+            "value" : "6"
+          },
+          "uqa12" : {
+            "Description" : "My Trailer",
+            "value" : "8"
+          },
+          "uqa13" : {
+            "Description" : "An RV",
+            "value" : "10"
+          },
+          "uqa14" : {
+            "Description" : "I don’t use my truck to tow stuff that often",
+            "value" : "4"
+          }
+        },
+        "DBField" : "Cylinders",
+        "Description" : "When I need to tow something its usually a…"
+      },
+      "uq2" : {
+        "Answers" : {
+          "uqa21" : {
+            "Description" : "Drive through mud and dirt ",
+            "value" : "AWD"
+          },
+          "uqa22" : {
+            "Description" : "Cruise along well paved roads",
+            "value" : "FWD"
+          }
+        },
+        "DBField" : "Drivetrain",
+        "Description" : "Your daily commute requires you to…"
+      },
+      "uq3" : {
+        "Answers" : {
+          "uqa31" : {
+            "Description" : "Need to fit my whole family",
+            "value" : "Crew Cab"
+          },
+          "uqa32" : {
+            "Description" : "Just a work truck ",
+            "value" : "Single Cab"
+          },
+          "uqa33" : {
+            "Description" : "Sometimes I drive my friends around town",
+            "value" : "Extended Cab"
+          }
+        },
+        "DBField" : "Trim",
+        "Description" : "This truck is used for…"
+      }
+    }
+  },
+  "Users" : {
+    "Branch1" : {
+      "Firstname" : "John",
+      "Lastname" : "Chen"
+    },
+    "Branch2" : {
+      "Firstname" : "Jane",
+      "Lastname" : "Doe"
+    }
+  },
+  "Vehicle" : {
+    "Acura" : {
+      "TLX" : {
+        "4dr Sedan" : {
+          "2019" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "Common Fluid Leeks", "Axle problem" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "A very light and trendy car",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 2.4,
+            "GroundClearance" : 6,
+            "Horsepower" : 206,
+            "MPG" : 27,
+            "Price" : 40000,
+            "Recall" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 182,
+            "Weight" : 3505
+          }
+        }
+      }
+    },
+    "Audi" : {
+      "A3" : {
+        "quattro 2Point0T Progressiv" : {
+          "2017" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "Common Fluid Leeks", "Axle problem" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "A very light and trendy car",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.4,
+            "GroundClearance" : 6,
+            "Horsepower" : 200,
+            "MPG" : 18,
+            "Price" : 18000,
+            "Recall" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 258,
+            "Weight" : 3197
+          }
+        }
+      },
+      "A4" : {
+        "Auto Komfort quattro" : {
+          "2017" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "Electrical issues" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "A basic Audi commuter",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3,
+            "GroundClearance" : 7,
+            "Horsepower" : 252,
+            "MPG" : 25,
+            "Price" : 20000,
+            "Recall" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 273,
+            "Weight" : 3450
+          }
+        }
+      },
+      "R8" : {
+        "Spyder V10 plus 5Point2 FSI quattro S tronic" : {
+          "2018" : {
+            "Category" : "Sport, Luxury",
+            "CommonProblems" : [ "Axle Problems" ],
+            "Convertible" : "Yes",
+            "Cylinders" : 10,
+            "Description" : "A very sporty Audi car",
+            "Doors" : 2,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 5.2,
+            "GroundClearance" : 5,
+            "Horsepower" : 612,
+            "MPG" : 40,
+            "Price" : 180000,
+            "Recall" : [ "R1", "R2", "R3" ],
+            "Seats" : 2,
+            "Torque ft-lb" : 413,
+            "Weight" : 4464
+          }
+        }
+      },
+      "RS7" : {
+        "TFSI Quattro" : {
+          "2018" : {
+            "Category" : "Sport, Luxury",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Midsize sports sedan",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 4,
+            "GroundClearance" : 4,
+            "Horsepower" : 605,
+            "MPG" : 17,
+            "Price" : 130000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 517,
+            "Weight" : 4497
+          }
+        }
+      }
+    },
+    "BMW" : {
+      "3-series" : {
+        "320i" : {
+          "2016" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "Left Light Fails", "Blinker Stops Working" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "A commuter car that is from 2016",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 210,
+            "MPG" : 30,
+            "Price" : 11000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 200,
+            "Weight" : 3510
+          },
+          "2017" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "Blinkers dont work", "Electrical Problems" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "BMW 320 A quicker commuter car from 2016",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 210,
+            "MPG" : 28,
+            "Price" : 13000,
+            "Recall" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 200,
+            "Weight" : 3541
+          }
+        },
+        "328i" : {
+          "2013" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "Very common BMW",
+            "Doors" : 4,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 241,
+            "MPG" : 27,
+            "Price" : 11000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 200,
+            "Weight" : 3360
+          }
+        },
+        "330i" : {
+          "2006" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 6,
+            "Description" : "Commuter BMW",
+            "Doors" : 4,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 3,
+            "GroundClearance" : 6,
+            "Horsepower" : 255,
+            "MPG" : 21,
+            "Price" : 30000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 220,
+            "Weight" : 3400
+          },
+          "2018" : {
+            "Category" : "Commuter, Luxury",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "Performance BMW",
+            "Doors" : 4,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 248,
+            "MPG" : 28,
+            "Price" : 30000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 258,
+            "Weight" : 3370
+          }
+        }
+      },
+      "M3" : {
+        "2dr Cpe" : {
+          "2017" : {
+            "Category" : "Sport, Luxury",
+            "CommonProblems" : [ "Leaks coolant" ],
+            "Convertible" : "Both",
+            "Cylinders" : 6,
+            "Description" : "Performance BMW",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 3,
+            "GroundClearance" : 5,
+            "Horsepower" : 425,
+            "MPG" : 20,
+            "Price" : 50000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 406,
+            "Weight" : 3540
+          }
+        }
+      },
+      "M4" : {
+        "2dr Cpe" : {
+          "2016" : {
+            "Category" : "Sport, Luxury",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 6,
+            "Description" : "Performance BMW",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 3,
+            "GroundClearance" : 5,
+            "Horsepower" : 493,
+            "MPG" : 17,
+            "Price" : 45000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 406,
+            "Weight" : 3530
+          },
+          "2020" : {
+            "Category" : "Sport, Luxury",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 6,
+            "Description" : "Performance BMW",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 3,
+            "GroundClearance" : 5,
+            "Horsepower" : 493,
+            "MPG" : 17,
+            "Price" : 80000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 444,
+            "Weight" : 3620
+          }
+        }
+      }
+    },
+    "Chevrolet" : {
+      "Camaro" : {
+        "ZL1" : {
+          "2015" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 8,
+            "Description" : "Top of the line Camaro",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 6.2,
+            "GroundClearance" : 4,
+            "Horsepower" : 580,
+            "MPG" : 14,
+            "Price" : 35000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 556,
+            "Weight" : 3720
+          },
+          "2021" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 8,
+            "Description" : "Top of the line Camaro",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 6.2,
+            "GroundClearance" : 5,
+            "Horsepower" : 580,
+            "MPG" : 18,
+            "Price" : 65000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 650,
+            "Weight" : 3907
+          }
+        }
+      }
+    },
+    "Chrysler" : {
+      "Pacifica" : {
+        "Touring L" : {
+          "2017" : {
+            "Category" : "Family",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Chrysler minivan",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 3.6,
+            "GroundClearance" : 5,
+            "Horsepower" : 287,
+            "MPG" : 22,
+            "Price" : 34000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 7,
+            "Torque ft-lb" : 262,
+            "Weight" : 4300
+          }
+        }
+      }
+    },
+    "Ford" : {
+      "F150" : {
+        "XLT Supercrew" : {
+          "2021" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Most popular pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.3,
+            "GroundClearance" : 9,
+            "Horsepower" : 290,
+            "MPG" : 22,
+            "Price" : 43000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 265,
+            "Weight" : 4800
+          }
+        }
+      },
+      "F250" : {
+        "King Ranch" : {
+          "2020" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 6.2,
+            "GroundClearance" : 9,
+            "Horsepower" : 385,
+            "MPG" : 14,
+            "Price" : 43000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 430,
+            "Weight" : 6000
+          },
+          "2021" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 6.2,
+            "GroundClearance" : 9,
+            "Horsepower" : 385,
+            "MPG" : 14,
+            "Price" : 43000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 430,
+            "Weight" : 6000
+          }
+        },
+        "Limited crew cab" : {
+          "2020" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 6.7,
+            "GroundClearance" : 8,
+            "Horsepower" : 475,
+            "MPG" : 13,
+            "Price" : 83000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 1050,
+            "Weight" : 7500
+          }
+        },
+        "Platinium Crew Cab" : {
+          "2015" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 6.2,
+            "GroundClearance" : 8,
+            "Horsepower" : 385,
+            "MPG" : 20,
+            "Price" : 53000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 405,
+            "Weight" : 7000
+          }
+        }
+      },
+      "Fieta" : {
+        "5dr HB SE" : {
+          "2014" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "Rough shifting in automatics", "Transmission failure" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Compact commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.6,
+            "GroundClearance" : 4,
+            "Horsepower" : 120,
+            "MPG" : 31,
+            "Price" : 8000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 125,
+            "Weight" : 2578
+          }
+        }
+      },
+      "Focus" : {
+        "SE" : {
+          "2011" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "Dual clutch transmission issue in automatics", "Leaks engine oil" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "GM commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 225,
+            "MPG" : 25,
+            "Price" : 5000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 136,
+            "Weight" : 2623
+          }
+        }
+      },
+      "Mustang" : {
+        "Ecoboost" : {
+          "2016" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "4 cylinder mustang",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2.4,
+            "GroundClearance" : 5,
+            "Horsepower" : 310,
+            "MPG" : 25,
+            "Price" : 15000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 320,
+            "Weight" : 3526
+          },
+          "2020" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "4 cylinder mustang",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2.3,
+            "GroundClearance" : 5,
+            "Horsepower" : 200,
+            "MPG" : 25,
+            "Price" : 30000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 310,
+            "Weight" : 3542
+          }
+        },
+        "GT" : {
+          "2018" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "Engine Oil Leaks", "Rear Suspension failure" ],
+            "Convertible" : "Both",
+            "Cylinders" : 8,
+            "Description" : "Goes very fast in a straight line. American muscle.",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 5,
+            "GroundClearance" : 5,
+            "Horsepower" : 350,
+            "MPG" : 21,
+            "Price" : 20000,
+            "Recall" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 420,
+            "Weight" : 3705
+          }
+        },
+        "GT Premium cpe" : {
+          "2021" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Midsize sports coupe",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 5,
+            "GroundClearance" : 6,
+            "Horsepower" : 460,
+            "MPG" : 17,
+            "Price" : 40000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 420,
+            "Weight" : 4398
+          }
+        }
+      }
+    },
+    "GMC" : {
+      "Canyon" : {
+        "Denali Single Cab" : {
+          "2021" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.6,
+            "GroundClearance" : 8,
+            "Horsepower" : 308,
+            "MPG" : 19,
+            "Price" : 44000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 275,
+            "Weight" : 4400
+          }
+        },
+        "SLT Crew Cab" : {
+          "2016" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.6,
+            "GroundClearance" : 8,
+            "Horsepower" : 305,
+            "MPG" : 20,
+            "Price" : 44000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 269,
+            "Weight" : 4400
+          }
+        }
+      },
+      "Savana Cargo" : {
+        "2500" : {
+          "2020" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 4.3,
+            "GroundClearance" : 9,
+            "Horsepower" : 276,
+            "MPG" : 15,
+            "Price" : 32000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 298,
+            "Weight" : 5200
+          }
+        }
+      },
+      "Sierra 2500HD" : {
+        "Denali Extended Cab" : {
+          "2017" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 6,
+            "GroundClearance" : 10,
+            "Horsepower" : 360,
+            "MPG" : 26,
+            "Price" : 53000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 380,
+            "Weight" : 6500
+          },
+          "2021" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Heavy duty pickup truck",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 6.6,
+            "GroundClearance" : 10,
+            "Horsepower" : 401,
+            "MPG" : 26,
+            "Price" : 53000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 464,
+            "Weight" : 6800
+          }
+        }
+      }
+    },
+    "Honda" : {
+      "Accord" : {
+        "SE" : {
+          "2019" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Midsize commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.5,
+            "GroundClearance" : 5,
+            "Horsepower" : 192,
+            "MPG" : 31,
+            "Price" : 38000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 192,
+            "Weight" : 3208
+          }
+        }
+      },
+      "Civic" : {
+        "LX" : {
+          "2010" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Basic Honda beater",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.8,
+            "GroundClearance" : 6,
+            "Horsepower" : 140,
+            "MPG" : 29,
+            "Price" : 4500,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 128,
+            "Weight" : 2754
+          },
+          "2015" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Basic Honda commuter",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.8,
+            "GroundClearance" : 6,
+            "Horsepower" : 143,
+            "MPG" : 33,
+            "Price" : 13000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 129,
+            "Weight" : 2754
+          },
+          "2017" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Basic Honda commuter",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.5,
+            "GroundClearance" : 6,
+            "Horsepower" : 180,
+            "MPG" : 33,
+            "Price" : 17000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 162,
+            "Weight" : 2742
+          }
+        }
+      },
+      "Odyssey" : {
+        "Touring" : {
+          "2017" : {
+            "Category" : "Family",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Honda family minivan",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 3.5,
+            "GroundClearance" : 5,
+            "Horsepower" : 280,
+            "MPG" : 22,
+            "Price" : 45000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 8,
+            "Torque ft-lb" : 262,
+            "Weight" : 4564
+          }
+        }
+      },
+      "Ridgeline" : {
+        "Sport 4door Crew" : {
+          "2017" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Honda pickup",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.5,
+            "GroundClearance" : 8,
+            "Horsepower" : 280,
+            "MPG" : 21,
+            "Price" : 25000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 262,
+            "Weight" : 4400
+          },
+          "2021" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Honda pickup",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.5,
+            "GroundClearance" : 8,
+            "Horsepower" : 280,
+            "MPG" : 21,
+            "Price" : 35000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 262,
+            "Weight" : 2754
+          }
+        }
+      }
+    },
+    "Lexus" : {
+      "LS500" : {
+        "F Sport" : {
+          "2021" : {
+            "Category" : "Sport, Luxury",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Commuter class Mercedes",
+            "Doors" : 4,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 3.5,
+            "GroundClearance" : 5,
+            "Horsepower" : 241,
+            "MPG" : 22,
+            "Price" : 80000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 273,
+            "Weight" : 4817
+          }
+        }
+      }
+    },
+    "Mazda" : {
+      "\"3\"" : {
+        "Sport" : {
+          "2011" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "Engine mount cracking", "Broken shock mounts", "Coil spring rust" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Zoom Zoom",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2.5,
+            "GroundClearance" : 5,
+            "Horsepower" : 164,
+            "MPG" : 22,
+            "Price" : 7000,
+            "Recall" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 168,
+            "Weight" : 2922
+          }
+        }
+      },
+      "Miata" : {
+        "GT" : {
+          "2019" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "Automatic transmission shifts hard" ],
+            "Convertible" : "Yes",
+            "Cylinders" : 4,
+            "Description" : "Miata is always the answer",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 225,
+            "MPG" : 28,
+            "Price" : 35000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 2,
+            "Torque ft-lb" : 151,
+            "Weight" : 2339
+          }
+        },
+        "LS" : {
+          "2000" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "Head gasket failure", "Exhaust leak" ],
+            "Convertible" : "Yes",
+            "Cylinders" : 4,
+            "Description" : "Miata is always the answer",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 1.2,
+            "GroundClearance" : 4,
+            "Horsepower" : 140,
+            "MPG" : 24,
+            "Price" : 6000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 2,
+            "Torque ft-lb" : 116,
+            "Weight" : 2363
+          }
+        }
+      }
+    },
+    "Mercedes" : {
+      "c300" : {
+        "Base" : {
+          "2017" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "Commuter class Mercedes",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 4,
+            "GroundClearance" : 4,
+            "Horsepower" : 241,
+            "MPG" : 27,
+            "Price" : 35000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 273,
+            "Weight" : 3417
+          },
+          "2020" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "Commuter class Mercedes",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 4,
+            "GroundClearance" : 4,
+            "Horsepower" : 218,
+            "MPG" : 27,
+            "Price" : 55000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 273,
+            "Weight" : 3472
+          }
+        }
+      },
+      "c63 AMG" : {
+        "S" : {
+          "2018" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 8,
+            "Description" : "Super Performance Mercedes",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 4,
+            "GroundClearance" : 6,
+            "Horsepower" : 503,
+            "MPG" : 18,
+            "Price" : 75000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 516,
+            "Weight" : 4085
+          },
+          "2020" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "Both",
+            "Cylinders" : 8,
+            "Description" : "Super Performance Mercedes",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 4,
+            "GroundClearance" : 5,
+            "Horsepower" : 503,
+            "MPG" : 18,
+            "Price" : 75000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 516,
+            "Weight" : 3900
+          }
+        }
+      }
+    },
+    "Nissan" : {
+      "Altima" : {
+        "SL" : {
+          "2014" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Mid tier commuter",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2.5,
+            "GroundClearance" : 5,
+            "Horsepower" : 182,
+            "MPG" : 31,
+            "Price" : 7000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 180,
+            "Weight" : 3193
+          },
+          "2018" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Mid tier commuter",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2.5,
+            "GroundClearance" : 5,
+            "Horsepower" : 182,
+            "MPG" : 29,
+            "Price" : 24000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 177,
+            "Weight" : 3258
+          }
+        }
+      },
+      "Titan" : {
+        "Pro 4x crew cab" : {
+          "2021" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 8,
+            "Description" : "Nissan utility vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 5.6,
+            "GroundClearance" : 10,
+            "Horsepower" : 400,
+            "MPG" : 17,
+            "Price" : 50000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 413,
+            "Weight" : 5800
+          }
+        }
+      }
+    },
+    "Subaru" : {
+      "BRZ" : {
+        "Sport-tech" : {
+          "2015" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Subaru sports car",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 200,
+            "MPG" : 28,
+            "Price" : 15000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 151,
+            "Weight" : 2824
+          },
+          "2016" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Subaru sports car",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 200,
+            "MPG" : 28,
+            "Price" : 15000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 151,
+            "Weight" : 2824
+          }
+        }
+      }
+    },
+    "Toyota" : {
+      "Camry" : {
+        "LE" : {
+          "2017" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Midsize commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2.5,
+            "GroundClearance" : 6,
+            "Horsepower" : 178,
+            "MPG" : 27,
+            "Price" : 30000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 170,
+            "Weight" : 3300
+          },
+          "2021" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Midsize commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2.5,
+            "GroundClearance" : 6,
+            "Horsepower" : 206,
+            "MPG" : 31,
+            "Price" : 38000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 186,
+            "Weight" : 3425
+          }
+        }
+      },
+      "Celica" : {
+        "GT" : {
+          "2003" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "compact commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.8,
+            "GroundClearance" : 6,
+            "Horsepower" : 140,
+            "MPG" : 26,
+            "Price" : 3000,
+            "Recalls" : [ "R1" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 125,
+            "Weight" : 2425
+          }
+        }
+      },
+      "Corolla" : {
+        "LE" : {
+          "2010" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Basic toyota beater",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 1.8,
+            "GroundClearance" : 6,
+            "Horsepower" : 132,
+            "MPG" : 29,
+            "Price" : 4000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 128,
+            "Weight" : 2745
+          },
+          "2013" : {
+            "Category" : "Commuter, beater",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Typical commuter vehicle",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 6,
+            "Horsepower" : 132,
+            "MPG" : 30,
+            "Price" : 10000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 128,
+            "Weight" : 2800
+          }
+        }
+      },
+      "GT86" : {
+        "cpe" : {
+          "2014" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "Blown head gaskets" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Partnership with Subaru, also known as Subaru BRZ or Scion FRS",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 200,
+            "MPG" : 28,
+            "Price" : 15000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 151,
+            "Weight" : 2738
+          },
+          "2020" : {
+            "Category" : "Sport",
+            "CommonProblems" : [ "Blown head gaskets" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Partnership with Subaru, also known as Subaru BRZ or Scion FRS",
+            "Doors" : 2,
+            "Drivetrain" : "RWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 200,
+            "MPG" : 28,
+            "Price" : 15000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 4,
+            "Torque ft-lb" : 151,
+            "Weight" : 2817
+          }
+        }
+      },
+      "Prius" : {
+        "V" : {
+          "2014" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Hybrid Toyota commuter",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "Yes",
+            "Engine" : 1.8,
+            "GroundClearance" : 5,
+            "Horsepower" : 134,
+            "MPG" : 48,
+            "Price" : 15000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 105,
+            "Weight" : 3042
+          },
+          "2018" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "C1", "C2" ],
+            "Convertible" : "No",
+            "Cylinders" : 4,
+            "Description" : "Hybrid Toyota commuter",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "Yes",
+            "Engine" : 1.8,
+            "GroundClearance" : 5,
+            "Horsepower" : 121,
+            "MPG" : 52,
+            "Price" : 28000,
+            "Recalls" : [ "R1", "R2" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 105,
+            "Weight" : 3075
+          }
+        }
+      },
+      "Sienna" : {
+        "XLE" : {
+          "2018" : {
+            "Category" : "Family",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Common Toyota Minivan",
+            "Doors" : 4,
+            "Drivetrain" : "FWD",
+            "EV" : "No",
+            "Engine" : 3.5,
+            "GroundClearance" : 7,
+            "Horsepower" : 296,
+            "MPG" : 22,
+            "Price" : 37000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 8,
+            "Torque ft-lb" : 263,
+            "Weight" : 4600
+          }
+        }
+      },
+      "Tacoma" : {
+        "TRD OffRoad Extended Cab" : {
+          "2019" : {
+            "Category" : "Utility",
+            "CommonProblems" : [ "Timing Belt", "Shock Mounts" ],
+            "Convertible" : "No",
+            "Cylinders" : 6,
+            "Description" : "Common Toyota Pickup",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 3.5,
+            "GroundClearance" : 9,
+            "Horsepower" : 278,
+            "MPG" : 20,
+            "Price" : 36000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 265,
+            "Weight" : 4400
+          }
+        }
+      }
+    }
+  }
+}
