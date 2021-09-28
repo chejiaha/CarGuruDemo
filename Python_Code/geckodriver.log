@@ -407,3 +407,241 @@ JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453548, 
 JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
 JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453548, line 1: Error: CE: multiple userscripts installed
 JavaScript warning: https://pagead2.googlesyndication.com/bg/WAz-nyaJu9uVRUq8NsxhsXGtXViWwv7lV4sP3qP2SqA.js line 1 > eval line 3946 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632831115659	geckodriver	INFO	Listening on 127.0.0.1:49712
+1632831119501	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileqO2r5z"
+1632831120310	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileqO2r5z\\search.json.mozlz4", (void 0)))
+1632831123146	Marionette	INFO	Listening on port 49720
+1632831123236	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://connect.facebook.net/en_US/fbevents.js, line 20: ReferenceError: fbq is not defined
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+JavaScript warning: https://pagead2.googlesyndication.com/bg/-1aq-589pTXQhIX0O0sr0by93NOseZw7_D6wdr9M3ZU.js line 1 > eval line 3112 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/-1aq-589pTXQhIX0O0sr0by93NOseZw7_D6wdr9M3ZU.js line 1 > eval line 5094 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632831185753	Marionette	INFO	Stopped listening on port 49720
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ttings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileVPEmOL\\search.json.mozlz4", (void 0)))
+1632831184221	Marionette	INFO	Listening on port 53641
+1632831184576	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript error: , line 0: uncaught exception: undefined
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 3572 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/-1aq-589pTXQhIX0O0sr0by93NOseZw7_D6wdr9M3ZU.js line 1 > eval line 2195 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/res1632831233760	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileQVIYt8"
+1632831234071	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile1632831237552	Marionette	INFO	Stopped listening on port 53641
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+tag.127.js?utv=ut4.39.202012161338, line 11: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.154.js?utv=ut4.39.201901281526, line 19: ReferenceError: utag is not defined
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+1632831264206	geckodriver	INFO	Listening on 127.0.0.1:50979
+1632831267225	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilePE2htc"
+1632831267553	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilePE2htc\\search.json.mozlz4", (void 0)))
+1632831269779	Marionette	INFO	Listening on port 50987
+1632831269948	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 6931 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632831434646	geckodriver	INFO	Listening on 127.0.0.1:51127
+1632831437684	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileUXSBKt"
+1632831438021	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileUXSBKt\\search.json.mozlz4", (void 0)))
+1632831440065	Marionette	INFO	Listening on port 51136
+1632831440374	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 2918 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 541 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632831559604	geckodriver	INFO	Listening on 127.0.0.1:56074
+1632831562645	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilesjpijg"
+1632831562997	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilesjpijg\\search.json.mozlz4", (void 0)))
+1632831565371	Marionette	INFO	Listening on port 56082
+1632831565859	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.127.js?utv=ut4.39.202012161338, line 11: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.154.js?utv=ut4.39.201901281526, line 19: ReferenceError: utag is not defined
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 4188 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 5241 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632831849433	geckodriver	INFO	Listening on 127.0.0.1:56263
+1632831852476	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileMa3N6C"
+1632831852807	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileMa3N6C\\search.json.mozlz4", (void 0)))
+1632831855280	Marionette	INFO	Listening on port 56271
+1632831855694	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.127.js?utv=ut4.39.202012161338, line 11: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.154.js?utv=ut4.39.201901281526, line 19: ReferenceError: utag is not defined
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+1632831897099	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 1490 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632831899160	Marionette	INFO	Stopped listening on port 56271
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1632832578204	geckodriver	INFO	Listening on 127.0.0.1:50833
+1632832581252	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileSiMwRk"
+1632832581602	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileSiMwRk\\search.json.mozlz4", (void 0)))
+1632832583904	Marionette	INFO	Listening on port 50842
+1632832584424	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 6767 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 2024 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632832598026	Marionette	INFO	Stopped listening on port 50841632832599754	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofiles2EflW"
+1632832600077	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofiles2EflW\\search.json.mozlz4", (void 0)))
+1632832603023	Marionette	INFO	Listening on port 51017
+1632832603474	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 5327 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 332 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 7594 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 7139 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js line 69 > srcScript, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 3044 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cars.usnews.com/static/scripts/res1632833683952	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilecUrlk8"
+1632833684261	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings fileJavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 6274 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.132.js?utv=ut4.39.202104201415, line 61: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.127.js?utv=ut4.39.202012161338, line 11: ReferenceError: utag is not defined
+1632836549972	Marionette	INFO	Stopped listening on port 51017
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ 4444 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+1632834157936	Marionette	INFO	Stopped listening on port 50351
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ttings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilehozsGQ\\search.json.mozlz4", (void 0)))
+1632833989900	Marionette	INFO	Listening on port 51452
+1632833990040	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.127.js?utv=ut4.39.202012161338, line 11: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.154.js?utv=ut4.39.201901281526, line 19: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.132.js?utv=ut4.39.202104201415, line 61: ReferenceError: utag is not defined
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453564, line 1: Error: CE: multiple userscripts installed
+1632834005532	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453565, line 1: Error: CE: multiple userscripts installed
+JavaScript warning: https://pagead2.googlesyndication.com/bg/9iDa3dU_tFEhRumWaalqbETNN5HIIuQ-Wj77Xalf13I.js line 1 > eval line 3178 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632834157481	geckodriver	INFO	Listening on 127.0.0.1:63855
+1632834160538	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilebsDS76"
+1632834160821	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilebsDS76\\search.json.mozlz4", (void 0)))
+1632834162857	Marionette	INFO	Listening on port 63866
+1632834163225	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.127.js?utv=ut4.39.202012161338, line 11: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.153.js?utv=ut4.39.201808071815, line 4: ReferenceError: utag is not defined
+JavaScript error: http://tags.tiqcdn.com/utag/usnews/main/prod/utag.154.js?utv=ut4.39.201901281526, line 19: ReferenceError: utag is not defined
+JavaScript error: http://script.crazyegg.com/pages/scripts/0010/9297.js?453565, line 1: Error: CE: multiple userscripts installed
+1632834288809	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://cars.usnews.com/static/scripts/responsive/prod/autos.resp.min.rr65.js, line 1: TypeError: d is null
+JavaScript warning: https://pagead2.googlesyndication.com/bg/-1aq-589pTXQhIX0O0sr0by93NOseZw7_D6wdr9M3ZU.js line 1 > eval line 2812 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1632834425207	geckodriver	INFO	Listening on 127.0.0.1:53401
+1632834428246	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilep0hUQ3"
+1632834428545	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilep0hUQ3\\search.json.mozlz4", (void 0)))
+1632834430669	Marionette	INFO	Listening on port 53410
+1632834430931	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632834438567	Marionette	INFO	Stopped listening on port 53410
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1632834454396	geckodriver	INFO	Listening on 127.0.0.1:50738
+1632834457441	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilemTZT28"
+1632834457738	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofilemTZT28\\search.json.mozlz4", (void 0)))
+1632834459774	Marionette	INFO	Listening on port 50748
+1632834460117	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632834511106	geckodriver	INFO	Listening on 127.0.0.1:50816
+1632834514163	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileBfKOwf"
+1632834514462	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileBfKOwf\\search.json.mozlz4", (void 0)))
+1632834516422	Marionette	INFO	Listening on port 50825
+1632834516853	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632834532936	Marionette	INFO	Stopped listening on port 50825
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1632834547208	geckodriver	INFO	Listening on 127.0.0.1:50881
+1632834550249	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileDMuxxq"
+1632834550536	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileDMuxxq\\search.json.mozlz4", (void 0)))
+1632834552454	Marionette	INFO	Listening on port 50892
+1632834552929	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632834574869	Marionette	INFO	Stopped listening on port 50892
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1632834656832	geckodriver	INFO	Listening on 127.0.0.1:61323
+1632834659878	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileOUsOzu"
+1632834660173	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileOUsOzu\\search.json.mozlz4", (void 0)))
+1632834662342	Marionette	INFO	Listening on port 61332
+1632834662578	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632834679939	Marionette	INFO	Stopped listening on port 61332
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1632836705158	geckodriver	INFO	Listening on 127.0.0.1:55748
+1632836708224	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileS3qhqS"
+1632836708532	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileS3qhqS\\search.json.mozlz4", (void 0)))
+1632836710808	Marionette	INFO	Listening on port 55756
+1632836710914	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632836845881	Marionette	INFO	Stopped listening on port 55756
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+ttings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofileVxbWca\\search.json.mozlz4", (void 0)))
+1632836786282	Marionette	INFO	Listening on port 55833
+1632836786587	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632836839187	geckodriver	INFO	Listening on 127.0.0.1:55897
+1632836842240	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofile5zeUeO"
+1632836842524	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\luka1\\AppData\\Local\\Temp\\rust_mozprofile5zeUeO\\search.json.mozlz4", (void 0)))
+1632836844653	Marionette	INFO	Listening on port 55906
+1632836846144	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1632836904144	Marionette	INFO	Stopped listening on port 55906
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
