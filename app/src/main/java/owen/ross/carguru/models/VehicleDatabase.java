@@ -22,7 +22,16 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
     private static ValueEventListener listener;
 
     @Override
-    public void onCallback(List<Car> vehicleList) {
+    public void onCallbackCarList(List<Car> vehicleList) {
+    }
+
+    @Override
+    public void onCallbackStringArrayList(ArrayList<String> vehicleList) {
+    }
+
+    @Override
+    public void onCallbackQuestionList(List<Question> list) {
+
     }
 
 
@@ -104,7 +113,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     }
                 }
                 // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
-                vehicleFirebaseCallback.onCallback(vehicleList);
+                vehicleFirebaseCallback.onCallbackCarList(vehicleList);
                 //Clearing the modelList
                 modelList.clear();
             }
@@ -243,7 +252,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     }
                 }//End of Makes For loop
                 // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
-                vehicleFirebaseCallback.onCallback(categoryVehicles);
+                vehicleFirebaseCallback.onCallbackCarList(categoryVehicles);
             }//End of OnData changed
 
             @Override
@@ -270,8 +279,9 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *
      * returns A List of Vehicles that the program finds.
      */
-    public static ArrayList<Car> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
+    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory, VehicleFirebaseCallback stringCallback){
 
+        ArrayList<String> returnCarList = new ArrayList<String>();
         listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -286,7 +296,11 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                 Set<String> greaterThanList = new HashSet<String>();
                 Set<String> allList = new HashSet<String>();
                 Set<String> normalList = new HashSet<String>();
+                Set<String> containList = new HashSet<String>();
                 Set<String> resultList = new HashSet<String>();
+
+                // This variable is the compent we are comparing from the current car in the database and the users queried statement (MPG, horsepower..)
+                String comparedValue = "";
 
                 for (DataSnapshot ssMake : dataSnapshot.getChildren()) {
                     make = ssMake.getKey();
@@ -295,29 +309,30 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
                         //setting the make so we can iterate through them
                         model = ssModel.getKey();
-                        // This variable is the compent we are comparing from the current car in the database and the users queried statement (MPG, horsepower..)
-                        String comparedValue = "";
                         //Go through each year and add the models for that year
                         for (DataSnapshot ssTrim : dataSnapshot.child(make).child(model).getChildren()) {
                             //setting the year so we can iterate through each year and get the models
                             trim = ssTrim.getKey();
-                            comparedValue = trim;
                             //Go through each model of each make
                             for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
                                 year = ssYear.getKey();
-                                Log.d("AllCar",make+model+trim+year);
+//                                Log.d("AllCar",make+model+trim+year);
                                 if (questionCategory.contains(ssYear.child("Category").getValue().toString())){
                                     Set<String> setOfKeys = questionAnswers.keySet();
 
                                     // Iterating questionCategorythrough the Hahstable
                                     for (String DBField : setOfKeys) {
 
-                                        if (DBField.equals("Year")){
+                                        if (DBField.equals("Make")){
+                                            comparedValue = make;
+                                        }else if(DBField.equals("Model")) {
+                                            comparedValue = model;
+                                        }else if(DBField.equals("Trim")) {
+                                            comparedValue = trim;
+                                        }else if(DBField.equals("Year")) {
                                             comparedValue = year;
-                                        }else if(!DBField.equals("Trim")) {
-                                            comparedValue = ssYear.child(DBField).getValue().toString();
                                         }else{
-                                            //do nothing
+                                            comparedValue = ssYear.child(DBField).getValue().toString();
                                         }
                                         // If the
                                         if (questionAnswers.get(DBField).contains("<=")){
@@ -350,8 +365,11 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                                         } else if (questionAnswers.get(DBField).equals("All")){
                                             allList.add(make + model + trim + year);
                                             Log.d("all", allList.toString());
+                                        } else if (comparedValue.contains(questionAnswers.get(DBField))){
+                                            containList.add(make + model + trim + year);
+                                            Log.d("contain", allList.toString());
                                         } else {
-                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.contains(questionAnswers.get(DBField)) || comparedValue.equals("Both")){
+                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.equals("Both")){
                                                 normalList.add(make + model + trim + year);
                                                 Log.d("both", normalList.toString());
                                             }
@@ -413,13 +431,26 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(normalList);
                     }
                 }
+                if (containList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = containList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(containList);
+                    }
+                }
 
 //                resultList.retainAll(allSets);
 //                Log.d("RES", resultList.toString());
                 Log.d("RES", resultSet.toString());
                 for (String car : resultSet){
                     Log.d("Car: ", car);
+                    returnCarList.add(car);
                 }
+
+//                //convert to String[]
+//                returnCarList[0] = resultSet.toArray(new String[resultSet.size()]);
+                stringCallback.onCallbackStringArrayList(returnCarList);
             }// End of OnDataChanged
 
             @Override
@@ -427,15 +458,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             }
         }); //End of Listener
 
-        //TODO IF WE CAN MAKE THIS SET INTO An ARRAY LIST OF CARS THAT WOULD BE GREAT!
-        ArrayList<Car> vehicleList = new ArrayList<>();
-        //Result set === vehicle List
-
-
-        //TODO Once this result set is returned I am throwing it in a bundle and passing it to the next fragment.
-        // I will create a parcable or serializable class to pass the Array list of cars.
-
-        return vehicleList;
+        return returnCarList;
     }
 
 

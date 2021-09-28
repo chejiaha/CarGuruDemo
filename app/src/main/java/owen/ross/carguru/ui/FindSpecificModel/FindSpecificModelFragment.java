@@ -32,6 +32,7 @@ import owen.ross.carguru.R;
 import owen.ross.carguru.models.Car;
 import owen.ross.carguru.models.Database;
 import owen.ross.carguru.models.FirebaseCallback;
+import owen.ross.carguru.models.Question;
 import owen.ross.carguru.models.VehicleDatabase;
 import owen.ross.carguru.models.VehicleFirebaseCallback;
 
@@ -102,12 +103,22 @@ public class FindSpecificModelFragment extends Fragment {
         //Getting the data from the database
         vehicleList = VehicleDatabase.getMakeModelYear(new VehicleFirebaseCallback() {
             @Override
-            public void onCallback(List<Car> list) {
+            public void onCallbackCarList(List<Car> list) {
                 // checking if the questions linkedlist is already populated with questions
                 if (vehicleList.isEmpty()) {
                     // the questions returned from the database will be added to the list if the list is empty
                     vehicleList.addAll(list);
                 }
+            }
+
+            @Override
+            public void onCallbackStringArrayList(ArrayList<String> cars) {
+
+            }
+
+            @Override
+            public void onCallbackQuestionList(List<Question> list) {
+
             }
         });
         //Creating the spinner adapters and setting the lists that are used.

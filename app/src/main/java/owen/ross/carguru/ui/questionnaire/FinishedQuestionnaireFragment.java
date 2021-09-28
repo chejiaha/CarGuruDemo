@@ -3,16 +3,24 @@ package owen.ross.carguru.ui.questionnaire;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import owen.ross.carguru.R;
+import owen.ross.carguru.models.AnswerParser;
+import owen.ross.carguru.models.Car;
+import owen.ross.carguru.models.VehicleDatabase;
 
 
 public class FinishedQuestionnaireFragment extends Fragment {
@@ -34,6 +42,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
     TextView tvQuestionnaireCategoryExplanation;
     TextView tvQuestionnaireTryAgain;
     TextView tvQuestionnaireToCars;
+    Button btnQuestionnaireToCars;ArrayList<String> vehicleList;
 
 
     @Override
@@ -49,6 +58,9 @@ public class FinishedQuestionnaireFragment extends Fragment {
         tvQuestionnaireTryAgain = view.findViewById(R.id.tvQuestionnaireTryAgain);
         // See results button
         tvQuestionnaireToCars = view.findViewById(R.id.tvQuestionnaireToCars);
+        btnQuestionnaireToCars = view.findViewById(R.id.btnToSuggestedCars);
+
+        btnQuestionnaireToCars.setOnClickListener(finalListOfCars);
 
         //Function called to change the features based on Questionnaire Fragments response
         /*
@@ -58,7 +70,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
          *
          */
         String questionCategory = (getArguments().getString("category"));
-        //ArrayList<String> vehicleList = (getArguments().getStringArrayList("allCars"));
+        vehicleList = (getArguments().getStringArrayList("listOfCars"));
 
         // Setting the title
         tvQuestionnaireCategoryTitle.setText(questionCategory);
@@ -84,5 +96,35 @@ public class FinishedQuestionnaireFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    public View.OnClickListener finalListOfCars = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            //Send the user to the Finished Questionnaire Fragment to sift through the results
+            Bundle bundle = new Bundle();
+            // Adding the category with the highest Tally based on the questions they answered
+            bundle.putStringArrayList("listOfCars", vehicleList);
+            Fragment fragment = new QuestionnaireFinalListOfCarsFragment();
+            switchFragments(fragment, R.id.nav_host_fragment, bundle);
+        }
+    };
+
+    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+        //If the bundle is not empty add the argument
+        if (bundle.isEmpty() == false){
+            fragmentName.setArguments(bundle);
+        }
+        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+
+        // Create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+        fragmentTransaction.commit(); // save the changes
     }
 }
