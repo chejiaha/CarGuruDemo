@@ -337,40 +337,40 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                                         // If the
                                         if (questionAnswers.get(DBField).contains("<=")){
                                             if (Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).substring(2))){
-                                                smallerThanList.add(make + model + trim + year);
+                                                smallerThanList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("smallerThan", smallerThanList.toString());
                                             }
                                         } else if (questionAnswers.get(DBField).contains(">=")){
                                             if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).substring(2))){
-                                                greaterThanList.add(make + model + trim + year);
+                                                greaterThanList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("greaterThan", greaterThanList.toString());
                                             }
                                         } else if (questionAnswers.get(DBField).contains("<")){
                                             if (Integer.parseInt(comparedValue) < Integer.parseInt(questionAnswers.get(DBField).substring(1))){
-                                                smallerList.add(make + model + trim + year);
+                                                smallerList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("smaller", smallerList.toString());
                                             }
                                         } else if (questionAnswers.get(DBField).contains(">")){
                                             if (Integer.parseInt(comparedValue) > Integer.parseInt(questionAnswers.get(DBField).substring(1))){
-                                                greaterList.add(make + model + trim + year);
+                                                greaterList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("greater", greaterList.toString());
                                             }
                                         } else if (questionAnswers.get(DBField).contains("-")){
 
                                             if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).split("-")[0])
                                                     && Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).split("-")[1])){
-                                                allList.add(make + model + trim + year);
+                                                allList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("dash", allList.toString());
                                             }
                                         } else if (questionAnswers.get(DBField).equals("All")){
-                                            allList.add(make + model + trim + year);
+                                            allList.add(make + " " + model + " " + trim + " " + year);
                                             Log.d("all", allList.toString());
                                         } else if (comparedValue.contains(questionAnswers.get(DBField))){
-                                            containList.add(make + model + trim + year);
+                                            containList.add(make + " " + model + " " + trim + " " + year);
                                             Log.d("contain", allList.toString());
                                         } else {
                                             if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.equals("Both")){
-                                                normalList.add(make + model + trim + year);
+                                                normalList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("both", normalList.toString());
                                             }
                                         }
