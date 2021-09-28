@@ -45,7 +45,7 @@ public class AnswerParser {
         Log.d("getHighestCategory",  carCategories.toString());
 
         //DEBUG
-        String[] allCategories = {"Sports", "Commuter", "Luxury", "Beater", "Family", "Utility" };
+        String[] allCategories = {"Sport", "Commuter", "Luxury", "Beater", "Family", "Utility" };
         //String[] allCategories = {"Sports", "Commuter"};
         int highestValue =0;
         //Returns the category that was chosen
@@ -81,115 +81,5 @@ public class AnswerParser {
         return highestString;
     }
 
-    /*
-     * This method is used to get and return the string that we will search our database with.
-     * To do this, it will check what the vehicle category that the user was placed into
-     *
-     *   questionCategory <String>: check what the vehicle category that the user was placed into
-     *   Hashtable<String,String> questionAnswers: Will hold the { DBField, questionAnswer }
-     *      DBField is what we are targeting for when the user answers the question.
-     *              So if the question is do you care about gas? it DBField will be MPG
-     *      questionAnswer being the answer that the user chose to the question
-     *
-     * returns A List of Vehicles that the program finds.
-     */
-    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory){
-        ArrayList<String> listofCars = new ArrayList<>();
-
-        // Getting keySets of Hashtable and
-        // storing it into Set (only one item of the same type allowed.
-        Set<String> setOfKeys = questionAnswers.keySet();
-
-
-        for (String DBField :  setOfKeys) {
-            //Switch Going through all possibilities of answers given
-            //debug
-            Log.d("CommuterCategoryParser" , "COMMUTER ANSWER STRING IS!!" +  questionAnswers.get(DBField));
-            //User Answer value (Example DBField: "questionAnswer" == EV: "Yes")
-            String questionAnswer = questionAnswers.get(questionAnswers.get(DBField));
-
-            //Commuter DBFields
-            //If the MPG is lt25
-            boolean MPGlt25 = false;
-            boolean MPGgt35 = false;
-            //
-            boolean MPGmid = false;
-            boolean Year = false;
-            boolean Convertable = false;
-            boolean EV = false;
-
-            //Sports DBFields
-            boolean Weight = false;
-            boolean GroundClearance = false;
-//          boolean Year = false;
-//          boolean Convertable = false;
-            boolean Cylinders = false;
-
-            //If the item is a commuter
-            if (questionCategory.equals("CommuterQuestion")){
-                //Go through every car in the database and check if it checks all of the boxes.
-                //Creating all of the variables for each answer.
-
-
-                switch(DBField) {
-                    case "EV" :
-                        if (questionAnswer.equals("Yes")){
-                            EV = true;
-                        }
-                        break;
-                    case "MPG":
-                        // Check if they care about fuel efficiency
-                        if (questionAnswer.equals(">35")){
-
-                        }
-
-                        break;
-                    case "Year":
-                        // Figure out how to siphon this into results
-                        break;
-                    case "Convertible":
-                        // Figure out how to siphon this into results
-                        break;
-                    default:
-                        // Default will Log a message
-                        Log.d("CommuterCategoryParser" , "This Field was not found in the list: Commuter" + DBField);
-                        throw new StringIndexOutOfBoundsException("This Field was not found in the list: Commuter" + DBField);
-                }
-            }else if (questionCategory.equals("SportQuestion")){
-                switch(DBField) {
-                    case "Weight":
-                        // Figure out how to siphon this into results
-                        break;
-                    case "GroundClearance":
-                        // Figure out how to siphon this into results
-                        break;
-                    case "Year":
-                        // Figure out how to siphon this into results
-                        break;
-                    case "Convertible":
-                        // Figure out how to siphon this into results
-                        break;
-                    case "Cylinders":
-                        // Figure out how to siphon this into results
-                        break;
-                    default:
-                        // Default will Log a message
-                        Log.d("CommuterCategoryParser", "This Field was not found in the list Sports: " + DBField);
-                        throw new StringIndexOutOfBoundsException("This Field was not found in the list Sports: " + DBField);
-                }
-            }else if (questionCategory.equals("LuxuryQuestion")){
-
-            }else if (questionCategory.equals("UtilityQuestion")){
-
-            }else if (questionCategory.equals("BeaterQuestion")){
-
-            }else if (questionCategory.equals("FamilyQuestion")){
-
-            }else{
-                    continue;
-            }
-        }
-        return listofCars;
-    }
 
 }

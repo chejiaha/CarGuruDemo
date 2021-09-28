@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface VehicleFirebaseCallback {
     void onCallback(List<Car> vehicleList);
+
+//    void onCallback(Car car);
 }
