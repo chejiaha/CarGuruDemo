@@ -300,7 +300,11 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                 Set<String> greaterThanList = new HashSet<String>();
                 Set<String> allList = new HashSet<String>();
                 Set<String> normalList = new HashSet<String>();
+                Set<String> containList = new HashSet<String>();
                 Set<String> resultList = new HashSet<String>();
+
+                // This variable is the compent we are comparing from the current car in the database and the users queried statement (MPG, horsepower..)
+                String comparedValue = "";
 
                 for (DataSnapshot ssMake : dataSnapshot.getChildren()) {
                     make = ssMake.getKey();
@@ -309,29 +313,30 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     for (DataSnapshot ssModel : dataSnapshot.child(make).getChildren()) {
                         //setting the make so we can iterate through them
                         model = ssModel.getKey();
-                        // This variable is the compent we are comparing from the current car in the database and the users queried statement (MPG, horsepower..)
-                        String comparedValue = "";
                         //Go through each year and add the models for that year
                         for (DataSnapshot ssTrim : dataSnapshot.child(make).child(model).getChildren()) {
                             //setting the year so we can iterate through each year and get the models
                             trim = ssTrim.getKey();
-                            comparedValue = trim;
                             //Go through each model of each make
                             for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
                                 year = ssYear.getKey();
-                                Log.d("AllCar",make+model+trim+year);
+                                //Log.d("AllCar",make+model+trim+year);
                                 if (questionCategory.contains(ssYear.child("Category").getValue().toString())){
                                     Set<String> setOfKeys = questionAnswers.keySet();
 
                                     // Iterating questionCategorythrough the Hahstable
                                     for (String DBField : setOfKeys) {
 
-                                        if (DBField.equals("Year")){
+                                        if (DBField.equals("Make")){
+                                            comparedValue = make;
+                                        }else if(DBField.equals("Model")) {
+                                            comparedValue = model;
+                                        }else if(DBField.equals("Trim")) {
+                                            comparedValue = trim;
+                                        }else if(DBField.equals("Year")) {
                                             comparedValue = year;
-                                        }else if(!DBField.equals("Trim")) {
-                                            comparedValue = ssYear.child(DBField).getValue().toString();
                                         }else{
-                                            //do nothing
+                                            comparedValue = ssYear.child(DBField).getValue().toString();
                                         }
                                         // If the
                                         if (questionAnswers.get(DBField).contains("<=")){
@@ -364,8 +369,11 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                                         } else if (questionAnswers.get(DBField).equals("All")){
                                             allList.add(make + model + trim + year);
                                             Log.d("all", allList.toString());
+                                        } else if (comparedValue.contains(questionAnswers.get(DBField))){
+                                            containList.add(make + model + trim + year);
+                                            Log.d("contain", allList.toString());
                                         } else {
-                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.contains(questionAnswers.get(DBField)) || comparedValue.equals("Both")){
+                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.equals("Both")){
                                                 normalList.add(make + model + trim + year);
                                                 Log.d("both", normalList.toString());
                                             }
@@ -378,7 +386,6 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                 }
                 boolean isFirstNonEmptyList = false;
                 //TODO Find a way to pass this to the method above..
-
                 Set<String> resultSet = new HashSet<String>();
                 if (smallerList.size() > 0){
                     if (isFirstNonEmptyList == false) {
@@ -428,6 +435,14 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(normalList);
                     }
                 }
+                if (containList.size() > 0){
+                    if (isFirstNonEmptyList == false) {
+                        resultSet = containList;
+                        isFirstNonEmptyList = true;
+                    } else {
+                        resultSet.retainAll(containList);
+                    }
+                }
 
 //                resultList.retainAll(allSets);
 //                Log.d("RES", resultList.toString());
@@ -454,15 +469,6 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             vehicleList.add("Car4");
             vehicleList.add("Car5");
         }
-
-
-
-
         return vehicleList;
     }
-
-
-
-
-
 }
