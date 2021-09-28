@@ -365,13 +365,19 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                                         } else if (questionAnswers.get(DBField).equals("All")){
                                             allList.add(make + " " + model + " " + trim + " " + year);
                                             Log.d("all", allList.toString());
-                                        } else if (comparedValue.contains(questionAnswers.get(DBField))){
-                                            containList.add(make + " " + model + " " + trim + " " + year);
-                                            Log.d("contain", allList.toString());
-                                        } else {
+                                        }
+//                                        else if (comparedValue.contains(questionAnswers.get(DBField))){
+//                                            containList.add(make + " " + model + " " + trim + " " + year);
+//                                            Log.d("contain", allList.toString());
+//                                        }
+                                        else {
                                             if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.equals("Both")){
                                                 normalList.add(make + " " + model + " " + trim + " " + year);
                                                 Log.d("both", normalList.toString());
+//                                                if (comparedValue.contains(questionAnswers.get(DBField))){
+//                                                    containList.add(make + " " + model + " " + trim + " " + year);
+//                                                    Log.d("contain", allList.toString());
+//                                                }
                                             }
                                         }
                                     }
@@ -431,14 +437,13 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(normalList);
                     }
                 }
-                if (containList.size() > 0){
-                    if (isFirstNonEmptyList == false) {
-                        resultSet = containList;
-                        isFirstNonEmptyList = true;
-                    } else {
-                        resultSet.retainAll(containList);
-                    }
-                }
+//                if (containList.size() > 0){
+//                    if (isFirstNonEmptyList == false) {
+//                        resultSet = containList;
+//                    } else {
+//                        resultSet.retainAll(containList);
+//                    }
+//                }
 
 //                resultList.retainAll(allSets);
 //                Log.d("RES", resultList.toString());
