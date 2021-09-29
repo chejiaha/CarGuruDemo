@@ -15,31 +15,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private ArrayList<String> localDataSet;
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView tvCarItemTitle;
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-
-            textView = (TextView) view.findViewById(R.id.textView);
+            tvCarItemTitle = (TextView) view.findViewById(R.id.tvCarItemTitle);
         }
 
         public TextView getTextView() {
-            return textView;
+            return tvCarItemTitle;
         }
     }
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
-     */
+
     public CustomAdapter(ArrayList<String> dataSet) {
         localDataSet = dataSet;
     }

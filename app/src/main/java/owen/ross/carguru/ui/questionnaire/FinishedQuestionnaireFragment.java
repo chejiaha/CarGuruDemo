@@ -42,7 +42,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
     TextView tvQuestionnaireCategoryExplanation;
     TextView tvQuestionnaireTryAgain;
     TextView tvQuestionnaireToCars;
-    Button btnQuestionnaireToCars;ArrayList<String> vehicleList;
+    ArrayList<String> vehicleList;
 
 
     @Override
@@ -58,9 +58,10 @@ public class FinishedQuestionnaireFragment extends Fragment {
         tvQuestionnaireTryAgain = view.findViewById(R.id.tvQuestionnaireTryAgain);
         // See results button
         tvQuestionnaireToCars = view.findViewById(R.id.tvQuestionnaireToCars);
-        btnQuestionnaireToCars = view.findViewById(R.id.btnToSuggestedCars);
 
-        btnQuestionnaireToCars.setOnClickListener(finalListOfCars);
+        //Setting the onClick Listeners
+        tvQuestionnaireToCars.setOnClickListener(onClickSuggestedCars);
+        tvQuestionnaireTryAgain.setOnClickListener(onClickFindMeACar);
 
         //Function called to change the features based on Questionnaire Fragments response
         /*
@@ -98,7 +99,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
         return view;
     }
 
-    public View.OnClickListener finalListOfCars = new View.OnClickListener() {
+    public View.OnClickListener onClickSuggestedCars = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
@@ -106,10 +107,21 @@ public class FinishedQuestionnaireFragment extends Fragment {
             Bundle bundle = new Bundle();
             // Adding the category with the highest Tally based on the questions they answered
             bundle.putStringArrayList("listOfCars", vehicleList);
+            bundle.putString("title", "Suggested Vehicle List");
             Fragment fragment = new QuestionnaireFinalListOfCarsFragment();
             switchFragments(fragment, R.id.nav_host_fragment, bundle);
         }
     };
+
+    // To Find me a car
+    public View.OnClickListener  onClickFindMeACar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Fragment findMeACar = new QuestionnaireFragment();
+            switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
+        }
+    };
+
 
     public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
         //If the bundle is not empty add the argument

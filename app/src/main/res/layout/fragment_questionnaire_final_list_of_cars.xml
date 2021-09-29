@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/titleTV"
+        android:id="@+id/tvListOfCarsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="30dp"
@@ -17,7 +17,7 @@
         android:textSize="36sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rvVehicleList"
         android:layout_width="match_parent"
         android:layout_height="655dp">
 

@@ -1,20 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:layout_height="250px"
+    android:gravity="center_vertical"
+    android:background="#CCCCCC"
+    android:layout_marginBottom="8px"
+    >
+
+    <ImageView
+        android:id="@+id/tvCarItemImage"
+        android:layout_width="300px"
+        android:layout_height="180px"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/searchicon"/>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:id="@+id/tvCarItemDesc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#CCA8A8"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:text="Description"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#090808"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvCarItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarItemTitle" />
+
+    <TextView
+        android:id="@+id/tvCarItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:background="#14a1c4"
         android:text="car"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#090808"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvCarItemImage"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

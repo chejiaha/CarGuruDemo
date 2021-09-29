@@ -20,15 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnToSuggestedCars"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To Suggested Cars"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="363dp"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:id="@+id/tvFindACarGuruImage"
         android:layout_width="303dp"
