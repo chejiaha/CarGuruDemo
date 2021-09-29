@@ -1,90 +1,25 @@
+
+#importing webdriver from selenium
+from typing import cast
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 import time
+#selecting Firefox as the browser
+#in order to select Chrome 
+# webdriver.Chrome() will be used
+# driver = webdriver.Firefox()
 
+# #URL of the website 
+# url = "https://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/search-recherche/menu.aspx?lang=eng"
 
+# driver.get(url)
 
-# A dict to hold all trim's and the links 
-car_dict = {}
-# {"Trim": "href for car specs information"}
-info_dict = {}
-# The make of the vehicle
-make = ""
-# The Model of the vehicle
-model = ""
-# The Year of the vehicle
-year = ""
-# The Trim of the vehicle
-trim = ""
-
-# Creating the web Driver object
-#driver = webdriver.Firefox()
-
-# # driver.get("https://cars.usnews.com/cars-trucks/ford/focus/2014/")
-# driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semester5/PythonScripts/WebScrappers/test.html")
-
-#driver.get("https://cars.usnews.com/cars-trucks/ford/focus/2014/specs")
-#driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semester5/PythonScripts/WebScrappers/test2.html")
-
-
-'''
-"BMW" : {
-      "3-series" : {
-        "320i" : {
-          "2016" : {
-            "Category" : "Commuter",
-            "CommonProblems" : [ "Left Light Fails", "Blinker Stops Working" ],
-            "Convertible" : "Both",
-            "Cylinders" : 4,
-            "Description" : "A commuter car that is from 2016",
-            "Doors" : 4,
-            "Drivetrain" : "AWD",
-            "EV" : "No",
-            "Engine" : 2,
-            "GroundClearance" : 5,
-            "Horsepower" : 210,
-            "MPG" : 30,
-            "Price" : 11000,
-            "Recalls" : [ "R1", "R2", "R3" ],
-            "Seats" : 5,
-            "Torque ft-lb" : 200,
-            "Weight" : 3510
-          },
-          "2017" : {
-            "Cylinders" : 4,
-            "Description" : "BMW 320 A quicker commuter car from 2016",
-            "Doors" : 4,
-            "Drivetrain" : "AWD",
-            "EV" : "No",
-            "Engine" : 2,
-            "Horsepower" : 210,
-            "MPG" : 28,
-            "Price" : 13000,
-            "Seats" : 5,
-            "Torque ft-lb" : 200,
-            "Weight" : 3541
-          }
-        },
-    }
-}
-
-
-INFO_dict (one car model and one year)
-{'BMW': {'5-Series': {'4dr Sdn 528i': {'2016': {}}, '4dr Sdn 320i RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379533'},
-'4dr Sdn 320i xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379532'},
-'4dr Sdn 328i RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379804'},
-'4dr Sdn 328d RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379808'},
-'4dr Sdn 328d xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379809'},
-'4dr Sports Wgn 328i xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sports-wagon-379807'},
-'4dr Sdn 330e Plug-In Hybrid RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-382983'},
-'4dr Sports Wgn 328d xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sports-wagon-379810'},
-'4dr Sdn 340i RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379811'}, 
-'4dr Sdn 340i xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379813'}, 
-'5dr 335i xDrive Gran Turismo AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-wagon-379766'},
-'M3 4dr Sdn': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-m3-sedan-379326'}}
-}}
-
-'''
+# #Get the select/combobox objects for make,model,toYear and fromYear using selenium
+# selectMake = Select(driver.find_element_by_id("BodyContent_DDL_Make"))
+# selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+# selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+# selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+#Change this to a list of all makes and then put a for loop before the loop below
 
 # The list of makes
 makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
@@ -290,241 +225,169 @@ modelList = [AcuraModel ,AlfaRomeoModel, AstonMartinModel,AudiModel,BMWModel,Bui
 yearList = [AcuraYear,AlfaRomeoYear,AstonMartinYear,AudiYear,BMWYear,BuickYear,CadillacYear,ChevroletYear,ChryslerYear,DodgeYear,FerrariYear,FIATYear,FordYear,GenesisYear,GMCYear,HondaYear,HummerYear,volvoYear,volwageYear,toyotaYear,teslaYear,suzukiYear,subaruYear,smartYear,scionYear,saturnYear,saabYear,ramYear,porsheYear,pontiacYear,polestarYear,nissanYear,mitsubishiYear,miniYear,mercuryYear,mercedesYear,mazdaYear,mazarattiYear,lotusYear,linconYear,lexusYear,landRoverYear,lamboYear,kiaYear,jeepYear,jaguarYear,isuzuYear,infinityYear,hyundiYear]
 
 
-'''
-  This method is created to populate car_dict
-  This takes each make and model and puts creates a dictionary inside of each one.
-  
-  modifies car_dict
-    {'Acura': {'ILX': {}, 'ILX Hybrid': {}, 'MDX': {}..}, 'BMW': {'5-series':{},.....}
-'''
-def setupJson ():
-  #Setting up the initial Json
-  for index, make in enumerate(makeList):
-      # Create the json
-      car_dict[make] = {}
-      #debug
-      #print("make : %s " % make)
-        
-      #Go through the models of each make and add the models
-      #modelList is a list that contains the list of models of each make (makeList)[acuraModels]
-      for model in modelList[index]:
-        #debug
-        #print("model : %s " % model)
-        car_dict[make][model] = {}
-
 #completed by setupJson function
 car_dict = {'Acura': {'ILX': {}, 'ILX Hybrid': {}, 'MDX': {}, 'MDX Hybrid': {}, 'NSX': {}, 'RDX': {}, 'RL': {}, 'RLX': {}, 'TL': {}, 'TLX': {}, 'TSX': {}, 'TSX Sport Wagon': {}, 'ZDX': {}}, 'Alfa Romeo': {'4C': {}, 'Giulia': {}, 'Stelvio': {}}, 'Aston Martin': {'DB9': {}, 'DBS': {}, 'Vantage': {}}, 'Audi': {'A3': {}, 'A4': {}, 'A4 Allroad': {}, 'A4 Wagon': {}, 'A5': {}, 'A6': {}, 'A6 Allroad': {}, 'A6':{}, 'Wagon': {}, 'A7': {}, 'A8': {}, 'Allroad': {}, 'e-tron': {}, 'e-tron GT': {}, 'Q3': {}, 'Q5': {}, 'Q7': {}, 'Q8': {}, 'R8': {}, 'TT': {}}, 'BMW': {'1-Series': {}, '2-Series': {}, '3-Series': {}, '3-Series Hybrid': {}, '3-Series Wagon': {}, '4-Series': {}, '5-Series': {}, '5-Series Hybrid': {}, '5-Series Wagon': {}, '6-Series': {}, '7-Series': {}, '7-Series Hybrid': {}, '8-Series': {}, 'i3': {}, 'X1': {}, 'X2': {}, 'X3': {}, 'X4': {}, 'X5': {}, 'X6': {}, 'X7': {}, 'Z4': {}}, 'Buick': {'Cascada': {}, 'Enclave': {}, 'Encore': {}, 'Encore GX': {}, 'Envision': {}, 'LaCrosse': {}, 'Lucerne': {}, 'Rainier': {}, 'Regal': {}, 'Rendezvous': {}, 'Verano': {}}, 'Cadillac': {'ATS': {}, 'CT4': {}, 'CT5': {}, 'CT6': {}, 'CTS': {}, 'CTS Sport Wagon': {}, 'DTS': {}, 'ELR': {}, 'Escalade': {}, 'Escalade Hybrid': {}, 'SRX': {}, 'STS': {}, 
 'XLR': {}, 'XT4': {}, 'XT5': {}, 'XT6': {}, 'XTS': {}}, 'Chevrolet': {'Avalanche': {}, 'Aveo': {}, 'Blazer': {}, 'Bolt': {}, 'Bolt EUV': {}, 'Camaro': {}, 'Cobalt': {}, 'Colorado': {}, 'Corvette': {}, 'Cruze': {}, 'Equinox': {}, 'Express': {}, 'HHR': {}, 'Impala': {}, 'Malibu': {}, 'Malibu Hybrid': {}, 'Malibu Maxx': {}, 'Monte Carlo': {}, 'Silverado 1500': {}, 'Silverado 1500 Hybrid': {}, 'Silverado HD': {}, 'Sonic': {}, 'Spark': {}, 'SS': {}, 'Suburban': {}, 'Tahoe': {}, 'Tahoe Hybrid': {}, 'TrailBlazer': {}, 'Traverse': {}, 'Trax': {}, 'Uplander': {}, 'Volt': {}}, 'Chrysler': {'200': {}, '300': {}, 'Aspen': {}, 'Crossfire': {}, 'Pacifica': {}, 'Pacifica Hybrid': {}, 'PT Cruiser': {}, 'Sebring': {}, 'Town & Country': {}, 'Voyager': {}}, 'Dodge': {'Avenger': {}, 'Caliber': {}, 'Caravan': {}, 'Challenger': {}, 'Charger': {}, 'Dakota': {}, 'Dart': {}, 'Durango': {}, 'Grand Caravan': {}, 'Journey': {}, 'Magnum': {}, 'Nitro': {}, 'Ram 1500': {}, 'Ram HD': {}, 'Sprinter': {}, 'SRT Viper': {}, 'Viper': {}}, 'Ferrari': {'599 GTB Fiorano': {}, '612 Scaglietti': {}, 'California': {}, 'F430': {}, 'F458 Italia': {}}, 'FIAT': {'124 Spider': {}, '500': {}, '500L': {}, '500X': {}}, 'Ford': {'Bronco': {}, 'Bronco Sport': {}, 'C-Max Energi': {}, 'C-Max Hybrid': {}, 'Crown Victoria': {}, 'E-Series': {}, 'Econoline': {}, 'EcoSport': {}, 'Edge': {}, 'Escape': {}, 'Escape Hybrid': {}, 'Expedition': {}, 'Explorer': {}, 'Explorer Hybrid': {}, 'Explorer':{}, 
 'Sport Trac': {}, 'F-150': {}, 'Fiesta': {}, 'Flex': {}, 'Focus': {}, 'Focus Electric': {}, 'Fusion': {}, 'Fusion Energi': {}, 'Fusion Hubrid': {}, 'Maverick': {}, 'Mustang': {}, 'Mustang Mach-E': {}, 'Ranger': {}, 'Super Duty': {}, 'Taurus': {}, 'Taurus X': {}, 'Transit Connect': {}}, 'Genesis': {'G70': {}, 'G80': {}, 'G90': {}, 'GV70': {}, 'GV80': {}}, 'GMC': {'Acadia': {}, 'Canyon': {}, 'Envoy': {}, 'Savana': {}, 'Sierra 1500': {}, 'Sierra 1500 Hybrid': {}, 'Sierra HD': {}, 'Terrain': {}, 'Yukon': {}, 'Yukon Hybrid': {}}, 'Honda': {'Accord': {}, 'Accord Hybrid': {}, 'Accord Plug-in': {}, 'Civic': {}, 'Civic Hybrid': {}, 'Clarity': {}, 'CR-V': {}, 'CR-V Hybrid': {}, 'CR-Z': {}, 'Crosstour': {}, 'Element': {}, 'Fit': {}, 'HR-V': {}, 'Insight': {}, 'Odyssey': {}, 'Passport': {}, 'Pilot': {}, 'Ridgeline': {}, 'S2000': {}}, 'HUMMER': {'H2': {}, 'H2 SUT': {}, 'H3': {}, 'H3T': {}}, 'Hyundai': {'C30': {}, 'C70': {}, 'S40': {}, 'S60': {}, 'S80': {}, 'S90': {}, 'V50': {}, 'V60': {}, 'V70': {}, 'V90': {}, 'XC40': {}, 'XC60': {}, 'XC70': {}, 'XC90': {}}, 'Infiniti': {'Arteon': {}, 'Atlas': {}, 'Beetle': {}, 'CC': {}, 'Eos': {}, 'GLI': {}, 'Golf': {}, 'Golf SportWagen': {}, 'GTI': {}, 'ID.4': {}, 'Jetta': {}, 'Jetta Hybrid': {}, 'Jetta SportWagen': {}, 'New Beetle': {}, 'Passat': {}, 'Passat Wagon': {}, 'R32': {}, 'Rabbit': {}, 'Routan': {}, 'Taos': {}, 'Tiguan': {}, 'Touareg': {}, 'Touareg Hybrid': {}}, 'Isuzu': {'4Runner': {}, '86': {}, 'Avalon': {}, 'Avalon Hybrid': {}, 'C-HR': {}, 'Camry': {}, 'Camry Hybrid': {}, 'Camry Solara': {}, 'Corolla': {}, 'Corolla Cross': {}, 'Corolla Hybrid': {}, 'Corolla iM': {}, 'FJ Cruiser': {}, 'GR 86': {}, 'Highlander': {}, 'Highlander Hybrid': {}, 'Land Cruiser': {}, 'Matrix': {}, 'Prius': {}, 'Prius c': {}, 'Prius Plug-in': {}, 'Prius Prime': {}, 'Prius V': {}, 'RAV4': {}, 'RAV4 Hybrid': {}, 'RAV4 Prime': {}, 'Sienna': {}, 'Supra': {}, 'Tacoma': {}, 'Tundra': {}, 'Venza': {}, 'Yaris': {}, 'Yaris iA': {}}, 'Jaguar': {'Model 3': {}, 'Model S': {}, 'Model X': {}, 'Model Y': {}, 'Roadster': {}}, 'Jeep': {'Aerio': {}, 'Equator': {}, 'Grand Vitara': {}, 'Kizashi': {}, 'Reno': {}, 'SX4': {}, 'SX4 Wagon': {}, 'XL7': {}}, 'Kia': {'Ascent': {}, 'BRZ': {}, 'Crosstrek': {}, 'Crosstrek Hybrid': {}, 'Forester': {}, 'Impreza': {}, 'Impreza Wagon': {}, 'Legacy': {}, 'Outback': {}, 'Tribeca': {}, 'WRX': {}, 'XV Crosstrek': {}, 'XV Crosstrek Hybrid': {}}, 'Lamborghini': {'Fortwo': {}}, 'Land Rover': {'FR-S': {}, 'iA': {}, 'iM': {}, 'iQ': {}, 'tC': {}, 'xB': {}, 'xD': {}, '': {}}, 'Lexus': {'Astra': {}, 'Aura': {}, 'Aura Hybrid': {}, 'Ion': {}, 'Outlook': {}, 'Sky': {}, 'VUE': {}, 'VUE Hybrid': {}}, 'Lincoln': {'9-3': {}, '9-3 Wagon': {}, '9-4X': {}, '9-5': {}, '9-5 Wagon': {}, '9-7X': {}}, 'Lotus': {'1500': {}, 'Dakota': {}, 'HD': {}}, 'Maserati': {'911': {}, '911-GT3': {}, '911-Turbo': {}, 'Boxster': {}, 'Cayenne': {}, 'Cayenne Hybrid': {}, 'Cayman': {}, 'Macan': {}, 'Panamera': {}, 'Taycan': {}}, 'Mazda': {'G3': {}, 'G5': {}, 'G6': {}, 'G8': {}, 'G8-GXP': {}, 'Grand Prix': {}, 'Solstice': {}, 'Torrent': {}, 'Vibe': {}}, 'Mercedes-Benz': {'2': {}}, 'Mercury': {'350Z': {}, '370Z': {}, 'Altima': {}, 'Altima Hybrid': {}, 'Armada': {}, 'Cube': {}, 'Frontier': {}, 'GT-R': {}, 'Juke': {}, 'Kicks': {}, 'Leaf': {}, 'Maxima': {}, 'Murano': {}, 'NV': {}, 'Pathfinder': {}, 'Pathfinder Hybrid': {}, 'Quest': {}, 'Rogue': {}, 'Rogue Hybrid': {}, 'Rogue Sport': {}, 'Sentra': {}, 'Titan': {}, 'Versa': {}, 'Xterra': {}}, 'MINI': {'Eclipse': {}, 'Eclipse Cross': {}, 'Endeavor': {}, 'Galant': {}, 'i': {}, 'Lancer': {}, 'Mirage': {}, 'Outlander': {}, 'Outlander Sport': {}, 'Raider': {}}, 'Mitsubishi': {'Cooper': {}, 'Cooper Clubman': {}, 'Cooper Countryman': {}, 'Cooper CoupeCooper Paceman': {}, 'Cooper Roadster': {}, 'Electric Hardtop': {}}, 'Nissan': {'Grand Marquis': {}, 'Mariner': {}, 'Mariner Hybrid': {}, 'Milan': {}, 'Milan Hybrid': {}, 'Montego': {}, 'Mountaineer': {}, 'Sable': {}}, 'Polestar': {'A-Class': {}, 'C-Class': {}, 'CL-Class': {}, 'CLA-Class': {}, 'CLK-Class': {}, 'CLS-Class': {}, 'E-Class': {}, 'E-Class Coupe': {}, 'E-Class Wagon': {}, 'G-Class': {}, 'GL-Class': {}, 'GLA-Class': {}, 'GLB-Class': {}, 'GLC-Class': {}, 'GLE-Class': {}, 'GLK-Class': {}, 'GLS-Class': {}}, 'Pontiac': {'B-Series': {}, 'CX-3': {}, 'CX-30': {}, 'CX-5': {}, 'CX-7': {}, 'CX-9': {}, 'Mazda2': {}, 'Mazda3': {}, 'Mazda5': {}, 'Mazda6': {}, 'Mazda6 Wagon': {}, 'Mazdaspeed3': {}, 'MX-5 Miata': {}, 'RX-8': {}, 'Tribute': {}}, 'Porsche': {'GranTurismo': {}, 'Levante': {}, 'Quattroporte': {}}, 'RAM': {'Elise': {}, 'Exige': {}}, 'Saab': {'Aviator': {}, 'Continental': {}, 'Corsair': {}, 'Mark LT': {}, 'MKC': {}, 'MKS': {}, 'MKT': {}, 'MKX': {}, 'MKZ': {}, 'MKZ Hybrid': {}, 'Nautilus': {}, 'Navigator': {}, 'Town Car': {}}, 'Saturn': {'CT Hybrid': {}, 'ES': {}, 'ES Hybrid': {}, 'GS': {}, 'GS Hybrid': {}, 'HX': {}, 'HS': {}, 'IS': {}, 'IS-F': {}, 'LC': {}, 'LFA': {}, 'LS': {}, 'LS Hybrid': {}, 'LX': {}, 'NX': {}, 'NX Hybrid': {}, 'RC': {}, 'RX 350': {}, 'RX Hybrid': {}, 'SC': {}, 'UX': {}, 'UX Hybrid': {}}, 'Scion': {'Defender': {}, 'Discovery': {}, 'Discovery Sport': {}, 'LR2': {}, 'LR3': {}, 'LR4': {}, 'Range Rover': {}, 'Range Rover Evoque': {}, 'Range Rover Sport': {}, 'Range Rover Velar': {}}, 'Smart': {'Gallardo': {}, 'Murcielago': {}}, 'Subaru': {'Amanti': {}, 'Borrego': {}, 'Cadenza': {}, 'Carnival': {}, 'Forte': {}, 'KS': {}, 'K900': {}, 'Niro': {}, 'Optima': {}, 'Optima Hybrid': {}, 'Rio': {}, 'Rio5': {}, 'Ronda': {}, 'Sedona': {}, 'Seltos': {}, 'Sorento': {}, 'Sorento Hybrid': {}, 'Soul': {}, 'Spectra': {}, 'Spectra5': {}, 'Sportage': {}, 'Stinger': {}, 'Telluride': {}}, 'Suzuki': {'Cherokee': {}, 'Commander': {}, 'Compass': {}, 'Gladiator': {}, 'Grand Cherokee': {}, 'Grand Cherokee L': {}, 'Grand Wagoneer': {}, 'Liberty': {}, 'Patriot': {}, 'Renegade': {}, 'Wagoneer': {}, 'Wrangler': {}}, 'Tesla': {'E-Pace': {}, 'F-Pace': {}, 'F-Type': {}, 'I-Pace': {}, 'S-Type': {}, 'X-Type': {}, 'X-Type Wagon': {}, 'XE': {}, 'XF': {}, 'XJ': {}, 'XJR': {}, 'XK': {}, 'XKR': {}}, 'Toyota': {'Ascender': {}, 'i-290': {}, 'i-370': {}}, 'Volkswagen': {'EX': {}, 'FX': {}, 'G35': {}, 'G37': {}, 'JX': {}, 'M': {}, 'M Hybrid': {}, 'Q40': {}, 'Q50': {}, 'Q50 Hybrid': {}, 'Q60': {}, 'Q70': {}, 'QX30': {}, 'QX50': {}, 'QX55': {}, 'QX56': {}, 'QX60': {}, 'QX70': {}, 'QX80': {}}, 'Volvo': {'Accent': {}, 'Azera': {}, 'Elantra': {}, 'Elantra Hybrid': {}, 'Elantra Touring': {}, 'Entourage': {}, 'Equus': {}, 'Genesis': {}, 'Genesis Coupe': {}, 'Ioniq': {}, 'Kona': {}, 'Kona EV': {}, 'Palisade': {}, 'Santa Cruz': {}, 'Santa Fe': {}, 'Santa Fe Hybrid': {}, 'Sonata': {}, 'Sonata Hybrid': {},
 'Tiburon': {}, 'Tucson': {}, 'Tucson Hybrid': {}, 'Veloster': {}, 'Venue': {}, 'Veracruz': {}}}
 
-# Making two dicts one for vehicles the other to store the links to specific spec sheets
-info_dict = {'Acura': {'ILX': {}, 'ILX Hybrid': {}, 'MDX': {}, 'MDX Hybrid': {}, 'NSX': {}, 'RDX': {}, 'RL': {}, 'RLX': {}, 'TL': {}, 'TLX': {}, 'TSX': {}, 'TSX Sport Wagon': {}, 'ZDX': {}}, 'Alfa Romeo': {'4C': {}, 'Giulia': {}, 'Stelvio': {}}, 'Aston Martin': {'DB9': {}, 'DBS': {}, 'Vantage': {}}, 'Audi': {'A3': {}, 'A4': {}, 'A4 Allroad': {}, 'A4 Wagon': {}, 'A5': {}, 'A6': {}, 'A6 Allroad': {}, 'A6':{}, 'Wagon': {}, 'A7': {}, 'A8': {}, 'Allroad': {}, 'e-tron': {}, 'e-tron GT': {}, 'Q3': {}, 'Q5': {}, 'Q7': {}, 'Q8': {}, 'R8': {}, 'TT': {}}, 'BMW': {'1-Series': {}, '2-Series': {}, '3-Series': {}, '3-Series Hybrid': {}, '3-Series Wagon': {}, '4-Series': {}, '5-Series': {}, '5-Series Hybrid': {}, '5-Series Wagon': {}, '6-Series': {}, '7-Series': {}, '7-Series Hybrid': {}, '8-Series': {}, 'i3': {}, 'X1': {}, 'X2': {}, 'X3': {}, 'X4': {}, 'X5': {}, 'X6': {}, 'X7': {}, 'Z4': {}}, 'Buick': {'Cascada': {}, 'Enclave': {}, 'Encore': {}, 'Encore GX': {}, 'Envision': {}, 'LaCrosse': {}, 'Lucerne': {}, 'Rainier': {}, 'Regal': {}, 'Rendezvous': {}, 'Verano': {}}, 'Cadillac': {'ATS': {}, 'CT4': {}, 'CT5': {}, 'CT6': {}, 'CTS': {}, 'CTS Sport Wagon': {}, 'DTS': {}, 'ELR': {}, 'Escalade': {}, 'Escalade Hybrid': {}, 'SRX': {}, 'STS': {}, 
-'XLR': {}, 'XT4': {}, 'XT5': {}, 'XT6': {}, 'XTS': {}}, 'Chevrolet': {'Avalanche': {}, 'Aveo': {}, 'Blazer': {}, 'Bolt': {}, 'Bolt EUV': {}, 'Camaro': {}, 'Cobalt': {}, 'Colorado': {}, 'Corvette': {}, 'Cruze': {}, 'Equinox': {}, 'Express': {}, 'HHR': {}, 'Impala': {}, 'Malibu': {}, 'Malibu Hybrid': {}, 'Malibu Maxx': {}, 'Monte Carlo': {}, 'Silverado 1500': {}, 'Silverado 1500 Hybrid': {}, 'Silverado HD': {}, 'Sonic': {}, 'Spark': {}, 'SS': {}, 'Suburban': {}, 'Tahoe': {}, 'Tahoe Hybrid': {}, 'TrailBlazer': {}, 'Traverse': {}, 'Trax': {}, 'Uplander': {}, 'Volt': {}}, 'Chrysler': {'200': {}, '300': {}, 'Aspen': {}, 'Crossfire': {}, 'Pacifica': {}, 'Pacifica Hybrid': {}, 'PT Cruiser': {}, 'Sebring': {}, 'Town & Country': {}, 'Voyager': {}}, 'Dodge': {'Avenger': {}, 'Caliber': {}, 'Caravan': {}, 'Challenger': {}, 'Charger': {}, 'Dakota': {}, 'Dart': {}, 'Durango': {}, 'Grand Caravan': {}, 'Journey': {}, 'Magnum': {}, 'Nitro': {}, 'Ram 1500': {}, 'Ram HD': {}, 'Sprinter': {}, 'SRT Viper': {}, 'Viper': {}}, 'Ferrari': {'599 GTB Fiorano': {}, '612 Scaglietti': {}, 'California': {}, 'F430': {}, 'F458 Italia': {}}, 'FIAT': {'124 Spider': {}, '500': {}, '500L': {}, '500X': {}}, 'Ford': {'Bronco': {}, 'Bronco Sport': {}, 'C-Max Energi': {}, 'C-Max Hybrid': {}, 'Crown Victoria': {}, 'E-Series': {}, 'Econoline': {}, 'EcoSport': {}, 'Edge': {}, 'Escape': {}, 'Escape Hybrid': {}, 'Expedition': {}, 'Explorer': {}, 'Explorer Hybrid': {}, 'Explorer':{}, 
-'Sport Trac': {}, 'F-150': {}, 'Fiesta': {}, 'Flex': {}, 'Focus': {}, 'Focus Electric': {}, 'Fusion': {}, 'Fusion Energi': {}, 'Fusion Hubrid': {}, 'Maverick': {}, 'Mustang': {}, 'Mustang Mach-E': {}, 'Ranger': {}, 'Super Duty': {}, 'Taurus': {}, 'Taurus X': {}, 'Transit Connect': {}}, 'Genesis': {'G70': {}, 'G80': {}, 'G90': {}, 'GV70': {}, 'GV80': {}}, 'GMC': {'Acadia': {}, 'Canyon': {}, 'Envoy': {}, 'Savana': {}, 'Sierra 1500': {}, 'Sierra 1500 Hybrid': {}, 'Sierra HD': {}, 'Terrain': {}, 'Yukon': {}, 'Yukon Hybrid': {}}, 'Honda': {'Accord': {}, 'Accord Hybrid': {}, 'Accord Plug-in': {}, 'Civic': {}, 'Civic Hybrid': {}, 'Clarity': {}, 'CR-V': {}, 'CR-V Hybrid': {}, 'CR-Z': {}, 'Crosstour': {}, 'Element': {}, 'Fit': {}, 'HR-V': {}, 'Insight': {}, 'Odyssey': {}, 'Passport': {}, 'Pilot': {}, 'Ridgeline': {}, 'S2000': {}}, 'HUMMER': {'H2': {}, 'H2 SUT': {}, 'H3': {}, 'H3T': {}}, 'Hyundai': {'C30': {}, 'C70': {}, 'S40': {}, 'S60': {}, 'S80': {}, 'S90': {}, 'V50': {}, 'V60': {}, 'V70': {}, 'V90': {}, 'XC40': {}, 'XC60': {}, 'XC70': {}, 'XC90': {}}, 'Infiniti': {'Arteon': {}, 'Atlas': {}, 'Beetle': {}, 'CC': {}, 'Eos': {}, 'GLI': {}, 'Golf': {}, 'Golf SportWagen': {}, 'GTI': {}, 'ID.4': {}, 'Jetta': {}, 'Jetta Hybrid': {}, 'Jetta SportWagen': {}, 'New Beetle': {}, 'Passat': {}, 'Passat Wagon': {}, 'R32': {}, 'Rabbit': {}, 'Routan': {}, 'Taos': {}, 'Tiguan': {}, 'Touareg': {}, 'Touareg Hybrid': {}}, 'Isuzu': {'4Runner': {}, '86': {}, 'Avalon': {}, 'Avalon Hybrid': {}, 'C-HR': {}, 'Camry': {}, 'Camry Hybrid': {}, 'Camry Solara': {}, 'Corolla': {}, 'Corolla Cross': {}, 'Corolla Hybrid': {}, 'Corolla iM': {}, 'FJ Cruiser': {}, 'GR 86': {}, 'Highlander': {}, 'Highlander Hybrid': {}, 'Land Cruiser': {}, 'Matrix': {}, 'Prius': {}, 'Prius c': {}, 'Prius Plug-in': {}, 'Prius Prime': {}, 'Prius V': {}, 'RAV4': {}, 'RAV4 Hybrid': {}, 'RAV4 Prime': {}, 'Sienna': {}, 'Supra': {}, 'Tacoma': {}, 'Tundra': {}, 'Venza': {}, 'Yaris': {}, 'Yaris iA': {}}, 'Jaguar': {'Model 3': {}, 'Model S': {}, 'Model X': {}, 'Model Y': {}, 'Roadster': {}}, 'Jeep': {'Aerio': {}, 'Equator': {}, 'Grand Vitara': {}, 'Kizashi': {}, 'Reno': {}, 'SX4': {}, 'SX4 Wagon': {}, 'XL7': {}}, 'Kia': {'Ascent': {}, 'BRZ': {}, 'Crosstrek': {}, 'Crosstrek Hybrid': {}, 'Forester': {}, 'Impreza': {}, 'Impreza Wagon': {}, 'Legacy': {}, 'Outback': {}, 'Tribeca': {}, 'WRX': {}, 'XV Crosstrek': {}, 'XV Crosstrek Hybrid': {}}, 'Lamborghini': {'Fortwo': {}}, 'Land Rover': {'FR-S': {}, 'iA': {}, 'iM': {}, 'iQ': {}, 'tC': {}, 'xB': {}, 'xD': {}, '': {}}, 'Lexus': {'Astra': {}, 'Aura': {}, 'Aura Hybrid': {}, 'Ion': {}, 'Outlook': {}, 'Sky': {}, 'VUE': {}, 'VUE Hybrid': {}}, 'Lincoln': {'9-3': {}, '9-3 Wagon': {}, '9-4X': {}, '9-5': {}, '9-5 Wagon': {}, '9-7X': {}}, 'Lotus': {'1500': {}, 'Dakota': {}, 'HD': {}}, 'Maserati': {'911': {}, '911-GT3': {}, '911-Turbo': {}, 'Boxster': {}, 'Cayenne': {}, 'Cayenne Hybrid': {}, 'Cayman': {}, 'Macan': {}, 'Panamera': {}, 'Taycan': {}}, 'Mazda': {'G3': {}, 'G5': {}, 'G6': {}, 'G8': {}, 'G8-GXP': {}, 'Grand Prix': {}, 'Solstice': {}, 'Torrent': {}, 'Vibe': {}}, 'Mercedes-Benz': {'2': {}}, 'Mercury': {'350Z': {}, '370Z': {}, 'Altima': {}, 'Altima Hybrid': {}, 'Armada': {}, 'Cube': {}, 'Frontier': {}, 'GT-R': {}, 'Juke': {}, 'Kicks': {}, 'Leaf': {}, 'Maxima': {}, 'Murano': {}, 'NV': {}, 'Pathfinder': {}, 'Pathfinder Hybrid': {}, 'Quest': {}, 'Rogue': {}, 'Rogue Hybrid': {}, 'Rogue Sport': {}, 'Sentra': {}, 'Titan': {}, 'Versa': {}, 'Xterra': {}}, 'MINI': {'Eclipse': {}, 'Eclipse Cross': {}, 'Endeavor': {}, 'Galant': {}, 'i': {}, 'Lancer': {}, 'Mirage': {}, 'Outlander': {}, 'Outlander Sport': {}, 'Raider': {}}, 'Mitsubishi': {'Cooper': {}, 'Cooper Clubman': {}, 'Cooper Countryman': {}, 'Cooper CoupeCooper Paceman': {}, 'Cooper Roadster': {}, 'Electric Hardtop': {}}, 'Nissan': {'Grand Marquis': {}, 'Mariner': {}, 'Mariner Hybrid': {}, 'Milan': {}, 'Milan Hybrid': {}, 'Montego': {}, 'Mountaineer': {}, 'Sable': {}}, 'Polestar': {'A-Class': {}, 'C-Class': {}, 'CL-Class': {}, 'CLA-Class': {}, 'CLK-Class': {}, 'CLS-Class': {}, 'E-Class': {}, 'E-Class Coupe': {}, 'E-Class Wagon': {}, 'G-Class': {}, 'GL-Class': {}, 'GLA-Class': {}, 'GLB-Class': {}, 'GLC-Class': {}, 'GLE-Class': {}, 'GLK-Class': {}, 'GLS-Class': {}}, 'Pontiac': {'B-Series': {}, 'CX-3': {}, 'CX-30': {}, 'CX-5': {}, 'CX-7': {}, 'CX-9': {}, 'Mazda2': {}, 'Mazda3': {}, 'Mazda5': {}, 'Mazda6': {}, 'Mazda6 Wagon': {}, 'Mazdaspeed3': {}, 'MX-5 Miata': {}, 'RX-8': {}, 'Tribute': {}}, 'Porsche': {'GranTurismo': {}, 'Levante': {}, 'Quattroporte': {}}, 'RAM': {'Elise': {}, 'Exige': {}}, 'Saab': {'Aviator': {}, 'Continental': {}, 'Corsair': {}, 'Mark LT': {}, 'MKC': {}, 'MKS': {}, 'MKT': {}, 'MKX': {}, 'MKZ': {}, 'MKZ Hybrid': {}, 'Nautilus': {}, 'Navigator': {}, 'Town Car': {}}, 'Saturn': {'CT Hybrid': {}, 'ES': {}, 'ES Hybrid': {}, 'GS': {}, 'GS Hybrid': {}, 'HX': {}, 'HS': {}, 'IS': {}, 'IS-F': {}, 'LC': {}, 'LFA': {}, 'LS': {}, 'LS Hybrid': {}, 'LX': {}, 'NX': {}, 'NX Hybrid': {}, 'RC': {}, 'RX 350': {}, 'RX Hybrid': {}, 'SC': {}, 'UX': {}, 'UX Hybrid': {}}, 'Scion': {'Defender': {}, 'Discovery': {}, 'Discovery Sport': {}, 'LR2': {}, 'LR3': {}, 'LR4': {}, 'Range Rover': {}, 'Range Rover Evoque': {}, 'Range Rover Sport': {}, 'Range Rover Velar': {}}, 'Smart': {'Gallardo': {}, 'Murcielago': {}}, 'Subaru': {'Amanti': {}, 'Borrego': {}, 'Cadenza': {}, 'Carnival': {}, 'Forte': {}, 'KS': {}, 'K900': {}, 'Niro': {}, 'Optima': {}, 'Optima Hybrid': {}, 'Rio': {}, 'Rio5': {}, 'Ronda': {}, 'Sedona': {}, 'Seltos': {}, 'Sorento': {}, 'Sorento Hybrid': {}, 'Soul': {}, 'Spectra': {}, 'Spectra5': {}, 'Sportage': {}, 'Stinger': {}, 'Telluride': {}}, 'Suzuki': {'Cherokee': {}, 'Commander': {}, 'Compass': {}, 'Gladiator': {}, 'Grand Cherokee': {}, 'Grand Cherokee L': {}, 'Grand Wagoneer': {}, 'Liberty': {}, 'Patriot': {}, 'Renegade': {}, 'Wagoneer': {}, 'Wrangler': {}}, 'Tesla': {'E-Pace': {}, 'F-Pace': {}, 'F-Type': {}, 'I-Pace': {}, 'S-Type': {}, 'X-Type': {}, 'X-Type Wagon': {}, 'XE': {}, 'XF': {}, 'XJ': {}, 'XJR': {}, 'XK': {}, 'XKR': {}}, 'Toyota': {'Ascender': {}, 'i-290': {}, 'i-370': {}}, 'Volkswagen': {'EX': {}, 'FX': {}, 'G35': {}, 'G37': {}, 'JX': {}, 'M': {}, 'M Hybrid': {}, 'Q40': {}, 'Q50': {}, 'Q50 Hybrid': {}, 'Q60': {}, 'Q70': {}, 'QX30': {}, 'QX50': {}, 'QX55': {}, 'QX56': {}, 'QX60': {}, 'QX70': {}, 'QX80': {}}, 'Volvo': {'Accent': {}, 'Azera': {}, 'Elantra': {}, 'Elantra Hybrid': {}, 'Elantra Touring': {}, 'Entourage': {}, 'Equus': {}, 'Genesis': {}, 'Genesis Coupe': {}, 'Ioniq': {}, 'Kona': {}, 'Kona EV': {}, 'Palisade': {}, 'Santa Cruz': {}, 'Santa Fe': {}, 'Santa Fe Hybrid': {}, 'Sonata': {}, 'Sonata Hybrid': {},
-'Tiburon': {}, 'Tucson': {}, 'Tucson Hybrid': {}, 'Veloster': {}, 'Venue': {}, 'Veracruz': {}}}
+make = "ACURA"
+model = "ILX"
+fromYear = '2018'
+toYear = '2021'
 
-'''
-  This will populate the 'car_dict' dictionary.
-  This dictionary is set up to have a dict with each item below as a dict within the car_dict
-  The dictionary would have these populated Make->Model->Trim->Year:{Doors:2......}
-  We will get the :
-      •	Doors ** Not in this parser.
-      •	MPG
-      •	Horsepower
-      •	Engine
-      •	Seats
-      •	Price
-      •	Cylinders
-      •	Torque
-      •	Transmission
-      •	Torque
-      •	(Car type [sedan, converable…])
-      •	TODO (Description) ** Need to go to review page to get this 
-      •	(Drivetrain) 
-      •	(Category) ** Added with 'Category Algorithm'  /Not in this parser.
-      •	(Common Problems)** Another Parser Not in this parser.
-      •	(Recalls)** Another parser /Not in this parser.
+#Go through each trim and add the recalls to each of the years.
+# for make, models in car_dict.items():
+#     #debug
+#     print("make %s" % make)
+#     #print("makes %s" % models)
+#     for model, trims in models.items():
+#         #debug
+#         print("model %s" % model)
+#         for trim, years in trims.items():
+#             #debug
+#             print("trim %s" % trim)
+#             for year, desc in years.items():
 
-  populates the car_dict description= make:{model:{trim:{year:{Doors:"xyz", MPG: "xyz"...}}}}
-  
+# A Dictionary containing the recalls from each model depending on the year.
+# recallDict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
+recallDict = {}
 
-  '''
-def getVehicleDescription (make, model, year, href):
-  # 4. go to the specs page of each trim and populate the car_dict 
-  # Start the page.
-  # Creating the web Driver object
-  driver = webdriver.Firefox()
-  driver.get(href)
-  # 4. So Now I got a list of all trims and need to open the href for 
-  # each one and get all of the vehicle information based on that car
-  
-  # Get all list elements in the spec sheet.
-  all_li = driver.find_elements_by_tag_name("li")
-  # 5. Find all Fields listed above and set the values
-  for item in all_li:
-      item_html = item.get_attribute('innerHTML')
-      #Getting the number of Doors
-      # if ("Door" in item_html):
-      #     car_dict[make][model][trim][year]["Doors"] = item.text
-      if ("MPG" in item_html and "/" in item_html): 
-          # MPG: 15 City / 21 Hwy
-          split_mpg = item.text.split("/")
-          # Splitting the city and higway mpg
-          city_mpg = split_mpg[0][5:7]
-          highway_mpg = split_mpg[1][1:3]
-          car_dict[make][model][trim][year]["City_MPG"] = city_mpg
-          car_dict[make][model][trim][year]["Highway_MPG"] = highway_mpg
-      elif ("Horsepower" in item_html):
-          #Horsepower (Net @ RPM): 600 @ 6000
-          car_dict[make][model][trim][year]["Horsepower"] = item.text[22:-7]
-      elif ("Engine Type" in item_html):
-          #Engine Type: Twin Turbo Premium Unleaded V-8
-          car_dict[make][model][trim][year]["Engine"] = item.text[13:]
-      elif ("Passenger Capacity" in item_html):
-          car_dict[make][model][trim][year]["Seats"] = item.text[20:]
-      elif ("Cylinders" in item_html):
-          car_dict[make][model][trim][year]["Cylinders"] = item.text[:1]
-      elif ("Torque" in item_html):
-          #Torque (Net @ RPM): 553 @ 1800
-          car_dict[make][model][trim][year]["Torque"] = item.text[18:-7]
-      elif ("Body Style" in item_html):
-          # Body Style: Sedan
-          car_dict[make][model][trim][year]["Type"] = item.text[12:]
-      #Transmission: Manual
-      elif ("All Wheel Drive" in item_html):
-          car_dict[make][model][trim][year]["Transmission"] = "AWD"
-          #debug
-          #print("I added %s to the car dict" % car_dict[make][model][trim][year]["Transmission"])
-      #Transmission: Manual
-      elif ("Front Wheel Drive" in item_html):
-          car_dict[make][model][trim][year]["Transmission"] = "FWD"
-      #Transmission: Manual
-      elif ("Rear Wheel Drive" in item_html):
-          car_dict[make][model][trim][year]["Transmission"] = "RWD"
-      else:
-          continue    
-          
-  print("Got the specs for the car")
-  driver.close()
-  print("Sleep for 3 seconds")
-  time.sleep(3)
+# Get the make model and to and from settings
+for index, make in enumerate(makeList):      
+    #Go through the models of each make and add the models
+    # Creating the values so they are not null 
+    recallDict[make] = {}
+    for model in modelList[index]:
+        # Creating the values so they are not null
+        recallDict[make][model] = {}
+        #Years: [List of years for each model] YearList: [List of Lists of years for each model]
+        for years in yearList:
+            #Start the driver and start Open the browser to the link
+            driver = webdriver.Firefox()
+            #URL of the website 
+            url = "https://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/search-recherche/menu.aspx?lang=eng"
+            driver.get(url)
+            
+            #Get the select/combobox objects for make,model,toYear and fromYear using selenium
+            selectMake = Select(driver.find_element_by_id("BodyContent_DDL_Make"))
+            selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+            selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+            selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+            
+            # Get the years range each model.
+            toYear = str(years[index][0])
+            fromYear = str(years[index][-1])
+            
+            # Select the make
+            selectMake.select_by_visible_text(make.upper())
+            #debug
+            #time.sleep(2)
+            # Select the model
+            selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+            selectModel.select_by_visible_text(model.upper()) 
+            #time.sleep(2)
+            # Select the make
+            selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+            selectFromYear.select_by_visible_text(fromYear)
+            #time.sleep(2)
+            # Select the model
+            selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+            selectToYear.select_by_visible_text(toYear) 
+            #time.sleep(2)
+            # Search the db for recalls
+            #searchVehicleRecall = driver.find_element_by_id("BodyContent_BTN_Search").click()
+            driver.find_element_by_id("BodyContent_BTN_Search").click()
+            
+            # You are on the next Page now
+            
+            '''
+            Recalls are set this way
+            <tr class="active">
+            <th class="text-center">Recall Number</th>
+            <th class="text-center">Recall Date</th>
+            <th class="text-center">Make</th>
+            <th class="text-center">Model</th>
+            <th class="text-center">System</th>
+            <th class="text-center">Model Year(s) Affected</th>
+            </tr>
+            '''
+            #Get all recall information
+            allhtmlTR = driver.find_elements_by_tag_name("tr")
+            #Each td has 5 
 
-'''
-  This method is used to get the list of trims from each vehicle.
-  This method will also populate the avg price and msrp price of vehicles in car_dict.
-  
-  This function populates the car_dict and adds the trim of each vehicle
-  This function populates the info_dict and adds the hrefs to each trim.
-'''
-def getTrims(make, model, year):
-
-  url = "https://cars.usnews.com/cars-trucks/%s/%s/%s/specs" % (make.lower(),model.lower(),year)
-  # Creating the web Driver object
-  driver = webdriver.Firefox()
-  #Get the page.
-  # driver = webdriver.Firefox()
-  driver.get(url)
-  
-  #Once you get the specific make, model and year
-  # 2. Find the trim for the make and year 
-  # The Links are in <h4> elements
-  #Test: All L4 Headers
-  all_headers = driver.find_elements_by_tag_name('h4')
-
-  # element_list is a list to hold all elements for easy extraction of name of trim and href
-  element_list = []
-  #Going through each link and checking for class
-  for element in all_headers:
-      element_code = element.get_attribute('innerHTML')
-      #If there is an a tag, put the a tag in the element list for later use.
-      if ("<a" in element_code):
-          # Get the a tag element
-          a_tag_element = element.find_element_by_tag_name('a')
-          element_list.append(a_tag_element)
-  
-  #There is a chance that there is only msrp, but if there is not get the avg price as well
-  price_spec_html = driver.find_elements_by_class_name("card__price")
-  #Index to iterate through the prices
-  index = 0
-  # 3. Go through the list and set the trim name and link to the trim information 
-  for a_tags in element_list:
-      # Get the trim and href from the tag
-      trim = a_tags.get_attribute('innerHTML').strip()
-      html_link = a_tags.get_attribute('href')
-      
-      #Create the trim and the specific year that we are looking at.
-      car_dict[make][model][trim] = {}
-      car_dict[make][model][trim][year] = {}
-      
-      info_dict[make][model][trim] = {}
-      info_dict[make][model][trim][year] = {}
-      
-      # Put them in the dict to be individually 
-      info_dict[make][model][trim][year] = html_link
-      
-      #Adding the price to the trim
-      spec_text = price_spec_html[index].text
-      #Avg Paid: $20,368
-      if ("Avg Paid" in spec_text):
-          avg_cost = spec_text[10:]
-          car_dict[make][model][trim][year]["Cost"] = avg_cost
-          # If the average is in the output, the msrp is also there so we have to add one to the index to get MSRP of the same car. 
-          index = index +1
-          spec_text = price_spec_html[index].text
-          #MSRP: $33,150
-      if ("MSRP" in spec_text):
-          msrp = spec_text[6:]
-          car_dict[make][model][trim][year]["MSRP"] = msrp
-      index = index + 1
-      #debug
-      print ("The trim is %s and the link is %s" % (trim, html_link))
-      print ("make: %s, model: %s year: %s, trim: %s \n\n" % (make,model,year,trim))
-  
-  
-  driver.close()
-  print("Sleep for 3 seconds")
-  time.sleep(3)
-  
-### START OF MAIN FUNCTION ###
-
-# 0.5 Create a parser to parse through the url to get the trims.
-for index, make in enumerate(makeList):
-  # Look through each model to find each trim and the respective url.
-  # modelList = [[model1, model2,... for make 1], [model1, model2,... for make 2], ...]
-  for model in modelList[index]:
-    #For each model go through each year and find each cars specs
-    #yearList = [[years for model1], [years for model2]....]
-    for modelYears in yearList[index]:
-      for year in modelYears:
-        #Go through each page and get the make model and year
-        getTrims(make, model, year)
-        time.sleep(5)
-        #debug
-        #print(car_dict)
+            for tr in (allhtmlTR):
+                if (tr.get_attribute('class') == 'active'):
+                    continue
+                elif (':' in tr.text):
+                    continue
+                else:
+                    # Go through each tr and find all td's 
+                    #trHtml = tr.get_attribute('innerHTML')
+                    tdHtml = tr.find_elements_by_tag_name("td") 
+                    
+                    recallNum = ""
+                    system = ""
+                    yearsAffected = ""
+                    
+                    # There are 6 items we need 0,4,5
+                    try:            
+                        recallNum = tdHtml[0].text
+                        system = tdHtml[4].text
+                        yearsAffected = tdHtml[5].text
+                        # Set the recalls based on the make and model.
+                    except:
+                        # One of the fields were null
+                        print("One of the fields were null")
+                    
+                    # recallDict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
+                    #debug
+                    print("recall# %s, system: %s, yearsAffected %s" % (recallNum, system, yearsAffected ))
+                    if (' ' in yearsAffected):
+                        listOfYearsAffected = yearsAffected.split()
+                        for recallYear in listOfYearsAffected:
+                            # If there is more then one year and its a list add the year to the recall 
+                            recallDict[make][model][recallYear] = {}
+                            #Get the recall number and 
+                            recallDict[make][model][recallYear][recallNum] = system
+                    else:
+                        # If there is only one year then just add it to the lsit.
+                        recallDict[make][model][yearsAffected] = {}
+                        recallDict[make][model][yearsAffected][recallNum] = system
+            #Close the driver when we are done with the recalls for a car.
+            driver.close()
+            time.sleep(3)
         
-print(info_dict)        
-# Go through each href and get all of the specs for each car
-for make, models in info_dict.items():
-  #debug
-  print("make %s" % make)
-  #print("makes %s" % models)
-  for model, trims in models.items():
-      #debug
-      print("model %s" % model)
-      for trim, years in trims.items():
-          #debug
-          print("trim %s" % trim)
-          for year, href in years.items():
-              # print ("make: %s, model: %s year: %s,trim: %s, \nhref:%s" % (make,model,year,trim, href))
-              getVehicleDescription (make, model, year, href)
-              print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
-              # Sleep for 10 seconds before going to the next one.
-              time.sleep(10)
+print("recallDict: %s" % recallDict)
+
+#2. Once we get all of the recalls and populate recallDict, Add all of the recalls to the carDict
+# For each make, model go through each of the years affected, pull the recall numbers and get the values add the values into the car dict as a list.
+
+                
+                    
+                            
+                    
+
+
 
         
+       
+            
+        
+    
+    # If it has a link, it is the recall number
+    
+    
+        
+
+# Find all elements that are <td> elements
 
 
+#select the first option in the list.
 
-
+#Look through the makes for Acura
+# for make in makeOptions:
+#     #Select Acura
+#     if (car in make.text):
+        #select from the combobox
 
