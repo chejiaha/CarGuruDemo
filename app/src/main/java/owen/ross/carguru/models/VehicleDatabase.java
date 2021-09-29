@@ -440,16 +440,12 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     }
                 }
 
-//                resultList.retainAll(allSets);
-//                Log.d("RES", resultList.toString());
                 Log.d("RES", resultSet.toString());
                 for (String car : resultSet){
                     Log.d("Car: ", car);
                     returnCarList.add(car);
                 }
 
-//                //convert to String[]
-//                returnCarList[0] = resultSet.toArray(new String[resultSet.size()]);
                 stringCallback.onCallbackStringArrayList(returnCarList);
             }// End of OnDataChanged
 
