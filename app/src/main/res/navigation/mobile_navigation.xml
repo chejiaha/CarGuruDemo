@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="owen.ross.carguru.ui.home.HomeFragment"
+        android:name="owen.ross.carguru.UI.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search_car"
-        android:name="owen.ross.carguru.ui.FindSpecificModel.FindSpecificModelFragment"
+        android:name="owen.ross.carguru.UI.FindSpecificModel.FindSpecificModelFragment"
         android:label="Search For Car"
         tools:layout="@layout/fragment_find_specific_model" />
 
     <fragment
         android:id="@+id/navigation_questionnaire"
-        android:name="owen.ross.carguru.ui.questionnaire.QuestionnaireFragment"
+        android:name="owen.ross.carguru.UI.Questionnaire.QuestionnaireFragment"
         android:label="@string/title_questionnaire"
         tools:layout="@layout/fragment_questionnaire" />
 
     <fragment
         android:id="@+id/navigation_list_of_cars_based_on_category"
-        android:name="owen.ross.carguru.ui.Catagories.ListOfCarsBasedOnCategory"
+        android:name="owen.ross.carguru.UI.Catagories.ListOfCarsBasedOnCategory"
         android:label="Search By Category"
         tools:layout="@layout/fragment_questionnaire" />
 

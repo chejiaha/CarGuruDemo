@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.questionnaire.FinishedQuestionnaireFragment"
+    tools:context=".UI.Questionnaire.FinishedQuestionnaireFragment"
     android:id="@+id/finished_questionnaire_fragment">
 
     <TextView

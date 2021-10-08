@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.FindSpecificModel.FindSpecificModelFragment">
+        tools:context=".UI.FindSpecificModel.FindSpecificModelFragment">
         <TextView
             android:id="@+id/tvFindSpecificModelTitle"
             android:layout_width="wrap_content"

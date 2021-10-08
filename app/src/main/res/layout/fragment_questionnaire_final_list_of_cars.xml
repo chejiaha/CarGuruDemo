@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.questionnaire.QuestionnaireFinalListOfCarsFragment"
+    tools:context=".UI.Questionnaire.QuestionnaireFinalListOfCarsFragment"
     android:id="@+id/final_list_of_car_questionnaire"
     android:orientation="vertical">
 
