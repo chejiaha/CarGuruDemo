@@ -18,7 +18,9 @@ import androidx.lifecycle.ViewModelProvider;
 import owen.ross.carguru.R;
 import owen.ross.carguru.UI.Catagories.ViewByCategoryFragment;
 import owen.ross.carguru.UI.FindSpecificModel.FindSpecificModelFragment;
+import owen.ross.carguru.UI.Garage.MyGarage.GarageSpashFragment;
 import owen.ross.carguru.UI.Questionnaire.QuestionnaireFragment;
+import owen.ross.carguru.UI.Settings.SettingFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -93,7 +95,6 @@ public class HomeFragment extends Fragment {
     public View.OnClickListener  onClickToCategories = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO Transfer Categories Fragment
             Fragment viewByCategoryFragment = new ViewByCategoryFragment();
             switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
@@ -114,27 +115,19 @@ public class HomeFragment extends Fragment {
     public View.OnClickListener onClickToSettings = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO Create Settings Fragment
-           /* Intent intent = new Intent(getActivity(), Settings.class);
-            startActivity(intent);*/
+            // Send them to Settings Fragment
+            Fragment viewByCategoryFragment = new SettingFragment();
+            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
-    // Home Page Link
-//    public View.OnClickListener  onClickToHomePage = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            Intent intent = new Intent(getActivity(), FindACarForYou.class);
-//            startActivity(intent);
-//        }
-//    };
     // To Garage Page
     public View.OnClickListener  onClickToMyGarage = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO Create Garage Fragment
-            /*Intent intent = new Intent(getActivity(), MyGaragePage.class);
-            startActivity(intent);*/
+            // Send them to Garage Fragment
+            Fragment viewByCategoryFragment = new GarageSpashFragment();
+            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 

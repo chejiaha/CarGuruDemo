@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Garage.UserAuth.UserLoginFragment">
+    tools:context=".UI.Garage.UserAuth.UserLoginFragment"
+    android:background="@color/grey_background">
 
 
     <TextView
@@ -15,7 +16,8 @@
         android:text="My Garage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white_text"/>
 
     <ImageView
         android:id="@+id/ivMyGarageSplashPageGarage"
@@ -25,7 +27,8 @@
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSplashTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSplashTitle"
+        />
 
     <TextView
         android:id="@+id/tvMyGarageSignInDescription"
@@ -36,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSplashPageGarage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSplashPageGarage"
+        android:textColor="@color/orange_text"/>
 
 
     <EditText
@@ -45,8 +49,8 @@
         android:layout_height="32dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="36dp"
-        android:text="placeholder"
         android:hint="Enter Email Here"
+        android:textColorHint="@color/white_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription" />
 
@@ -58,7 +62,8 @@
         android:layout_marginEnd="12dp"
         android:text="Email: "
         app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignInEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivMyGarageSignInEmail"
@@ -70,7 +75,8 @@
         app:layout_constraintEnd_toStartOf="@+id/tvMySignInGarageEmail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInDescription"
+        android:textColor="@color/white_text"/>
 
     <EditText
         android:id="@+id/etMyGarageSignInPassword"
@@ -79,8 +85,10 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="36dp"
         android:hint="Enter Password Here"
+        android:textColorHint="@color/white_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignInEmail"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvMyGarageSignInPassword"
@@ -91,7 +99,8 @@
 
         android:text="Password: "
         app:layout_constraintEnd_toStartOf="@+id/etMyGarageSignInEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvMySignInGarageEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMySignInGarageEmail"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivMyGarageSignInPassword"
@@ -112,9 +121,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="56dp"
         android:text="Forgot Password?"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignInPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etMyGarageSignInPassword"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/btnSignIn"
@@ -127,7 +136,8 @@
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInForgotPassword"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.326"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/btnSignUp"
@@ -140,6 +150,7 @@
         app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMyGarageSignInForgotPassword"
-        app:layout_constraintVertical_bias="0.323" />
+        app:layout_constraintVertical_bias="0.323"
+        android:textColor="@color/orange_text"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@ import owen.ross.carguru.Models.Question;
  * For more information go here: https://stackoverflow.com/questions/47847694/how-to-return-datasnapshot-value-as-a-result-of-a-method
  * or watch this video: https://www.youtube.com/watch?v=OvDZVV5CbQg
  */
-public interface FirebaseCallback {
+public interface QuestionFirebaseCallback {
     void onCallback(List<Question> list);
 }
 

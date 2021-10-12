@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.Questionnaire.QuestionnaireFragment"
-    android:id="@+id/navigation_questionnaire">
+    android:id="@+id/navigation_questionnaire"
+    android:background="@color/grey_background">
 
     <ProgressBar
         android:id="@+id/pbProgress"
@@ -16,7 +17,8 @@
         android:max="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionProgressCompleted" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionProgressCompleted"
+        />
 
     <TextView
         android:id="@+id/tvQuestionProgressCompleted"
@@ -25,7 +27,8 @@
         android:text="Progress Completed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvQuestionChoice"
@@ -36,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivQuestionImage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivQuestionImage"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/tvQuestion"
@@ -46,7 +50,8 @@
         android:text="Would do you like best?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pbProgress" />
+        app:layout_constraintTop_toBottomOf="@+id/pbProgress"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivQuestionImage"
@@ -65,7 +70,8 @@
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionChoice">
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionChoice"
+        android:textColor="@color/white_text">
 
         <!-- <RadioButton
              android:id="@+id/rbAnswer1"

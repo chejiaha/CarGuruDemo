@@ -1,5 +1,7 @@
 package owen.ross.carguru.UI.Questionnaire;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,7 +32,7 @@ import owen.ross.carguru.Models.Answer;
 import owen.ross.carguru.Models.AnswerParser;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Database.QuestionDatabase;
-import owen.ross.carguru.Callbacks.FirebaseCallback;
+import owen.ross.carguru.Callbacks.QuestionFirebaseCallback;
 import owen.ross.carguru.Models.Question;
 import owen.ross.carguru.Database.VehicleDatabase;
 import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
@@ -142,7 +144,7 @@ public class QuestionnaireFragment extends Fragment {
         }
 
         // Calling the getQuestions method from the Database class to get the questions from the database
-        QuestionDatabase.getQuestions(questionCategory, new FirebaseCallback() {
+        QuestionDatabase.getQuestions(questionCategory, new QuestionFirebaseCallback() {
             /* calling the onCallback method in the FirebaseCallback interface, so the question
             won't be displayed until the data is returned */
             @Override
@@ -194,6 +196,23 @@ public class QuestionnaireFragment extends Fragment {
         for (Answer answer: question.getAnswers()) {
             // creating a new radio button
             RadioButton rbAnswer = new RadioButton(getActivity());
+            // Code to change radio button color
+            ColorStateList colorStateList = new ColorStateList(
+                    new int[][]
+                            {
+                                    new int[]{-android.R.attr.state_enabled}, // Disabled
+                                    new int[]{android.R.attr.state_enabled}   // Enabled
+                            },
+                    new int[]
+                            {
+                                    Color.WHITE, // disabled
+                                    Color.YELLOW   // enabled
+                            }
+            );
+            rbAnswer.setButtonTintList(colorStateList);
+
+            // Sets the color of the point text
+            rbAnswer.setTextColor(getResources().getColor(R.color.white_text));
 
             // setting the ID of the new radio button
             rbAnswer.setId(id);
@@ -264,8 +283,7 @@ public class QuestionnaireFragment extends Fragment {
 
                         vehicleList = VehicleDatabase.CategoryAnswerParser(queryDB, questionCategory, new VehicleFirebaseCallback() {
                             @Override
-                            public void onCallbackCarList(List<Car> vehicleList) {
-
+                            public void onCallbackCarList(ArrayList<Car> vehicleList) {
                             }
 
                             @Override
@@ -278,7 +296,7 @@ public class QuestionnaireFragment extends Fragment {
                             }
 
                             @Override
-                            public void onCallbackQuestionList(List<Question> list) {
+                            public void onCallbackCar(Car car) {
 
                             }
                         });

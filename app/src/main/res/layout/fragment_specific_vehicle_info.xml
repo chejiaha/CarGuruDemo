@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/grey_background">
 
         <TextView
             android:id="@+id/tvSpecificCarTitle"
@@ -17,7 +15,8 @@
             android:layout_marginTop="16dp"
             android:text="text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white_text"/>
 
         <ImageView
             android:id="@+id/ivSpecificCarPic"
@@ -37,7 +36,8 @@
             android:text="Choose Cars to Compare"
             android:textSize="10dp"
             app:layout_constraintEnd_toStartOf="@+id/ivChooseCarsToCompare"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/orange_text"/>
 
         <ImageView
             android:id="@+id/ivChooseCarsToCompare"
@@ -55,7 +55,8 @@
             android:layout_marginTop="16dp"
             android:text="Description"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivSpecificCarPic" />
+            app:layout_constraintTop_toBottomOf="@+id/ivSpecificCarPic"
+            android:textColor="@color/orange_text"/>
 
         <TextView
             android:id="@+id/tvSpecificCarDescriptionText"
@@ -65,7 +66,8 @@
             android:layout_marginTop="12dp"
             android:text="Description Text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarDescription"
+            android:textColor="@color/orange_text"/>
 
         <ListView
             android:id="@+id/lvSpecificCarDescriptionList"
@@ -119,7 +121,8 @@
             android:layout_marginTop="16dp"
             android:text="Ratings"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList" />
+            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList"
+            android:textColor="@color/orange_text"/>
 
         <FrameLayout
             android:id="@+id/flRating4"
@@ -241,7 +244,8 @@
             android:layout_marginTop="20dp"
             android:text="Common Problems"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flRating1" />
+            app:layout_constraintTop_toBottomOf="@+id/flRating1"
+            android:textColor="@color/orange_text"/>
 
         <ListView
             android:id="@+id/lvSpecificCarCommonProblemList"
@@ -261,7 +265,8 @@
             android:layout_marginStart="24dp"
             android:text="Recalls"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarCommonProblemList" />
+            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarCommonProblemList"
+            android:textColor="@color/orange_text"/>
 
         <ListView
             android:id="@+id/lvSpecificCarRecallsList"
@@ -273,7 +278,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRecallsTitle"></ListView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

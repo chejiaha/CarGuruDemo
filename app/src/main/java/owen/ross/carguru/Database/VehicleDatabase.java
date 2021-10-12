@@ -27,7 +27,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
     private static ValueEventListener listener;
 
     @Override
-    public void onCallbackCarList(List<Car> vehicleList) {
+    public void onCallbackCarList(ArrayList<Car> vehicleList) {
     }
 
     @Override
@@ -35,7 +35,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
     }
 
     @Override
-    public void onCallbackQuestionList(List<Question> list) {
+    public void onCallbackCar(Car car) {
 
     }
 
@@ -139,7 +139,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *
      * This function will return a Car Object
      */
-    public static Car getSpecificCarInfo(Car car ) {
+    public static Car getSpecificCarInfo(Car car, VehicleFirebaseCallback stringCallback ) {
 
         String carMake = car.getMake();
         String carModel = car.getModel() ;
@@ -184,12 +184,19 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
 
 
                 } // End Of Data Snapshot
+                stringCallback.onCallbackCar(tempCar);
+
             }// End of OnDataChanged
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         }); //End of Listener
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return car;
     }
 

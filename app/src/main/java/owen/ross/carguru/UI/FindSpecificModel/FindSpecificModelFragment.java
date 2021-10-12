@@ -96,7 +96,7 @@ public class FindSpecificModelFragment extends Fragment {
         //Getting the data from the database
         vehicleList = VehicleDatabase.getMakeModelYear(new VehicleFirebaseCallback() {
             @Override
-            public void onCallbackCarList(List<Car> list) {
+            public void onCallbackCarList(ArrayList<Car> list) {
                 // checking if the questions linkedlist is already populated with questions
                 if (vehicleList.isEmpty()) {
                     // the questions returned from the database will be added to the list if the list is empty
@@ -110,7 +110,7 @@ public class FindSpecificModelFragment extends Fragment {
             }
 
             @Override
-            public void onCallbackQuestionList(List<Question> list) {
+            public void onCallbackCar(Car car) {
 
             }
         });
@@ -305,6 +305,7 @@ public class FindSpecificModelFragment extends Fragment {
      * This function will return None
      */
     private View.OnTouchListener onClickSearchVehicle = new View.OnTouchListener() {
+        Car car = new Car();
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             //Getting the users selection from the spinners
@@ -324,7 +325,7 @@ public class FindSpecificModelFragment extends Fragment {
                 //Display Error Toast
                 Toast.makeText(context, "Please Choose a Valid Year", Toast.LENGTH_SHORT).show();
             } else {
-                Car car = new Car();
+                car = new Car();
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     //Setting the Make, Year, Model in the object
@@ -333,7 +334,26 @@ public class FindSpecificModelFragment extends Fragment {
                     car.setTrim(userTrim);
                     car.setYear(Integer.parseInt(userYear));
                     //TODO Reference the database
-                    car = VehicleDatabase.getSpecificCarInfo(car);
+                    car = VehicleDatabase.getSpecificCarInfo(car, new VehicleFirebaseCallback() {
+                        @Override
+                        public void onCallbackCarList(ArrayList<Car> list) {
+
+                        }
+
+                        @Override
+                        public void onCallbackStringArrayList(ArrayList<String> cars) {
+
+                        }
+
+                        @Override
+                        public void onCallbackCar(Car dbCar) {
+                            // checking if the questions linkedlist is already populated with questions
+                            if (car.getCategory() == null) {
+                                // the questions returned from the database will be added to the list if the list is empty
+                                car = dbCar;
+                            }
+                        }
+                    });
 
                     //NextSend the model to the next page
                     //Adding the arguments into the class

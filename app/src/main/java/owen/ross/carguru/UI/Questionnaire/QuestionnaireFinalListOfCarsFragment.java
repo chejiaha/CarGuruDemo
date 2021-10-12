@@ -15,7 +15,10 @@ import android.view.ViewGroup;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
+import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
+import owen.ross.carguru.Models.Question;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Adaptors.CustomAdapter;
@@ -72,7 +75,7 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
      *  Will use the Category Answer Parser in the AnswerParser Class to parse the answers.
      */
     public View.OnClickListener onClickSearchVehicle = new View.OnClickListener() {
-
+        Car car = new Car();
         @Override
         public void onClick(View v) {
             Log.d("onClickSearchVehicle", "I WAS CLICKED");
@@ -82,14 +85,32 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
             String item = vehicleList.get(itemPosition);
             // break the information into each part
             String[] carInfo = item.split(" ");
-            Car car = new Car();
+//            Car car = new Car();
+            car = new Car();
             //Setting the Make, Year, Model in the object
             car.setMake(carInfo[0]);
             car.setModel(carInfo[2]);
             car.setTrim(carInfo[3]);
             car.setYear(Integer.parseInt(carInfo[4]));
             //TODO Reference the database
-            car = VehicleDatabase.getSpecificCarInfo(car);
+            car = VehicleDatabase.getSpecificCarInfo(car, new VehicleFirebaseCallback() {
+                @Override
+                public void onCallbackCarList(ArrayList<Car> vehicleList) {
+                }
+
+                @Override
+                public void onCallbackStringArrayList(ArrayList<String> cars) {
+                }
+
+                @Override
+                public void onCallbackCar(Car dbCar) {
+                    // checking if the questions linkedlist is already populated with questions
+                    if (car.getCategory() == null) {
+                        // the questions returned from the database will be added to the list if the list is empty
+                        car = dbCar;
+                    }
+                }
+            });
 
             //NextSend the model to the next page
             //Adding the arguments into the class
