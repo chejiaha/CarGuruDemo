@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.Garage.MyGarage.GarageSpashFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/grey_background">
 
     <TextView
         android:id="@+id/tvMyGarageSplashTitle"
@@ -15,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white_text"/>
 
     <ImageView
         android:id="@+id/ivMyGarageSplashPageGarage"
@@ -36,7 +38,8 @@
         android:text="What can you do with your Garage?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSplashPageGarage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMyGarageSplashPageGarage"
+        android:textColor="@color/orange_text"/>
 
     <ListView
         android:id="@+id/lvMyGarageSplashExplain"
@@ -55,7 +58,8 @@
         android:text="Login or Sign Up to use Your Garage!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvMyGarageSplashExplain" />
+        app:layout_constraintTop_toBottomOf="@+id/lvMyGarageSplashExplain"
+        android:textColor="@color/orange_text"/>
 
     <Button
         android:id="@+id/btnSignUp"

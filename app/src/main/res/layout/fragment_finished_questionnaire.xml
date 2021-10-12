@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.Questionnaire.FinishedQuestionnaireFragment"
-    android:id="@+id/finished_questionnaire_fragment">
+    android:id="@+id/finished_questionnaire_fragment"
+    android:background="@color/grey_background">
 
     <TextView
         android:id="@+id/tvQuestionnaireTitle"
@@ -18,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white_text"/>
 
     <ImageView
         android:id="@+id/tvFindACarGuruImage"
@@ -39,7 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFindACarGuruImage" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFindACarGuruImage"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/tvQuestionnaireCategoryTitle"
@@ -51,7 +54,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireBased" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireBased"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvQuestionnaireCategoryExplanation"
@@ -62,7 +66,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryTitle"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/tvQuestionnaireTryAgain"
@@ -72,7 +77,8 @@
         android:layout_marginTop="24dp"
         android:text="Try Again"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/tvQuestionnaireToCars"
@@ -83,7 +89,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.697"
         app:layout_constraintStart_toEndOf="@+id/tvQuestionnaireTryAgain"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation"
+        android:textColor="@color/orange_text"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

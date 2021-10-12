@@ -13,18 +13,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import owen.ross.carguru.Callbacks.FirebaseCallback;
+import owen.ross.carguru.Callbacks.QuestionFirebaseCallback;
 import owen.ross.carguru.Models.Answer;
 import owen.ross.carguru.Models.Question;
 
-public class QuestionDatabase implements FirebaseCallback {
+public class QuestionDatabase implements QuestionFirebaseCallback {
 
 
     //This references the Main Questions Branch
     private static DatabaseReference questionsReference = FirebaseDatabase.getInstance().getReference().child("Questions");
 
     // a method that will get all the questions of a specific category, and return them in a list
-    public static void getQuestions(String questionCategory, FirebaseCallback firebaseCallback) {
+    public static void getQuestions(String questionCategory, QuestionFirebaseCallback firebaseCallback) {
 
         // declaring the arraylist that will hold all of the questions that are returned by the database
         ArrayList<Question> questions = new ArrayList<>();

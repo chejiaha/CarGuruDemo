@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Settings.SettingFragment">
-
+    tools:context=".UI.Settings.SettingFragment" android:background="@color/grey_background">
 
     <TextView
         android:id="@+id/tvSettingsTitle"
@@ -16,7 +15,8 @@
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white_text"/>
 
     <ImageView
         android:id="@+id/ivSettingsDisplay"
@@ -26,7 +26,8 @@
         android:layout_marginTop="28dp"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsTitle"
+        />
 
     <TextView
         android:id="@+id/tvSettingsDisplayTitle"
@@ -39,7 +40,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsDisplay"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsTitle"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvSettingsDisplayDescription"
@@ -51,7 +53,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsDisplay"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsDisplayTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsDisplayTitle"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivSettingsVersion"
@@ -73,7 +76,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/ivSettingsDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/ivSettingsDisplay"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvSettingsVersionDescription"
@@ -84,7 +88,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsVersionTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsVersionTitle"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivSettingsNotification"
@@ -107,7 +112,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsNotification"
-        app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion" />
+        app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvSettingsNotificationDescription"
@@ -118,7 +124,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsNotificationTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsNotificationTitle"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivSettingsAccount"
@@ -141,7 +148,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsAccount"
-        app:layout_constraintTop_toBottomOf="@+id/ivSettingsNotification" />
+        app:layout_constraintTop_toBottomOf="@+id/ivSettingsNotification"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/tvSettingsAccountDescription"
@@ -152,7 +160,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsAccountTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsAccountTitle"
+        android:textColor="@color/orange_text"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

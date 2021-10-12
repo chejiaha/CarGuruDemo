@@ -10,9 +10,10 @@ import owen.ross.carguru.Models.Question;
  * The list of vehicles are
  */
 public interface VehicleFirebaseCallback {
-    void onCallbackCarList(List<Car> vehicleList);
+    void onCallbackCarList(ArrayList<Car> list);
 
     void onCallbackStringArrayList(ArrayList<String> cars);
 
-    void onCallbackQuestionList(List<Question> list);
+    void onCallbackCar(Car car);
+
 }

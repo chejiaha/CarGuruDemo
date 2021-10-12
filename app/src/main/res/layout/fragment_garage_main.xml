@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Garage.MyGarage.GarageMainFragment">
+    tools:context=".UI.Garage.MyGarage.GarageMainFragment"
+    android:background="@color/grey_background">
 
 
     <TextView
@@ -16,7 +17,8 @@
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white_text"/>
 
     <FrameLayout
         android:id="@+id/flMyGarageMainGarage"
@@ -52,7 +54,8 @@
         android:layout_marginTop="20dp"
         android:text="View Your Results"
         app:layout_constraintStart_toEndOf="@+id/ivMyGarageMainToResults"
-        app:layout_constraintTop_toBottomOf="@+id/flMyGarageMainGarage" />
+        app:layout_constraintTop_toBottomOf="@+id/flMyGarageMainGarage"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/ivMyGarageMainAddACar"
@@ -72,7 +75,8 @@
         android:layout_marginEnd="12dp"
         android:text="Add A Car"
         app:layout_constraintEnd_toStartOf="@+id/ivMyGarageMainAddACar"
-        app:layout_constraintTop_toBottomOf="@+id/flMyGarageMainGarage" />
+        app:layout_constraintTop_toBottomOf="@+id/flMyGarageMainGarage"
+        android:textColor="@color/orange_text"/>
 
     <TextView
         android:id="@+id/tvMyGarageMainFavourates"
@@ -83,7 +87,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageMainToResults" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGarageMainToResults"
+        android:textColor="@color/orange_text"/>
 
     <ImageView
         android:id="@+id/tvMyGarageMainFavouratesLeftArrow"

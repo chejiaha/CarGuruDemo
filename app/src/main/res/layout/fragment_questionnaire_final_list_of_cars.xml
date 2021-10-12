@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".UI.Questionnaire.QuestionnaireFinalListOfCarsFragment"
     android:id="@+id/final_list_of_car_questionnaire"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/grey_background">
 
     <TextView
         android:id="@+id/tvListOfCarsTitle"
@@ -14,7 +15,7 @@
         android:paddingBottom="30dp"
         android:text="@string/suggestion"
         android:textAlignment="center"
-        android:textSize="36sp" />
+        android:textColor="@color/white_text" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVehicleList"
