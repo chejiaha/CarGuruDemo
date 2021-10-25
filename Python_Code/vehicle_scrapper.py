@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+# Importing requests to Download the image. (urllib does not allow a reply)
+import requests # request img from web
+import shutil # save img locally
 
 
 
@@ -88,10 +91,10 @@ INFO_dict (one car model and one year)
 
 # The list of makes
 makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
-            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
-            "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
-            "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
-            "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Volvo","Volkswagen","Toyota",
+            "Tesla","Suzuki","Subaru","Smart","Scion","Saturn","Saab","RAM","Porsche","Pontiac",
+            "Polestar","Nissan","Mitsubishi","MINI","Mercury","Mercedes-Benz","Mazda","Maserati","Lotus",
+            "Lincoln","Lexus","Land Rover","Lamborghini","Kia","Jeep","Jaguar","Isuzu","Infinity","Hyundai"]
 
 #The list of each model and the years according to the model in a list
 AcuraModel = ["ILX", "ILX Hybrid", "MDX", "MDX Hybrid", "NSX", "RDX", "RL", "RLX", "TL", "TLX", "TSX", "TSX Sport Wagon", "ZDX"]
@@ -208,7 +211,7 @@ subaruYear = [[2021,2020,2019], [2021,2020,2019,2018,2017,2016,2015,2014], [2021
 smartModel = ["Fortwo"]
 smartYear = [[2017,2016,2015,2014,2013,2012,2011,2010,2009,2008]]
 
-scionModel = ["FR-S", "iA", "iM", "iQ", "tC", "xB", "xD", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+scionModel = ["FR-S", "iA", "iM", "iQ", "tC", "xB", "xD"]
 scionYear = [[2016,2015,2014,20137], [2016], [2016],  [2015,2014,2013,2012], [2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2015,2014,2013,2012,2011,2010,2009,2008], [2014,2013,2012,2011,2010,2009,2008]]
 
 saturnModel = ["Astra", "Aura", "Aura Hybrid", "Ion", "Outlook", "Sky", "VUE", "VUE Hybrid"]
@@ -274,7 +277,7 @@ jeepModel = ["Cherokee", "Commander", "Compass", "Gladiator", "Grand Cherokee", 
 jeepYear = [[2021,2020,2019,2018,2017,2016,2015,2014], [2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021], [2022],  [2012,2011,2010,2009,2008,2007], [2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2022], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007]]
 
 jaguarModel = ["E-Pace", "F-Pace", "F-Type", "I-Pace", "S-Type", "X-Type", "X-Type Wagon", "XE", "XF", "XJ", "XJR", "XK", "XKR"]
-jaguarYear = [[2021,2020,2019,2018], [2021,2020,2019,2018,2017], [2021,2020,2019,2018,2017,2016,2015,2014], [2020,2019], [2008], [2008,2007], [2008],  [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2011,2010,2009,2008], [2010,2009]]
+jaguarYear = [[2021,2020,2019,2018], [2021,2020,2019,2018,2017], [2021,2020,2019,2018,2017,2016,2015,2014], [2020,2019], [2008], [2008,2007], [2008], [2020,2019,2018,2017],[2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009], [2009], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008], [2015,2014,2013,2012,2011,2010,2009,2008], [2010,2009]]
 
 isuzuModel = ["Ascender", "i-290", "i-370", ]
 isuzuYear = [[2008,2007], [2008], [2008]]
@@ -346,21 +349,26 @@ info_dict = {'Acura': {'ILX': {}, 'ILX Hybrid': {}, 'MDX': {}, 'MDX Hybrid': {},
       •	(Common Problems)** Another Parser Not in this parser.
       •	(Recalls)** Another parser /Not in this parser.
 
+  make:The make of the car that we are looking for (Acura,BMW...)
+  model: The model of the car that we are looking for (3-series,4-series...)
+  year: The year of the car that we are looking for (2017,2018...)
+  href: The link to the specific car description page for make,model and year
+  
+  
   populates the car_dict description= make:{model:{trim:{year:{Doors:"xyz", MPG: "xyz"...}}}}
   
 
   '''
 def getVehicleDescription (make, model, year, href):
   # 4. go to the specs page of each trim and populate the car_dict 
-  # Start the page.
   # Creating the web Driver object
   driver = webdriver.Firefox()
+  # Start the page.
   driver.get(href)
   # 4. So Now I got a list of all trims and need to open the href for 
-  # each one and get all of the vehicle information based on that car
-  
-  # Get all list elements in the spec sheet.
-  all_li = driver.find_elements_by_tag_name("li")
+  #    each one and get all of the vehicle information based on that car
+  #    Get all list elements in the spec sheet.
+  all_li = driver.find_elements_by_tag_name("li")  
   # 5. Find all Fields listed above and set the values
   for item in all_li:
       item_html = item.get_attribute('innerHTML')
@@ -409,101 +417,203 @@ def getVehicleDescription (make, model, year, href):
   driver.close()
   print("Sleep for 3 seconds")
   time.sleep(3)
+  
+  
 
 '''
   This method is used to get the list of trims from each vehicle.
   This method will also populate the avg price and msrp price of vehicles in car_dict.
   
+  make:The make of the car that we are looking for (Acura,BMW...)
+  model: The model of the car that we are looking for (3-series,4-series...)
+  year: The year of the car that we are looking for (2017,2018...)
+  picNum: This is the number that is being incremented each time a year of a make's model is downloaded.
+  
+  This function will populate the trims
+  trims: The trim of a speicific model (330,330i....)
+  
   This function populates the car_dict and adds the trim of each vehicle
   This function populates the info_dict and adds the hrefs to each trim.
+  
+  returns picNum
 '''
-def getTrims(make, model, year):
+def getTrims(make, model, year, picNum):
+  try:
+    make = str(make)
+    model = str(model)
+    year = str(year)
+    modelURL = model.lower().replace(" ","-")
+    makeURL = make.lower().replace(" ","-")
+    # Flag if the page is not found
+    pageNotFoundFlag = False
+    url = "https://cars.usnews.com/cars-trucks/%s/%s/%s/specs" % (makeURL,modelURL,year)
+    # Creating the web Driver object
+    driver = webdriver.Firefox()
+    #Get the page.
+    # driver = webdriver.Firefox()
+    driver.get(url)
+    #Find all H2 tags to check if the page was not found.
+    
+    pageNotFoundCheck = driver.find_elements_by_tag_name("h2")
+    if (pageNotFoundCheck):
+      
+      #Check if the page is not found
+      for h2Tag in pageNotFoundCheck:
+        if("Page Not Found!" in h2Tag.text):
+          print("Make: %s, Model:%s, Year %s"% (make.lower(),model.lower(),year))
+          pageNotFoundFlag = True
+    
+    #If we find a page then....
+    if pageNotFoundFlag is False:
 
-  url = "https://cars.usnews.com/cars-trucks/%s/%s/%s/specs" % (make.lower(),model.lower(),year)
-  # Creating the web Driver object
-  driver = webdriver.Firefox()
-  #Get the page.
-  # driver = webdriver.Firefox()
-  driver.get(url)
-  
-  #Once you get the specific make, model and year
-  # 2. Find the trim for the make and year 
-  # The Links are in <h4> elements
-  #Test: All L4 Headers
-  all_headers = driver.find_elements_by_tag_name('h4')
+      #Once you get the specific make, model and year
+      # 2. Find the trim for the make and year 
+      # The Links are in <h4> elements
+      #Test: All L4 Headers
+      all_headers = driver.find_elements_by_tag_name('h4')
 
-  # element_list is a list to hold all elements for easy extraction of name of trim and href
-  element_list = []
-  #Going through each link and checking for class
-  for element in all_headers:
-      element_code = element.get_attribute('innerHTML')
-      #If there is an a tag, put the a tag in the element list for later use.
-      if ("<a" in element_code):
-          # Get the a tag element
-          a_tag_element = element.find_element_by_tag_name('a')
-          element_list.append(a_tag_element)
-  
-  #There is a chance that there is only msrp, but if there is not get the avg price as well
-  price_spec_html = driver.find_elements_by_class_name("card__price")
-  #Index to iterate through the prices
-  index = 0
-  # 3. Go through the list and set the trim name and link to the trim information 
-  for a_tags in element_list:
-      # Get the trim and href from the tag
-      trim = a_tags.get_attribute('innerHTML').strip()
-      html_link = a_tags.get_attribute('href')
+      # element_list is a list to hold all elements for easy extraction of name of trim and href
+      element_list = []
+      #Going through each link and checking for class
+      for element in all_headers:
+          element_code = element.get_attribute('innerHTML')
+          #If there is an a tag, put the a tag in the element list for later use.
+          if ("<a" in element_code):
+              # Get the a tag element
+              a_tag_element = element.find_element_by_tag_name('a')
+              element_list.append(a_tag_element)
       
-      #Create the trim and the specific year that we are looking at.
-      car_dict[make][model][trim] = {}
-      car_dict[make][model][trim][year] = {}
-      
-      info_dict[make][model][trim] = {}
-      info_dict[make][model][trim][year] = {}
-      
-      # Put them in the dict to be individually 
-      info_dict[make][model][trim][year] = html_link
-      
-      #Adding the price to the trim
-      spec_text = price_spec_html[index].text
-      #Avg Paid: $20,368
-      if ("Avg Paid" in spec_text):
-          avg_cost = spec_text[10:]
-          car_dict[make][model][trim][year]["Cost"] = avg_cost
-          # If the average is in the output, the msrp is also there so we have to add one to the index to get MSRP of the same car. 
-          index = index +1
+      #There is a chance that there is only msrp, but if there is not get the avg price as well
+      price_spec_html = driver.find_elements_by_class_name("card__price")
+      #Index to iterate through the prices
+      index = 0
+      # 3. Go through the list and set the trim name and link to the trim information 
+      for a_tags in element_list:
+          # Get the trim and href from the tag
+          trim = a_tags.get_attribute('innerHTML').strip()
+          html_link = a_tags.get_attribute('href')          
+          #Create the trim and the specific year that we are looking at.
+          car_dict[make][model][trim] = {}
+          car_dict[make][model][trim][year] = {}
+          
+          info_dict[make][model][trim] = {}
+          info_dict[make][model][trim][year] = {}
+          
+          # Put them in the dict to be individually 
+          info_dict[make][model][trim][year] = html_link
+          
+          #Adding the price to the trim
           spec_text = price_spec_html[index].text
-          #MSRP: $33,150
-      if ("MSRP" in spec_text):
-          msrp = spec_text[6:]
-          car_dict[make][model][trim][year]["MSRP"] = msrp
-      index = index + 1
-      #debug
-      print ("The trim is %s and the link is %s" % (trim, html_link))
-      print ("make: %s, model: %s year: %s, trim: %s \n\n" % (make,model,year,trim))
+          #Avg Paid: $20,368
+          if ("Avg Paid" in spec_text):
+              avg_cost = spec_text[10:]
+              car_dict[make][model][trim][year]["Cost"] = avg_cost
+              # If the average is in the output, the msrp is also there so we have to add one to the index to get MSRP of the same car. 
+              index = index +1
+              spec_text = price_spec_html[index].text
+              #MSRP: $33,150
+          if ("MSRP" in spec_text):
+              msrp = spec_text[6:]
+              car_dict[make][model][trim][year]["MSRP"] = msrp
+          index = index + 1
+          #debug
+          print ("The trim is %s and the link is %s" % (trim, html_link))
+          print ("make: %s, model: %s year: %s, trim: %s \n\n" % (make,model,year,trim))
+          
+      
+      listOfImgTag = driver.find_elements_by_tag_name('img')
+      picNum = downloadVehiclePic(make,model,year, listOfImgTag, picNum)
+      print("Sleep before closing the page")
+      final_dict_file = open("Current_Info_Dict.txt","w")
+      final_dict_file.write("%r\n\n %r" % (info_dict, car_dict))
+      final_dict_file.close()
+      time.sleep(3)
+      driver.close()
+      print("Sleep for 3 seconds after closing the page")
+      time.sleep(3)
+  except:
+    print("Something failed this car did not get used")
+    print("Make: %s, Model:%s, Year %s"% (make.lower(),model.lower(),year))
+    return picNum
+
+'''
+  This method is used to download a picture of the vehicle that we are looking for.
+  This method will be used when looking for the trims. This allows it to be called once
   
+  make:The make of the car that we are looking for (Acura,BMW...)
+  model: The model of the car that we are looking for (3-series,4-series...)
+  year: The year of the car that we are looking for (2017,2018...)
+  picNum: This is the number that is being incremented each time a year of a make's model is downloaded.
   
-  driver.close()
-  print("Sleep for 3 seconds")
-  time.sleep(3)
+  This function will create a jpg and place it in a folder. 
+  
+  returns picNum
+'''
+def downloadVehiclePic(make,model,year, listOfImgTag, picNum):
+  #img = driver.find_element_by_xpath('//div[@id="recaptcha_image"]/img')
+  #seperate year, make and model as a string so we can find the picture.
+  make = make.lower()
+  model = model.lower()
+  model = model.lower()
+  
+  makeUrl = make.replace(" ","-" )
+  modelUrl = model.replace(" ","-" )
+
+  
+  # Creating a custom header to allow a reply to my client
+  headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+  file_name = "vehicle_pictures/%s_%s_%s.jpg" % (year, makeUrl, modelUrl)
+  
+  try:
+    for imgTag in listOfImgTag:
+      url = ""
+      try:
+        url = imgTag.get_attribute('src')
+      except:
+        print("this image did not have a src")
+      
+      # Checking if the make, model and year is in the url, if it is its the picture of our car.
+      if("%s_%s_%s" % (year, make, model) in url):
+        # Get the url and pass it with the headers
+        #urllib.request.urlretrieve(src, "%s_%s_%s.jpg" % (year, make, model))
+        res = requests.get(url, stream = True, headers=headers)
+        #If the HTTPS status code retuned is 200 that means it passed/otherwise it did not get the photo
+        if res.status_code == 200:
+            with open(file_name,'wb') as f:
+                shutil.copyfileobj(res.raw, f) 
+            print('Image sucessfully Downloaded: ',file_name)
+            #add one to the picture number and return the number
+        else:
+            print('Image Couldn\'t be retrieved for %s, %s, %s' % (year, makeUrl, modelUrl))
+        break
+  except:
+    print("Could not get image for %s_%s_%s" % (year, make, model))
+  return picNum
   
 ### START OF MAIN FUNCTION ###
+# Variable to append to the name each time a new picture is added.
+picNum = 1
 
 # 0.5 Create a parser to parse through the url to get the trims.
-for index, make in enumerate(makeList):
+for makeIndex, make in enumerate(makeList):
   # Look through each model to find each trim and the respective url.
   # modelList = [[model1, model2,... for make 1], [model1, model2,... for make 2], ...]
-  for model in modelList[index]:
+  for modelIndex, model in enumerate(modelList[makeIndex]):
     #For each model go through each year and find each cars specs
     #yearList = [[years for model1], [years for model2]....]
-    for modelYears in yearList[index]:
-      for year in modelYears:
-        #Go through each page and get the make model and year
-        getTrims(make, model, year)
-        time.sleep(5)
-        #debug
-        #print(car_dict)
-        
-print(info_dict)        
+    print("next model %s" % model)
+    for year in yearList[makeIndex][modelIndex]:        
+      #Go through each page and get the make model and year
+      picNum = getTrims(make, model, year, picNum)
+      print("sleep for 5 seconds after getting the trim of make :%s,model: %s,  year: %s" % (model, make, year ))
+      time.sleep(5)
+      #debug
+      #print(car_dict)
+print(info_dict)
+final_dict_file = open("Final_Info_Dict.txt","w")
+final_dict_file.write("%r" % info_dict)
+final_dict_file.close()
+
 # Go through each href and get all of the specs for each car
 for make, models in info_dict.items():
   #debug
@@ -517,12 +627,23 @@ for make, models in info_dict.items():
           print("trim %s" % trim)
           for year, href in years.items():
               # print ("make: %s, model: %s year: %s,trim: %s, \nhref:%s" % (make,model,year,trim, href))
-              getVehicleDescription (make, model, year, href)
-              print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
-              # Sleep for 10 seconds before going to the next one.
-              time.sleep(10)
+              try:
+                getVehicleDescription (make, model, year, href)
+                print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
+                # Sleep for 10 seconds before going to the next one.
+                time.sleep(10)
+              except:
+                print("There was an issue populating: %s: %s: %s: %s" % (make,model,trim, year))
 
-        
+
+#print("Car_Dict:%s" % car_dict)
+print("Car_Dict:%r" % car_dict)
+
+car_dict_file = open("Car_Dict.txt","a")
+car_dict_file.write("%r" % car_dict)
+car_dict_file.write()
+car_dict_file.close()
+
 
 
 

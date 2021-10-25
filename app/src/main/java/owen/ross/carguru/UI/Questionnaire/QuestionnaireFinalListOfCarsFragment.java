@@ -15,10 +15,8 @@ import android.view.ViewGroup;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
-import owen.ross.carguru.Models.Question;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Adaptors.CustomAdapter;
@@ -51,7 +49,8 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_questionnaire_final_list_of_cars, container, false);
         rvVehicleList = view.findViewById(R.id.rvVehicleList);
         vehicleList = (getArguments().getStringArrayList("listOfCars"));
-        CustomAdapter customAdapter = new CustomAdapter(vehicleList);
+
+       CustomAdapter customAdapter = new CustomAdapter(vehicleList);
         rvVehicleList.setAdapter(customAdapter);
         rvVehicleList.setLayoutManager(new LinearLayoutManager(getActivity()));
 

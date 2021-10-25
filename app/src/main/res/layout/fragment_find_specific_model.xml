@@ -24,54 +24,53 @@
         android:id="@+id/spMake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle"
-        android:textColor="@color/white_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
 
     <Spinner
         android:id="@+id/spYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/white_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spTrim"
-        android:textColor="@color/white_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/spTrim" />
 
     <Spinner
         android:id="@+id/spModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:textColor="@color/white_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMake"
-        android:textColor="@color/white_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/spMake" />
 
     <Spinner
         android:id="@+id/spTrim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:textColor="@color/white_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spModel"
-        android:textColor="@color/white_text"/>
+        app:layout_constraintTop_toTopOf="@+id/spModel" />
 
     <Button
         android:id="@+id/btnFindSpecificModelSearch"
         android:layout_width="96dp"
         android:layout_height="38dp"
-        android:layout_marginTop="12dp"
         android:text="@string/search_button"
+        android:textColor="@color/grey_background"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMake"
-        android:textColor="@color/grey_background"/>
+        app:layout_constraintTop_toBottomOf="@+id/spYear" />
         <!-- <TextView
              android:id="@+id/tvFindSpecificModelSearch"
              android:layout_width="wrap_content"

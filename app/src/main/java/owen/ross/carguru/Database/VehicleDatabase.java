@@ -192,6 +192,8 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         }); //End of Listener
+        // After the car is recived. sleep for 4 seconds so the call to get the data will have enough
+        // time to get the data before the program continues
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
