@@ -1,5 +1,6 @@
 package owen.ross.carguru.UI.Questionnaire;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,18 +13,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
+import owen.ross.carguru.MainActivity;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Adaptors.CustomAdapter;
 import owen.ross.carguru.Database.VehicleDatabase;
 import owen.ross.carguru.UI.FindSpecificModel.SpecificVehicleInfoFragment;
 
-public class QuestionnaireFinalListOfCarsFragment extends Fragment {
+public class QuestionnaireFinalListOfCarsFragment extends Fragment{
 
     View view;
     // Recycler View containing a list of items.
@@ -50,12 +54,15 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
         rvVehicleList = view.findViewById(R.id.rvVehicleList);
         vehicleList = (getArguments().getStringArrayList("listOfCars"));
 
-       CustomAdapter customAdapter = new CustomAdapter(vehicleList);
+        MainActivity mainActivity = (MainActivity) getActivity();
+        //CustomAdapter customAdapter = new CustomAdapter(vehicleList, mainActivity );
+        CustomAdapter customAdapter = new CustomAdapter(vehicleList);
         rvVehicleList.setAdapter(customAdapter);
+        //rvVehicleList.setOnClickListener(onClickSearchVehicle);
         rvVehicleList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // If the item is clicked get the title of the car and split it into make, model, trim, and year
-        rvVehicleList.setOnClickListener(onClickSearchVehicle);
+        //rvVehicleList.setOnClickListener(onClickSearchVehicle);
 
 
         return view;
@@ -73,53 +80,86 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
      * Specific Category Question
      *  Will use the Category Answer Parser in the AnswerParser Class to parse the answers.
      */
-    public View.OnClickListener onClickSearchVehicle = new View.OnClickListener() {
-        Car car = new Car();
-        @Override
-        public void onClick(View v) {
-            Log.d("onClickSearchVehicle", "I WAS CLICKED");
-            // Find what was vehicle was clicked.
-            int itemPosition = rvVehicleList.getChildLayoutPosition(view);
-            // Get the vehicle information from the vehicle list
-            String item = vehicleList.get(itemPosition);
-            // break the information into each part
-            String[] carInfo = item.split(" ");
+//    public View.OnClickListener onClickSearchVehicle = new CustomAdapter(vehicleList) {
+//        Car car = new Car();
+//        @Override
+//        public void onClick(View v, int position) {
+//            String item = vehicleList.get(position);
+//            String[] carInfo = item.split(" ");
 //            Car car = new Car();
-            car = new Car();
-            //Setting the Make, Year, Model in the object
-            car.setMake(carInfo[0]);
-            car.setModel(carInfo[2]);
-            car.setTrim(carInfo[3]);
-            car.setYear(Integer.parseInt(carInfo[4]));
-            //TODO Reference the database
-            car = VehicleDatabase.getSpecificCarInfo(car, new VehicleFirebaseCallback() {
-                @Override
-                public void onCallbackCarList(ArrayList<Car> vehicleList) {
-                }
-
-                @Override
-                public void onCallbackStringArrayList(ArrayList<String> cars) {
-                }
-
-                @Override
-                public void onCallbackCar(Car dbCar) {
-                    // checking if the questions linkedlist is already populated with questions
-                    if (car.getCategory() == null) {
-                        // the questions returned from the database will be added to the list if the list is empty
-                        car = dbCar;
-                    }
-                }
-            });
-
-            //NextSend the model to the next page
-            //Adding the arguments into the class
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("car", (Serializable) car);
-            //Going from SearchCarFragment to Specific model fragment
-            Fragment SpecificCarInformation = new SpecificVehicleInfoFragment();
-            switchFragments(SpecificCarInformation, R.id.nav_host_fragment, bundle);
-        }
-    };
+//            //Setting the Make, Year, Model in the object
+//            car.setMake(carInfo[0]);
+//            car.setModel(carInfo[1]);
+//            car.setTrim(carInfo[2]);
+//            //car.setYear(Integer.parseInt(carInfo[3]));
+//            Bundle bundle = new Bundle();
+//            bundle.putSerializable("car", (Serializable) car);
+//            Fragment frag = new SpecificVehicleInfoFragment();
+//            // Create a FragmentManager
+//            FragmentManager fm = getFragmentManager();
+//            // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//            // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//            fragmentTransaction.replace(R.id.nav_host_fragment, frag);
+//            fragmentTransaction.commit(); // save the changes
+//
+//        }
+//        @Override
+//        public void onClick(View v) {
+//            Log.d("onClickSearchVehicle", "I WAS CLICKED");
+//
+//            TextView item = v.findViewById(R.id.tvCarItemTitle);
+//
+//
+//            Toast.makeText(v.getContext(),item.getText() , Toast.LENGTH_SHORT).show();
+//            // Find what was vehicle was clicked.
+//            int itemPosition = rvVehicleList.getChildLayoutPosition(view);
+//            // Get the vehicle information from the vehicle list
+//            String item = vehicleList.get(itemPosition);
+//            // break the information into each part
+//            String[] carInfo = item.split(" ");
+////            Car car = new Car();
+//            car = new Car();
+//            //Setting the Make, Year, Model in the object
+//            car.setMake(carInfo[0]);
+//            car.setModel(carInfo[2]);
+//            car.setTrim(carInfo[3]);
+//            car.setYear(Integer.parseInt(carInfo[4]));
+//            //TODO Reference the database
+//            car = VehicleDatabase.getSpecificCarInfo(car, new VehicleFirebaseCallback() {
+//                @Override
+//                public void onCallbackCarList(ArrayList<Car> vehicleList) {
+//                }
+//
+//                @Override
+//                public void onCallbackStringArrayList(ArrayList<String> cars) {
+//                }
+//
+//                @Override
+//                public void onCallbackCar(Car dbCar) {
+//                    // checking if the questions linkedlist is already populated with questions
+//                    if (car.getCategory() == null) {
+//                        // the questions returned from the database will be added to the list if the list is empty
+//                        car = dbCar;
+//                    }
+//                }
+//            });
+//            // Create a FragmentManager
+//            FragmentManager fm = getFragmentManager();
+//            // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//            // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//            fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+//            fragmentTransaction.commit(); // save the changes
+//            //NextSend the model to the next page
+//            //Adding the arguments into the class
+//            Bundle bundle = new Bundle();
+//            bundle.putSerializable("car", (Serializable) car);
+//            //Going from SearchCarFragment to Specific model fragment
+//            Fragment SpecificCarInformation = new SpecificVehicleInfoFragment();
+//            switchFragments(SpecificCarInformation, R.id.nav_host_fragment, bundle);
+//        }
+//    };
 
     //TODO Move this method into Helper Methods.
     public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
@@ -140,6 +180,26 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
     }
 
 
-
-
+//    @Override
+//    public void onClick(View v, int position) {
+//        String item = vehicleList.get(position);
+//        String[] carInfo = item.split(" ");
+//        Car car = new Car();
+//        //Setting the Make, Year, Model in the object
+//        car.setMake(carInfo[0]);
+//        car.setModel(carInfo[1]);
+//        car.setTrim(carInfo[2]);
+//        //car.setYear(Integer.parseInt(carInfo[3]));
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("car", (Serializable) car);
+//        Fragment frag = new SpecificVehicleInfoFragment();
+//        // Create a FragmentManager
+//        FragmentManager fm = getFragmentManager();
+//        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//        fragmentTransaction.replace(R.id.nav_host_fragment, frag);
+//        fragmentTransaction.commit(); // save the changes
+//
+//    }
 }

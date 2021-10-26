@@ -140,11 +140,15 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      * This function will return a Car Object
      */
     public static Car getSpecificCarInfo(Car car, VehicleFirebaseCallback stringCallback ) {
+//        String carMake = car.getMake();
+//        String carModel = car.getModel() ;
+//        String carTrim = car.getTrim();
+//        String carYear = car.getYear() + "";
 
-        String carMake = car.getMake();
-        String carModel = car.getModel() ;
-        String carTrim = car.getTrim();
-        String carYear = car.getYear() + "";
+        String carMake = "Honda";
+        String carModel = "Civic" ;
+        String carTrim = "LX";
+        String carYear = "2010";
         //Debug
         //Maybe we will have to do a listener for each key we are taking from the database
 
@@ -169,10 +173,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                  *      Price               <int>
                  *      Seats               <int>
                  */
-                String carMake = car.getMake();
-                String carModel = car.getModel() ;
-                String carTrim = car.getTrim();
-                String carYear = car.getYear() + "";
+
                 Car tempCar = new Car();
                 //Create a Car Model for the descriptions
                 for (DataSnapshot ssCarDesc : dataSnapshot.getChildren()) {
