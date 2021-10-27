@@ -77,10 +77,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 String make = carInfo[0].substring(0,1)+ carInfo[0].substring(1).toLowerCase();
                 String model = carInfo[1].substring(0,1)+ carInfo[1].substring(1).toLowerCase();
                 String trim = carInfo[2].toUpperCase();
-                car.setMake("Honda");
-                car.setModel("Civic");
-                car.setTrim("LX");
-                car.setYear(2017);
+                String year = carInfo[3];
+                car.setMake(make);
+                car.setModel(model);
+                car.setTrim(trim);
+                car.setYear(Integer.parseInt(year));
                 // Call the database method to pull the vehicle data.
                 //TODO Reference the database
                 car = VehicleDatabase.getSpecificCarInfo(car, new VehicleFirebaseCallback() {
@@ -95,19 +96,23 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     @Override
                     public void onCallbackCar(Car dbCar) {
                         // checking if the questions linkedlist is already populated with questions
-                        if (car.getCategory() == null) {
-                            // the questions returned from the database will be added to the list if the list is empty
+//                        if (car.getCategory() == null) {
+//                            // the questions returned from the database will be added to the list if the list is empty
                             car = dbCar;
-                        }
+                       // }
                     }
                 });
 
                 Toast.makeText(view.getContext(), tvCarItemTitle.getText() , Toast.LENGTH_SHORT).show();
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
 
+                Fragment fragment = new SpecificVehicleInfoFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("car", (Serializable) car);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new SpecificVehicleInfoFragment()).commit();
+                //debug
+                bundle.putString("bingo", "bingo");
+                fragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,fragment).commit();
 
 //                //NextSend the model to the next page
 //                //Adding the arguments into the class

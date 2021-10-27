@@ -94,6 +94,8 @@ public class SpecificVehicleInfoFragment extends Fragment {
         Bundle bundle = new Bundle();
         car = (Car) bundle.getSerializable("car");
         car = ((Car) getArguments().getSerializable("car"));
+        String bingo = bundle.getString("bingo");
+        Log.d("Test", "Debug" + bingo);
 
         //Get the vehicle details and populate arrays and View Data
         populateCarDetails();

@@ -140,17 +140,10 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      * This function will return a Car Object
      */
     public static Car getSpecificCarInfo(Car car, VehicleFirebaseCallback stringCallback ) {
-//        String carMake = car.getMake();
-//        String carModel = car.getModel() ;
-//        String carTrim = car.getTrim();
-//        String carYear = car.getYear() + "";
-
-        String carMake = "Honda";
-        String carModel = "Civic" ;
-        String carTrim = "LX";
-        String carYear = "2010";
-        //Debug
-        //Maybe we will have to do a listener for each key we are taking from the database
+        String carMake = car.getMake();
+        String carModel = car.getModel() ;
+        String carTrim = car.getTrim();
+        String carYear = car.getYear() + "";
 
         listener = vehicleReference.child(carMake).child(carModel).child(carTrim).child(carYear).addValueEventListener(new ValueEventListener() {
             @Override
@@ -199,6 +192,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            Log.d("getSpecificCarInfo","VEHICLE DATABASE SLEEP DID NOT WORK!");
         }
         return car;
     }
@@ -214,7 +208,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *      ArrayList<Carl> cars () (**all fields of car should have values**) : All cars in a specified category.
      */
 
-    public static ArrayList<Car> GetAllCarsInCategory(String questionCategory, VehicleFirebaseCallback vehicleFirebaseCallback){
+    public static ArrayList<Car> GetAllCarsInCategory(String questionCategory){
         ArrayList<Car> categoryVehicles = new ArrayList<>();
 
         listener = vehicleReference.child(questionCategory).addValueEventListener(new ValueEventListener() {
@@ -267,7 +261,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                     }
                 }//End of Makes For loop
                 // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
-                vehicleFirebaseCallback.onCallbackCarList(categoryVehicles);
+//                vehicleFirebaseCallback.onCallbackCarList(categoryVehicles);
             }//End of OnData changed
 
             @Override

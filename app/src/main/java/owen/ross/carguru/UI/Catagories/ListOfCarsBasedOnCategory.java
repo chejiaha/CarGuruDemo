@@ -27,6 +27,7 @@ public class ListOfCarsBasedOnCategory extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //Get the category and display it on the screen.
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list_of_cars_based_on_category, container, false);
     }
