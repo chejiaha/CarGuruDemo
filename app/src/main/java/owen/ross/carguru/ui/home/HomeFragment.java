@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ import androidx.navigation.Navigation;
 import owen.ross.carguru.R;
 import owen.ross.carguru.ui.Catagories.ViewByCategoryFragment;
 import owen.ross.carguru.ui.FindSpecificModel.FindSpecificModelFragment;
+import owen.ross.carguru.ui.UserAuthentication.UserLoginFragment;
+import owen.ross.carguru.ui.UserAuthentication.UserRegistrationFragment;
 import owen.ross.carguru.ui.questionnaire.QuestionnaireFragment;
 
 public class HomeFragment extends Fragment {
@@ -33,6 +36,8 @@ public class HomeFragment extends Fragment {
     TextView tvSearchForCar;
     TextView tvBrowseByCategory;
     TextView tvCarNews;
+    Button btnLogin;
+    Button btnRegister;
     View view;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -55,6 +60,9 @@ public class HomeFragment extends Fragment {
         tvBrowseByCategory = (TextView) view.findViewById(R.id.tvBrowseByCategory);
         tvCarNews = (TextView) view.findViewById(R.id.tvCarNews);
 
+        btnLogin = (Button) view.findViewById(R.id.btnHompageLogin);
+        btnRegister = (Button) view.findViewById(R.id.btnHompageRegister);
+
         //Setting the onclick Listeners
         tvFindMeACar.setOnClickListener(onClickFindMeACar);
         tvSearchForCar.setOnClickListener(onClickToSpecificModel);
@@ -65,6 +73,10 @@ public class HomeFragment extends Fragment {
         ivFindSpecificModel.setOnClickListener(onClickToSpecificModel);
         ivBrowseByCategory.setOnClickListener(onClickToCategories);
         ivCarNews.setOnClickListener(onClickToNews);
+        //Button Listeners
+        btnLogin.setOnClickListener(onClickLogin);
+        btnRegister.setOnClickListener(onClickRegistration);
+
 
         return view;
     }
@@ -136,6 +148,28 @@ public class HomeFragment extends Fragment {
             //TODO Create Garage Fragment
             /*Intent intent = new Intent(getActivity(), MyGaragePage.class);
             startActivity(intent);*/
+        }
+    };
+
+    // To login
+    public View.OnClickListener  onClickLogin = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Going from SearchCarFragment to Specific model fragment
+            Fragment login = new UserLoginFragment();
+            switchFragments(login, R.id.nav_host_fragment, new Bundle());
+
+        }
+    };
+
+    // To register
+    public View.OnClickListener  onClickRegistration = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Going from SearchCarFragment to Specific model fragment
+            Fragment register = new UserRegistrationFragment();
+            switchFragments(register, R.id.nav_host_fragment, new Bundle());
+
         }
     };
 

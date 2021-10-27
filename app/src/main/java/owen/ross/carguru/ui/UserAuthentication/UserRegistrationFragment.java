@@ -20,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import owen.ross.carguru.MainActivity;
 import owen.ross.carguru.R;
 import owen.ross.carguru.models.User;
 
@@ -93,62 +94,83 @@ public class UserRegistrationFragment extends Fragment {
         return view;
     }
 
+    /* this method will get and check the user input to make sure it is valid */
     private void registerUser() {
+        // getting all of the user input
         String email = etEmail.getText().toString().trim();
         String name = etName.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
+        // checking to see if the user entered a name, if they didn't then an error message will be displayed
         if (name.isEmpty()) {
             etName.setError("Your Name is required");
             etName.requestFocus();
             return;
         }
 
+        // checking to see if the user entered an email, if they didn't then an error message will be displayed
         if (email.isEmpty()) {
             etEmail.setError("Your Email is required");
             etEmail.requestFocus();
             return;
         }
 
+        // checking to see if the user entered a password, if they did not then an error message will be displayed
         if (password.isEmpty()) {
             etPassword.setError("Your Name is required");
             etPassword.requestFocus();
             return;
         }
 
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        // checking to see if the user entered a valid email. if they didn't an error message will be displayed
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etEmail.setError("Please Enter a Valid Email Address");
             etEmail.requestFocus();
             return;
         }
 
+        // checking to see if the user entered a password with a proper length, if not than an error will be displayed
         if (password.length() < 6) {
             etPassword.setError("Length of Password must be 6 or greater");
             etPassword.requestFocus();
             return;
         }
 
+        /* this will add the user to the database */
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        // will check to see if the registration task was successful
                         if (task.isSuccessful()) {
+                            // creating a new user object passing in the nae, email, and password the user entered
                             User user = new User(name, email, password);
 
+                            // adding the user object to the database under the Users branch
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    // checking to see if the user was added to the database successfully
                                     if (task.isSuccessful()) {
+                                        // if it is successful, then a success message will be displayed
                                         Toast.makeText(getActivity(), "User has registered successfully",
                                                 Toast.LENGTH_LONG).show();
+
+
+                                        // redirecting the user to the home screen
+                                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                                        startActivity(intent);
+
+                                    // if the user wasn't added to the database then an error message will be displayed
                                     } else {
                                         Toast.makeText(getActivity(), "Registration failed please try again",
                                                 Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
+                            // if the registration fails, then an error message will be displayed
                         } else {
                             Toast.makeText(getActivity(), "Registration failed please try again",
                                     Toast.LENGTH_LONG).show();
@@ -159,11 +181,14 @@ public class UserRegistrationFragment extends Fragment {
 
     }
 
+    // this listener is set to execute when the user clicks on the registration button
     public View.OnClickListener  onClickRegistration = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(getActivity(), UserRegistrationFragment.class));
+
+            // calling the registerUser method
+            registerUser();
         }
     };
 }
