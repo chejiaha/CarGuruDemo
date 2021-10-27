@@ -646,10 +646,3 @@ try:
                 time.sleep(10)
 except Exception as err:
   print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
-
-        
-
-
-
-
-
