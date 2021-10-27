@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import owen.ross.carguru.Adaptors.FragmentAddOn;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.R;
 
@@ -38,6 +39,8 @@ public class FinishedQuestionnaireFragment extends Fragment {
     TextView tvQuestionnaireTryAgain;
     TextView tvQuestionnaireToCars;
     ArrayList<Car> vehicleList;
+
+    FragmentAddOn fragmentAddOn = new FragmentAddOn();
 
 
     @Override
@@ -67,8 +70,8 @@ public class FinishedQuestionnaireFragment extends Fragment {
          */
         String questionCategory = (getArguments().getString("category"));
         Bundle bundle = new Bundle();
-        vehicleList = (ArrayList<Car>) bundle.getSerializable("car");
-        vehicleList = ((ArrayList<Car>) getArguments().getSerializable("car"));
+        vehicleList = (ArrayList<Car>) bundle.getSerializable("carList");
+        vehicleList = ((ArrayList<Car>) getArguments().getSerializable("carList"));
 
         // Setting the title
         tvQuestionnaireCategoryTitle.setText(questionCategory);
@@ -104,7 +107,8 @@ public class FinishedQuestionnaireFragment extends Fragment {
             bundle.putSerializable("carList", (Serializable) vehicleList);
             bundle.putString("title", "Suggested Vehicle List");
             Fragment fragment = new QuestionnaireFinalListOfCarsFragment();
-            switchFragments(fragment, R.id.nav_host_fragment, bundle);
+            fragmentAddOn.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
+            //switchFragments(fragment, R.id.nav_host_fragment, bundle);
         }
     };
 
@@ -113,25 +117,26 @@ public class FinishedQuestionnaireFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Fragment findMeACar = new QuestionnaireFragment();
-            switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
+            fragmentAddOn.switchFragments(getActivity(),findMeACar, R.id.nav_host_fragment, new Bundle());
+            //switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
         }
     };
 
 
-    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
-        //If the bundle is not empty add the argument
-        if (bundle.isEmpty() == false){
-            fragmentName.setArguments(bundle);
-        }
-        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
-        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
-
-        // Create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-        // Create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
-        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
-        fragmentTransaction.commit(); // save the changes
-    }
+//    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+//        //If the bundle is not empty add the argument
+//        if (bundle.isEmpty() == false){
+//            fragmentName.setArguments(bundle);
+//        }
+//        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+//        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+//
+//        // Create a FragmentManager
+//        FragmentManager fm = getFragmentManager();
+//        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+//        fragmentTransaction.commit(); // save the changes
+//    }
 }

@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import owen.ross.carguru.Adaptors.FragmentAddOn;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Models.Question;
@@ -361,7 +362,9 @@ public class FindSpecificModelFragment extends Fragment {
                     bundle.putSerializable("car", (Serializable) car);
                     //Going from SearchCarFragment to Specific model fragment
                     Fragment SpecificCarInformation = new SpecificVehicleInfoFragment();
-                    switchFragments(SpecificCarInformation, R.id.nav_host_fragment, bundle);
+                    FragmentAddOn fragmentAddOn = new FragmentAddOn();
+                    fragmentAddOn.switchFragments(getActivity(),SpecificCarInformation, R.id.nav_host_fragment, bundle);
+                    //switchFragments(SpecificCarInformation, R.id.nav_host_fragment, bundle);
                 }
             }//end of else
             return false;
@@ -370,20 +373,20 @@ public class FindSpecificModelFragment extends Fragment {
 
 
     //TODO Move this method into Helper Methods.
-    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
-        //If the bundle is not empty add the argument
-        if (bundle.isEmpty() == false){
-            fragmentName.setArguments(bundle);
-        }
-        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
-        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
-
-        // Create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-        // Create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
-        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
-        fragmentTransaction.commit(); // save the changes
-    }
+//    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+//        //If the bundle is not empty add the argument
+//        if (bundle.isEmpty() == false){
+//            fragmentName.setArguments(bundle);
+//        }
+//        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+//        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+//
+//        // Create a FragmentManager
+//        FragmentManager fm = getFragmentManager();
+//        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+//        fragmentTransaction.commit(); // save the changes
+//    }
 }

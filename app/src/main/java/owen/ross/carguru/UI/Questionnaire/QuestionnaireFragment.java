@@ -28,6 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import owen.ross.carguru.Adaptors.FragmentAddOn;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Answer;
 import owen.ross.carguru.Models.AnswerParser;
@@ -81,6 +82,7 @@ public class QuestionnaireFragment extends Fragment {
     //Passing the Highest Category to the next page
     String highestCategory = "";
     ArrayList<Car> vehicleList;
+    FragmentAddOn fragmentAddOn = new FragmentAddOn();
 
 
 
@@ -278,7 +280,8 @@ public class QuestionnaireFragment extends Fragment {
                         // Creating the same fragment just updating the Question section.
                         Fragment fragment = new QuestionnaireFragment();
                         // Send the users to the next page dependent on the highest score
-                        switchFragments(fragment, R.id.nav_host_fragment, bundle);
+                        fragmentAddOn.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
+                        //switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }else{
                         //TODO MAKE SURE ITS A ARRAYLIST BEING PASSED!
                         // If its on the second round of questions, use the other parser
@@ -316,9 +319,10 @@ public class QuestionnaireFragment extends Fragment {
 //                        bundle.putInt("progress", progress);
                         // Creating the same fragment just updating the Question section.
                         Fragment fragment = new FinishedQuestionnaireFragment();
-                        fragment.setArguments(bundle);
+                        //fragment.setArguments(bundle);
                         // Send the users to the next page dependent on the highest score
-                        switchFragments(fragment, R.id.nav_host_fragment, bundle);
+                        fragmentAddOn.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
+                        //switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }
                 }
             }
@@ -532,22 +536,22 @@ public class QuestionnaireFragment extends Fragment {
      *          BY default in our application set to the id of the "navigation_host_fragment" ID
      *  NOTE:
      */
-    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
-        //If the bundle is not empty add the argument
-        if (bundle.isEmpty() == false){
-            fragmentName.setArguments(bundle);
-        }
-        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
-        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
-
-        // Create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-        // Create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
-        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
-        fragmentTransaction.commit(); // save the changes
-    }
+//    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+//        //If the bundle is not empty add the argument
+//        if (bundle.isEmpty() == false){
+//            fragmentName.setArguments(bundle);
+//        }
+//        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+//        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+//
+//        // Create a FragmentManager
+//        FragmentManager fm = getFragmentManager();
+//        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+//        fragmentTransaction.commit(); // save the changes
+//    }
 
 
 

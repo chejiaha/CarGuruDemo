@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import owen.ross.carguru.Adaptors.FragmentAddOn;
 import owen.ross.carguru.R;
 import owen.ross.carguru.UI.Catagories.ViewByCategoryFragment;
 import owen.ross.carguru.UI.FindSpecificModel.FindSpecificModelFragment;
@@ -35,6 +36,8 @@ public class HomeFragment extends Fragment {
     TextView tvBrowseByCategory;
     TextView tvCarNews;
     View view;
+
+    FragmentAddOn fragmentAddOn = new FragmentAddOn();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -77,7 +80,8 @@ public class HomeFragment extends Fragment {
             //TODO Questionnaire fragment
             //Going from SearchCarFragment to Specific model fragment
             Fragment findMeACar = new QuestionnaireFragment();
-            switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
+            fragmentAddOn.switchFragments(getActivity(), findMeACar, R.id.nav_host_fragment, new Bundle());
+            //switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
 
         }
     };
@@ -86,7 +90,8 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Fragment findSpecificModelFragment = new FindSpecificModelFragment();
-            switchFragments(findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
+            fragmentAddOn.switchFragments(getActivity(),findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
+            //switchFragments(findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
 
         }
     };
@@ -96,7 +101,8 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Fragment viewByCategoryFragment = new ViewByCategoryFragment();
-            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            fragmentAddOn.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            //switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
@@ -117,7 +123,8 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             // Send them to Settings Fragment
             Fragment viewByCategoryFragment = new SettingFragment();
-            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            fragmentAddOn.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            //switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
@@ -127,27 +134,28 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             // Send them to Garage Fragment
             Fragment viewByCategoryFragment = new GarageSpashFragment();
-            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            fragmentAddOn.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            //switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
-    //TODO Move this method out of this class.
-    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
-        //If the bundle is not empty add the argument
-        if (bundle.isEmpty() == false){
-            fragmentName.setArguments(bundle);
-        }
-        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
-        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
-
-        // Create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-        // Create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
-        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
-        fragmentTransaction.commit(); // save the changes
-    }
+//    //TODO Move this method out of this class.
+//    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
+//        //If the bundle is not empty add the argument
+//        if (bundle.isEmpty() == false){
+//            fragmentName.setArguments(bundle);
+//        }
+//        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
+//        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
+//
+//        // Create a FragmentManager
+//        FragmentManager fm = getFragmentManager();
+//        // Create a FragmentTransaction to begin the transaction and replace the Fragment
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
+//        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
+//        fragmentTransaction.commit(); // save the changes
+//    }
 
 
 
