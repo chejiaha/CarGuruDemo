@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.R;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private ArrayList<String> localDataSet;
+    private ArrayList<Car> localDataSet;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,7 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
 
-    public CustomAdapter(ArrayList<String> dataSet) {
+    public CustomAdapter(ArrayList<Car> dataSet) {
         localDataSet = dataSet;
     }
 
@@ -61,7 +62,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet.get(position));
+        viewHolder.getTextView().setText(localDataSet.get(position).getMake() + localDataSet.get(position).getModel() + localDataSet.get(position).getTrim() + localDataSet.get(position).getYear());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,6 +37,7 @@ import owen.ross.carguru.Callbacks.QuestionFirebaseCallback;
 import owen.ross.carguru.Models.Question;
 import owen.ross.carguru.Database.VehicleDatabase;
 import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
+import owen.ross.carguru.UI.FindSpecificModel.SpecificVehicleInfoFragment;
 
 /*
  * This class is a major part of our Questionnaire Algorithm. It is this page which will pull the
@@ -78,7 +80,7 @@ public class QuestionnaireFragment extends Fragment {
     int progress;
     //Passing the Highest Category to the next page
     String highestCategory = "";
-    ArrayList<String> vehicleList;
+    ArrayList<Car> vehicleList;
 
 
 
@@ -245,7 +247,7 @@ public class QuestionnaireFragment extends Fragment {
                 //The button is not checked, ask the user to check a box
                 Toast.makeText(getActivity(), "Please Choose an option", Toast.LENGTH_LONG).show();
             }else{
-               // If there is a checked value then check if there is a next question
+                // If there is a checked value then check if there is a next question
                 //Add the Category or Specific Categories answer to the answer list.
                 addTally(questions.get(listIt.nextIndex()).getAnswers());
 
@@ -283,16 +285,17 @@ public class QuestionnaireFragment extends Fragment {
 
                         vehicleList = VehicleDatabase.CategoryAnswerParser(queryDB, questionCategory, new VehicleFirebaseCallback() {
                             @Override
-                            public void onCallbackCarList(ArrayList<Car> vehicleList) {
-                            }
-
-                            @Override
-                            public void onCallbackStringArrayList(ArrayList<String> cars) {
+                            public void onCallbackCarList(ArrayList<Car> cars) {
                                 // checking if the questions linkedlist is already populated with questions
                                 if (vehicleList.isEmpty()) {
                                     // the questions returned from the database will be added to the list if the list is empty
                                     vehicleList = cars;
                                 }
+                            }
+
+                            @Override
+                            public void onCallbackStringArrayList(ArrayList<String> cars) {
+
                             }
 
                             @Override
@@ -305,14 +308,15 @@ public class QuestionnaireFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         // Adding the category with the highest Tally based on the questions they answered
                         bundle.putString("category", questionCategory);
-                        bundle.putStringArrayList("listOfCars", vehicleList);
-                        //TODO Create a class to pass the array list of user vehicles
+                        bundle.putSerializable("carList", (Serializable) vehicleList);
+
 
 //                        // Adding the progression to the bar
 //                        progress = simpleProgressBar.getProgress() + 5;
 //                        bundle.putInt("progress", progress);
                         // Creating the same fragment just updating the Question section.
                         Fragment fragment = new FinishedQuestionnaireFragment();
+                        fragment.setArguments(bundle);
                         // Send the users to the next page dependent on the highest score
                         switchFragments(fragment, R.id.nav_host_fragment, bundle);
                     }
@@ -336,8 +340,8 @@ public class QuestionnaireFragment extends Fragment {
                 displayQuestion(questions.get(listIt.previousIndex()));
                 // setting the value of the iterator to the previous question in the list
                 listIt = questions.listIterator(listIt.previousIndex());
+            }
         }
-    }
     };
 
 

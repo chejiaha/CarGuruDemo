@@ -38,7 +38,7 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
         QuestionnaireFinalListOfCarsFragment fragment = new QuestionnaireFinalListOfCarsFragment();
         return fragment;
     }
-    ArrayList<String> vehicleList;
+    ArrayList<Car> vehicleList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,9 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_questionnaire_final_list_of_cars, container, false);
         rvVehicleList = view.findViewById(R.id.rvVehicleList);
-        vehicleList = (getArguments().getStringArrayList("listOfCars"));
+        Bundle bundle = new Bundle();
+        vehicleList = (ArrayList<Car>) bundle.getSerializable("car");
+        vehicleList = ((ArrayList<Car>) getArguments().getSerializable("car"));
         CustomAdapter customAdapter = new CustomAdapter(vehicleList);
         rvVehicleList.setAdapter(customAdapter);
         rvVehicleList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -82,16 +84,7 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment {
             // Find what was vehicle was clicked.
             int itemPosition = rvVehicleList.getChildLayoutPosition(view);
             // Get the vehicle information from the vehicle list
-            String item = vehicleList.get(itemPosition);
-            // break the information into each part
-            String[] carInfo = item.split(" ");
-//            Car car = new Car();
-            car = new Car();
-            //Setting the Make, Year, Model in the object
-            car.setMake(carInfo[0]);
-            car.setModel(carInfo[2]);
-            car.setTrim(carInfo[3]);
-            car.setYear(Integer.parseInt(carInfo[4]));
+            car = vehicleList.get(itemPosition);
             //TODO Reference the database
             car = VehicleDatabase.getSpecificCarInfo(car, new VehicleFirebaseCallback() {
                 @Override
