@@ -78,7 +78,7 @@ public class QuestionnaireFragment extends Fragment {
     int progress;
     //Passing the Highest Category to the next page
     String highestCategory = "";
-    ArrayList<String> vehicleList;
+    ArrayList<Car> vehicleList;
 
 
 
@@ -283,16 +283,17 @@ public class QuestionnaireFragment extends Fragment {
 
                         vehicleList = VehicleDatabase.CategoryAnswerParser(queryDB, questionCategory, new VehicleFirebaseCallback() {
                             @Override
-                            public void onCallbackCarList(ArrayList<Car> vehicleList) {
+                            public void onCallbackCarList(ArrayList<Car> carList) {
+                                // checking if the questions linkedlist is already populated with questions
+                                if (carList.isEmpty()) {
+                                    // the questions returned from the database will be added to the list if the list is empty
+                                    vehicleList = carList;
+                                }
                             }
 
                             @Override
                             public void onCallbackStringArrayList(ArrayList<String> cars) {
-                                // checking if the questions linkedlist is already populated with questions
-                                if (vehicleList.isEmpty()) {
-                                    // the questions returned from the database will be added to the list if the list is empty
-                                    vehicleList = cars;
-                                }
+
                             }
 
                             @Override
@@ -305,7 +306,7 @@ public class QuestionnaireFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         // Adding the category with the highest Tally based on the questions they answered
                         bundle.putString("category", questionCategory);
-                        bundle.putStringArrayList("listOfCars", vehicleList);
+                        bundle.putSerializable("listOfCars", vehicleList);
                         //TODO Create a class to pass the array list of user vehicles
 
 //                        // Adding the progression to the bar

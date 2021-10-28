@@ -40,7 +40,7 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment{
         QuestionnaireFinalListOfCarsFragment fragment = new QuestionnaireFinalListOfCarsFragment();
         return fragment;
     }
-    ArrayList<String> vehicleList;
+    ArrayList<Car> vehicleList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,17 +52,15 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment{
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_questionnaire_final_list_of_cars, container, false);
         rvVehicleList = view.findViewById(R.id.rvVehicleList);
-        vehicleList = (getArguments().getStringArrayList("listOfCars"));
-
-        MainActivity mainActivity = (MainActivity) getActivity();
-        //CustomAdapter customAdapter = new CustomAdapter(vehicleList, mainActivity );
+        Bundle bundle = new Bundle();
+        vehicleList = (ArrayList<Car>) bundle.getSerializable("listOfCars");
+        vehicleList = ((ArrayList<Car>) getArguments().getSerializable("listOfCars"));
         CustomAdapter customAdapter = new CustomAdapter(vehicleList);
         rvVehicleList.setAdapter(customAdapter);
-        //rvVehicleList.setOnClickListener(onClickSearchVehicle);
         rvVehicleList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // If the item is clicked get the title of the car and split it into make, model, trim, and year
-        //rvVehicleList.setOnClickListener(onClickSearchVehicle);
+//        rvVehicleList.setOnClickListener(onClickSearchVehicle);
 
 
         return view;

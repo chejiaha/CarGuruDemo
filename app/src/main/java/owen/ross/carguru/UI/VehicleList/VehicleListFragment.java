@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import owen.ross.carguru.Database.VehicleDatabase;
 import owen.ross.carguru.R;
 
 
@@ -53,6 +54,7 @@ public class VehicleListFragment extends Fragment {
         //TODO
         //Get each cars details and store it as a vehicle arrayList
         //ArrayList<Car> vehicleList = getAllCars(stringList)
+
 
         //TODO Create a recycleviewCard
         //Populate the recycleview with the list of cars.
