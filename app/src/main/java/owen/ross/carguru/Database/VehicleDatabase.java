@@ -13,13 +13,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Set;
 
 import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Models.HelperFunctions;
-import owen.ross.carguru.Models.Question;
 
 public class VehicleDatabase implements VehicleFirebaseCallback {
     //This References the Vehicle
@@ -208,17 +206,16 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *      ArrayList<Carl> cars () (**all fields of car should have values**) : All cars in a specified category.
      */
 
-    public static ArrayList<Car> GetAllCarsInCategory(String questionCategory){
+    public static ArrayList<Car> GetAllCarsInCategory(String questionCategory, VehicleFirebaseCallback stringCallback){
         ArrayList<Car> categoryVehicles = new ArrayList<>();
 
-        listener = vehicleReference.child(questionCategory).addValueEventListener(new ValueEventListener() {
+        listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String make = "";
                 String model = "";
                 String trim = "";
                 String year = "";
-                String databaseCategory = "";
                 //ArrayList<Car> carModels = new ArrayList<>();
                 Car car = new Car();
 
@@ -236,32 +233,38 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                             trim = carTrims.getKey();
                             car.setTrim(trim);
                             for (DataSnapshot carYears : snapshot.child(make).child(model).child(trim).getChildren()) {
-                                //Check if the car is a match to the query we are looking for
-                                //setting the year so we can get the data of its children
-                                year = carYears.getKey();
-                                // adding the car values to the car object
-                                car = new Car();
-                                car.setMake(make);
-                                car.setModel(model);
-                                car.setTrim(trim);
-                                car.setYear(Integer.parseInt(year));
-
-                                //Going through each of the descriptions of the vehicle, and then adding them to the object.
-                                for (DataSnapshot carDesc : snapshot.child(make).child(model).child(trim).child(year).getChildren()) {
-                                    //TODO IS it more efficient to Pull all vehicles and then go through each field? or should we keep it and go through each item once it comes out of the db?
-                                    //The Key of each description (Category,CommonProblems,Description...)
-                                    String descName = carDesc.getKey();
-                                    String descValue =  carDesc.getValue().toString();
-                                    car = HelperFunctions.getSpecs(descName, descValue, car);
-                                    Log.d("car", "Car Details: Make" + make + " \nModel" + model +  " \n Year" +year +  " \n " +  ":DescName " + descName + "\n Desc value" + descValue );
+                                // only store the cars of the chosen category in vehicle list
+                                if (carYears.child("Category").getValue().toString().contains(questionCategory)) {
+                                    //Check if the car is a match to the query we are looking for
+                                    //setting the year so we can get the data of its children
+                                    year = carYears.getKey();
+                                    // adding the car values to the car object
+                                    car = new Car();
+                                    car.setMake(make);
+                                    car.setModel(model);
+                                    car.setTrim(trim);
+                                    car.setYear(Integer.parseInt(year));
                                     categoryVehicles.add(car);
-                                } // End Of Data Snapshot
+                                }
+//                                //Going through each of the descriptions of the vehicle, and then adding them to the object.
+//                                for (DataSnapshot carDesc : snapshot.child(make).child(model).child(trim).child(year).getChildren()) {
+//                                    //TODO IS it more efficient to Pull all vehicles and then go through each field? or should we keep it and go through each item once it comes out of the db?
+//                                    //The Key of each description (Category,CommonProblems,Description...)
+//                                    String descName = carDesc.getKey();
+//                                    String descValue =  carDesc.getValue().toString();
+//                                    car = HelperFunctions.getSpecs(descName, descValue, car);
+//                                    Log.d("car", "Car Details: Make" + make + " \nModel" + model +  " \n Year" +year +  " \n " +  ":DescName " + descName + "\n Desc value" + descValue );
+//                                    categoryVehicles.add(car);
+//                                } // End Of Data Snapshot
                             }
                         }
                     }
                 }//End of Makes For loop
                 // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
 //                vehicleFirebaseCallback.onCallbackCarList(categoryVehicles);
+
+                // update callback to store vehicle list
+                stringCallback.onCallbackCarList(categoryVehicles);
             }//End of OnData changed
 
             @Override
@@ -271,6 +274,13 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
             }
         });//End of DB reference
 
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Log.d("getSpecificCarInfo","VEHICLE DATABASE SLEEP DID NOT WORK!");
+        }
 
         return categoryVehicles;
     }
@@ -288,9 +298,9 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *
      * returns A List of Vehicles that the program finds.
      */
-    public static ArrayList<String> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory, VehicleFirebaseCallback stringCallback){
+    public static ArrayList<Car> CategoryAnswerParser(Hashtable<String,String> questionAnswers, String questionCategory, VehicleFirebaseCallback vehicleFirebaseCallback) {
 
-        ArrayList<String> returnCarList = new ArrayList<String>();
+        ArrayList<Car> returnCarList = new ArrayList<Car>();
         listener = vehicleReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -326,53 +336,53 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                             for (DataSnapshot ssYear : dataSnapshot.child(make).child(model).child(trim).getChildren()) {
                                 year = ssYear.getKey();
 //                                Log.d("AllCar",make+model+trim+year);
-                                if (questionCategory.contains(ssYear.child("Category").getValue().toString())){
+                                if (questionCategory.contains(ssYear.child("Category").getValue().toString())) {
                                     Set<String> setOfKeys = questionAnswers.keySet();
 
                                     // Iterating questionCategorythrough the Hahstable
                                     for (String DBField : setOfKeys) {
 
-                                        if (DBField.equals("Make")){
+                                        if (DBField.equals("Make")) {
                                             comparedValue = make;
-                                        }else if(DBField.equals("Model")) {
+                                        } else if (DBField.equals("Model")) {
                                             comparedValue = model;
-                                        }else if(DBField.equals("Trim")) {
+                                        } else if (DBField.equals("Trim")) {
                                             comparedValue = trim;
-                                        }else if(DBField.equals("Year")) {
+                                        } else if (DBField.equals("Year")) {
                                             comparedValue = year;
-                                        }else{
+                                        } else {
                                             comparedValue = ssYear.child(DBField).getValue().toString();
                                         }
                                         // If the
-                                        if (questionAnswers.get(DBField).contains("<=")){
-                                            if (Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).substring(2))){
-                                                smallerThanList.add(make + " " + model + " " + trim + " " + year);
+                                        if (questionAnswers.get(DBField).contains("<=")) {
+                                            if (Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).substring(2))) {
+                                                smallerThanList.add(make + "," + model + "," + trim + "," + year);
                                                 Log.d("smallerThan", smallerThanList.toString());
                                             }
-                                        } else if (questionAnswers.get(DBField).contains(">=")){
-                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).substring(2))){
-                                                greaterThanList.add(make + " " + model + " " + trim + " " + year);
+                                        } else if (questionAnswers.get(DBField).contains(">=")) {
+                                            if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).substring(2))) {
+                                                greaterThanList.add(make + "," + model + "," + trim + "," + year);
                                                 Log.d("greaterThan", greaterThanList.toString());
                                             }
-                                        } else if (questionAnswers.get(DBField).contains("<")){
-                                            if (Integer.parseInt(comparedValue) < Integer.parseInt(questionAnswers.get(DBField).substring(1))){
-                                                smallerList.add(make + " " + model + " " + trim + " " + year);
+                                        } else if (questionAnswers.get(DBField).contains("<")) {
+                                            if (Integer.parseInt(comparedValue) < Integer.parseInt(questionAnswers.get(DBField).substring(1))) {
+                                                smallerList.add(make + "," + model + "," + trim + "," + year);
                                                 Log.d("smaller", smallerList.toString());
                                             }
-                                        } else if (questionAnswers.get(DBField).contains(">")){
-                                            if (Integer.parseInt(comparedValue) > Integer.parseInt(questionAnswers.get(DBField).substring(1))){
-                                                greaterList.add(make + " " + model + " " + trim + " " + year);
+                                        } else if (questionAnswers.get(DBField).contains(">")) {
+                                            if (Integer.parseInt(comparedValue) > Integer.parseInt(questionAnswers.get(DBField).substring(1))) {
+                                                greaterList.add(make + "," + model + "," + trim + "," + year);
                                                 Log.d("greater", greaterList.toString());
                                             }
-                                        } else if (questionAnswers.get(DBField).contains("-")){
+                                        } else if (questionAnswers.get(DBField).contains("-")) {
 
                                             if (Integer.parseInt(comparedValue) >= Integer.parseInt(questionAnswers.get(DBField).split("-")[0])
-                                                    && Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).split("-")[1])){
-                                                allList.add(make + " " + model + " " + trim + " " + year);
+                                                    && Integer.parseInt(comparedValue) <= Integer.parseInt(questionAnswers.get(DBField).split("-")[1])) {
+                                                allList.add(make + "," + model + "," + trim + "," + year);
                                                 Log.d("dash", allList.toString());
                                             }
-                                        } else if (questionAnswers.get(DBField).equals("All")){
-                                            allList.add(make + " " + model + " " + trim + " " + year);
+                                        } else if (questionAnswers.get(DBField).equals("All")) {
+                                            allList.add(make + "," + model + "," + trim + "," + year);
                                             Log.d("all", allList.toString());
                                         }
 //                                        else if (comparedValue.contains(questionAnswers.get(DBField))){
@@ -380,8 +390,8 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
 //                                            Log.d("contain", allList.toString());
 //                                        }
                                         else {
-                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.equals("Both")){
-                                                normalList.add(make + " " + model + " " + trim + " " + year);
+                                            if (questionAnswers.get(DBField).equals(comparedValue) || comparedValue.equals("Both")) {
+                                                normalList.add(make + "," + model + "," + trim + "," + year);
                                                 Log.d("both", normalList.toString());
 //                                                if (comparedValue.contains(questionAnswers.get(DBField))){
 //                                                    containList.add(make + " " + model + " " + trim + " " + year);
@@ -398,7 +408,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                 boolean isFirstNonEmptyList = false;
                 //TODO Find a way to pass this to the method above..
                 Set<String> resultSet = new HashSet<String>();
-                if (smallerList.size() > 0){
+                if (smallerList.size() > 0) {
                     if (isFirstNonEmptyList == false) {
                         resultSet = smallerList;
                         isFirstNonEmptyList = true;
@@ -406,7 +416,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(smallerList);
                     }
                 }
-                if (greaterList.size() > 0){
+                if (greaterList.size() > 0) {
                     if (isFirstNonEmptyList == false) {
                         resultSet = greaterList;
                         isFirstNonEmptyList = true;
@@ -414,7 +424,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(greaterList);
                     }
                 }
-                if (smallerThanList.size() > 0){
+                if (smallerThanList.size() > 0) {
                     if (isFirstNonEmptyList == false) {
                         resultSet = smallerThanList;
                         isFirstNonEmptyList = true;
@@ -422,7 +432,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(smallerThanList);
                     }
                 }
-                if (greaterThanList.size() > 0){
+                if (greaterThanList.size() > 0) {
                     if (isFirstNonEmptyList == false) {
                         resultSet = greaterThanList;
                         isFirstNonEmptyList = true;
@@ -430,7 +440,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(greaterThanList);
                     }
                 }
-                if (allList.size() > 0){
+                if (allList.size() > 0) {
                     if (isFirstNonEmptyList == false) {
                         resultSet = allList;
                         isFirstNonEmptyList = true;
@@ -438,7 +448,7 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                         resultSet.retainAll(allList);
                     }
                 }
-                if (normalList.size() > 0){
+                if (normalList.size() > 0) {
                     if (isFirstNonEmptyList == false) {
                         resultSet = normalList;
                         isFirstNonEmptyList = true;
@@ -455,12 +465,17 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
 //                }
 
                 Log.d("RES", resultSet.toString());
-                for (String car : resultSet){
+                for (String car : resultSet) {
                     Log.d("Car: ", car);
-                    returnCarList.add(car);
+                    Car carObj = new Car();
+                    carObj.setMake(car.split(",")[0]);
+                    carObj.setModel(car.split(",")[1]);
+                    carObj.setTrim(car.split(",")[2]);
+                    carObj.setYear(Integer.parseInt(car.split(",")[3]));
+                    returnCarList.add(carObj);
                 }
 
-                stringCallback.onCallbackStringArrayList(returnCarList);
+                vehicleFirebaseCallback.onCallbackCarList(returnCarList);
             }// End of OnDataChanged
 
             @Override
@@ -469,9 +484,8 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
         }); //End of Listener
 
         return returnCarList;
+
     }
-
-
 
 
 

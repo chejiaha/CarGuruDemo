@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.R;
 
 
@@ -35,7 +36,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
     TextView tvQuestionnaireCategoryExplanation;
     TextView tvQuestionnaireTryAgain;
     TextView tvQuestionnaireToCars;
-    ArrayList<String> vehicleList;
+    ArrayList<Car> vehicleList;
 
 
     @Override
@@ -63,8 +64,12 @@ public class FinishedQuestionnaireFragment extends Fragment {
          * String category : The category that the user was placed into
          *
          */
+//        String questionCategory = (getArguments().getString("category"));
+//        vehicleList = (getArguments().getStringArrayList("listOfCars"));
         String questionCategory = (getArguments().getString("category"));
-        vehicleList = (getArguments().getStringArrayList("listOfCars"));
+        Bundle bundle = new Bundle();
+        vehicleList = (ArrayList<Car>) bundle.getSerializable("listOfCars");
+        vehicleList = ((ArrayList<Car>) getArguments().getSerializable("listOfCars"));
 
         // Setting the title
         tvQuestionnaireCategoryTitle.setText(questionCategory);
@@ -99,7 +104,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
             //Send the user to the Finished Questionnaire Fragment to sift through the results
             Bundle bundle = new Bundle();
             // Adding the category with the highest Tally based on the questions they answered
-            bundle.putStringArrayList("listOfCars", vehicleList);
+            bundle.putSerializable("listOfCars", vehicleList);
             bundle.putString("title", "Suggested Vehicle List");
             Fragment fragment = new QuestionnaireFinalListOfCarsFragment();
             switchFragments(fragment, R.id.nav_host_fragment, bundle);
