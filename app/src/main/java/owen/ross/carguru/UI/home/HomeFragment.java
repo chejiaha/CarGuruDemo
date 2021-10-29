@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import owen.ross.carguru.Models.HelperFunctions;
 import owen.ross.carguru.R;
 import owen.ross.carguru.UI.Catagories.ViewByCategoryFragment;
 import owen.ross.carguru.UI.FindSpecificModel.FindSpecificModelFragment;
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment {
             //TODO Questionnaire fragment
             //Going from SearchCarFragment to Specific model fragment
             Fragment findMeACar = new QuestionnaireFragment();
-            switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(), findMeACar, R.id.nav_host_fragment, new Bundle());
 
         }
     };
@@ -86,7 +87,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Fragment findSpecificModelFragment = new FindSpecificModelFragment();
-            switchFragments(findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(),findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
 
         }
     };
@@ -96,7 +97,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Fragment viewByCategoryFragment = new ViewByCategoryFragment();
-            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
@@ -117,7 +118,7 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             // Send them to Settings Fragment
             Fragment viewByCategoryFragment = new SettingFragment();
-            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
@@ -127,7 +128,7 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             // Send them to Garage Fragment
             Fragment viewByCategoryFragment = new GarageSpashFragment();
-            switchFragments(viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 

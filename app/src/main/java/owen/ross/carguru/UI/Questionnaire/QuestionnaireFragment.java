@@ -27,6 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import owen.ross.carguru.Models.HelperFunctions;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Answer;
 import owen.ross.carguru.Models.AnswerParser;
@@ -276,7 +277,7 @@ public class QuestionnaireFragment extends Fragment {
                         // Creating the same fragment just updating the Question section.
                         Fragment fragment = new QuestionnaireFragment();
                         // Send the users to the next page dependent on the highest score
-                        switchFragments(fragment, R.id.nav_host_fragment, bundle);
+                        HelperFunctions.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
                     }else{
                         //TODO MAKE SURE ITS A ARRAYLIST BEING PASSED!
                         // If its on the second round of questions, use the other parser
@@ -315,7 +316,7 @@ public class QuestionnaireFragment extends Fragment {
                         // Creating the same fragment just updating the Question section.
                         Fragment fragment = new FinishedQuestionnaireFragment();
                         // Send the users to the next page dependent on the highest score
-                        switchFragments(fragment, R.id.nav_host_fragment, bundle);
+                        HelperFunctions.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
                     }
                 }
             }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import owen.ross.carguru.Models.Car;
+import owen.ross.carguru.Models.HelperFunctions;
 import owen.ross.carguru.R;
 
 
@@ -107,7 +108,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
             bundle.putSerializable("listOfCars", vehicleList);
             bundle.putString("title", "Suggested Vehicle List");
             Fragment fragment = new QuestionnaireFinalListOfCarsFragment();
-            switchFragments(fragment, R.id.nav_host_fragment, bundle);
+            HelperFunctions.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
         }
     };
 
@@ -116,7 +117,7 @@ public class FinishedQuestionnaireFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Fragment findMeACar = new QuestionnaireFragment();
-            switchFragments(findMeACar, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(),findMeACar, R.id.nav_host_fragment, new Bundle());
         }
     };
 
