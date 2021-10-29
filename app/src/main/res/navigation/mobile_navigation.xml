@@ -24,9 +24,15 @@
         tools:layout="@layout/fragment_questionnaire" />
 
     <fragment
-        android:id="@+id/navigation_list_of_cars_based_on_category"
-        android:name="owen.ross.carguru.UI.Catagories.ListOfCarsBasedOnCategory"
-        android:label="Search By Category"
+        android:id="@+id/navigation_my_garage"
+        android:name="owen.ross.carguru.UI.Garage.MyGarage.GarageSpashFragment"
+        android:label="My Garage"
+        tools:layout="@layout/fragment_questionnaire" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="owen.ross.carguru.UI.Settings.SettingFragment"
+        android:label="Settings"
         tools:layout="@layout/fragment_questionnaire" />
 
 
