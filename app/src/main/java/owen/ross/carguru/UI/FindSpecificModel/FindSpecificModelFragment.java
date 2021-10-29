@@ -115,10 +115,10 @@ public class FindSpecificModelFragment extends Fragment {
             }
         });
         //Creating the spinner adapters and setting the lists that are used.
-        makeSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, makeList);
-        trimSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
-        modelSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
-        yearSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, yearList);
+        makeSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, makeList);
+        trimSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, modelList);
+        modelSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, modelList);
+        yearSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, yearList);
 
         //Setting the Spinner Adapters to the respected Spinner Objects
         makeSpinner.setAdapter(makeSpinnerAdapter);

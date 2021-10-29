@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
+<ScrollView
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/grey_background">
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/grey_background">
 
         <TextView
             android:id="@+id/tvSpecificCarTitle"
@@ -69,213 +73,214 @@
             app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarDescription"
             android:textColor="@color/orange_text"/>
 
-        <ListView
-            android:id="@+id/lvSpecificCarDescriptionList"
-            android:layout_width="342dp"
-            android:layout_height="100dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSpecificCarDescriptionList"
+            android:layout_width="319dp"
+            android:layout_height="wrap_content"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.304"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarDescriptionText">
 
-        </ListView>
+        </androidx.recyclerview.widget.RecyclerView>
 
-<!--        <TextView-->
-<!--            android:id="@+id/SpecificCarApproxCostPerYearTitle"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:text="Approximate Cost Per Year"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/SpecificCarApproxCostPerYearTitle"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:text="Approximate Cost Per Year"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvspecificCarApproxCost"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="120dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:text="Cost:"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.098"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/SpecificCarApproxCostPerYearTitle"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/tvspecificCarApproxCost"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="120dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:text="Cost:"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.098"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/SpecificCarApproxCostPerYearTitle"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList" />-->
 
         <!--        <SeekBar-->
-<!--            android:id="@+id/sbSeekBar"-->
-<!--            android:layout_width="331dp"-->
-<!--            android:layout_height="38dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/SpecificCarApproxCostPerYearTitle" />-->
+        <!--            android:id="@+id/sbSeekBar"-->
+        <!--            android:layout_width="331dp"-->
+        <!--            android:layout_height="38dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/SpecificCarApproxCostPerYearTitle" />-->
 
 
-        <TextView
-            android:id="@+id/tvSpecificCarRatings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Ratings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList"
-            android:textColor="@color/orange_text"/>
+        <!--        <TextView-->
+        <!--            android:id="@+id/tvSpecificCarRatings"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:text="Ratings"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarDescriptionList"-->
+        <!--            android:textColor="@color/orange_text"/>-->
 
-        <FrameLayout
-            android:id="@+id/flRating4"
-            android:layout_width="66dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/flRating4"-->
+        <!--            android:layout_width="66dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="32dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">-->
 
-            <ImageView
-                android:id="@+id/ivSpecificCarWildcard"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivSpecificCarWildcard"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:src="@mipmap/ic_launcher"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.0" />-->
 
-            <TextView
-                android:id="@+id/tvSpecificCarWildcard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Rating"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </FrameLayout>
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvSpecificCarWildcard"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:text="Rating"-->
+        <!--                android:textSize="20dp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </FrameLayout>-->
 
-        <FrameLayout
-            android:id="@+id/flRating3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/flRating4"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/flRating3"-->
+        <!--            android:layout_width="70dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/flRating4"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">-->
 
-            <ImageView
-                android:id="@+id/ivSpecificCarCosts"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivSpecificCarCosts"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:src="@mipmap/ic_launcher"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.0" />-->
 
-            <TextView
-                android:id="@+id/tvSpecificCarCosts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Rating"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </FrameLayout>
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvSpecificCarCosts"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:text="Rating"-->
+        <!--                android:textSize="20dp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </FrameLayout>-->
 
-        <FrameLayout
-            android:id="@+id/flRating2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="36dp"
-            app:layout_constraintEnd_toStartOf="@+id/flRating3"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/flRating2"-->
+        <!--            android:layout_width="70dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="36dp"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/flRating3"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">-->
 
-            <ImageView
-                android:id="@+id/ivSpecificCarSpeed"
-                android:layout_width="71dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivSpecificCarSpeed"-->
+        <!--                android:layout_width="71dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:src="@mipmap/ic_launcher"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.0" />-->
 
-            <TextView
-                android:id="@+id/tvSpecificCarSpeed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Rating"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </FrameLayout>
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvSpecificCarSpeed"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:text="Rating"-->
+        <!--                android:textSize="20dp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </FrameLayout>-->
 
-        <FrameLayout
-            android:id="@+id/flRating1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="136dp"
-            app:layout_constraintEnd_toStartOf="@+id/flRating3"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/flRating1"-->
+        <!--            android:layout_width="70dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="136dp"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/flRating3"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRatings">-->
 
-            <ImageView
-                android:id="@+id/ivSpecificCarGasRating"
-                android:layout_width="71dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivSpecificCarGasRating"-->
+        <!--                android:layout_width="71dp"-->
+        <!--                android:layout_height="70dp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:src="@mipmap/ic_launcher"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.0" />-->
 
-            <TextView
-                android:id="@+id/tvSpecificCarGasRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Rating"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </FrameLayout>
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvSpecificCarGasRating"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:text="Rating"-->
+        <!--                android:textSize="20dp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </FrameLayout>-->
 
         <TextView
             android:id="@+id/tvSpecificCarCommonProblemTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
             android:text="Common Problems"
+            android:textColor="@color/orange_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flRating1"
-            android:textColor="@color/orange_text"/>
+            app:layout_constraintTop_toBottomOf="@+id/rvSpecificCarDescriptionList" />
 
-        <ListView
-            android:id="@+id/lvSpecificCarCommonProblemList"
-            android:layout_width="342dp"
-            android:layout_height="100dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSpecificCarCommonProblemList"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarCommonProblemTitle">
 
-        </ListView>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:id="@+id/tvSpecificCarRecallsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="Recalls"
+            android:textColor="@color/orange_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSpecificCarCommonProblemList"
-            android:textColor="@color/orange_text"/>
+            app:layout_constraintTop_toBottomOf="@+id/rvSpecificCarCommonProblemList" />
 
-        <ListView
-            android:id="@+id/lvSpecificCarRecallsList"
-            android:layout_width="342dp"
-            android:layout_height="100dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSpecificCarRecallsList"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.607"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRecallsTitle"></ListView>
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecificCarRecallsTitle"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
