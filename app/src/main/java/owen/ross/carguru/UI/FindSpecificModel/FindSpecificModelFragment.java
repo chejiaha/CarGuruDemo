@@ -208,7 +208,7 @@ public class FindSpecificModelFragment extends Fragment {
                         }
                     }
                 }
-                modelSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, modelList);
+                modelSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, modelList);
                 modelSpinner.setAdapter(modelSpinnerAdapter);
             }
             return false;
@@ -244,7 +244,7 @@ public class FindSpecificModelFragment extends Fragment {
                         trimList.add(car.getTrim());
                     }
                 }
-                trimSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, trimList);
+                trimSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, trimList);
                 trimSpinner.setAdapter(trimSpinnerAdapter);
             }
             return false;
@@ -287,7 +287,7 @@ public class FindSpecificModelFragment extends Fragment {
                         }
                     }
                 }
-                yearSpinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, yearList);
+                yearSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, yearList);
                 yearSpinner.setAdapter(yearSpinnerAdapter);
             }
             return false;
