@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import owen.ross.carguru.R;
+import owen.ross.carguru.UI.Articles.ArticleFragment;
 import owen.ross.carguru.UI.Catagories.ViewByCategoryFragment;
 import owen.ross.carguru.UI.FindSpecificModel.FindSpecificModelFragment;
 import owen.ross.carguru.UI.Garage.MyGarage.GarageSpashFragment;
@@ -104,10 +105,8 @@ public class HomeFragment extends Fragment {
     public View.OnClickListener  onClickToNews = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO Create News Fragment
-
-            /*Intent intent = new Intent(getActivity(), NewsPage.class);
-            startActivity(intent);*/
+            Fragment articleFragment= new ArticleFragment();
+            switchFragments(articleFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
