@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,8 @@ import com.google.android.material.slider.Slider;
 
 import java.util.ArrayList;
 
+import owen.ross.carguru.Adaptors.CommonListAdapter;
+import owen.ross.carguru.Adaptors.CustomAdapter;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Models.HelperFunctions;
@@ -54,9 +58,9 @@ public class SpecificVehicleInfoFragment extends Fragment {
     TextView tvResult2;
     TextView tvResult3;
     TextView tvResult4;
-    ListView lvCommonProblems;
-    ListView lvRecalls;
-    ListView lvDescription;
+    RecyclerView rvCommonProblems;
+    RecyclerView rvRecalls;
+    RecyclerView rvDescription;
     Slider slCost;
     ArrayAdapter commonProblemsAdapter;
     ArrayAdapter recallsAdapter;
@@ -78,17 +82,19 @@ public class SpecificVehicleInfoFragment extends Fragment {
         ivCompareCars = view.findViewById(R.id.ivChooseCarsToCompare);
         ivCarImage = view.findViewById(R.id.ivSpecificCarPic);
         //ivOtherCarImages = findViewById(R.id.tvChooseCarsToCompare);
-        ivResult1 = view.findViewById(R.id.ivSpecificCarGasRating);
-        ivResult2 = view.findViewById(R.id.ivSpecificCarCosts);
-        ivResult3 = view.findViewById(R.id.ivSpecificCarSpeed);
-        ivResult4 = view.findViewById(R.id.ivSpecificCarWildcard);
-        tvResult1 = view.findViewById(R.id.tvSpecificCarGasRating);
-        tvResult2 = view.findViewById(R.id.tvSpecificCarCosts);
-        tvResult3 = view.findViewById(R.id.tvSpecificCarSpeed);
-        tvResult4 = view.findViewById(R.id.tvSpecificCarWildcard);
-        lvCommonProblems = view.findViewById(R.id.lvSpecificCarCommonProblemList);
-        lvRecalls = view.findViewById(R.id.lvSpecificCarRecallsList);
-        lvDescription = view.findViewById(R.id.lvSpecificCarDescriptionList);
+        //Adding the ratings
+//        ivResult1 = view.findViewById(R.id.ivSpecificCarGasRating);
+//        ivResult2 = view.findViewById(R.id.ivSpecificCarCosts);
+//        ivResult3 = view.findViewById(R.id.ivSpecificCarSpeed);
+//        ivResult4 = view.findViewById(R.id.ivSpecificCarWildcard);
+//        tvResult1 = view.findViewById(R.id.tvSpecificCarGasRating);
+//        tvResult2 = view.findViewById(R.id.tvSpecificCarCosts);
+//        tvResult3 = view.findViewById(R.id.tvSpecificCarSpeed);
+//        tvResult4 = view.findViewById(R.id.tvSpecificCarWildcard);
+        rvCommonProblems = view.findViewById(R.id.rvSpecificCarCommonProblemList);
+        rvRecalls = view.findViewById(R.id.rvSpecificCarRecallsList);
+        rvDescription = view.findViewById(R.id.rvSpecificCarDescriptionList);
+
 
         //Get CarModel Object from the Specific Car Page
         Bundle bundle = new Bundle();
@@ -144,28 +150,38 @@ public class SpecificVehicleInfoFragment extends Fragment {
 
         //Adding all of the items from an object
         //BETTER WAY TO DO THIS?
-        ArrayList<String> descriptionList = new ArrayList<>();
-        descriptionList.add(String.format("Price: %s",String.valueOf(car.getPrice())));
-        descriptionList.add(String.format("Seats: %s",String.valueOf(car.getSeats())));
-        descriptionList.add(String.format("Torque ft-lb: %s",String.valueOf(car.getTorque())));
-        descriptionList.add(String.format("Doors: %s",String.valueOf(car.getDoors())));
-        descriptionList.add(String.format("Engine: %s",String.valueOf(car.getEngine())));
-        descriptionList.add(String.format("Horsepower: %s",String.valueOf(car.getHorsePower())));
-        descriptionList.add(String.format("Categories: %s",String.valueOf(car.getCategory())));
-        descriptionList.add(String.format("MPG: %s",String.valueOf(car.getMPG())));
-        descriptionList.add(String.format("Drivetrain: %s",String.valueOf(car.getDrivetrain())));
-        descriptionList.add(String.format("Cylinders: %s",String.valueOf(car.getCylinders())));
+        String[] descriptionList = new String[10];
+        descriptionList[0] = (String.format("Price: %s",String.valueOf(car.getPrice())));
+        descriptionList[1] = (String.format("Seats: %s",String.valueOf(car.getSeats())));
+        descriptionList[2] = (String.format("Torque ft-lb: %s",String.valueOf(car.getTorque())));
+        descriptionList[3] = (String.format("Doors: %s",String.valueOf(car.getDoors())));
+        descriptionList[4] =  (String.format("Engine: %s",String.valueOf(car.getEngine())));
+        descriptionList[5] = (String.format("Horsepower: %s",String.valueOf(car.getHorsePower())));
+        descriptionList[6] = (String.format("Categories: %s",String.valueOf(car.getCategory())));
+        descriptionList[7] = (String.format("MPG: %s",String.valueOf(car.getMPG())));
+        descriptionList[8] = (String.format("Drivetrain: %s",String.valueOf(car.getDrivetrain())));
+        descriptionList[9] = (String.format("Cylinders: %s",String.valueOf(car.getCylinders())));
 
         //Setting the List Adapters to display the vehicle information.
-        //debug
         Log.d("EndALL", "CarModel commonProblems" + car.getCommonProblems());
-        commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getCommonProblems());
-        recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRecalls());
-        descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
-        // Displaying the Lists on the respective ListView
-        lvCommonProblems.setAdapter(commonProblemsAdapter);
-        lvRecalls.setAdapter(recallsAdapter);
-        lvDescription.setAdapter(descriptionListAdapter);
+        //commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getCommonProblems());
+        // recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRecalls());
+        //descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
+        // Creating a commonListAdapter and setting all of the recycler views.
+        CommonListAdapter listAdapterCommonProblems = new CommonListAdapter(car.getCommonProblems());
+        rvCommonProblems.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        CommonListAdapter listAdapterRecalls = new CommonListAdapter(car.getRecalls());
+        rvRecalls.setAdapter(listAdapterRecalls);
+        rvRecalls.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        CommonListAdapter listAdapterDescription = new CommonListAdapter(descriptionList);
+        rvDescription.setAdapter(listAdapterDescription);
+        rvDescription.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rvCommonProblems.setAdapter(listAdapterCommonProblems);
+        rvRecalls.setAdapter(listAdapterRecalls);
+        rvDescription.setAdapter(listAdapterDescription);
     }
 
 
