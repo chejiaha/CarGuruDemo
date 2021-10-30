@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import owen.ross.carguru.Models.HelperFunctions;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Models.Question;
@@ -361,7 +362,7 @@ public class FindSpecificModelFragment extends Fragment {
                     bundle.putSerializable("car", (Serializable) car);
                     //Going from SearchCarFragment to Specific model fragment
                     Fragment SpecificCarInformation = new SpecificVehicleInfoFragment();
-                    switchFragments(SpecificCarInformation, R.id.nav_host_fragment, bundle);
+                    HelperFunctions.switchFragments(getActivity(),SpecificCarInformation, R.id.nav_host_fragment, bundle);
                 }
             }//end of else
             return false;

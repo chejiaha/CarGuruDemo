@@ -8,6 +8,152 @@
     android:background="@color/grey_background">
 
 
+    <ImageView
+        android:id="@+id/ivChooseSedan"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="288dp"
+        android:src="@drawable/commuterimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
+
+    <ImageView
+        android:id="@+id/ivChooseBeater2"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="276dp"
+        android:layout_marginEnd="52dp"
+        android:src="@drawable/beaterimg"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseSports" />
+
+    <ImageView
+        android:id="@+id/ivChooseSUV"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="288dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/luxuryimg"
+        app:layout_constraintEnd_toStartOf="@+id/ivChooseSports"
+        app:layout_constraintStart_toEndOf="@+id/ivChooseCommuter"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
+
+    <TextView
+        android:id="@+id/tvChooseCoupe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
+        android:layout_marginEnd="80dp"
+        android:text="Coupe"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseSports" />
+
+    <ImageView
+        android:id="@+id/ivChooseMinivan"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="276dp"
+        android:src="@drawable/familyimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseCommuter" />
+
+    <TextView
+        android:id="@+id/tvChooseSedan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="264dp"
+        android:text="Sedan"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseCommuter" />
+
+    <ImageView
+        android:id="@+id/ivChooseCoupe"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="288dp"
+        android:layout_marginEnd="48dp"
+        android:src="@drawable/sportimg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
+
+    <ImageView
+        android:id="@+id/ivChooseTruck"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="276dp"
+        android:src="@drawable/utilityimg"
+        app:layout_constraintEnd_toStartOf="@+id/ivChooseBeater"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toEndOf="@+id/ivChooseFamily"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseLuxury" />
+
+    <TextView
+        android:id="@+id/tvChooseSUV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="264dp"
+        android:text="SUV"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toEndOf="@+id/tvChooseCommuter"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseLuxury" />
+
+    <TextView
+        android:id="@+id/tvChooseMinivan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="252dp"
+        android:text="Minivan"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseFamily" />
+
+    <TextView
+        android:id="@+id/tvBeater2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="84dp"
+        android:text="Beater"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseBeater" />
+
+    <TextView
+        android:id="@+id/tvChooseTruck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="96dp"
+        android:text="Truck"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toStartOf="@+id/tvChooseBeater"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintStart_toEndOf="@+id/tvChooseFamily"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseUtility" />
+
+    <TextView
+        android:id="@+id/tvTopCarsNavigationNeed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="308dp"
+        android:text="By Bodystyle"
+        android:textColor="@color/white_text"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigation" />
+
     <TextView
         android:id="@+id/tvTopCarsNavigation"
         android:layout_width="wrap_content"
@@ -192,137 +338,137 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigation" />
 
     <ImageView
-        android:id="@+id/ivChooseSports"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="28dp"
-        android:src="@drawable/sportimg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
-
-    <ImageView
         android:id="@+id/ivChooseCommuter"
         android:layout_width="75dp"
-        android:contentDescription="Commuter"
         android:layout_height="76dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Commuter"
         android:src="@drawable/commuterimg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
-
-    <TextView
-        android:id="@+id/tvCommuter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        android:text="Commuter"
-        android:textColor="@color/orange_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseCommuter" />
-
-    <TextView
-        android:id="@+id/tvSports"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        android:text="Sports"
-        android:textColor="@color/orange_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseSports" />
-
-    <TextView
-        android:id="@+id/tvLuxury"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="12dp"
-        android:text="Luxury"
-        android:textColor="@color/orange_text"
-        app:layout_constraintStart_toEndOf="@+id/tvCommuter"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseLuxury" />
 
     <ImageView
         android:id="@+id/ivChooseUtility"
         android:layout_width="75dp"
         android:layout_height="76dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/utilityimg"
         app:layout_constraintEnd_toStartOf="@+id/ivChooseBeater"
         app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toEndOf="@+id/ivChooseFamily"
-        app:layout_constraintTop_toBottomOf="@+id/tvLuxury" />
-
-    <ImageView
-        android:id="@+id/ivChooseFamily"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/familyimg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCommuter" />
-
-    <ImageView
-        android:id="@+id/ivChooseBeater"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/beaterimg"
-        android:textColor="@color/orange_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSports" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseLuxury" />
 
     <TextView
-        android:id="@+id/tvBeater"
+        android:id="@+id/tvChooseFamily"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Family"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseFamily" />
+
+    <TextView
+        android:id="@+id/tvChooseUtility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="96dp"
+        android:text="Utility"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toStartOf="@+id/tvChooseBeater"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toEndOf="@+id/tvChooseFamily"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseUtility" />
+
+    <TextView
+        android:id="@+id/tvChooseBeater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="64dp"
         android:text="Beater"
         android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivChooseBeater" />
 
     <TextView
-        android:id="@+id/tvUtility"
+        android:id="@+id/tvChooseLuxury"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="96dp"
-        android:text="Utility"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="4dp"
+        android:text="Luxury"
         android:textColor="@color/orange_text"
-        app:layout_constraintEnd_toStartOf="@+id/tvBeater"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvHatchFamily"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseUtility" />
-
-    <TextView
-        android:id="@+id/tvHatchFamily"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:text="Family"
-        android:textColor="@color/orange_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseFamily" />
+        app:layout_constraintStart_toEndOf="@+id/tvChooseCommuter"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseLuxury" />
 
     <ImageView
         android:id="@+id/ivChooseLuxury"
         android:layout_width="75dp"
         android:layout_height="76dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:src="@drawable/luxuryimg"
         app:layout_constraintEnd_toStartOf="@+id/ivChooseSports"
         app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toEndOf="@+id/ivChooseCommuter"
         app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
+
+    <ImageView
+        android:id="@+id/ivChooseFamily"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/familyimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseCommuter" />
+
+    <TextView
+        android:id="@+id/tvChooseSports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="60dp"
+        android:text="Sports"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseSports" />
+
+    <ImageView
+        android:id="@+id/ivChooseBeater"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/beaterimg"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseSports" />
+
+    <ImageView
+        android:id="@+id/ivChooseSports"
+        android:layout_width="75dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:src="@drawable/sportimg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed" />
+
+    <TextView
+        android:id="@+id/tvChooseCommuter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="Commuter"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseCommuter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

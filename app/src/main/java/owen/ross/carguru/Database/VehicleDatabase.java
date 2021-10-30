@@ -1,8 +1,10 @@
 package owen.ross.carguru.Database;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +21,7 @@ import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Models.HelperFunctions;
 
-public class VehicleDatabase implements VehicleFirebaseCallback {
+public class VehicleDatabase extends Fragment implements VehicleFirebaseCallback {
     //This References the Vehicle
     private static DatabaseReference vehicleReference = FirebaseDatabase.getInstance().getReference().child("Vehicle");
     private static ValueEventListener listener;
@@ -206,10 +208,14 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
      *      ArrayList<Carl> cars () (**all fields of car should have values**) : All cars in a specified category.
      */
 
-    public static ArrayList<Car> GetAllCarsInCategory(String questionCategory, VehicleFirebaseCallback stringCallback){
+
+
+
+    public static ArrayList<Car> GetAllCarsInCategory(String category, VehicleFirebaseCallback stringCallback){
         ArrayList<Car> categoryVehicles = new ArrayList<>();
 
         listener = vehicleReference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String make = "";
@@ -233,8 +239,9 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
                             trim = carTrims.getKey();
                             car.setTrim(trim);
                             for (DataSnapshot carYears : snapshot.child(make).child(model).child(trim).getChildren()) {
+
                                 // only store the cars of the chosen category in vehicle list
-                                if (carYears.child("Category").getValue().toString().contains(questionCategory)) {
+                                if (carYears.child("Category").getValue().toString().contains(category)) {
                                     //Check if the car is a match to the query we are looking for
                                     //setting the year so we can get the data of its children
                                     year = carYears.getKey();
@@ -285,6 +292,86 @@ public class VehicleDatabase implements VehicleFirebaseCallback {
         return categoryVehicles;
     }
 
+    public static ArrayList<Car> GetAllCarsFromBodyType(String bodyType, VehicleFirebaseCallback stringCallback){
+        ArrayList<Car> categoryVehicles = new ArrayList<>();
+
+        listener = vehicleReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String make = "";
+                String model = "";
+                String trim = "";
+                String year = "";
+                //ArrayList<Car> carModels = new ArrayList<>();
+                Car car = new Car();
+
+                //Go through each make -> model -> trim -> year -> and Description of each vehicle to create a list of all vehicles in a specific category.
+                for (DataSnapshot carMakes : snapshot.getChildren()) {
+                    //setting the make so we can iterate through them
+                    make = carMakes.getKey();
+                    //Get the makes list Once they get this list then populate the others
+                    //for each make in the Given Category (Category is passed)
+                    for (DataSnapshot carModels : snapshot.child(make).getChildren()) {
+                        //setting the model so we can iterate through them
+                        model = carModels.getKey();
+                        for (DataSnapshot carTrims : snapshot.child(make).child(model).getChildren()) {
+                            //setting the trim so we can iterate through each year and get the models
+                            trim = carTrims.getKey();
+                            car.setTrim(trim);
+                            for (DataSnapshot carYears : snapshot.child(make).child(model).child(trim).getChildren()) {
+
+                                // only store the cars of the chosen category in vehicle list
+                                if (carYears.child("Description").getValue().toString().contains(bodyType)) {
+                                    //Check if the car is a match to the query we are looking for
+                                    //setting the year so we can get the data of its children
+                                    year = carYears.getKey();
+                                    // adding the car values to the car object
+                                    car = new Car();
+                                    car.setMake(make);
+                                    car.setModel(model);
+                                    car.setTrim(trim);
+                                    car.setYear(Integer.parseInt(year));
+                                    categoryVehicles.add(car);
+                                }
+//                                //Going through each of the descriptions of the vehicle, and then adding them to the object.
+//                                for (DataSnapshot carDesc : snapshot.child(make).child(model).child(trim).child(year).getChildren()) {
+//                                    //TODO IS it more efficient to Pull all vehicles and then go through each field? or should we keep it and go through each item once it comes out of the db?
+//                                    //The Key of each description (Category,CommonProblems,Description...)
+//                                    String descName = carDesc.getKey();
+//                                    String descValue =  carDesc.getValue().toString();
+//                                    car = HelperFunctions.getSpecs(descName, descValue, car);
+//                                    Log.d("car", "Car Details: Make" + make + " \nModel" + model +  " \n Year" +year +  " \n " +  ":DescName " + descName + "\n Desc value" + descValue );
+//                                    categoryVehicles.add(car);
+//                                } // End Of Data Snapshot
+                            }
+                        }
+                    }
+                }//End of Makes For loop
+                // calling the onCallback method from the FirebaseCallback interface to use the arraylist of questions in the QuestionnaireFragment
+//                vehicleFirebaseCallback.onCallbackCarList(categoryVehicles);
+
+                // update callback to store vehicle list
+                stringCallback.onCallbackCarList(categoryVehicles);
+            }//End of OnData changed
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Log something if there was an item not found in the description.
+                Log.d("QueryListResults", "Problem getting information from the DB");
+            }
+        });//End of DB reference
+
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Log.d("getSpecificCarInfo","VEHICLE DATABASE SLEEP DID NOT WORK!");
+        }
+
+        return categoryVehicles;
+    }
 
     /*
      * This method is used to get and return the string that we will search our database with.
