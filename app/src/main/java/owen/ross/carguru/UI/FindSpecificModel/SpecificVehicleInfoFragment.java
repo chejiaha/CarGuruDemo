@@ -1,6 +1,7 @@
 package owen.ross.carguru.UI.FindSpecificModel;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -136,6 +137,16 @@ public class SpecificVehicleInfoFragment extends Fragment {
 
         //Setting the car Image
         String linkToCar = String.format("@drawable/%s_%s_%s", make.toLowerCase(), model.toLowerCase().replace("-", "_"), year);
+        // Get the int img resource
+        try{
+            int imageResource = getActivity().getResources().getIdentifier(linkToCar, null, getActivity().getPackageName());
+            Drawable carImg =getActivity().getDrawable(imageResource);
+            ivCarImage.setImageDrawable(carImg);
+        }catch (Exception err){
+            //Do nothing
+        }
+
+
         //Setting the Model information into the View
         tvCarName.setText(String.format("%s %s %s %s",make, model, trim, year ));
         tvDescriptionText.setText(car.getDescription());
