@@ -4,6 +4,8 @@ import time
 import requests
 import shutil # save img locally
 import vehicle_scrapper_data
+#checking if the picture is already in the picture folder.
+import os
 
 # A dict to hold all trim's and the links 
 car_dict = {}
@@ -93,11 +95,18 @@ INFO_dict (one car model and one year)
 '''
 
 # The list of makes
+# makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
+#             "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
+#             "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
+#             "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
+#             "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+
 makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
             "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
             "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
             "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
             "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+
 
 #The list of each model and the years according to the model in a list
 AcuraModel = ["ILX", "ILX Hybrid", "MDX", "MDX Hybrid", "NSX", "RDX", "RL", "RLX", "TL", "TLX", "TSX", "TSX Sport Wagon", "ZDX"]
@@ -331,48 +340,56 @@ def setupJson ():
 # 'Tiburon': {}, 'Tucson': {}, 'Tucson Hybrid': {}, 'Veloster': {}, 'Venue': {}, 'Veracruz': {}}}
 
 def downloadVehiclePic(make,model,year, listOfImgTag):
-  try:
-    #img = driver.find_element_by_xpath('//div[@id="recaptcha_image"]/img')
-    #seperate year, make and model as a string so we can find the picture.
-    make = make.lower()
-    model = model.lower()
-    model = model.lower()
-    make = make.replace(" ","_" )
-    model = model.replace(" ","_" )
-    model = model.replace("-","_")
-    
-    # Creating a custom header to allow a reply to my client
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
-    file_name = "vehicle_pictures/%s_%s_%s.jpg" % (make, model, year)
-    
-    for imgTag in listOfImgTag:
-      url = ""
-      try:
-        url = imgTag.get_attribute('src')
-      except:
-        print("this image did not have a src")
-    
-      # url = "https://cars.usnews.com/pics/size/350x262/images/Auto/izmo/i2314308/2016_bmw_3_series_angularfront.jpg"
+  #Check if the file is already downloaded
+  file_name = "vehicle_pictures/%s_%s_%s.jpg" % (make, model, year)
+  if (os.path.isfile(file_name) == False):
+    try:
+      #img = driver.find_element_by_xpath('//div[@id="recaptcha_image"]/img')
+      #seperate year, make and model as a string so we can find the picture.
+      make = make.lower()
+      model = model.lower()
+      model = model.lower()
+      make = make.replace(" ","_" )
+      model = model.replace(" ","_" )
+      model = model.replace("-","_")
       
-      # url = "https://smartcdn.prod.postmedia.digital/driving/wp-content/uploads/2021/05/chrome-image-414927.png"
+      # Creating a custom header to allow a reply to my client
+      headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+      file_name = "vehicle_pictures/%s_%s_%s.jpg" % (make, model, year)
       
-          
-      if("%s_%s_%s" % (year, make, model) in url):
-      # if(make in url):
-        #urllib.request.urlretrieve(src, "%s_%s_%s.jpg" % (year, make, model))
-        res = requests.get(url, stream = True, headers=headers)
-        if res.status_code == 200:
-            with open(file_name,'wb') as f:
-                shutil.copyfileobj(res.raw, f) 
-            print('Image sucessfully Downloaded: ',file_name)
-        else:
-            print('Image Couldn\'t be retrieved')
-        break
-  except Exception as err:
-    print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
-    error_file = open("ImageError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
-    error_file.close()
+      for imgTag in listOfImgTag:
+        
+        url = ""
+        try:
+          url = imgTag.get_attribute('src')
+        except:
+          print("this image did not have a src")
+      
+        # url = "https://cars.usnews.com/pics/size/350x262/images/Auto/izmo/i2314308/2016_bmw_3_series_angularfront.jpg"
+        
+        # url = "https://smartcdn.prod.postmedia.digital/driving/wp-content/uploads/2021/05/chrome-image-414927.png"
+        
+            
+        if("%s_%s_%s" % (year, make, model) in url and "images/Auto" in url):
+        # if(make in url):
+          #urllib.request.urlretrieve(src, "%s_%s_%s.jpg" % (year, make, model))
+          res = requests.get(url, stream = True, headers=headers)
+          if res.status_code == 200:
+              with open(file_name,'wb') as f:
+                  shutil.copyfileobj(res.raw, f) 
+              print('Image sucessfully Downloaded: ',file_name)
+              break
+          else:
+              print('Image Couldn\'t be retrieved')
+          break
+    except Exception as err:
+      print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+      error_file = open("ImageError.txt", "a")
+      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
+      error_file.close()
+  else:
+    print("The file is already populated.")
+    
 '''
   This will populate the 'car_dict' dictionary.
   This dictionary is set up to have a dict with each item below as a dict within the car_dict
@@ -499,6 +516,10 @@ def getVehicleDescription (make, model, trim, year, href):
     write_cardict = open("Current_Car_Dict.txt", "w")
     write_cardict.write("%r" % (car_dict))
     write_cardict.close()
+    # Getting pictures again
+    # Getting Vehicle Images.
+    listOfImgTag = driver.find_elements_by_tag_name('img')
+    downloadVehiclePic(make,model,year, listOfImgTag)
     #Closing the firefox session
     driver.close()
     print("Sleep for 1 seconds")
@@ -506,7 +527,7 @@ def getVehicleDescription (make, model, trim, year, href):
   except Exception as err:
     print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("DescriptionError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
     error_file.close()
     driver.close()
 
@@ -597,7 +618,7 @@ def getTrims(make, model, year):
   except Exception as err:
     print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("trimError.txt", "a")
-    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
     error_file.close()
 ### START OF MAIN FUNCTION ###
 def get_trims_and_pictures():
@@ -643,6 +664,14 @@ try:
                 getVehicleDescription (make, model, trim, year, href)
                 print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
                 # Sleep for 10 seconds before going to the next one.
-                time.sleep(10)
+                print("Sleep for 2 seconds")
+                time.sleep(2)
 except Exception as err:
-  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s \n" % (make,model,trim,year,err))
+
+        
+
+
+
+
+

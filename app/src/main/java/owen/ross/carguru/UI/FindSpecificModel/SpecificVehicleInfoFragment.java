@@ -100,8 +100,6 @@ public class SpecificVehicleInfoFragment extends Fragment {
         Bundle bundle = new Bundle();
         car = (Car) bundle.getSerializable("car");
         car = ((Car) getArguments().getSerializable("car"));
-        String bingo = bundle.getString("bingo");
-        Log.d("Test", "Debug" + bingo);
 
         //Get the vehicle details and populate arrays and View Data
         populateCarDetails();
@@ -147,31 +145,53 @@ public class SpecificVehicleInfoFragment extends Fragment {
             //LATER MOVE THIS TO THE COMMON PROBLEMS ADAPTER
             recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRatings());
         }
-
+        //TODO move this code to helper function 'CheckFields'
         //Adding all of the items from an object
-        //BETTER WAY TO DO THIS?
-        String[] descriptionList = new String[10];
-        descriptionList[0] = (String.format("Price: %s",String.valueOf(car.getPrice())));
-        descriptionList[1] = (String.format("Seats: %s",String.valueOf(car.getSeats())));
-        descriptionList[2] = (String.format("Torque ft-lb: %s",String.valueOf(car.getTorque())));
-        descriptionList[3] = (String.format("Doors: %s",String.valueOf(car.getDoors())));
-        descriptionList[4] =  (String.format("Engine: %s",String.valueOf(car.getEngine())));
-        descriptionList[5] = (String.format("Horsepower: %s",String.valueOf(car.getHorsePower())));
-        descriptionList[6] = (String.format("Categories: %s",String.valueOf(car.getCategory())));
-        descriptionList[7] = (String.format("MPG: %s",String.valueOf(car.getMPG())));
-        descriptionList[8] = (String.format("Drivetrain: %s",String.valueOf(car.getDrivetrain())));
-        descriptionList[9] = (String.format("Cylinders: %s",String.valueOf(car.getCylinders())));
+        ArrayList<String> descriptionList = new ArrayList<>();
+        descriptionList.add(String.format("Price: %s",String.valueOf(car.getPrice())));
+        descriptionList.add(String.format("Seats: %s",String.valueOf(car.getSeats())));
+        descriptionList.add(String.format("Torque ft-lb: %s",String.valueOf(car.getTorque())));
+        descriptionList.add(String.format("Doors: %s",String.valueOf(car.getDoors())));
+        descriptionList.add(String.format("Engine: %s",String.valueOf(car.getEngine())));
+        descriptionList.add(String.format("Horsepower: %s",String.valueOf(car.getHorsePower())));
+        descriptionList.add(String.format("Categories: %s",String.valueOf(car.getCategory())));
+        descriptionList.add(String.format("MPG: %s",String.valueOf(car.getMPG())));
+        descriptionList.add(String.format("Drivetrain: %s",String.valueOf(car.getDrivetrain())));
+        descriptionList.add(String.format("Cylinders: %s",String.valueOf(car.getCylinders())));
+        ArrayList<String> commonProblems = new ArrayList<>();
+        ArrayList<String> recalls = new ArrayList<>();
+        // Check if the common problems array is null
+        try{
+            for(String problem : car.getCommonProblems()){
+                commonProblems.add(problem);
+            }
+        }catch (NullPointerException err){
+            commonProblems.add("No Common Problems for this vehicle");
+        }
+        // Check if the recalls array is null
+        try{
+            for(String recall : car.getRecalls()){
+                recalls.add(recall);
+            }
+        }catch (NullPointerException err) {
+            recalls.add("No Recalls for this vehicle");
+        }
 
         //Setting the List Adapters to display the vehicle information.
+        //debug
         Log.d("EndALL", "CarModel commonProblems" + car.getCommonProblems());
+//        commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, commonProblems);
+//        recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, recalls);
+//        descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
+
         //commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getCommonProblems());
         // recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRecalls());
         //descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
         // Creating a commonListAdapter and setting all of the recycler views.
-        CommonListAdapter listAdapterCommonProblems = new CommonListAdapter(car.getCommonProblems());
+        CommonListAdapter listAdapterCommonProblems = new CommonListAdapter(commonProblems);
         rvCommonProblems.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        CommonListAdapter listAdapterRecalls = new CommonListAdapter(car.getRecalls());
+        CommonListAdapter listAdapterRecalls = new CommonListAdapter(recalls);
         rvRecalls.setAdapter(listAdapterRecalls);
         rvRecalls.setLayoutManager(new LinearLayoutManager(getActivity()));
 
