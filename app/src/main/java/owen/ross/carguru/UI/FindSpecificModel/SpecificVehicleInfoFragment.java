@@ -118,20 +118,26 @@ public class SpecificVehicleInfoFragment extends Fragment {
      */
     private void populateCarDetails(){
 
+        String make = car.getMake();
+        String model = car.getModel();
+        String trim = car.getTrim();
+        String year = car.getYear() + "";
 
         //debug
-        Log.d("SpecificModel", "CarModel Make is" + car.getMake());
-        Log.d("SpecificModel", "CarModel Model is" + car.getModel());
-        Log.d("SpecificModel", "CarModel Year is" + car.getYear());
-        Log.d("SpecificModel", "CarModel Seats is" + car.getSeats());
-        Log.d("SpecificModel", "CarModel Engine is" + car.getEngine());
-        Log.d("SpecificModel", "CarModel Cylinders is" + car.getCylinders());
-        Log.d("SpecificModel", "CarModel Category is" + car.getCategory());
-        Log.d("SpecificModel", "CarModel Drivetrain is" + car.getDrivetrain());
-        Log.d("SpecificModel", "CarModel Doors is" + car.getDoors());
+//        Log.d("SpecificModel", "CarModel Make is" + year);
+//        Log.d("SpecificModel", "CarModel Model is" + model);
+//        Log.d("SpecificModel", "CarModel Year is" + year);
+//        Log.d("SpecificModel", "CarModel Seats is" + car.getSeats());
+//        Log.d("SpecificModel", "CarModel Engine is" + car.getEngine());
+//        Log.d("SpecificModel", "CarModel Cylinders is" + car.getCylinders());
+//        Log.d("SpecificModel", "CarModel Category is" + car.getCategory());
+//        Log.d("SpecificModel", "CarModel Drivetrain is" + car.getDrivetrain());
+//        Log.d("SpecificModel", "CarModel Doors is" + car.getDoors());
 
+        //Setting the car Image
+        String linkToCar = String.format("@drawable/%s_%s_%s", make.toLowerCase(), model.toLowerCase().replace("-", "_"), year);
         //Setting the Model information into the View
-        tvCarName.setText(String.format("%s %s %s",car.getMake(),car.getModel(), car.getYear() ));
+        tvCarName.setText(String.format("%s %s %s %s",make, model, trim, year ));
         tvDescriptionText.setText(car.getDescription());
 
         //A method to check if the fields are null
@@ -177,16 +183,7 @@ public class SpecificVehicleInfoFragment extends Fragment {
             recalls.add("No Recalls for this vehicle");
         }
 
-        //Setting the List Adapters to display the vehicle information.
-        //debug
-        Log.d("EndALL", "CarModel commonProblems" + car.getCommonProblems());
-//        commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, commonProblems);
-//        recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, recalls);
-//        descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
 
-        //commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getCommonProblems());
-        // recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRecalls());
-        //descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
         // Creating a commonListAdapter and setting all of the recycler views.
         CommonListAdapter listAdapterCommonProblems = new CommonListAdapter(commonProblems);
         rvCommonProblems.setLayoutManager(new LinearLayoutManager(getActivity()));

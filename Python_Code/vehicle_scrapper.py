@@ -527,7 +527,7 @@ def getVehicleDescription (make, model, trim, year, href):
   except Exception as err:
     print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("DescriptionError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
     error_file.close()
     driver.close()
 
@@ -618,7 +618,7 @@ def getTrims(make, model, year):
   except Exception as err:
     print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("trimError.txt", "a")
-    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
     error_file.close()
 ### START OF MAIN FUNCTION ###
 def get_trims_and_pictures():
@@ -667,7 +667,7 @@ try:
                 print("Sleep for 2 seconds")
                 time.sleep(2)
 except Exception as err:
-  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s \n" % (make,model,trim,year,err))
+  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
 
         
 

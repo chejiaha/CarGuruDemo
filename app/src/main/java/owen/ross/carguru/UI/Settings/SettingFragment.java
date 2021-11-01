@@ -56,9 +56,13 @@ public class SettingFragment extends Fragment {
     public View.OnClickListener  onClickChangeThemeDark = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            Context context = getActivity();
-//            context.setTheme(R.style.Theme_CarGuru);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            Context context = getActivity();
+//
+            try{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }catch (Exception err){
+                context.setTheme(R.style.Theme_CarGuru);
+            }
 
         }
     };
@@ -67,8 +71,13 @@ public class SettingFragment extends Fragment {
     public View.OnClickListener  onClickChangeThemeLight = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Context context = getActivity();
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            Context context = getActivity();
+            try{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }catch (Exception err){
+                context.setTheme(R.style.Theme_CarGuruLight);
+            }
+
         }
     };
 

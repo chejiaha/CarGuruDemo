@@ -279,6 +279,8 @@ public class QuestionnaireFragment extends Fragment {
                         // Send the users to the next page dependent on the highest score
                         HelperFunctions.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
                     }else{
+                        //Disable the Back button
+
                         //TODO MAKE SURE ITS A ARRAYLIST BEING PASSED!
                         // If its on the second round of questions, use the other parser
 
