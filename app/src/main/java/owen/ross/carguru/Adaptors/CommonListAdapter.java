@@ -7,11 +7,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import owen.ross.carguru.R;
 
 public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.ViewHolder> {
 
-    private String[] localDataSet;
+    private ArrayList<String> localDataSet;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -28,7 +30,7 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
     }
 
 
-    public CommonListAdapter(String[] dataSet) {
+    public CommonListAdapter(ArrayList<String> dataSet) {
         localDataSet = dataSet;
     }
 
@@ -47,12 +49,12 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
         // Get element from your dataset at this position and set the text
-        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.getTextView().setText(localDataSet.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return localDataSet.size();
     }
 }
