@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import requests
 import shutil # save img locally
+#C:\Users\luka1\AppData\Local\Programs\Python\Python39\Lib
 import vehicle_scrapper_data
 #checking if the picture is already in the picture folder.
 import os
@@ -610,6 +611,10 @@ def getTrims(make, model, year):
         # Getting Vehicle Images.
         listOfImgTag = driver.find_elements_by_tag_name('img')
         downloadVehiclePic(make,model,year, listOfImgTag)
+        
+        error_file = open("info_dict.txt", "w")
+        error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s" % (make,model,trim,year))
+        error_file.close()
     
     
     driver.close()
@@ -627,25 +632,31 @@ def get_trims_and_pictures():
   #for index, make in enumerate(makeList):
   makeIndex = 0
   for item in range(makeIndex, len(makeList)):
-    make = makeList[makeIndex]
-    # Look through each model to find each trim and the respective url.
-    # modelList = [[model1, model2,... for make 1], [model1, model2,... for make 2], ...]
-    # Uncomment this if you are running the whole thing
-    #for modelIndex, model in enumerate(modelList[makeIndex]):
-    modelIndex = 0
-    for item2 in range(modelList, len(makeList)):
-      model = modelList[makeIndex]
-      #For each model go through each year and find each cars specs
-      #yearList = [[years for model1], [years for model2]....]
+      make = makeList[makeIndex]
+      print(make)
+      # Look through each model to find each trim and the respective url.
+      # modelList = [[model1, model2,... for make 1], [model1, model2,... for make 2], ...]
       # Uncomment this if you are running the whole thing
-      #for modelYears in yearList[index]:
-      for year in yearList[makeIndex][modelIndex]:
-          #Go through each page and get the make model and year
-          getTrims(make, model, year)
-          time.sleep(5)
-          #debug
-          #print(car_dict)
-        
+      #for modelIndex, model in enumerate(modelList[makeIndex]):
+      modelIndex = 0
+      for item2 in range(modelIndex, len(makeList)):
+        model = modelList[makeIndex][modelIndex]
+        print(model)
+        #For each model go through each year and find each cars specs
+        #yearList = [[years for model1], [years for model2]....]
+        # Uncomment this if you are running the whole thing
+        #for modelYears in yearList[index]:
+        for year in yearList[makeIndex][modelIndex]:
+            print(year)
+            #Go through each page and get the make model and year
+            getTrims(make, model, year)
+            time.sleep(2)
+            #debug
+            #print(car_dict)
+        modelIndex = modelIndex +1
+      makeIndex = makeIndex +1
+
+get_trims_and_pictures()
 #print(info_dict)        
 # Go through each href and get all of the specs for each car
 try:

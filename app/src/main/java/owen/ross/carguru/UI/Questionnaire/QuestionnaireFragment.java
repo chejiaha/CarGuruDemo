@@ -80,6 +80,7 @@ public class QuestionnaireFragment extends Fragment {
     //Passing the Highest Category to the next page
     String highestCategory = "";
     ArrayList<Car> vehicleList;
+    Button previousBtn;
 
 
 
@@ -108,7 +109,7 @@ public class QuestionnaireFragment extends Fragment {
         tvQuestion = view.findViewById(R.id.tvQuestion);
         // storing the next and previous buttons in these variables
         Button nextBtn = view.findViewById(R.id.BtnNextPage);
-        Button previousBtn = view.findViewById(R.id.BtnPreviousPage);
+        previousBtn = view.findViewById(R.id.BtnPreviousPage);
         simpleProgressBar= view.findViewById(R.id.pbProgress);
 
         //Setting the progress bar up
@@ -133,6 +134,9 @@ public class QuestionnaireFragment extends Fragment {
             if(questionCategory.isEmpty()){
                 questionCategory = "MainQuestion";
                 Log.d("onCreateView", " The Category was not passed: ");
+            }else{
+                //Disable the Back button
+                view.findViewById(R.id.BtnPreviousPage).setVisibility(view.GONE);
             }
             //We need to append 'Question' To the end because that is how it is in the database...
             questionCategory = questionCategory + "Question";
@@ -279,7 +283,7 @@ public class QuestionnaireFragment extends Fragment {
                         // Send the users to the next page dependent on the highest score
                         HelperFunctions.switchFragments(getActivity(),fragment, R.id.nav_host_fragment, bundle);
                     }else{
-                        //Disable the Back button
+
 
                         //TODO MAKE SURE ITS A ARRAYLIST BEING PASSED!
                         // If its on the second round of questions, use the other parser

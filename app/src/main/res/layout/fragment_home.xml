@@ -9,11 +9,12 @@
 
     <ImageView
         android:id="@+id/ivHomeGuruImage"
-        android:background="@color/grey_background"
         android:layout_width="65dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/thecrewlogo"
+        android:layout_marginTop="16dp"
+        android:background="@color/grey_background"
+        android:src="@drawable/crewmascot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,14 +22,14 @@
         android:id="@+id/tvHomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/app_name"
+        android:textColor="@color/white_text"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toEndOf="@+id/ivHomeGuruImage"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/white_text"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivFindACarForYou"
@@ -36,10 +37,10 @@
         android:layout_height="65dp"
         android:layout_column="0"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/crewmascot"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/findcar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHomeExplination" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeTitle" />
 
     <ImageView
         android:id="@+id/ivBrowseByCategory"
@@ -47,34 +48,10 @@
         android:layout_height="70dp"
         android:layout_column="0"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/audi_rs7_2018"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/browsebycategoryicon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFindSpecificModel" />
-
-    <TextView
-        android:id="@+id/tvBrowseByCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:text="Browse By Category"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivBrowseByCategory"
-        app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModel"
-        android:textColor="@color/orange_text"/>
-
-    <ImageView
-        android:id="@+id/ivFindSpecificModel"
-        android:layout_width="62dp"
-        android:layout_height="72dp"
-        android:layout_column="0"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/searchicon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivFindACarForYou" />
 
     <!-- Second Row Find Specific Model -->
 
@@ -84,11 +61,36 @@
 
 
     <TextView
+        android:id="@+id/tvBrowseByCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="100dp"
+        android:text="Browse By Category"
+        android:textColor="@color/orange_text"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/ivBrowseByCategory"
+        app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModel" />
+
+    <ImageView
+        android:id="@+id/ivFindSpecificModel"
+        android:layout_width="62dp"
+        android:layout_height="72dp"
+        android:layout_column="0"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/searchicon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFindACarForYou" />
+
+    <TextView
         android:id="@+id/tvCarNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="100dp"
         android:text="Article's"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +104,7 @@
         android:layout_height="68dp"
         android:layout_column="0"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="56dp"
         android:src="@drawable/articleicon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivBrowseByCategory" />
@@ -112,38 +114,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="80dp"
         android:text="Find Specific Model"
+        android:textColor="@color/orange_text"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivFindSpecificModel"
-        app:layout_constraintTop_toBottomOf="@+id/tvFindACarForYou"
-        android:textColor="@color/orange_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvFindACarForYou" />
 
     <TextView
         android:id="@+id/tvFindACarForYou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="72dp"
         android:text="Find A Car For You"
+        android:textColor="@color/orange_text"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toEndOf="@+id/ivFindACarForYou"
-        app:layout_constraintTop_toBottomOf="@+id/tvHomeExplination"
-        android:textColor="@color/orange_text"/>
-
-    <TextView
-        android:id="@+id/tvHomeExplination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/app_explanation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHomeTitle"
-        android:textColor="@color/white_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

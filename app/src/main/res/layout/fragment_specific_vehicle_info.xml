@@ -25,7 +25,7 @@
         <ImageView
             android:id="@+id/ivSpecificCarPic"
             android:layout_width="303dp"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_marginTop="16dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
