@@ -76,18 +76,23 @@ public class FinishedQuestionnaireFragment extends Fragment {
         tvQuestionnaireCategoryTitle.setText(questionCategory);
 
         // Setting up the sentence describing the decision of the guru [Hard coded right now]
-        if (questionCategory.equals("Sports")){
+        if (questionCategory.contains("Sports")){
             tvQuestionnaireCategoryExplanation.setText("The Guru decided that your answers all pointed to a nice quick and gas guzzling vehicle. You can enjoy a nice interior and a quick and bumpy ride!");
+            tvQuestionnaireCategoryTitle.setText("Sports");
         }else if (questionCategory.contains("Commuter")) {
             tvQuestionnaireCategoryExplanation.setText("The Guru decided You are an average guy/gal that enjoys a nice ride in a car that wont cost alot to maintain and repair. You enjoy nice calm drives that mainly involve common commutes");
+            tvQuestionnaireCategoryTitle.setText("Commuter");
         } else if (questionCategory.contains("Utility")) {
             tvQuestionnaireCategoryExplanation.setText("The Guru Decided that You are a hands on person who enjoys working with tools and enjoy keeping yourself busy. You are a hard working individual who enjoys a large space to fit all different types of materials !");
+            tvQuestionnaireCategoryTitle.setText("Utility");
         }else if (questionCategory.contains("Luxury")) {
             tvQuestionnaireCategoryExplanation.setText("The Guru Decided that You enjoy taking a nice expensive car on long cruises along the coast. You enjoy spending time alone and don't have time to spend, but have lots of money to spend on a vehicle that turns heads whenever someone sees it.. ");
+            tvQuestionnaireCategoryTitle.setText("Luxury");
         }else if (questionCategory.contains("Beater")) {
             tvQuestionnaireCategoryExplanation.setText("The Guru Decided that you are on a tighter budget and pay more attention to where you spend your money. You have tramendous value to your vehicle and will most likely drive the car until it dies.");
         }else if (questionCategory.contains("Family")) {
             tvQuestionnaireCategoryExplanation.setText("The Guru Decided that You are a family man, You need a car that will fit your whole family into it. You enjoy going on nice long drives to campsites and try to keep family first in your list.");
+            tvQuestionnaireCategoryTitle.setText("Family");
         }
         else {
             tvQuestionnaireCategoryExplanation.setText("There was no Category found Category: " + questionCategory);

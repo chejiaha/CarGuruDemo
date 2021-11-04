@@ -12,6 +12,7 @@
         android:id="@+id/tvListOfCarsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
         android:paddingBottom="30dp"
         android:text="@string/suggestion"
         android:textAlignment="center"
