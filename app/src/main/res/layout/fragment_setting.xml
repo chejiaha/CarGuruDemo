@@ -56,11 +56,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSettingsDisplayTitle"
         android:textColor="@color/orange_text"/>
 
+    <ImageView
+        android:id="@+id/ivSettingsVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLight" />
+
     <TextView
         android:id="@+id/tvSettingsVersionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="84dp"
         android:text="Version"
         android:textColor="@color/white_text"
         android:textSize="20dp"
@@ -70,98 +80,88 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLight" />
 
     <ImageView
-        android:id="@+id/ivSettingsVersion"
+        android:id="@+id/ivSettingsAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLight" />
-
-    <TextView
-        android:id="@+id/tvSettingsVersionDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Beta Stable Version 1.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsVersionTitle"
-        android:textColor="@color/orange_text"/>
-
-    <ImageView
-        android:id="@+id/ivSettingsNotification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="72dp"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion" />
 
     <TextView
-        android:id="@+id/tvSettingsNotificationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="188dp"
-        android:text="Notification"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ivSettingsNotification"
-        app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion"
-        android:textColor="@color/white_text"/>
-
-    <TextView
-        android:id="@+id/tvSettingsNotificationDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Not Implemented Yet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsNotificationTitle"
-        android:textColor="@color/orange_text"/>
-
-    <ImageView
-        android:id="@+id/ivSettingsAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivSettingsNotification" />
-
-    <TextView
         android:id="@+id/tvSettingsAccountTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="188dp"
         android:text="Account"
+        android:textColor="@color/white_text"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.766"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsAccount"
-        app:layout_constraintTop_toBottomOf="@+id/ivSettingsNotification"
-        android:textColor="@color/white_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion" />
 
     <TextView
         android:id="@+id/tvSettingsAccountDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="Not Implemented Yet"
+        android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
-        app:layout_constraintTop_toBottomOf="@+id/tvSettingsAccountTitle"
-        android:textColor="@color/orange_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsAccountTitle" />
+
+    <TextView
+        android:id="@+id/tvSettingsVersionDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Beta Stable Version 1.0"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsVersionTitle" />
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/ivSettingsNotification"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:src="@mipmap/ic_launcher_round"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSettingsNotificationTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:layout_marginEnd="188dp"-->
+<!--        android:text="Notification"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/ivSettingsNotification"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ivSettingsVersion"-->
+<!--        android:textColor="@color/white_text"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSettingsNotificationDescription"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="Not Implemented Yet"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.144"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/ivSettingsVersion"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvSettingsNotificationTitle"-->
+<!--        android:textColor="@color/orange_text"/>-->
 
     <Button
         android:id="@+id/btnDark"

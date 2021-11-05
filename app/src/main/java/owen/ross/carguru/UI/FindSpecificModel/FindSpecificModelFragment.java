@@ -245,6 +245,20 @@ public class FindSpecificModelFragment extends Fragment {
                         trimList.add(car.getTrim());
                     }
                 }
+                //Remove Duplicates from arraylist
+                // Create a new ArrayList
+                ArrayList<String> tempList = new ArrayList<>();
+
+                // Traverse through the first list
+                for (String element : trimList) {
+                    // If this element is not present in newList then add it
+                    if (!tempList.contains(element)) {
+                        tempList.add(element);
+                    }
+                }
+                //setting the trim list to the temp list.
+                trimList = tempList;
+
                 trimSpinnerAdapter = new ArrayAdapter<>(context, R.layout.spinner_adapter_dropdown_item, trimList);
                 trimSpinner.setAdapter(trimSpinnerAdapter);
             }

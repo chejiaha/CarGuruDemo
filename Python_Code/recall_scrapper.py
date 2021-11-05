@@ -275,7 +275,7 @@ for index, make in enumerate(makeList):
             selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
             selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
             
-            # Get the years range each model.
+            # Get the years range each model. (get the first and last year )
             toYear = str(years[index][0])
             fromYear = str(years[index][-1])
             

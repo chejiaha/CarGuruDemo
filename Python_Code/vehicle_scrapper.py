@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import requests
 import shutil # save img locally
+#C:\Users\luka1\AppData\Local\Programs\Python\Python39\Lib
 import vehicle_scrapper_data
 #checking if the picture is already in the picture folder.
 import os
@@ -527,7 +528,7 @@ def getVehicleDescription (make, model, trim, year, href):
   except Exception as err:
     print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("DescriptionError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
     error_file.close()
     driver.close()
 
@@ -610,6 +611,10 @@ def getTrims(make, model, year):
         # Getting Vehicle Images.
         listOfImgTag = driver.find_elements_by_tag_name('img')
         downloadVehiclePic(make,model,year, listOfImgTag)
+        
+        error_file = open("info_dict.txt", "w")
+        error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s" % (make,model,trim,year))
+        error_file.close()
     
     
     driver.close()
@@ -618,34 +623,56 @@ def getTrims(make, model, year):
   except Exception as err:
     print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("trimError.txt", "a")
-    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
     error_file.close()
-### START OF MAIN FUNCTION ###
+
+'''
+  This method is used to get all trims from the make,model and year passed in the makeList/ModelList
+  This method will go through each car and get the href and key value.
+  This method will populate 
+    info_dict {make:{model:{year:{urlToWebsite}}}}
+    car_dict {make:{model:{year:{cost:'price', msrp:'price' }}}}
+  
+
+'''
 def get_trims_and_pictures():
   # 0.5 Create a parser to parse through the url to get the trims.
   # Uncomment this if you want to run the whole thing.
   #for index, make in enumerate(makeList):
   makeIndex = 0
   for item in range(makeIndex, len(makeList)):
-    make = makeList[makeIndex]
-    # Look through each model to find each trim and the respective url.
-    # modelList = [[model1, model2,... for make 1], [model1, model2,... for make 2], ...]
-    # Uncomment this if you are running the whole thing
-    #for modelIndex, model in enumerate(modelList[makeIndex]):
-    modelIndex = 0
-    for item2 in range(modelList, len(makeList)):
-      model = modelList[makeIndex]
-      #For each model go through each year and find each cars specs
-      #yearList = [[years for model1], [years for model2]....]
+      make = makeList[makeIndex]
+      print(make)
+      # Look through each model to find each trim and the respective url.
+      # modelList = [[model1, model2,... for make 1], [model1, model2,... for make 2], ...]
       # Uncomment this if you are running the whole thing
-      #for modelYears in yearList[index]:
-      for year in yearList[makeIndex][modelIndex]:
-          #Go through each page and get the make model and year
-          getTrims(make, model, year)
-          time.sleep(5)
-          #debug
-          #print(car_dict)
-        
+      #for modelIndex, model in enumerate(modelList[makeIndex]):
+      modelIndex = 0
+      for item2 in range(modelIndex, len(makeList)):
+        model = modelList[makeIndex][modelIndex]
+        print(model)
+        #For each model go through each year and find each cars specs
+        #yearList = [[years for model1], [years for model2]....]
+        # Uncomment this if you are running the whole thing
+        #for modelYears in yearList[index]:
+        for year in yearList[makeIndex][modelIndex]:
+          #Check if the car make&model is in the car_dict already.
+          car_item = car_dict.get(make).get(model)
+          #Check if the vehicle is already populated
+          if (car_item == None or car_item == {}):
+          # if (car_dict.get(make).get(model).get(year) == None or car_dict.get(make).get(model).get(year) == {}):
+            print(year)
+            #Go through each page and get the make model and year
+            getTrims(make, model, year)
+            time.sleep(2)
+            #debug
+            #print(car_dict)
+        modelIndex = modelIndex +1
+      makeIndex = makeIndex +1
+
+### START OF MAIN FUNCTION ###
+
+get_trims_and_pictures()
 #print(info_dict)        
 # Go through each href and get all of the specs for each car
 try:
@@ -660,6 +687,8 @@ try:
             #debug
             print("trim %s" % trim)
             for year, href in years.items():
+              #Check if the car list is 
+              if()
                 # print ("make: %s, model: %s year: %s,trim: %s, \nhref:%s" % (make,model,year,trim, href))
                 getVehicleDescription (make, model, trim, year, href)
                 print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
@@ -667,7 +696,7 @@ try:
                 print("Sleep for 2 seconds")
                 time.sleep(2)
 except Exception as err:
-  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s \n" % (make,model,trim,year,err))
+  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
 
         
 

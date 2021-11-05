@@ -11,14 +11,14 @@
 
     <item
         android:id="@+id/navigation_questionnaire"
-        android:icon="@drawable/crewmascot"
+        android:icon="@drawable/findcar"
         android:title="Questionnaire"
         android:drawable="@android:color/holo_orange_light"/>
 
     <item
         android:id="@+id/navigation_search_car"
         android:icon="@drawable/searchicon"
-        android:title="Search For Car"
+        android:title="Find Model"
         android:drawable="@android:color/holo_orange_light"/>
 
     <item

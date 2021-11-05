@@ -1,6 +1,7 @@
 package owen.ross.carguru.UI.FindSpecificModel;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -118,11 +119,15 @@ public class SpecificVehicleInfoFragment extends Fragment {
      */
     private void populateCarDetails(){
 
+        String make = car.getMake();
+        String model = car.getModel();
+        String trim = car.getTrim();
+        String year = car.getYear() + "";
 
         //debug
-        Log.d("SpecificModel", "CarModel Make is" + car.getMake());
-        Log.d("SpecificModel", "CarModel Model is" + car.getModel());
-        Log.d("SpecificModel", "CarModel Year is" + car.getYear());
+        Log.d("SpecificModel", "CarModel Make is" + year);
+        Log.d("SpecificModel", "CarModel Model is" + model);
+        Log.d("SpecificModel", "CarModel Year is" + year);
         Log.d("SpecificModel", "CarModel Seats is" + car.getSeats());
         Log.d("SpecificModel", "CarModel Engine is" + car.getEngine());
         Log.d("SpecificModel", "CarModel Cylinders is" + car.getCylinders());
@@ -130,23 +135,37 @@ public class SpecificVehicleInfoFragment extends Fragment {
         Log.d("SpecificModel", "CarModel Drivetrain is" + car.getDrivetrain());
         Log.d("SpecificModel", "CarModel Doors is" + car.getDoors());
 
+        //Setting the car Image
+        String linkToCar = String.format("@drawable/%s_%s_%s", make.toLowerCase(), model.toLowerCase().replace("-", "_"), year);
+        // Get the int img resource
+        try{
+            int imageResource = getActivity().getResources().getIdentifier(linkToCar, null, getActivity().getPackageName());
+            Drawable carImg =getActivity().getDrawable(imageResource);
+            ivCarImage.setImageDrawable(carImg);
+        }catch (Exception err){
+            //Do nothing
+        }
+
+
         //Setting the Model information into the View
-        tvCarName.setText(String.format("%s %s %s",car.getMake(),car.getModel(), car.getYear() ));
+        tvCarName.setText(String.format("%s %s %s %s",make, model, trim, year ));
         tvDescriptionText.setText(car.getDescription());
 
         //A method to check if the fields are null
         HelperFunctions.CheckFields(car);
         //Check if ratings are supplied
-        if (car.getRatings() != null){
-            tvResult1.setText(car.getRatings()[0]);
-            tvResult2.setText(car.getRatings()[1]);
-            tvResult3.setText(car.getRatings()[2]);
-            tvResult4.setText(car.getRatings()[3]);
-            //LATER MOVE THIS TO THE COMMON PROBLEMS ADAPTER
-            recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRatings());
-        }
+//        if (car.getRatings() != null){
+//            tvResult1.setText(car.getRatings()[0]);
+//            tvResult2.setText(car.getRatings()[1]);
+//            tvResult3.setText(car.getRatings()[2]);
+//            tvResult4.setText(car.getRatings()[3]);
+//            //LATER MOVE THIS TO THE COMMON PROBLEMS ADAPTER
+//            recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRatings());
+//        }
         //TODO move this code to helper function 'CheckFields'
         //Adding all of the items from an object
+        ArrayList<String> commonProblems = new ArrayList<>();
+        ArrayList<String> recalls = new ArrayList<>();
         ArrayList<String> descriptionList = new ArrayList<>();
         descriptionList.add(String.format("Price: %s",String.valueOf(car.getPrice())));
         descriptionList.add(String.format("Seats: %s",String.valueOf(car.getSeats())));
@@ -158,12 +177,13 @@ public class SpecificVehicleInfoFragment extends Fragment {
         descriptionList.add(String.format("MPG: %s",String.valueOf(car.getMPG())));
         descriptionList.add(String.format("Drivetrain: %s",String.valueOf(car.getDrivetrain())));
         descriptionList.add(String.format("Cylinders: %s",String.valueOf(car.getCylinders())));
-        ArrayList<String> commonProblems = new ArrayList<>();
-        ArrayList<String> recalls = new ArrayList<>();
+
         // Check if the common problems array is null
         try{
             for(String problem : car.getCommonProblems()){
-                commonProblems.add(problem);
+                //TODO Find out what the fuck is going on here
+                String cleanText = problem.replaceAll("(.)([A-Z0-9]\\w)", "$1 $2");
+                commonProblems.add(cleanText);
             }
         }catch (NullPointerException err){
             commonProblems.add("No Common Problems for this vehicle");
@@ -171,22 +191,15 @@ public class SpecificVehicleInfoFragment extends Fragment {
         // Check if the recalls array is null
         try{
             for(String recall : car.getRecalls()){
-                recalls.add(recall);
+                //adding a space between recalls
+               String cleanText = recall.replaceAll("(.)([A-Z0-9]\\w)", "$1 $2");
+                recalls.add(cleanText);
             }
         }catch (NullPointerException err) {
             recalls.add("No Recalls for this vehicle");
         }
 
-        //Setting the List Adapters to display the vehicle information.
-        //debug
-        Log.d("EndALL", "CarModel commonProblems" + car.getCommonProblems());
-//        commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, commonProblems);
-//        recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, recalls);
-//        descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
 
-        //commonProblemsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getCommonProblems());
-        // recallsAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, car.getRecalls());
-        //descriptionListAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, descriptionList);
         // Creating a commonListAdapter and setting all of the recycler views.
         CommonListAdapter listAdapterCommonProblems = new CommonListAdapter(commonProblems);
         rvCommonProblems.setLayoutManager(new LinearLayoutManager(getActivity()));

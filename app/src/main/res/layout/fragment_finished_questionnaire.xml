@@ -70,27 +70,27 @@
         android:textColor="@color/orange_text"/>
 
     <TextView
-        android:id="@+id/tvQuestionnaireTryAgain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="24dp"
-        android:text="Try Again"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation"
-        android:textColor="@color/orange_text"/>
-
-    <TextView
         android:id="@+id/tvQuestionnaireToCars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="96dp"
         android:text="To Suggested Cars"
+        android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toEndOf="@+id/tvQuestionnaireTryAgain"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation"
-        android:textColor="@color/orange_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation" />
+
+    <TextView
+        android:id="@+id/tvQuestionnaireTryAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="96dp"
+        android:text="Try Again"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
