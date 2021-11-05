@@ -657,7 +657,7 @@ def get_trims_and_pictures():
         #for modelYears in yearList[index]:
         for year in yearList[makeIndex][modelIndex]:
           #Check if the car make&model is in the car_dict already.
-          car_item = car_dict.get(make).get(model)
+          car_item = car_dict.get(make).get(model).get(year)
           #Check if the vehicle is already populated
           if (car_item == None or car_item == {}):
           # if (car_dict.get(make).get(model).get(year) == None or car_dict.get(make).get(model).get(year) == {}):
@@ -687,8 +687,9 @@ try:
             #debug
             print("trim %s" % trim)
             for year, href in years.items():
-              #Check if the car list is 
-              if()
+              #Check if the trim is populated for the dictionary
+              check_trim = car_dict.get(make).get(model).get(trim)
+              if(check_trim == {} or check_trim == None):
                 # print ("make: %s, model: %s year: %s,trim: %s, \nhref:%s" % (make,model,year,trim, href))
                 getVehicleDescription (make, model, trim, year, href)
                 print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
