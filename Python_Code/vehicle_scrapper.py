@@ -625,7 +625,16 @@ def getTrims(make, model, year):
     error_file = open("trimError.txt", "a")
     error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
     error_file.close()
-### START OF MAIN FUNCTION ###
+
+'''
+  This method is used to get all trims from the make,model and year passed in the makeList/ModelList
+  This method will go through each car and get the href and key value.
+  This method will populate 
+    info_dict {make:{model:{year:{urlToWebsite}}}}
+    car_dict {make:{model:{year:{cost:'price', msrp:'price' }}}}
+  
+
+'''
 def get_trims_and_pictures():
   # 0.5 Create a parser to parse through the url to get the trims.
   # Uncomment this if you want to run the whole thing.
@@ -647,6 +656,11 @@ def get_trims_and_pictures():
         # Uncomment this if you are running the whole thing
         #for modelYears in yearList[index]:
         for year in yearList[makeIndex][modelIndex]:
+          #Check if the car make&model is in the car_dict already.
+          car_item = car_dict.get(make).get(model)
+          #Check if the vehicle is already populated
+          if (car_item == None or car_item == {}):
+          # if (car_dict.get(make).get(model).get(year) == None or car_dict.get(make).get(model).get(year) == {}):
             print(year)
             #Go through each page and get the make model and year
             getTrims(make, model, year)
@@ -655,6 +669,8 @@ def get_trims_and_pictures():
             #print(car_dict)
         modelIndex = modelIndex +1
       makeIndex = makeIndex +1
+
+### START OF MAIN FUNCTION ###
 
 get_trims_and_pictures()
 #print(info_dict)        
@@ -671,6 +687,8 @@ try:
             #debug
             print("trim %s" % trim)
             for year, href in years.items():
+              #Check if the car list is 
+              if()
                 # print ("make: %s, model: %s year: %s,trim: %s, \nhref:%s" % (make,model,year,trim, href))
                 getVehicleDescription (make, model, trim, year, href)
                 print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
