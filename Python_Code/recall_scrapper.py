@@ -191,7 +191,8 @@ miniYear = [[2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,20
 mercuryModel = ["Grand Marquis", "Mariner", "Mariner Hybrid", "Milan", "Milan Hybrid", "Montego", "Mountaineer", "Sable"]
 mercuryYear = [[2010,2009,2008], [2010,2009,2008], [2010,2009,2008], [2010,2009,2008, 2007], [2010], [2007], [2010,2009,2008, 2007], [2008,2007]]
 
-mercedesModel = ["A-Class", "C-Class", "CL-Class", "CLA-Class", "CLK-Class", "CLS-Class", "E-Class", "E-Class Coupe", "E-Class Wagon", "G-Class", "GL-Class", "GLA-Class", "GLB-Class", "GLC-Class", "GLE-Class", "GLK-Class", "GLS-Class"]
+#Removed - in between class names
+mercedesModel = ["A Class", "C Class", "CL Class", "CLA Class", "CLK Class", "CLS Class", "E Class", "E Class Coupe", "E Class Wagon", "G Class", "GL Class", "GLA Class", "GLB Class", "GLC Class", "GLE Class", "GLK Class", "GLS Class"]
 mercedesYear = [[2021,2020,2019], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2011,2010,2009,2008], [2021,2020,2019,2018,2017,2016,2015,2014], [2009], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2011,2010], [2009,2008], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015], [2021,2020], [2021,2020,2019,2018,2017,2016], [2021,2020,2019,2018,2017,2016], [2015,2014,2013,2012,2011,2010], [2021,2020,2019,2018,2017], 
                 [2021,2020,2019,2018],[2015,2014,2013,2012,2011,2010,2009,2008,2007], [2012,2011,2010,2009,2008,2007],[2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008],[2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007],[2012,2011,2010],[2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2009,2008],[2020,2019,2018,2017], [2016,2015,2014,2013,2012,2011,2009,2008], [2012,2011,2010] ]
 
@@ -259,183 +260,251 @@ info_dict = vehicle_scrapper_data.info_dict
 recall_dict = Recall_Dict.recall_dict 
 
 
-
-# Get the make model and to and from settings
-for makeIndex, make in enumerate(makeList):      
-    #Go through the models of each make and add the models
-    # Creating the values so they are not null 
-    if(recall_dict.get(make) is not None):
-        continue
-    #If there is no item in recall_dict add the recalls in.
-    recall_dict[make] = {}
-    for modelIndex, model in enumerate(modelList[makeIndex]):
-        # Creating the values so they are not null
-        recall_dict[make][model] = {}
-        #Years: [List of years for each model] YearList: [List of Lists of years for each model]
-        #Start the driver and start Open the browser to the link
-        driver = webdriver.Firefox()
-        #URL of the website 
-        url = "https://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/search-recherche/menu.aspx?lang=eng"
-        driver.get(url)
-        try:
-            
-            #Get the select/combobox objects for make,model,toYear and fromYear using selenium
-            selectMake = Select(driver.find_element_by_id("BodyContent_DDL_Make"))
-            selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
-            selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
-            selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
-            
-            # Get the years range each model. (get the first and last year )
-            toYear = str(yearList[makeIndex][modelIndex][0])
-            fromYear = str(yearList[makeIndex][modelIndex][-1])
-            
-            # Select the make
+def MainFunction():
+    
+    # Get the make model and to and from settings
+    for makeIndex, make in enumerate(makeList):      
+        #Go through the models of each make and add the models
+        # Creating the values so they are not null 
+        if(recall_dict.get(make) is not None):
+            continue
+        #If there is no item in recall_dict add the recalls in.
+        recall_dict[make] = {}
+        for modelIndex, model in enumerate(modelList[makeIndex]):
+            # Creating the values so they are not null
+            recall_dict[make][model] = {}
+            #Years: [List of years for each model] YearList: [List of Lists of years for each model]
+            #Start the driver and start Open the browser to the link
+            driver = webdriver.Firefox()
+            #URL of the website 
+            url = "https://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/search-recherche/menu.aspx?lang=eng"
+            driver.get(url)
             try:
-                selectMake.select_by_visible_text(make.upper())
+                
+                #Get the select/combobox objects for make,model,toYear and fromYear using selenium
+                selectMake = Select(driver.find_element_by_id("BodyContent_DDL_Make"))
+                selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+                selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+                selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+                
+                # Get the years range each model. (get the first and last year )
+                toYear = str(yearList[makeIndex][modelIndex][0])
+                fromYear = str(yearList[makeIndex][modelIndex][-1])
+                
+                # Select the make
+                try:
+                    selectMake.select_by_visible_text(make.upper())
+                except Exception as err:
+                    print(" There was a problem selecting your Make for Make%s Model %s element %s" % (make, model, err))
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    continue
+                    
+                
+                #debug
+                #time.sleep(2)
+                # Select the model
+                try:
+                    selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+                    selectModel.select_by_visible_text(model.upper()) 
+                except Exception as err:
+                    print(" There was a problem selecting your Model for Make%s Model %s   element %s" % (make, model, err))
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    continue
+        #time.sleep(2)
+                try:
+                    # Select the make
+                    selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+                    selectFromYear.select_by_visible_text(fromYear)
+                except Exception as err:
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'fromYear' for Make: %s Model: %s err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    print(" There was a problem selecting your 'fromYear' for Make%s Model %s element %s" % (make, model, err))
+                    
+                    continue
+                            
+                #time.sleep(2)
+                try:
+                    # Select the model
+                    selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+                    selectToYear.select_by_visible_text(toYear) 
+                except Exception as err:
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'toYear' for Make: %s Model: %s  %s  err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    print(" There was a problem selecting your 'toYear' for Make%s Model %s  %s  element %s" % (make, model, err))
+                    continue
+                #time.sleep(2)
+                # Search the db for recalls
+                #searchVehicleRecall = driver.find_element_by_id("BodyContent_BTN_Search").click()
+                driver.find_element_by_id("BodyContent_BTN_Search").click()
+                
+                # You are on the next Page now
+                
+                '''
+                Recalls are set this way
+                <tr class="active">
+                <th class="text-center">Recall Number</th>
+                <th class="text-center">Recall Date</th>
+                <th class="text-center">Make</th>
+                <th class="text-center">Model</th>
+                <th class="text-center">System</th>
+                <th class="text-center">Model Year(s) Affected</th>
+                </tr>
+                '''
+                #Get all recall information
+                allhtmlTR = driver.find_elements_by_tag_name("tr")
+                #Each td has 5 
+
+                for tr in (allhtmlTR):
+                    if (tr.get_attribute('class') == 'active'):
+                        continue
+                    elif (':' in tr.text):
+                        continue
+                    else:
+                        # Go through each tr and find all td's 
+                        #trHtml = tr.get_attribute('innerHTML')
+                        tdHtml = tr.find_elements_by_tag_name("td") 
+                        
+                        recallNum = ""
+                        system = ""
+                        yearsAffected = ""
+                        
+                        # There are 6 items we need 0,4,5
+                        try:            
+                            recallNum = tdHtml[0].text
+                            system = tdHtml[4].text
+                            yearsAffected = tdHtml[5].text
+                            # Set the recalls based on the make and model.
+                        except Exception as err:
+                            # One of the fields were null
+                            print("One of the fields were null")
+                            #TODO Append the output to a file if it failed
+                            write_cardict = open("Recall_Failed.txt", "w")
+                            write_cardict.write("%r" % (err))
+                            write_cardict.close()
+                            continue
+                        
+                        # recall_dict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
+                        #debug
+                        print("Make%s Model %s :: recall# %s, system: %s, yearsAffected %s" % (make, model, recallNum, system, yearsAffected ))
+                        #Check if there is more then one year
+                        # Model Year(s) Affected: Looks like '2013 2014 2015' or '2015'
+                        if (' ' in yearsAffected):
+                            listOfYearsAffected = yearsAffected.split()
+                            for year in listOfYearsAffected:
+                                # If there is more then one year / its a list of years go through each year and add the recalls 
+                                #recall_dict[make][model][year] = [system]
+                                #If the year dictionary is empty create one
+                                try:
+                                    if(recall_dict.get(model).get(year) is None):
+                                        recall_dict[make][model][year] = {}
+                                except:
+                                    recall_dict[make][model][year] = {}
+                                recall_dict[make][model][year][recallNum] = system
+                        else:
+                            # If there is only one year then just add it to the lsit.
+                            try:
+                                if(recall_dict.get(model).get(yearsAffected) is None):
+                                    recall_dict[make][model][yearsAffected] = {}
+                            except:
+                                recall_dict[make][model][yearsAffected] = {}
+                            recall_dict[make][model][yearsAffected][recallNum] ={}
+                            recall_dict[make][model][yearsAffected][recallNum] = system
+                    #Close the driver when we are done with the recalls for a car.
+                    driver.close()
+                    #Write to carDictFile
+                    write_cardict = open("Recall_Car_Dict.txt", "w")
+                    write_cardict.write("%r" % (recall_dict))
+                    write_cardict.close()
+                    time.sleep(3)
+                try:
+                    driver.close()
+                except:
+                    continue
             except Exception as err:
                 print(" There was a problem selecting your Make for Make%s Model %s element %s" % (make, model, err))
                 error_recalldict = open("Recall_Error.txt", "a")
                 error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
                 error_recalldict.close()
-                driver.close()
-                continue
-                
-            
-            #debug
-            #time.sleep(2)
-            # Select the model
-            try:
-                selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
-                selectModel.select_by_visible_text(model.upper()) 
-            except Exception as err:
-                print(" There was a problem selecting your Model for Make%s Model %s   element %s" % (make, model, err))
-                error_recalldict = open("Recall_Error.txt", "a")
-                error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
-                error_recalldict.close()
-                driver.close()
-                continue
-    #time.sleep(2)
-            try:
-                # Select the make
-                selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
-                selectFromYear.select_by_visible_text(fromYear)
-            except Exception as err:
-                error_recalldict = open("Recall_Error.txt", "a")
-                error_recalldict.write("There was a problem selecting your 'fromYear' for Make: %s Model: %s err %s\n" % (make, model, err))
-                error_recalldict.close()
-                driver.close()
-                print(" There was a problem selecting your 'fromYear' for Make%s Model %s element %s" % (make, model, err))
-                
-                continue
-                        
-            #time.sleep(2)
-            try:
-                # Select the model
-                selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
-                selectToYear.select_by_visible_text(toYear) 
-            except Exception as err:
-                error_recalldict = open("Recall_Error.txt", "a")
-                error_recalldict.write("There was a problem selecting your 'toYear' for Make: %s Model: %s  %s  err %s\n" % (make, model, err))
-                error_recalldict.close()
-                driver.close()
-                print(" There was a problem selecting your 'toYear' for Make%s Model %s  %s  element %s" % (make, model, err))
-                continue
-            #time.sleep(2)
-            # Search the db for recalls
-            #searchVehicleRecall = driver.find_element_by_id("BodyContent_BTN_Search").click()
-            driver.find_element_by_id("BodyContent_BTN_Search").click()
-            
-            # You are on the next Page now
-            
-            '''
-            Recalls are set this way
-            <tr class="active">
-            <th class="text-center">Recall Number</th>
-            <th class="text-center">Recall Date</th>
-            <th class="text-center">Make</th>
-            <th class="text-center">Model</th>
-            <th class="text-center">System</th>
-            <th class="text-center">Model Year(s) Affected</th>
-            </tr>
-            '''
-            #Get all recall information
-            allhtmlTR = driver.find_elements_by_tag_name("tr")
-            #Each td has 5 
+    print("Finished" % car_dict)
 
-            for tr in (allhtmlTR):
-                if (tr.get_attribute('class') == 'active'):
-                    continue
-                elif (':' in tr.text):
-                    continue
-                else:
-                    # Go through each tr and find all td's 
-                    #trHtml = tr.get_attribute('innerHTML')
-                    tdHtml = tr.find_elements_by_tag_name("td") 
-                    
-                    recallNum = ""
-                    system = ""
-                    yearsAffected = ""
-                    
-                    # There are 6 items we need 0,4,5
-                    try:            
-                        recallNum = tdHtml[0].text
-                        system = tdHtml[4].text
-                        yearsAffected = tdHtml[5].text
-                        # Set the recalls based on the make and model.
-                    except Exception as err:
-                        # One of the fields were null
-                        print("One of the fields were null")
-                        #TODO Append the output to a file if it failed
-                        write_cardict = open("Recall_Failed.txt", "w")
-                        write_cardict.write("%r" % (err))
-                        write_cardict.close()
-                        continue
-                    
-                    # recall_dict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
-                    #debug
-                    print("Make%s Model %s :: recall# %s, system: %s, yearsAffected %s" % (make, model, recallNum, system, yearsAffected ))
-                    #Check if there is more then one year
-                    # Model Year(s) Affected: Looks like '2013 2014 2015' or '2015'
-                    if (' ' in yearsAffected):
-                        listOfYearsAffected = yearsAffected.split()
-                        for year in listOfYearsAffected:
-                            # If there is more then one year / its a list of years go through each year and add the recalls 
-                            #recall_dict[make][model][year] = [system]
-                            #If the year dictionary is empty create one
-                            try:
-                                if(recall_dict.get(model).get(year) is None):
-                                    recall_dict[make][model][year] = {}
-                            except:
-                                recall_dict[make][model][year] = {}
-                            recall_dict[make][model][year][recallNum] = system
-                    else:
-                        # If there is only one year then just add it to the lsit.
-                        try:
-                            if(recall_dict.get(model).get(yearsAffected) is None):
-                                recall_dict[make][model][yearsAffected] = {}
-                        except:
-                            recall_dict[make][model][yearsAffected] = {}
-                        recall_dict[make][model][yearsAffected][recallNum] ={}
-                        recall_dict[make][model][yearsAffected][recallNum] = system
-                #Close the driver when we are done with the recalls for a car.
-                driver.close()
-                #Write to carDictFile
-                write_cardict = open("Recall_Car_Dict.txt", "w")
-                write_cardict.write("%r" % (recall_dict))
-                write_cardict.close()
-                time.sleep(3)
-            try:
-                driver.close()
-            except:
-                continue
-        except Exception as err:
-            print(" There was a problem selecting your Make for Make%s Model %s element %s" % (make, model, err))
-            error_recalldict = open("Recall_Error.txt", "a")
-            error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
-            error_recalldict.close()
+'''
+    This method is used to add One field within a list of vehicles. This method takes in 
+        item_dict: A dictionary of Make:{Model:{Year:{'whatever data':{'whatever data'}}}} (in my case recall_dict)
+    This returns car_dict with your item added in.
     
-        
-print("Finished" % car_dict)
+'''
+def addItemInCarDict(item_dict):
+    # Go through each make, model, and year in your passed list.
+    try:
+        for make, models in item_dict.items():
+            #debug
+            print("make %s" % make)
+            #print("makes %s" % models)
+            for model, years in models.items():
+                #Check if there is any data in the model of the car_dict. If its empty continue
+                if(car_dict.get(make).get(model) is None or car_dict.get(make).get(model) == {}):
+                    addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+                    addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
+                    addItemInCarDict_error.close()
+                    continue
+
+                # if(car_dict.get(make).get(model).get(years) is None or car_dict.get(make).get(model).get(years) == {}):
+                #     addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+                #     addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
+                #     addItemInCarDict_error.close()
+                #     continue
+               
+                #debug
+                print("model %s" % model)
+                #recall_dict == Make:{Model:{Year:{recal#:{problem},recal#:{problem}},Year:{....]}
+                for year, recall in years.items():
+                    #debug
+                    print("Year %s + recall %s" % (year,recall))
+                    #For every recall in the year add it to the car_dict recalls list)
+                    #Check if there is a recalls portion of the car_dict
+                    #debug
+                    test = car_dict.get(make).get(model).get(year)
+                    #TODOGo through each trim in the dict and add the year in for 
+                    try:
+                        if (car_dict.get(make).get(model).get(year).get("recalls") is not None):
+                            #If the recalls list is already there then add the recall to the list
+                            car_recalls = car_dict[make][model][year].get("recalls")
+                            car_dict[make][model][year]["recalls"] = car_recalls + recall
+                        # else:
+                        #     #Create the list of recalls and add the item in
+                        #     car_dict[make][model][year]["recalls"] = []
+                        #     car_recalls = car_dict[make][model][year].get("recalls")
+                        #     car_recalls.append(recall)
+                    except Exception as err:
+                        #Create the list of recalls and add the item in
+                        car_dict[make][model][year]["recalls"] = []
+                        car_recalls = car_dict[make][model][year].get("recalls")
+                        car_dict[make][model][year]["recalls"] = car_recalls + recall
+                    
+                        #Write the car_dict to a file for tracking of progress!
+                        print(" Successfully added Recall: %s Make for Make:%s Model %s element %s" % (recall, make, model))
+                        car_dict_file = open("Current_Car_Dict.txt", "w")
+                        car_dict_file.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+                        car_dict_file.close()
+                        
+                    
+    except Exception as err:
+        print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s \n error:%s\n" % (make,model,err))
+
+#Running the code to add the items into the dictionary
+addItemInCarDict(recall_dict)
+
+    
 
 #2. Once we get all of the recalls and populate recall_dict, Add all of the recalls to the carDict
 # For each make, model go through each of the years affected, pull the recall numbers and get the values add the values into the car dict as a list.
