@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_background">
+
+    <TextView
+        android:id="@+id/tvFindACarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Come Find Your Car!"
+        android:textSize="20dp"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tvFindACarGuruImage"
+        android:layout_width="303dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/crewmascot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFindACarTitle" />
+
+    <TextView
+        android:id="@+id/tvFindACarForYouDescription"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white_text"
+        android:text="Clicking Start will Bring you to a questionnaire that will determine the best cars for your needs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFindACarGuruImage" />
+
+    <ImageView
+        android:id="@+id/ivStartQuestionnaire"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/questionnairestartbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFindACarForYouDescription" />
+
+    <Button
+        android:id="@+id/btnViewByCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        android:text="Search By Category"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivStartQuestionnaire" />
+
+    <Button
+        android:id="@+id/btnViewPreviousResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="16dp"
+        android:text="View Previous Results"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivStartQuestionnaire" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
