@@ -22,6 +22,7 @@ import owen.ross.carguru.UI.Catagories.ViewByCategoryFragment;
 import owen.ross.carguru.UI.FindSpecificModel.FindSpecificModelFragment;
 import owen.ross.carguru.UI.Garage.MyGarage.GarageSpashFragment;
 import owen.ross.carguru.UI.Questionnaire.QuestionnaireFragment;
+import owen.ross.carguru.UI.Questionnaire.QuestionnaireSplashFragment;
 import owen.ross.carguru.UI.Settings.SettingFragment;
 
 public class HomeFragment extends Fragment {
@@ -78,7 +79,7 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             //TODO Questionnaire fragment
             //Going from SearchCarFragment to Specific model fragment
-            Fragment findMeACar = new QuestionnaireFragment();
+            Fragment findMeACar = new QuestionnaireSplashFragment();
             HelperFunctions.switchFragments(getActivity(), findMeACar, R.id.nav_host_fragment, new Bundle());
 
         }

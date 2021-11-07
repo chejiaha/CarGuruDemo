@@ -21,6 +21,11 @@
         android:title="Find Model"
         android:drawable="@android:color/holo_orange_light"/>
 
+<!--    <item-->
+<!--        android:id="@+id/navigation_my_garage"-->
+<!--        android:icon="@drawable/mygarageicon"-->
+<!--        android:title="My Garage" />-->
+
     <item
         android:id="@+id/navigation_my_garage"
         android:icon="@drawable/mygarageicon"

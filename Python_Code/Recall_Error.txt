@@ -1,0 +1,911 @@
+There was a problem selecting your 'model' for Make: Acura Model: MDX Hybrid  err Message: Could not locate element with visible text: MDX HYBRID
+
+There was a problem selecting your 'model' for Make: Acura Model: TSX Sport Wagon  err Message: Could not locate element with visible text: TSX SPORT WAGON
+
+There was a problem selecting your 'model' for Make: Alfa Romeo Model: 4C  err Message: Could not locate element with visible text: 4C
+
+There was a problem selecting your 'model' for Make: Aston Martin Model: Vantage  err Message: Could not locate element with visible text: VANTAGE
+
+There was a problem selecting your 'model' for Make: Audi Model: A4 Allroad  err Message: Could not locate element with visible text: A4 ALLROAD
+
+There was a problem selecting your 'model' for Make: Audi Model: A4 Wagon  err Message: Could not locate element with visible text: A4 WAGON
+
+There was a problem selecting your 'model' for Make: Audi Model: A6 Allroad  err Message: Could not locate element with visible text: A6 ALLROAD
+
+There was a problem selecting your 'model' for Make: Audi Model: A6 Wagon  err Message: Could not locate element with visible text: A6 WAGON
+
+There was a problem selecting your 'model' for Make: Audi Model: Allroad  err Message: Could not locate element with visible text: ALLROAD
+
+There was a problem selecting your 'model' for Make: BMW Model: 1-Series  err Message: Could not locate element with visible text: 1-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 2-Series  err Message: Could not locate element with visible text: 2-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 3-Series  err Message: Could not locate element with visible text: 3-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 3-Series Hybrid  err Message: Could not locate element with visible text: 3-SERIES HYBRID
+
+There was a problem selecting your 'model' for Make: BMW Model: 3-Series Wagon  err Message: Could not locate element with visible text: 3-SERIES WAGON
+
+There was a problem selecting your 'model' for Make: BMW Model: 4-Series  err Message: Could not locate element with visible text: 4-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 5-Series  err Message: Could not locate element with visible text: 5-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 5-Series Hybrid  err Message: Could not locate element with visible text: 5-SERIES HYBRID
+
+There was a problem selecting your 'model' for Make: BMW Model: 5-Series Wagon  err Message: Could not locate element with visible text: 5-SERIES WAGON
+
+There was a problem selecting your 'model' for Make: BMW Model: 6-Series  err Message: Could not locate element with visible text: 6-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 7-Series  err Message: Could not locate element with visible text: 7-SERIES
+
+There was a problem selecting your 'model' for Make: BMW Model: 7-Series Hybrid  err Message: Could not locate element with visible text: 7-SERIES HYBRID
+
+There was a problem selecting your 'model' for Make: BMW Model: 8-Series  err Message: Could not locate element with visible text: 8-SERIES
+
+There was a problem selecting your 'model' for Make: Buick Model: Cascada  err Message: Could not locate element with visible text: CASCADA
+
+There was a problem selecting your 'model' for Make: Cadillac Model: CTS Sport Wagon  err Message: Could not locate element with visible text: CTS SPORT WAGON
+
+There was a problem selecting your 'model' for Make: Chevrolet Model: Bolt  err Message: Could not locate element with visible text: BOLT
+
+There was a problem selecting your 'model' for Make: Chevrolet Model: Silverado 1500  err Message: Could not locate element with visible text: SILVERADO 1500
+
+There was a problem selecting your 'model' for Make: Chevrolet Model: Silverado 1500 Hybrid  err Message: Could not locate element with visible text: SILVERADO 1500 HYBRID
+
+There was a problem selecting your 'model' for Make: Chevrolet Model: SS  err Message: Could not locate element with visible text: SS
+
+There was a problem selecting your 'model' for Make: Chrysler Model: Pacifica Hybrid  err Message: Could not locate element with visible text: PACIFICA HYBRID
+
+There was a problem selecting your 'model' for Make: Chrysler Model: Voyager  err Message: Could not locate element with visible text: VOYAGER
+
+There was a problem selecting your 'model' for Make: Dodge Model: Ram 1500  err Message: Could not locate element with visible text: RAM 1500
+
+There was a problem selecting your 'model' for Make: Dodge Model: Ram HD  err Message: Could not locate element with visible text: RAM HD
+
+There was a problem selecting your 'model' for Make: Dodge Model: SRT Viper  err Message: Could not locate element with visible text: SRT VIPER
+
+There was a problem selecting your 'model' for Make: Ferrari Model: 599 GTB Fiorano  err Message: Could not locate element with visible text: 599 GTB FIORANO
+
+There was a problem selecting your 'model' for Make: Ferrari Model: F430  err Message: Could not locate element with visible text: F430
+
+There was a problem selecting your 'model' for Make: Ferrari Model: F458 Italia  err Message: Could not locate element with visible text: F458 ITALIA
+
+There was a problem selecting your 'model' for Make: Ford Model: C-Max Energi  err Message: Could not locate element with visible text: C-MAX ENERGI
+
+There was a problem selecting your 'model' for Make: Ford Model: C-Max Hybrid  err Message: Could not locate element with visible text: C-MAX HYBRID
+
+There was a problem selecting your 'model' for Make: Ford Model: E-Series  err Message: Could not locate element with visible text: E-SERIES
+
+There was a problem selecting your 'model' for Make: Ford Model: Escape Hybrid  err Message: Could not locate element with visible text: ESCAPE HYBRID
+
+There was a problem selecting your 'model' for Make: Ford Model: Explorer Hybrid  err Message: Could not locate element with visible text: EXPLORER HYBRID
+
+There was a problem selecting your 'model' for Make: Ford Model: Focus Electric  err Message: Could not locate element with visible text: FOCUS ELECTRIC
+
+There was a problem selecting your 'model' for Make: Ford Model: Fusion Energi  err Message: Could not locate element with visible text: FUSION ENERGI
+
+There was a problem selecting your 'model' for Make: Ford Model: Fusion Hubrid  err Message: Could not locate element with visible text: FUSION HUBRID
+
+There was a problem selecting your 'model' for Make: GMC Model: Sierra 1500  err Message: Could not locate element with visible text: SIERRA 1500
+
+There was a problem selecting your 'model' for Make: GMC Model: Sierra 1500 Hybrid  err Message: Could not locate element with visible text: SIERRA 1500 HYBRID
+
+There was a problem selecting your 'model' for Make: Honda Model: Accord Plug-in  err Message: Could not locate element with visible text: ACCORD PLUG-IN
+
+There was a problem selecting your 'model' for Make: Honda Model: Clarity  err Message: Could not locate element with visible text: CLARITY
+
+There was a problem selecting your 'model' for Make: Honda Model: CR-V Hybrid  err Message: Could not locate element with visible text: CR-V HYBRID
+
+There was a problem selecting your 'model' for Make: HUMMER Model: H2 SUT  err Message: Could not locate element with visible text: H2 SUT
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C30  err Message: Could not locate element with visible text: C30
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C70  err Message: Could not locate element with visible text: C70
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S40  err Message: Could not locate element with visible text: S40
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S60  err Message: Could not locate element with visible text: S60
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S80  err Message: Could not locate element with visible text: S80
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S90  err Message: Could not locate element with visible text: S90
+
+There was a problem selecting your 'model' for Make: Hyundai Model: V50  err Message: Could not locate element with visible text: V50
+
+There was a problem selecting your 'model' for Make: Hyundai Model: V60  err Message: Could not locate element with visible text: V60
+
+There was a problem selecting your 'model' for Make: Hyundai Model: V70  err Message: Could not locate element with visible text: V70
+
+There was a problem selecting your 'model' for Make: Hyundai Model: V90  err Message: Could not locate element with visible text: V90
+
+There was a problem selecting your 'model' for Make: Hyundai Model: XC40  err Message: Could not locate element with visible text: XC40
+
+There was a problem selecting your 'model' for Make: Hyundai Model: XC60  err Message: Could not locate element with visible text: XC60
+
+There was a problem selecting your 'model' for Make: Hyundai Model: XC70  err Message: Could not locate element with visible text: XC70
+
+There was a problem selecting your 'model' for Make: Hyundai Model: XC90  err Message: Could not locate element with visible text: XC90
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Arteon  err Message: Could not locate element with visible text: ARTEON
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Atlas  err Message: Could not locate element with visible text: ATLAS
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Beetle  err Message: Could not locate element with visible text: BEETLE
+
+There was a problem selecting your 'model' for Make: Infiniti Model: CC  err Message: Could not locate element with visible text: CC
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Eos  err Message: Could not locate element with visible text: EOS
+
+There was a problem selecting your 'model' for Make: Infiniti Model: GLI  err Message: Could not locate element with visible text: GLI
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Golf  err Message: Could not locate element with visible text: GOLF
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Golf SportWagen  err Message: Could not locate element with visible text: GOLF SPORTWAGEN
+
+There was a problem selecting your 'model' for Make: Infiniti Model: GTI  err Message: Could not locate element with visible text: GTI
+
+There was a problem selecting your 'model' for Make: Infiniti Model: ID.4  err Message: Could not locate element with visible text: ID.4
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Jetta  err Message: Could not locate element with visible text: JETTA
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Jetta Hybrid  err Message: Could not locate element with visible text: JETTA HYBRID
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Jetta SportWagen  err Message: Could not locate element with visible text: JETTA SPORTWAGEN
+
+There was a problem selecting your 'model' for Make: Infiniti Model: New Beetle  err Message: Could not locate element with visible text: NEW BEETLE
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Passat  err Message: Could not locate element with visible text: PASSAT
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Passat Wagon  err Message: Could not locate element with visible text: PASSAT WAGON
+
+There was a problem selecting your 'model' for Make: Infiniti Model: R32  err Message: Could not locate element with visible text: R32
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Rabbit  err Message: Could not locate element with visible text: RABBIT
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Routan  err Message: Could not locate element with visible text: ROUTAN
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Taos  err Message: Could not locate element with visible text: TAOS
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Tiguan  err Message: Could not locate element with visible text: TIGUAN
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Touareg  err Message: Could not locate element with visible text: TOUAREG
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Touareg Hybrid  err Message: Could not locate element with visible text: TOUAREG HYBRID
+
+There was a problem selecting your 'model' for Make: Isuzu Model: 4Runner  err Message: Could not locate element with visible text: 4RUNNER
+
+There was a problem selecting your 'model' for Make: Isuzu Model: 86  err Message: Could not locate element with visible text: 86
+
+There was a problem selecting your 'model' for Make: Isuzu Model: Avalon  err Message: Could not locate element with visible text: AVALON
+
+There was a problem selecting your 'model' for Make: Isuzu Model: Avalon Hybrid  err Message: Could not locate element with visible text: AVALON HYBRID
+
+There was a problem selecting your 'model' for Make: Isuzu Model: C-HR  err Message: Could not locate element with visible text: C-HR
+
+There was a problem selecting your 'model' for Make: Isuzu Model: Camry  err Message: Could not locate element with visible text: CAMRY
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C30  err Message: Could not locate element with visible text: C30
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C70  err Message: Could not locate element with visible text: C70
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S40  err Message: Could not locate element with visible text: S40
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S60  err Message: Could not locate element with visible text: S60
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C30  err Message: Could not locate element with visible text: C30
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C70  err Message: Could not locate element with visible text: C70
+
+There was a problem selecting your 'model' for Make: Hyundai Model: S40  err Message: Could not locate element with visible text: S40
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C30  err Message: Could not locate element with visible text: C30
+
+There was a problem selecting your 'model' for Make: Hyundai Model: C70  err Message: Could not locate element with visible text: C70
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: GLI  err Message: Could not locate element with visible text: GLI
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Golf SportWagen  err Message: Could not locate element with visible text: GOLF SPORTWAGEN
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: ID.4  err Message: Could not locate element with visible text: ID.4
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Jetta Hybrid  err Message: Could not locate element with visible text: JETTA HYBRID
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Jetta SportWagen  err Message: Could not locate element with visible text: JETTA SPORTWAGEN
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: New Beetle  err Message: Could not locate element with visible text: NEW BEETLE
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Passat Wagon  err Message: Could not locate element with visible text: PASSAT WAGON
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: R32  err Message: Could not locate element with visible text: R32
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Touareg Hybrid  err Message: Could not locate element with visible text: TOUAREG HYBRID
+
+There was a problem selecting your 'model' for Make: Toyota Model: Avalon Hybrid  err Message: Could not locate element with visible text: AVALON HYBRID
+
+There was a problem selecting your 'model' for Make: Toyota Model: Corolla Cross  err Message: Could not locate element with visible text: COROLLA CROSS
+
+There was a problem selecting your 'model' for Make: Toyota Model: Corolla iM  err Message: Could not locate element with visible text: COROLLA IM
+
+There was a problem selecting your 'model' for Make: Toyota Model: GR 86  err Message: Could not locate element with visible text: GR 86
+
+There was a problem selecting your 'model' for Make: Toyota Model: Prius Plug-in  err Message: Could not locate element with visible text: PRIUS PLUG-IN
+
+There was a problem selecting your 'model' for Make: Toyota Model: RAV4 Prime  err Message: Could not locate element with visible text: RAV4 PRIME
+
+There was a problem selecting your 'model' for Make: Toyota Model: Yaris iA  err Message: Could not locate element with visible text: YARIS IA
+
+There was a problem selecting your 'model' for Make: Tesla Model: Roadster  err Message: Could not locate element with visible text: ROADSTER
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Reno  err Message: Could not locate element with visible text: RENO
+
+There was a problem selecting your 'model' for Make: Suzuki Model: SX4 Wagon  err Message: Could not locate element with visible text: SX4 WAGON
+
+There was a problem selecting your 'model' for Make: Suzuki Model: XL7  err Message: Could not locate element with visible text: XL7
+
+There was a problem selecting your 'model' for Make: Smart Model: Ascent  err Message: Could not locate element with visible text: ASCENT
+
+There was a problem selecting your 'model' for Make: Smart Model: BRZ  err Message: Could not locate element with visible text: BRZ
+
+There was a problem selecting your 'model' for Make: Smart Model: Crosstrek  err Message: Could not locate element with visible text: CROSSTREK
+
+There was a problem selecting your 'model' for Make: Smart Model: Crosstrek Hybrid  err Message: Could not locate element with visible text: CROSSTREK HYBRID
+
+There was a problem selecting your 'model' for Make: Smart Model: Forester  err Message: Could not locate element with visible text: FORESTER
+
+There was a problem selecting your 'model' for Make: Smart Model: Impreza  err Message: Could not locate element with visible text: IMPREZA
+
+There was a problem selecting your 'model' for Make: Smart Model: Impreza Wagon  err Message: Could not locate element with visible text: IMPREZA WAGON
+
+There was a problem selecting your 'model' for Make: Smart Model: Legacy  err Message: Could not locate element with visible text: LEGACY
+
+There was a problem selecting your 'model' for Make: Smart Model: Outback  err Message: Could not locate element with visible text: OUTBACK
+
+There was a problem selecting your 'model' for Make: Smart Model: Tribeca  err Message: Could not locate element with visible text: TRIBECA
+
+There was a problem selecting your 'model' for Make: Smart Model: WRX  err Message: Could not locate element with visible text: WRX
+
+There was a problem selecting your 'model' for Make: Smart Model: XV Crosstrek  err Message: Could not locate element with visible text: XV CROSSTREK
+
+There was a problem selecting your 'model' for Make: Smart Model: XV Crosstrek Hybrid  err Message: Could not locate element with visible text: XV CROSSTREK HYBRID
+
+There was a problem selecting your 'model' for Make: Scion Model: Fortwo  err Message: Could not locate element with visible text: FORTWO
+
+There was a problem selecting your 'model' for Make: Saturn Model: FR-S  err Message: Could not locate element with visible text: FR-S
+
+There was a problem selecting your 'model' for Make: Saturn Model: iA  err Message: Could not locate element with visible text: IA
+
+There was a problem selecting your 'model' for Make: Saturn Model: iM  err Message: Could not locate element with visible text: IM
+
+There was a problem selecting your 'model' for Make: Saturn Model: iQ  err Message: Could not locate element with visible text: IQ
+
+There was a problem selecting your 'model' for Make: Saturn Model: tC  err Message: Could not locate element with visible text: TC
+
+There was a problem selecting your 'model' for Make: Saturn Model: xB  err Message: Could not locate element with visible text: XB
+
+There was a problem selecting your 'model' for Make: Saturn Model: xD  err Message: Could not locate element with visible text: XD
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: GLI  err Message: Could not locate element with visible text: GLI
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Golf SportWagen  err Message: Could not locate element with visible text: GOLF SPORTWAGEN
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: ID.4  err Message: Could not locate element with visible text: ID.4
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Jetta Hybrid  err Message: Could not locate element with visible text: JETTA HYBRID
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Jetta SportWagen  err Message: Could not locate element with visible text: JETTA SPORTWAGEN
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: New Beetle  err Message: Could not locate element with visible text: NEW BEETLE
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Passat Wagon  err Message: Could not locate element with visible text: PASSAT WAGON
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: R32  err Message: Could not locate element with visible text: R32
+
+There was a problem selecting your 'model' for Make: Volkswagen Model: Touareg Hybrid  err Message: Could not locate element with visible text: TOUAREG HYBRID
+
+There was a problem selecting your 'model' for Make: Toyota Model: Avalon Hybrid  err Message: Could not locate element with visible text: AVALON HYBRID
+
+There was a problem selecting your 'model' for Make: Toyota Model: Corolla Cross  err Message: Could not locate element with visible text: COROLLA CROSS
+
+There was a problem selecting your 'model' for Make: Toyota Model: Corolla iM  err Message: Could not locate element with visible text: COROLLA IM
+
+There was a problem selecting your 'model' for Make: Toyota Model: GR 86  err Message: Could not locate element with visible text: GR 86
+
+There was a problem selecting your 'model' for Make: Toyota Model: Prius Plug-in  err Message: Could not locate element with visible text: PRIUS PLUG-IN
+
+There was a problem selecting your 'model' for Make: Toyota Model: RAV4 Prime  err Message: Could not locate element with visible text: RAV4 PRIME
+
+There was a problem selecting your 'model' for Make: Toyota Model: Yaris iA  err Message: Could not locate element with visible text: YARIS IA
+
+There was a problem selecting your 'model' for Make: Tesla Model: Roadster  err Message: Could not locate element with visible text: ROADSTER
+
+There was a problem selecting your 'model' for Make: Subaru Model: Aerio  err Message: Could not locate element with visible text: AERIO
+
+There was a problem selecting your 'model' for Make: Subaru Model: Equator  err Message: Could not locate element with visible text: EQUATOR
+
+There was a problem selecting your 'model' for Make: Subaru Model: Equator  err Message: Could not locate element with visible text: EQUATOR
+
+There was a problem selecting your 'model' for Make: Subaru Model: Grand Vitara  err Message: Could not locate element with visible text: GRAND VITARA
+
+There was a problem selecting your 'model' for Make: Subaru Model: Kizashi  err Message: Could not locate element with visible text: KIZASHI
+
+There was a problem selecting your 'model' for Make: Subaru Model: Reno  err Message: Could not locate element with visible text: RENO
+
+There was a problem selecting your 'model' for Make: Subaru Model: SX4  err Message: Could not locate element with visible text: SX4
+
+There was a problem selecting your 'model' for Make: Subaru Model: SX4 Wagon  err Message: Could not locate element with visible text: SX4 WAGON
+
+There was a problem selecting your 'model' for Make: Subaru Model: XL7  err Message: Could not locate element with visible text: XL7
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Ascent  err Message: Could not locate element with visible text: ASCENT
+
+There was a problem selecting your 'model' for Make: Suzuki Model: BRZ  err Message: Could not locate element with visible text: BRZ
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Crosstrek  err Message: Could not locate element with visible text: CROSSTREK
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Crosstrek Hybrid  err Message: Could not locate element with visible text: CROSSTREK HYBRID
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Forester  err Message: Could not locate element with visible text: FORESTER
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Impreza  err Message: Could not locate element with visible text: IMPREZA
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Impreza Wagon  err Message: Could not locate element with visible text: IMPREZA WAGON
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Legacy  err Message: Could not locate element with visible text: LEGACY
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Outback  err Message: Could not locate element with visible text: OUTBACK
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Tribeca  err Message: Could not locate element with visible text: TRIBECA
+
+There was a problem selecting your 'model' for Make: Suzuki Model: WRX  err Message: Could not locate element with visible text: WRX
+
+There was a problem selecting your 'model' for Make: Suzuki Model: XV Crosstrek  err Message: Could not locate element with visible text: XV CROSSTREK
+
+There was a problem selecting your 'model' for Make: Suzuki Model: XV Crosstrek Hybrid  err Message: Could not locate element with visible text: XV CROSSTREK HYBRID
+
+There was a problem selecting your 'fromYear' for Make: Scion Model: FR-S err Message: Could not locate element with visible text: 20137
+
+There was a problem selecting your 'model' for Make: Tesla Model: Roadster  err Message: Could not locate element with visible text: ROADSTER
+
+There was a problem selecting your 'model' for Make: Suzuki Model: Reno  err Message: Could not locate element with visible text: RENO
+
+There was a problem selecting your 'model' for Make: Suzuki Model: SX4 Wagon  err Message: Could not locate element with visible text: SX4 WAGON
+
+There was a problem selecting your 'model' for Make: Suzuki Model: XL7  err Message: Could not locate element with visible text: XL7
+
+There was a problem selecting your 'model' for Make: Subaru Model: Crosstrek Hybrid  err Message: Could not locate element with visible text: CROSSTREK HYBRID
+
+There was a problem selecting your 'model' for Make: Subaru Model: Impreza Wagon  err Message: Could not locate element with visible text: IMPREZA WAGON
+
+There was a problem selecting your 'model' for Make: Subaru Model: WRX  err Message: Could not locate element with visible text: WRX
+
+There was a problem selecting your 'model' for Make: Subaru Model: XV Crosstrek Hybrid  err Message: Could not locate element with visible text: XV CROSSTREK HYBRID
+
+There was a problem selecting your 'fromYear' for Make: Scion Model: FR-S err Message: Could not locate element with visible text: 20137
+
+There was a problem selecting your 'model' for Make: Scion Model: iA  err Message: Could not locate element with visible text: IA
+
+There was a problem selecting your 'model' for Make: Saturn Model: Astra  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saturn Model: Aura  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saturn Model: Aura Hybrid  err Message: Could not locate element with visible text: AURA HYBRID
+
+There was a problem selecting your 'model' for Make: Saturn Model: Ion  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saturn Model: Outlook  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saturn Model: Sky  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saturn Model: VUE  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saturn Model: VUE Hybrid  err Message: Could not locate element with visible text: VUE HYBRID
+
+There was a problem selecting your 'model' for Make: Saab Model: 9-3  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saab Model: 9-3 Wagon  err Message: Could not locate element with visible text: 9-3 WAGON
+
+There was a problem selecting your 'model' for Make: Saab Model: 9-4X  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saab Model: 9-5  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Saab Model: 9-5 Wagon  err Message: Could not locate element with visible text: 9-5 WAGON
+
+There was a problem selecting your 'model' for Make: Saab Model: 9-7X  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: RAM Model: 1500  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: RAM Model: Dakota  err Message: Could not locate element with visible text: DAKOTA
+
+There was a problem selecting your 'model' for Make: RAM Model: HD  err Message: Could not locate element with visible text: HD
+
+There was a problem selecting your 'model' for Make: Porsche Model: 911  err Message: Could not locate element with visible text: 911
+
+There was a problem selecting your 'model' for Make: Porsche Model: 911-GT3  err Message: Could not locate element with visible text: 911-GT3
+
+There was a problem selecting your 'model' for Make: Porsche Model: 911-Turbo  err Message: Could not locate element with visible text: 911-TURBO
+
+There was a problem selecting your 'model' for Make: Porsche Model: Boxster  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Porsche Model: Cayenne  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Porsche Model: Cayenne Hybrid  err Message: Could not locate element with visible text: CAYENNE HYBRID
+
+There was a problem selecting your 'model' for Make: Porsche Model: Cayman  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Porsche Model: Macan  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Porsche Model: Panamera  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Porsche Model: Taycan  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: G3  err Message: Could not locate element with visible text: G3
+
+There was a problem selecting your 'model' for Make: Pontiac Model: G5  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: G6  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: G8  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: G8-GXP  err Message: Could not locate element with visible text: G8-GXP
+
+There was a problem selecting your 'model' for Make: Pontiac Model: Grand Prix  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: Solstice  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: Torrent  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Pontiac Model: Vibe  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Polestar Model: 2  err Message: Could not locate element with visible text: 2
+
+There was a problem selecting your 'model' for Make: Nissan Model: 350Z  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: 370Z  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Altima  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Altima Hybrid  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Armada  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Cube  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Frontier  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: GT-R  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Juke  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Kicks  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Leaf  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Maxima  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Murano  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: NV  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Pathfinder  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Pathfinder Hybrid  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Rogue  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Rogue Hybrid  err Message: Could not locate element with visible text: ROGUE HYBRID
+
+There was a problem selecting your 'model' for Make: Nissan Model: Rogue Sport  err Message: Could not locate element with visible text: ROGUE SPORT
+
+There was a problem selecting your 'model' for Make: Nissan Model: Sentra  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Titan  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Versa  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Nissan Model: Xterra  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Eclipse  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Eclipse Cross  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Galant  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: i  err Message: Could not locate element with visible text: I
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Lancer  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Mirage  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Outlander  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Outlander Sport  err Message: Could not locate element with visible text: OUTLANDER SPORT
+
+There was a problem selecting your 'model' for Make: Mitsubishi Model: Raider  err Message: Could not locate element with visible text: RAIDER
+
+There was a problem selecting your 'model' for Make: MINI Model: Cooper  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: MINI Model: Cooper Countryman  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: MINI Model: Cooper CoupeCooper Paceman  err Message: Could not locate element with visible text: COOPER COUPECOOPER PACEMAN
+
+There was a problem selecting your 'model' for Make: MINI Model: Electric Hardtop  err Message: Could not locate element with visible text: ELECTRIC HARDTOP
+
+There was a problem selecting your 'model' for Make: Mercury Model: Grand Marquis  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercury Model: Mariner  err Message: Could not locate element with visible text: MARINER
+
+There was a problem selecting your 'model' for Make: Mercury Model: Mariner Hybrid  err Message: Could not locate element with visible text: MARINER HYBRID
+
+There was a problem selecting your 'model' for Make: Mercury Model: Milan  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercury Model: Milan Hybrid  err Message: Could not locate element with visible text: MILAN HYBRID
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: A-Class  err Message: Could not locate element with visible text: A-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: C-Class  err Message: Could not locate element with visible text: C-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CL-Class  err Message: Could not locate element with visible text: CL-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLA-Class  err Message: Could not locate element with visible text: CLA-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: A-Class  err Message: Could not locate element with visible text: A-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: C-Class  err Message: Could not locate element with visible text: C-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CL-Class  err Message: Could not locate element with visible text: CL-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLA-Class  err Message: Could not locate element with visible text: CLA-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLK-Class  err Message: Could not locate element with visible text: CLK-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLS-Class  err Message: Could not locate element with visible text: CLS-CLASS
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: A Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: C Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CL Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLA Class  err Message: Browsing context has been discarded
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLK Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLS Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: E Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: E Class Coupe  err Message: Could not locate element with visible text: E CLASS COUPE
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: A Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: A Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: C Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CL Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLA Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLK Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: CLS Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: E Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: E Class Coupe  err Message: Could not locate element with visible text: E CLASS COUPE
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: E Class Wagon  err Message: Could not locate element with visible text: E CLASS WAGON
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: G Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GL Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GLA Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GLB Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GLC Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GLE Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GLK Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mercedes-Benz Model: GLS Class  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: B-Series  err Message: Could not locate element with visible text: B-SERIES
+
+There was a problem selecting your 'model' for Make: Mazda Model: CX-3  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: CX-5  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: CX-7  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: CX-9  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: Mazda2  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: Mazda3  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: Mazda5  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: Mazda6  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: Mazda6 Wagon  err Message: Could not locate element with visible text: MAZDA6 WAGON
+
+There was a problem selecting your 'model' for Make: Mazda Model: Mazdaspeed3  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: MX-5 Miata  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: RX-8  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Mazda Model: Tribute  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Maserati Model: GranTurismo  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Maserati Model: Levante  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Maserati Model: Quattroporte  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lotus Model: Elise  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lotus Model: Exige  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: Aviator  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: Continental  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: Corsair  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: MKC  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: MKS  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: MKT  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: MKX  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: MKZ  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: MKZ Hybrid  err Message: Could not locate element with visible text: MKZ HYBRID
+
+There was a problem selecting your 'model' for Make: Lincoln Model: Nautilus  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: Navigator  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lincoln Model: Town Car  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lexus Model: CT Hybrid  err Message: Could not locate element with visible text: CT HYBRID
+
+There was a problem selecting your 'model' for Make: Lexus Model: ES  err Message: Could not locate element with visible text: ES
+
+There was a problem selecting your 'model' for Make: Lexus Model: ES Hybrid  err Message: Could not locate element with visible text: ES HYBRID
+
+There was a problem selecting your 'model' for Make: Lexus Model: GS  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lexus Model: GS Hybrid  err Message: Could not locate element with visible text: GS HYBRID
+
+There was a problem selecting your 'model' for Make: Lexus Model: HX  err Message: Could not locate element with visible text: HX
+
+There was a problem selecting your 'model' for Make: Lexus Model: HS  err Message: Could not locate element with visible text: HS
+
+There was a problem selecting your 'model' for Make: Lexus Model: IS  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lexus Model: IS-F  err Message: Could not locate element with visible text: IS-F
+
+There was a problem selecting your 'model' for Make: Lexus Model: LC  err Message: Could not locate element with visible text: LC
+
+There was a problem selecting your 'model' for Make: Lexus Model: LFA  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lexus Model: LS  err Message: Could not locate element with visible text: LS
+
+There was a problem selecting your 'model' for Make: Lexus Model: LS Hybrid  err Message: Could not locate element with visible text: LS HYBRID
+
+There was a problem selecting your 'model' for Make: Lexus Model: LX  err Message: Could not locate element with visible text: LX
+
+There was a problem selecting your 'model' for Make: Lexus Model: NX Hybrid  err Message: Could not locate element with visible text: NX HYBRID
+
+There was a problem selecting your 'model' for Make: Lexus Model: RC  err Message: Could not locate element with visible text: RC
+
+There was a problem selecting your 'model' for Make: Lexus Model: RX 350  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lexus Model: RX Hybrid  err Message: Could not locate element with visible text: RX HYBRID
+
+There was a problem selecting your 'model' for Make: Lexus Model: SC  err Message: Could not locate element with visible text: SC
+
+There was a problem selecting your 'model' for Make: Lexus Model: UX  err Message: Could not locate element with visible text: UX
+
+There was a problem selecting your 'model' for Make: Lexus Model: UX Hybrid  err Message: Could not locate element with visible text: UX HYBRID
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Defender  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Discovery  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Discovery Sport  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: LR2  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: LR4  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Range Rover  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Range Rover Evoque  err Message: Could not locate element with visible text: RANGE ROVER EVOQUE
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Range Rover Sport  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Land Rover Model: Range Rover Velar  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lamborghini Model: Gallardo  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Lamborghini Model: Murcielago  err Message: Could not locate element with visible text: MURCIELAGO
+
+There was a problem selecting your 'model' for Make: Kia Model: Amanti  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Borrego  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Cadenza  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Carnival  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Forte  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: KS  err Message: Could not locate element with visible text: KS
+
+There was a problem selecting your 'model' for Make: Kia Model: K900  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Niro  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Optima  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Optima Hybrid  err Message: Could not locate element with visible text: OPTIMA HYBRID
+
+There was a problem selecting your 'model' for Make: Kia Model: Rio  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Rio5  err Message: Could not locate element with visible text: RIO5
+
+There was a problem selecting your 'model' for Make: Kia Model: Ronda  err Message: Could not locate element with visible text: RONDA
+
+There was a problem selecting your 'model' for Make: Kia Model: Sedona  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Seltos  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Sorento  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Sorento Hybrid  err Message: Could not locate element with visible text: SORENTO HYBRID
+
+There was a problem selecting your 'model' for Make: Kia Model: Soul  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Spectra5  err Message: Could not locate element with visible text: SPECTRA5
+
+There was a problem selecting your 'model' for Make: Kia Model: Sportage  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Stinger  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Kia Model: Telluride  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Cherokee  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Commander  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Compass  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Gladiator  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Grand Cherokee  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Grand Cherokee L  err Message: Could not locate element with visible text: GRAND CHEROKEE L
+
+There was a problem selecting your 'model' for Make: Jeep Model: Liberty  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Patriot  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jeep Model: Renegade  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: E-Pace  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: F-Pace  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: F-Type  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: I-Pace  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: X-Type Wagon  err Message: Could not locate element with visible text: X-TYPE WAGON
+
+There was a problem selecting your 'model' for Make: Jaguar Model: XE  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: XF  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: XJ  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: XJR  err Message: Could not locate element with visible text: XJR
+
+There was a problem selecting your 'model' for Make: Jaguar Model: XK  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Jaguar Model: XKR  err list index out of range
+There was a problem selecting your 'model' for Make: Isuzu Model: i-290  err Message: Could not locate element with visible text: I-290
+
+There was a problem selecting your 'model' for Make: Isuzu Model: i-370  err Message: Could not locate element with visible text: I-370
+
+There was a problem selecting your 'model' for Make: Infiniti Model: EX  err Message: Could not locate element with visible text: EX
+
+There was a problem selecting your 'model' for Make: Infiniti Model: FX  err Message: Could not locate element with visible text: FX
+
+There was a problem selecting your 'model' for Make: Infiniti Model: G37  err Message: Could not locate element with visible text: G37
+
+There was a problem selecting your 'model' for Make: Infiniti Model: JX  err Message: Could not locate element with visible text: JX
+
+There was a problem selecting your 'model' for Make: Infiniti Model: M  err Message: Could not locate element with visible text: M
+
+There was a problem selecting your 'model' for Make: Infiniti Model: M Hybrid  err Message: Could not locate element with visible text: M HYBRID
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Q40  err Message: Could not locate element with visible text: Q40
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Q50  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Q50 Hybrid  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Q60  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: Q70  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX30  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX50  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX55  err Message: Could not locate element with visible text: QX55
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX56  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX60  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX70  err Message: Could not locate element with visible text: QX70
+
+There was a problem selecting your 'model' for Make: Infiniti Model: QX80  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Accent  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Azera  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Elantra  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Elantra Hybrid  err Message: Could not locate element with visible text: ELANTRA HYBRID
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Elantra Touring  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Entourage  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Equus  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Genesis  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Genesis Coupe  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Ioniq  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Kona  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Kona EV  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Palisade  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Santa Cruz  err Message: Could not locate element with visible text: SANTA CRUZ
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Santa Fe  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Santa Fe Hybrid  err Message: Could not locate element with visible text: SANTA FE HYBRID
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Sonata  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Sonata Hybrid  err Message: Could not locate element with visible text: SONATA HYBRID
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Tiburon  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Tucson  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Tucson Hybrid  err Message: Could not locate element with visible text: TUCSON HYBRID
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Veloster  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Venue  err Message: Tried to run command without establishing a connection
+
+There was a problem selecting your 'model' for Make: Hyundai Model: Veracruz  err Message: Tried to run command without establishing a connection
+

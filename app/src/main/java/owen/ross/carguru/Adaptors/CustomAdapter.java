@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +72,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 TextView tvCarItemTitle = v.findViewById(R.id.tvCarItemTitle);
+                // Getting the Loading progress to start when you click on an element
 
                 //Create an array to split the vehicle into different pieces.
                 String[] carInfo = tvCarItemTitle.getText().toString().split(" ");
@@ -108,14 +110,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 });
 
                 Toast.makeText(view.getContext(), tvCarItemTitle.getText() , Toast.LENGTH_SHORT).show();
+                // Getting the context of FinalListOfQUestionnaire Page so we can pass the next fragment
+                // As well as set the loading sign while we wait for the db to spit the car back out.
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                ProgressBar pbLoading = activity.findViewById(R.id.pbLoadingFinalListQuestionnaire);
+                pbLoading.setVisibility(View.VISIBLE);
 
                 Fragment fragment = new SpecificVehicleInfoFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("car", (Serializable) car);
                 fragment.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,fragment).commit();
-
             }
         });
         return new ViewHolder(view);

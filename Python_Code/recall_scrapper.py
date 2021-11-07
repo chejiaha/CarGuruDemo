@@ -4,6 +4,9 @@ from typing import cast
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import time
+import vehicle_scrapper_data
+import Recall_Dict
+
 #selecting Firefox as the browser
 #in order to select Chrome 
 # webdriver.Chrome() will be used
@@ -21,12 +24,23 @@ import time
 # selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
 #Change this to a list of all makes and then put a for loop before the loop below
 
-# The list of makes
+
+# makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
+#             "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
+#             "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
+#             "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",````````````````
+#             "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+
 makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
-            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
-            "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
-            "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
-            "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Volvo",
+            "Volkswagen","Toyota","Tesla","Suzuki", "Subaru", "Smart","Scion","Saturn","Saab","RAM","Porsche",
+            "Pontiac","Polestar","Nissan","Mitsubishi","MINI","Mercury","Mercedes-Benz","Mazda","Maserati",
+            "Lotus","Lincoln","Lexus","Land Rover","Lamborghini","Kia","Jeep","Jaguar","Isuzu","Infiniti","Hyundai"]
+
+# modelList = [volvoModel,volwagenModel,toyotaModel,teslaModel,suzukiModel,subaruModel,smartModel,scionModel,saturnModel,saabModel,ramModel,porsheModel,pontiacModel,polestarModel,nissanModel,mitsubishiModel,miniModel,mercuryModel,mercedesModel,mazdaModel,mazarattiModel,lotusModel,linconModel,lexusModel,landRoverModel,lamboModel,kiaModel,jeepModel,jaguarModel,isuzuModel,infinityModel,hyundiModel]
+# yearList = [AcuraYear,AlfaRomeoYear,AstonMartinYear,AudiYear,BMWYear,BuickYear,CadillacYear,ChevroletYear,ChryslerYear,DodgeYear,FerrariYear,FIATYear,FordYear,GenesisYear,GMCYear,HondaYear,HummerYear,volvoYear,volwageYear,toyotaYear,teslaYear,suzukiYear,subaruYear,smartYear,scionYear,saturnYear,saabYear,ramYear,porsheYear,pontiacYear,polestarYear,nissanYear,mitsubishiYear,miniYear,mercuryYear,mercedesYear,mazdaYear,mazarattiYear,lotusYear,linconYear,lexusYear,landRoverYear,lamboYear,kiaYear,jeepYear,jaguarYear,isuzuYear,infinityYear,hyundiYear]
+
+
 
 #The list of each model and the years according to the model in a list
 AcuraModel = ["ILX", "ILX Hybrid", "MDX", "MDX Hybrid", "NSX", "RDX", "RL", "RLX", "TL", "TLX", "TSX", "TSX Sport Wagon", "ZDX"]
@@ -177,7 +191,8 @@ miniYear = [[2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,20
 mercuryModel = ["Grand Marquis", "Mariner", "Mariner Hybrid", "Milan", "Milan Hybrid", "Montego", "Mountaineer", "Sable"]
 mercuryYear = [[2010,2009,2008], [2010,2009,2008], [2010,2009,2008], [2010,2009,2008, 2007], [2010], [2007], [2010,2009,2008, 2007], [2008,2007]]
 
-mercedesModel = ["A-Class", "C-Class", "CL-Class", "CLA-Class", "CLK-Class", "CLS-Class", "E-Class", "E-Class Coupe", "E-Class Wagon", "G-Class", "GL-Class", "GLA-Class", "GLB-Class", "GLC-Class", "GLE-Class", "GLK-Class", "GLS-Class"]
+#Removed - in between class names
+mercedesModel = ["A Class", "C Class", "CL Class", "CLA Class", "CLK Class", "CLS Class", "E Class", "E Class Coupe", "E Class Wagon", "G Class", "GL Class", "GLA Class", "GLB Class", "GLC Class", "GLE Class", "GLK Class", "GLS Class"]
 mercedesYear = [[2021,2020,2019], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2011,2010,2009,2008], [2021,2020,2019,2018,2017,2016,2015,2014], [2009], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2011,2010], [2009,2008], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015], [2021,2020], [2021,2020,2019,2018,2017,2016], [2021,2020,2019,2018,2017,2016], [2015,2014,2013,2012,2011,2010], [2021,2020,2019,2018,2017], 
                 [2021,2020,2019,2018],[2015,2014,2013,2012,2011,2010,2009,2008,2007], [2012,2011,2010,2009,2008,2007],[2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008],[2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007],[2012,2011,2010],[2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2009,2008],[2020,2019,2018,2017], [2016,2015,2014,2013,2012,2011,2009,2008], [2012,2011,2010] ]
 
@@ -225,169 +240,328 @@ modelList = [AcuraModel ,AlfaRomeoModel, AstonMartinModel,AudiModel,BMWModel,Bui
 yearList = [AcuraYear,AlfaRomeoYear,AstonMartinYear,AudiYear,BMWYear,BuickYear,CadillacYear,ChevroletYear,ChryslerYear,DodgeYear,FerrariYear,FIATYear,FordYear,GenesisYear,GMCYear,HondaYear,HummerYear,volvoYear,volwageYear,toyotaYear,teslaYear,suzukiYear,subaruYear,smartYear,scionYear,saturnYear,saabYear,ramYear,porsheYear,pontiacYear,polestarYear,nissanYear,mitsubishiYear,miniYear,mercuryYear,mercedesYear,mazdaYear,mazarattiYear,lotusYear,linconYear,lexusYear,landRoverYear,lamboYear,kiaYear,jeepYear,jaguarYear,isuzuYear,infinityYear,hyundiYear]
 
 
-#completed by setupJson function
-car_dict = {'Acura': {'ILX': {}, 'ILX Hybrid': {}, 'MDX': {}, 'MDX Hybrid': {}, 'NSX': {}, 'RDX': {}, 'RL': {}, 'RLX': {}, 'TL': {}, 'TLX': {}, 'TSX': {}, 'TSX Sport Wagon': {}, 'ZDX': {}}, 'Alfa Romeo': {'4C': {}, 'Giulia': {}, 'Stelvio': {}}, 'Aston Martin': {'DB9': {}, 'DBS': {}, 'Vantage': {}}, 'Audi': {'A3': {}, 'A4': {}, 'A4 Allroad': {}, 'A4 Wagon': {}, 'A5': {}, 'A6': {}, 'A6 Allroad': {}, 'A6':{}, 'Wagon': {}, 'A7': {}, 'A8': {}, 'Allroad': {}, 'e-tron': {}, 'e-tron GT': {}, 'Q3': {}, 'Q5': {}, 'Q7': {}, 'Q8': {}, 'R8': {}, 'TT': {}}, 'BMW': {'1-Series': {}, '2-Series': {}, '3-Series': {}, '3-Series Hybrid': {}, '3-Series Wagon': {}, '4-Series': {}, '5-Series': {}, '5-Series Hybrid': {}, '5-Series Wagon': {}, '6-Series': {}, '7-Series': {}, '7-Series Hybrid': {}, '8-Series': {}, 'i3': {}, 'X1': {}, 'X2': {}, 'X3': {}, 'X4': {}, 'X5': {}, 'X6': {}, 'X7': {}, 'Z4': {}}, 'Buick': {'Cascada': {}, 'Enclave': {}, 'Encore': {}, 'Encore GX': {}, 'Envision': {}, 'LaCrosse': {}, 'Lucerne': {}, 'Rainier': {}, 'Regal': {}, 'Rendezvous': {}, 'Verano': {}}, 'Cadillac': {'ATS': {}, 'CT4': {}, 'CT5': {}, 'CT6': {}, 'CTS': {}, 'CTS Sport Wagon': {}, 'DTS': {}, 'ELR': {}, 'Escalade': {}, 'Escalade Hybrid': {}, 'SRX': {}, 'STS': {}, 
-'XLR': {}, 'XT4': {}, 'XT5': {}, 'XT6': {}, 'XTS': {}}, 'Chevrolet': {'Avalanche': {}, 'Aveo': {}, 'Blazer': {}, 'Bolt': {}, 'Bolt EUV': {}, 'Camaro': {}, 'Cobalt': {}, 'Colorado': {}, 'Corvette': {}, 'Cruze': {}, 'Equinox': {}, 'Express': {}, 'HHR': {}, 'Impala': {}, 'Malibu': {}, 'Malibu Hybrid': {}, 'Malibu Maxx': {}, 'Monte Carlo': {}, 'Silverado 1500': {}, 'Silverado 1500 Hybrid': {}, 'Silverado HD': {}, 'Sonic': {}, 'Spark': {}, 'SS': {}, 'Suburban': {}, 'Tahoe': {}, 'Tahoe Hybrid': {}, 'TrailBlazer': {}, 'Traverse': {}, 'Trax': {}, 'Uplander': {}, 'Volt': {}}, 'Chrysler': {'200': {}, '300': {}, 'Aspen': {}, 'Crossfire': {}, 'Pacifica': {}, 'Pacifica Hybrid': {}, 'PT Cruiser': {}, 'Sebring': {}, 'Town & Country': {}, 'Voyager': {}}, 'Dodge': {'Avenger': {}, 'Caliber': {}, 'Caravan': {}, 'Challenger': {}, 'Charger': {}, 'Dakota': {}, 'Dart': {}, 'Durango': {}, 'Grand Caravan': {}, 'Journey': {}, 'Magnum': {}, 'Nitro': {}, 'Ram 1500': {}, 'Ram HD': {}, 'Sprinter': {}, 'SRT Viper': {}, 'Viper': {}}, 'Ferrari': {'599 GTB Fiorano': {}, '612 Scaglietti': {}, 'California': {}, 'F430': {}, 'F458 Italia': {}}, 'FIAT': {'124 Spider': {}, '500': {}, '500L': {}, '500X': {}}, 'Ford': {'Bronco': {}, 'Bronco Sport': {}, 'C-Max Energi': {}, 'C-Max Hybrid': {}, 'Crown Victoria': {}, 'E-Series': {}, 'Econoline': {}, 'EcoSport': {}, 'Edge': {}, 'Escape': {}, 'Escape Hybrid': {}, 'Expedition': {}, 'Explorer': {}, 'Explorer Hybrid': {}, 'Explorer':{}, 
-'Sport Trac': {}, 'F-150': {}, 'Fiesta': {}, 'Flex': {}, 'Focus': {}, 'Focus Electric': {}, 'Fusion': {}, 'Fusion Energi': {}, 'Fusion Hubrid': {}, 'Maverick': {}, 'Mustang': {}, 'Mustang Mach-E': {}, 'Ranger': {}, 'Super Duty': {}, 'Taurus': {}, 'Taurus X': {}, 'Transit Connect': {}}, 'Genesis': {'G70': {}, 'G80': {}, 'G90': {}, 'GV70': {}, 'GV80': {}}, 'GMC': {'Acadia': {}, 'Canyon': {}, 'Envoy': {}, 'Savana': {}, 'Sierra 1500': {}, 'Sierra 1500 Hybrid': {}, 'Sierra HD': {}, 'Terrain': {}, 'Yukon': {}, 'Yukon Hybrid': {}}, 'Honda': {'Accord': {}, 'Accord Hybrid': {}, 'Accord Plug-in': {}, 'Civic': {}, 'Civic Hybrid': {}, 'Clarity': {}, 'CR-V': {}, 'CR-V Hybrid': {}, 'CR-Z': {}, 'Crosstour': {}, 'Element': {}, 'Fit': {}, 'HR-V': {}, 'Insight': {}, 'Odyssey': {}, 'Passport': {}, 'Pilot': {}, 'Ridgeline': {}, 'S2000': {}}, 'HUMMER': {'H2': {}, 'H2 SUT': {}, 'H3': {}, 'H3T': {}}, 'Hyundai': {'C30': {}, 'C70': {}, 'S40': {}, 'S60': {}, 'S80': {}, 'S90': {}, 'V50': {}, 'V60': {}, 'V70': {}, 'V90': {}, 'XC40': {}, 'XC60': {}, 'XC70': {}, 'XC90': {}}, 'Infiniti': {'Arteon': {}, 'Atlas': {}, 'Beetle': {}, 'CC': {}, 'Eos': {}, 'GLI': {}, 'Golf': {}, 'Golf SportWagen': {}, 'GTI': {}, 'ID.4': {}, 'Jetta': {}, 'Jetta Hybrid': {}, 'Jetta SportWagen': {}, 'New Beetle': {}, 'Passat': {}, 'Passat Wagon': {}, 'R32': {}, 'Rabbit': {}, 'Routan': {}, 'Taos': {}, 'Tiguan': {}, 'Touareg': {}, 'Touareg Hybrid': {}}, 'Isuzu': {'4Runner': {}, '86': {}, 'Avalon': {}, 'Avalon Hybrid': {}, 'C-HR': {}, 'Camry': {}, 'Camry Hybrid': {}, 'Camry Solara': {}, 'Corolla': {}, 'Corolla Cross': {}, 'Corolla Hybrid': {}, 'Corolla iM': {}, 'FJ Cruiser': {}, 'GR 86': {}, 'Highlander': {}, 'Highlander Hybrid': {}, 'Land Cruiser': {}, 'Matrix': {}, 'Prius': {}, 'Prius c': {}, 'Prius Plug-in': {}, 'Prius Prime': {}, 'Prius V': {}, 'RAV4': {}, 'RAV4 Hybrid': {}, 'RAV4 Prime': {}, 'Sienna': {}, 'Supra': {}, 'Tacoma': {}, 'Tundra': {}, 'Venza': {}, 'Yaris': {}, 'Yaris iA': {}}, 'Jaguar': {'Model 3': {}, 'Model S': {}, 'Model X': {}, 'Model Y': {}, 'Roadster': {}}, 'Jeep': {'Aerio': {}, 'Equator': {}, 'Grand Vitara': {}, 'Kizashi': {}, 'Reno': {}, 'SX4': {}, 'SX4 Wagon': {}, 'XL7': {}}, 'Kia': {'Ascent': {}, 'BRZ': {}, 'Crosstrek': {}, 'Crosstrek Hybrid': {}, 'Forester': {}, 'Impreza': {}, 'Impreza Wagon': {}, 'Legacy': {}, 'Outback': {}, 'Tribeca': {}, 'WRX': {}, 'XV Crosstrek': {}, 'XV Crosstrek Hybrid': {}}, 'Lamborghini': {'Fortwo': {}}, 'Land Rover': {'FR-S': {}, 'iA': {}, 'iM': {}, 'iQ': {}, 'tC': {}, 'xB': {}, 'xD': {}, '': {}}, 'Lexus': {'Astra': {}, 'Aura': {}, 'Aura Hybrid': {}, 'Ion': {}, 'Outlook': {}, 'Sky': {}, 'VUE': {}, 'VUE Hybrid': {}}, 'Lincoln': {'9-3': {}, '9-3 Wagon': {}, '9-4X': {}, '9-5': {}, '9-5 Wagon': {}, '9-7X': {}}, 'Lotus': {'1500': {}, 'Dakota': {}, 'HD': {}}, 'Maserati': {'911': {}, '911-GT3': {}, '911-Turbo': {}, 'Boxster': {}, 'Cayenne': {}, 'Cayenne Hybrid': {}, 'Cayman': {}, 'Macan': {}, 'Panamera': {}, 'Taycan': {}}, 'Mazda': {'G3': {}, 'G5': {}, 'G6': {}, 'G8': {}, 'G8-GXP': {}, 'Grand Prix': {}, 'Solstice': {}, 'Torrent': {}, 'Vibe': {}}, 'Mercedes-Benz': {'2': {}}, 'Mercury': {'350Z': {}, '370Z': {}, 'Altima': {}, 'Altima Hybrid': {}, 'Armada': {}, 'Cube': {}, 'Frontier': {}, 'GT-R': {}, 'Juke': {}, 'Kicks': {}, 'Leaf': {}, 'Maxima': {}, 'Murano': {}, 'NV': {}, 'Pathfinder': {}, 'Pathfinder Hybrid': {}, 'Quest': {}, 'Rogue': {}, 'Rogue Hybrid': {}, 'Rogue Sport': {}, 'Sentra': {}, 'Titan': {}, 'Versa': {}, 'Xterra': {}}, 'MINI': {'Eclipse': {}, 'Eclipse Cross': {}, 'Endeavor': {}, 'Galant': {}, 'i': {}, 'Lancer': {}, 'Mirage': {}, 'Outlander': {}, 'Outlander Sport': {}, 'Raider': {}}, 'Mitsubishi': {'Cooper': {}, 'Cooper Clubman': {}, 'Cooper Countryman': {}, 'Cooper CoupeCooper Paceman': {}, 'Cooper Roadster': {}, 'Electric Hardtop': {}}, 'Nissan': {'Grand Marquis': {}, 'Mariner': {}, 'Mariner Hybrid': {}, 'Milan': {}, 'Milan Hybrid': {}, 'Montego': {}, 'Mountaineer': {}, 'Sable': {}}, 'Polestar': {'A-Class': {}, 'C-Class': {}, 'CL-Class': {}, 'CLA-Class': {}, 'CLK-Class': {}, 'CLS-Class': {}, 'E-Class': {}, 'E-Class Coupe': {}, 'E-Class Wagon': {}, 'G-Class': {}, 'GL-Class': {}, 'GLA-Class': {}, 'GLB-Class': {}, 'GLC-Class': {}, 'GLE-Class': {}, 'GLK-Class': {}, 'GLS-Class': {}}, 'Pontiac': {'B-Series': {}, 'CX-3': {}, 'CX-30': {}, 'CX-5': {}, 'CX-7': {}, 'CX-9': {}, 'Mazda2': {}, 'Mazda3': {}, 'Mazda5': {}, 'Mazda6': {}, 'Mazda6 Wagon': {}, 'Mazdaspeed3': {}, 'MX-5 Miata': {}, 'RX-8': {}, 'Tribute': {}}, 'Porsche': {'GranTurismo': {}, 'Levante': {}, 'Quattroporte': {}}, 'RAM': {'Elise': {}, 'Exige': {}}, 'Saab': {'Aviator': {}, 'Continental': {}, 'Corsair': {}, 'Mark LT': {}, 'MKC': {}, 'MKS': {}, 'MKT': {}, 'MKX': {}, 'MKZ': {}, 'MKZ Hybrid': {}, 'Nautilus': {}, 'Navigator': {}, 'Town Car': {}}, 'Saturn': {'CT Hybrid': {}, 'ES': {}, 'ES Hybrid': {}, 'GS': {}, 'GS Hybrid': {}, 'HX': {}, 'HS': {}, 'IS': {}, 'IS-F': {}, 'LC': {}, 'LFA': {}, 'LS': {}, 'LS Hybrid': {}, 'LX': {}, 'NX': {}, 'NX Hybrid': {}, 'RC': {}, 'RX 350': {}, 'RX Hybrid': {}, 'SC': {}, 'UX': {}, 'UX Hybrid': {}}, 'Scion': {'Defender': {}, 'Discovery': {}, 'Discovery Sport': {}, 'LR2': {}, 'LR3': {}, 'LR4': {}, 'Range Rover': {}, 'Range Rover Evoque': {}, 'Range Rover Sport': {}, 'Range Rover Velar': {}}, 'Smart': {'Gallardo': {}, 'Murcielago': {}}, 'Subaru': {'Amanti': {}, 'Borrego': {}, 'Cadenza': {}, 'Carnival': {}, 'Forte': {}, 'KS': {}, 'K900': {}, 'Niro': {}, 'Optima': {}, 'Optima Hybrid': {}, 'Rio': {}, 'Rio5': {}, 'Ronda': {}, 'Sedona': {}, 'Seltos': {}, 'Sorento': {}, 'Sorento Hybrid': {}, 'Soul': {}, 'Spectra': {}, 'Spectra5': {}, 'Sportage': {}, 'Stinger': {}, 'Telluride': {}}, 'Suzuki': {'Cherokee': {}, 'Commander': {}, 'Compass': {}, 'Gladiator': {}, 'Grand Cherokee': {}, 'Grand Cherokee L': {}, 'Grand Wagoneer': {}, 'Liberty': {}, 'Patriot': {}, 'Renegade': {}, 'Wagoneer': {}, 'Wrangler': {}}, 'Tesla': {'E-Pace': {}, 'F-Pace': {}, 'F-Type': {}, 'I-Pace': {}, 'S-Type': {}, 'X-Type': {}, 'X-Type Wagon': {}, 'XE': {}, 'XF': {}, 'XJ': {}, 'XJR': {}, 'XK': {}, 'XKR': {}}, 'Toyota': {'Ascender': {}, 'i-290': {}, 'i-370': {}}, 'Volkswagen': {'EX': {}, 'FX': {}, 'G35': {}, 'G37': {}, 'JX': {}, 'M': {}, 'M Hybrid': {}, 'Q40': {}, 'Q50': {}, 'Q50 Hybrid': {}, 'Q60': {}, 'Q70': {}, 'QX30': {}, 'QX50': {}, 'QX55': {}, 'QX56': {}, 'QX60': {}, 'QX70': {}, 'QX80': {}}, 'Volvo': {'Accent': {}, 'Azera': {}, 'Elantra': {}, 'Elantra Hybrid': {}, 'Elantra Touring': {}, 'Entourage': {}, 'Equus': {}, 'Genesis': {}, 'Genesis Coupe': {}, 'Ioniq': {}, 'Kona': {}, 'Kona EV': {}, 'Palisade': {}, 'Santa Cruz': {}, 'Santa Fe': {}, 'Santa Fe Hybrid': {}, 'Sonata': {}, 'Sonata Hybrid': {},
-'Tiburon': {}, 'Tucson': {}, 'Tucson Hybrid': {}, 'Veloster': {}, 'Venue': {}, 'Veracruz': {}}}
 
-make = "ACURA"
-model = "ILX"
-fromYear = '2018'
-toYear = '2021'
 
-#Go through each trim and add the recalls to each of the years.
-# for make, models in car_dict.items():
-#     #debug
-#     print("make %s" % make)
-#     #print("makes %s" % models)
-#     for model, trims in models.items():
-#         #debug
-#         print("model %s" % model)
-#         for trim, years in trims.items():
-#             #debug
-#             print("trim %s" % trim)
-#             for year, desc in years.items():
 
+# make = "ACURA"
+# model = "ILX"
+# fromYear = '2018'
+# toYear = '2021'
+    
 # A Dictionary containing the recalls from each model depending on the year.
-# recallDict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
-recallDict = {}
+# recall_dict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
+recall_dict = {}
 
-# Get the make model and to and from settings
-for index, make in enumerate(makeList):      
-    #Go through the models of each make and add the models
-    # Creating the values so they are not null 
-    recallDict[make] = {}
-    for model in modelList[index]:
-        # Creating the values so they are not null
-        recallDict[make][model] = {}
-        #Years: [List of years for each model] YearList: [List of Lists of years for each model]
-        for years in yearList:
+#setting car_dict and info_dict
+car_dict = vehicle_scrapper_data.car_dict
+# {"Trim": "href for car specs information"}
+info_dict = vehicle_scrapper_data.info_dict
+#Getting recall dict
+recall_dict = Recall_Dict.recall_dict 
+
+
+def MainFunction():
+    
+    # Get the make model and to and from settings
+    for makeIndex, make in enumerate(makeList):      
+        #Go through the models of each make and add the models
+        # Creating the values so they are not null 
+        if(recall_dict.get(make) is not None):
+            continue
+        #If there is no item in recall_dict add the recalls in.
+        recall_dict[make] = {}
+        for modelIndex, model in enumerate(modelList[makeIndex]):
+            # Creating the values so they are not null
+            recall_dict[make][model] = {}
+            #Years: [List of years for each model] YearList: [List of Lists of years for each model]
             #Start the driver and start Open the browser to the link
             driver = webdriver.Firefox()
             #URL of the website 
             url = "https://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/search-recherche/menu.aspx?lang=eng"
             driver.get(url)
-            
-            #Get the select/combobox objects for make,model,toYear and fromYear using selenium
-            selectMake = Select(driver.find_element_by_id("BodyContent_DDL_Make"))
-            selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
-            selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
-            selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
-            
-            # Get the years range each model. (get the first and last year )
-            toYear = str(years[index][0])
-            fromYear = str(years[index][-1])
-            
-            # Select the make
-            selectMake.select_by_visible_text(make.upper())
-            #debug
-            #time.sleep(2)
-            # Select the model
-            selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
-            selectModel.select_by_visible_text(model.upper()) 
-            #time.sleep(2)
-            # Select the make
-            selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
-            selectFromYear.select_by_visible_text(fromYear)
-            #time.sleep(2)
-            # Select the model
-            selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
-            selectToYear.select_by_visible_text(toYear) 
-            #time.sleep(2)
-            # Search the db for recalls
-            #searchVehicleRecall = driver.find_element_by_id("BodyContent_BTN_Search").click()
-            driver.find_element_by_id("BodyContent_BTN_Search").click()
-            
-            # You are on the next Page now
-            
-            '''
-            Recalls are set this way
-            <tr class="active">
-            <th class="text-center">Recall Number</th>
-            <th class="text-center">Recall Date</th>
-            <th class="text-center">Make</th>
-            <th class="text-center">Model</th>
-            <th class="text-center">System</th>
-            <th class="text-center">Model Year(s) Affected</th>
-            </tr>
-            '''
-            #Get all recall information
-            allhtmlTR = driver.find_elements_by_tag_name("tr")
-            #Each td has 5 
-
-            for tr in (allhtmlTR):
-                if (tr.get_attribute('class') == 'active'):
-                    continue
-                elif (':' in tr.text):
-                    continue
-                else:
-                    # Go through each tr and find all td's 
-                    #trHtml = tr.get_attribute('innerHTML')
-                    tdHtml = tr.find_elements_by_tag_name("td") 
-                    
-                    recallNum = ""
-                    system = ""
-                    yearsAffected = ""
-                    
-                    # There are 6 items we need 0,4,5
-                    try:            
-                        recallNum = tdHtml[0].text
-                        system = tdHtml[4].text
-                        yearsAffected = tdHtml[5].text
-                        # Set the recalls based on the make and model.
-                    except:
-                        # One of the fields were null
-                        print("One of the fields were null")
-                    
-                    # recallDict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
-                    #debug
-                    print("recall# %s, system: %s, yearsAffected %s" % (recallNum, system, yearsAffected ))
-                    if (' ' in yearsAffected):
-                        listOfYearsAffected = yearsAffected.split()
-                        for recallYear in listOfYearsAffected:
-                            # If there is more then one year and its a list add the year to the recall 
-                            recallDict[make][model][recallYear] = {}
-                            #Get the recall number and 
-                            recallDict[make][model][recallYear][recallNum] = system
-                    else:
-                        # If there is only one year then just add it to the lsit.
-                        recallDict[make][model][yearsAffected] = {}
-                        recallDict[make][model][yearsAffected][recallNum] = system
-            #Close the driver when we are done with the recalls for a car.
-            driver.close()
-            time.sleep(3)
-        
-print("recallDict: %s" % recallDict)
-
-#2. Once we get all of the recalls and populate recallDict, Add all of the recalls to the carDict
-# For each make, model go through each of the years affected, pull the recall numbers and get the values add the values into the car dict as a list.
-
+            try:
                 
+                #Get the select/combobox objects for make,model,toYear and fromYear using selenium
+                selectMake = Select(driver.find_element_by_id("BodyContent_DDL_Make"))
+                selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+                selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+                selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+                
+                # Get the years range each model. (get the first and last year )
+                toYear = str(yearList[makeIndex][modelIndex][0])
+                fromYear = str(yearList[makeIndex][modelIndex][-1])
+                
+                # Select the make
+                try:
+                    selectMake.select_by_visible_text(make.upper())
+                except Exception as err:
+                    print(" There was a problem selecting your Make for Make%s Model %s element %s" % (make, model, err))
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    continue
                     
+                
+                #debug
+                #time.sleep(2)
+                # Select the model
+                try:
+                    selectModel = Select(driver.find_element_by_id("BodyContent_DDL_Model"))
+                    selectModel.select_by_visible_text(model.upper()) 
+                except Exception as err:
+                    print(" There was a problem selecting your Model for Make%s Model %s   element %s" % (make, model, err))
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    continue
+        #time.sleep(2)
+                try:
+                    # Select the make
+                    selectFromYear = Select(driver.find_element_by_id("BodyContent_DDL_FromYear"))
+                    selectFromYear.select_by_visible_text(fromYear)
+                except Exception as err:
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'fromYear' for Make: %s Model: %s err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    print(" There was a problem selecting your 'fromYear' for Make%s Model %s element %s" % (make, model, err))
+                    
+                    continue
+                            
+                #time.sleep(2)
+                try:
+                    # Select the model
+                    selectToYear = Select(driver.find_element_by_id("BodyContent_DDL_ToYear"))
+                    selectToYear.select_by_visible_text(toYear) 
+                except Exception as err:
+                    error_recalldict = open("Recall_Error.txt", "a")
+                    error_recalldict.write("There was a problem selecting your 'toYear' for Make: %s Model: %s  %s  err %s\n" % (make, model, err))
+                    error_recalldict.close()
+                    driver.close()
+                    print(" There was a problem selecting your 'toYear' for Make%s Model %s  %s  element %s" % (make, model, err))
+                    continue
+                #time.sleep(2)
+                # Search the db for recalls
+                #searchVehicleRecall = driver.find_element_by_id("BodyContent_BTN_Search").click()
+                driver.find_element_by_id("BodyContent_BTN_Search").click()
+                
+                # You are on the next Page now
+                
+                '''
+                Recalls are set this way
+                <tr class="active">
+                <th class="text-center">Recall Number</th>
+                <th class="text-center">Recall Date</th>
+                <th class="text-center">Make</th>
+                <th class="text-center">Model</th>
+                <th class="text-center">System</th>
+                <th class="text-center">Model Year(s) Affected</th>
+                </tr>
+                '''
+                #Get all recall information
+                allhtmlTR = driver.find_elements_by_tag_name("tr")
+                #Each td has 5 
+
+                for tr in (allhtmlTR):
+                    if (tr.get_attribute('class') == 'active'):
+                        continue
+                    elif (':' in tr.text):
+                        continue
+                    else:
+                        # Go through each tr and find all td's 
+                        #trHtml = tr.get_attribute('innerHTML')
+                        tdHtml = tr.find_elements_by_tag_name("td") 
+                        
+                        recallNum = ""
+                        system = ""
+                        yearsAffected = ""
+                        
+                        # There are 6 items we need 0,4,5
+                        try:            
+                            recallNum = tdHtml[0].text
+                            system = tdHtml[4].text
+                            yearsAffected = tdHtml[5].text
+                            # Set the recalls based on the make and model.
+                        except Exception as err:
+                            # One of the fields were null
+                            print("One of the fields were null")
+                            #TODO Append the output to a file if it failed
+                            write_cardict = open("Recall_Failed.txt", "w")
+                            write_cardict.write("%r" % (err))
+                            write_cardict.close()
+                            continue
+                        
+                        # recall_dict = {make:{model:{yearOfRecall:{recallNum: reasonForRecall }}}}
+                        #debug
+                        print("Make%s Model %s :: recall# %s, system: %s, yearsAffected %s" % (make, model, recallNum, system, yearsAffected ))
+                        #Check if there is more then one year
+                        # Model Year(s) Affected: Looks like '2013 2014 2015' or '2015'
+                        if (' ' in yearsAffected):
+                            listOfYearsAffected = yearsAffected.split()
+                            for year in listOfYearsAffected:
+                                # If there is more then one year / its a list of years go through each year and add the recalls 
+                                #recall_dict[make][model][year] = [system]
+                                #If the year dictionary is empty create one
+                                try:
+                                    if(recall_dict.get(model).get(year) is None):
+                                        recall_dict[make][model][year] = {}
+                                except:
+                                    recall_dict[make][model][year] = {}
+                                recall_dict[make][model][year][recallNum] = system
+                        else:
+                            # If there is only one year then just add it to the lsit.
+                            try:
+                                if(recall_dict.get(model).get(yearsAffected) is None):
+                                    recall_dict[make][model][yearsAffected] = {}
+                            except:
+                                recall_dict[make][model][yearsAffected] = {}
+                            recall_dict[make][model][yearsAffected][recallNum] ={}
+                            recall_dict[make][model][yearsAffected][recallNum] = system
+                    #Close the driver when we are done with the recalls for a car.
+                    driver.close()
+                    #Write to carDictFile
+                    write_cardict = open("Recall_Car_Dict.txt", "w")
+                    write_cardict.write("%r" % (recall_dict))
+                    write_cardict.close()
+                    time.sleep(3)
+                try:
+                    driver.close()
+                except:
+                    continue
+            except Exception as err:
+                print(" There was a problem selecting your Make for Make%s Model %s element %s" % (make, model, err))
+                error_recalldict = open("Recall_Error.txt", "a")
+                error_recalldict.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+                error_recalldict.close()
+    print("Finished" % car_dict)
+
+'''
+    This method is used to add One field within a list of vehicles. This method takes in 
+        item_dict: A dictionary of Make:{Model:{Year:{'whatever data':{'whatever data'}}}} (in my case recall_dict)
+    This returns car_dict with your item added in.
+    
+'''
+def addItemInCarDict(item_dict):
+    # Go through each make, model, and year in your passed list.
+    
+        for make, models in car_dict.items():
+            #debug
+            print("make %s" % make)
+            #print("makes %s" % models)
+            for model, trims in models.items():
+                for trim, years in trims.items():
+                    for year, desc in years.items():
+                        try:
+                            #Check if there is any data in the model of the car_dict. If its empty continue
+                            if(recall_dict.get(make).get(model).get(year) is None or recall_dict.get(make).get(model) == {}):
+                                print("This model was not found in Recall_dict Make: %s Model: %s trim: %s  year %s\n" % (make, model, trim,  years))
+                                addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+                                addItemInCarDict_error.write("This model was not found in Recall_dict Make: %s Model: %s trim: %s  year %s\n" % (make, model, trim,  years))
+                                addItemInCarDict_error.close()
+                                continue
+                            else:
+                                #For each trim add the recalls 
+                                # try:
+                                    #This should be 2019: {stuff}
+                                    recalls = recall_dict[make][model].get(year,None)
+                                    print(recalls)
+                                    #  This should be year: {'2019-034': 'Fuel Supply'}
+                                    for recall_num, reason in recalls.items():
+                                        try:
+                                            #now add the reason and recall number to the database.
+                                            recall = "%s %s" % (recall_num, reason)
+                                            car_dict_recalls = car_dict[make][model][trim][year].get("recalls", None)
+                                            if (car_dict_recalls):
+                                                car_dict_recalls.append(recall)
+                                                #Write the car_dict to a file for tracking of progress!
+                                                print(" Successfully added Recall for Make for Make:%s Model %s element %s" % (make, model))
+                                                car_dict_file = open("Current_Car_Dict.txt", "w")
+                                                car_dict_file.write("%r" % (car_dict))
+                                                car_dict_file.close()
+                                            else:
+                                                #Create the list of recalls and add the item in
+                                                car_dict[make][model][trim][year]["recalls"] = []
+                                                car_dict[make][model][trim][year]["recalls"].append(recall)
+                                                print(" Successfully added Recall for Make for Make:%s Model %s element %s" % (make, model, recall_num + reason))
+                                                car_dict_file = open("Current_Car_Dict.txt", "w")
+                                                car_dict_file.write("%r" % (car_dict))
+                                                car_dict_file.close()
+                                        except Exception as err:
+                                            addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+                                            addItemInCarDict_error.write("There was a problem getting vehicle for Make: %s Model: %s trim: %s  year %s\n" % (make, model, trim,  years))
+                                            addItemInCarDict_error.close()
+                                # except Exception as err:
+                                #    #No recalls for this year
+                                #     print("addItemInCarDict No recalls for Make: %s Model: %s year: %s" % (make, model, year))
+                                #     recall_error = open("Recall_Error.txt", "a")
+                                #     recall_error.write(" No recalls found for Make: %s Model: %s year: %s err %s\n" % (make, model, err))
+                                #     recall_error.close()
+                        except Exception as err:
+                            print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s \n error:%s\n" % (make,model,err))
+                        
+#Running the code to add the items into the dictionary
+addItemInCarDict(recall_dict)
+
+    
+
+# # Go through each make, model, and year in your passed list.
+#     try:
+#         for make, models in item_dict.items():
+#             #debug
+#             print("make %s" % make)
+#             #print("makes %s" % models)
+#             for model, years in models.items():
+#                 #Check if there is any data in the model of the car_dict. If its empty continue
+#                 if(car_dict.get(make).get(model) is None or car_dict.get(make).get(model) == {}):
+#                     addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+#                     addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
+#                     addItemInCarDict_error.close()
+#                     continue
+
+#                 # if(car_dict.get(make).get(model).get(years) is None or car_dict.get(make).get(model).get(years) == {}):
+#                 #     addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+#                 #     addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
+#                 #     addItemInCarDict_error.close()
+#                 #     continue
+               
+#                 #debug
+#                 print("model %s" % model)
+#                 #recall_dict == Make:{Model:{Year:{recal#:{problem},recal#:{problem}},Year:{....]}
+#                 for year, recall in years.items():
+#                     #debug
+#                     print("Year %s + recall %s" % (year,recall))
+#                     #For every recall in the year add it to the car_dict recalls list)
+#                     #Check if there is a recalls portion of the car_dict
+#                     #debug
+#                     test = car_dict.get(make).get(model).get(year)
+#                     #TODOGo through each trim in the dict and add the year in for
+#                     for trim in car_dict[make][model]:
+#                         #For each trim add the recalls 
+#                         try:
+#                             if (car_dict.get(make).get(model).get(year).get("recalls") is not None):
+#                                 #If the recalls list is already there then add the recall to the list
+#                                 car_recalls = car_dict[make][model][year].get("recalls")
+#                                 car_dict[make][model][year]["recalls"] = car_recalls + recall
+#                             # else:
+#                             #     #Create the list of recalls and add the item in
+#                             #     car_dict[make][model][year]["recalls"] = []
+#                             #     car_recalls = car_dict[make][model][year].get("recalls")
+#                             #     car_recalls.append(recall)
+#                         except Exception as err:
+#                             #Create the list of recalls and add the item in
+#                             car_dict[make][model][year]["recalls"] = []
+#                             car_recalls = car_dict[make][model][year].get("recalls")
+#                             car_dict[make][model][year]["recalls"] = car_recalls + recall
+                        
+#                             #Write the car_dict to a file for tracking of progress!
+#                             print(" Successfully added Recall: %s Make for Make:%s Model %s element %s" % (recall, make, model))
+#                             car_dict_file = open("Current_Car_Dict.txt", "w")
+#                             car_dict_file.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+#                             car_dict_file.close()
                             
                     
-
-
-
-        
-       
-            
-        
-    
-    # If it has a link, it is the recall number
-    
-    
-        
-
-# Find all elements that are <td> elements
-
-
-#select the first option in the list.
-
-#Look through the makes for Acura
-# for make in makeOptions:
-#     #Select Acura
-#     if (car in make.text):
-        #select from the combobox
+#     except Exception as err:
+#         print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s \n error:%s\n" % (make,model,err))
 

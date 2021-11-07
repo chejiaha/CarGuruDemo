@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -323,6 +324,9 @@ public class FindSpecificModelFragment extends Fragment {
         Car car = new Car();
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+            ProgressBar pbLoading = v.findViewById(R.id.pbLoadingFindSpecificModel);
+            pbLoading.setVisibility(View.VISIBLE);
+
             //Getting the users selection from the spinners
             String userMake = makeSpinner.getSelectedItem().toString();
             String userModel = modelSpinner.getSelectedItem().toString();

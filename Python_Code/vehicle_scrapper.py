@@ -96,17 +96,17 @@ INFO_dict (one car model and one year)
 '''
 
 # The list of makes
+makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
+            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Volvo",
+            "Volkswagen","Toyota","Tesla","Suzuki","Smart","Scion","Saturn","Saab","RAM","Porsche",
+            "Pontiac","Polestar","Nissan","Mitsubishi","MINI","Mercury","Mercedes-Benz","Mazda","Maserati",
+            "Lotus","Lincoln","Lexus","Land Rover","Lamborghini","Kia","Jeep","Jaguar","Isuzu","Infiniti","Hyundai"]
+
 # makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
 #             "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
 #             "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
 #             "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
 #             "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
-
-makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
-            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
-            "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
-            "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
-            "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
 
 
 #The list of each model and the years according to the model in a list
@@ -386,7 +386,7 @@ def downloadVehiclePic(make,model,year, listOfImgTag):
     except Exception as err:
       print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
       error_file = open("ImageError.txt", "a")
-      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
+      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
       error_file.close()
   else:
     print("The file is already populated.")
@@ -528,7 +528,7 @@ def getVehicleDescription (make, model, trim, year, href):
   except Exception as err:
     print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("DescriptionError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
     error_file.close()
     driver.close()
 
@@ -545,7 +545,7 @@ def getVehicleDescription (make, model, trim, year, href):
 def getTrims(make, model, year):
   try:
     makeUrl = make.replace(" ", "-")
-    modelUrl = make.replace(" ", "-")
+    modelUrl = model.replace(" ", "-")
     url = "https://cars.usnews.com/cars-trucks/%s/%s/%s/specs" % (makeUrl.lower(),modelUrl.lower(),year)
     # Creating the web Driver object
     driver = webdriver.Firefox()
@@ -612,19 +612,18 @@ def getTrims(make, model, year):
         listOfImgTag = driver.find_elements_by_tag_name('img')
         downloadVehiclePic(make,model,year, listOfImgTag)
         
-        error_file = open("info_dict.txt", "w")
-        error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s" % (make,model,trim,year))
-        error_file.close()
-    
-    
+    infodict_file = open("info_dict.txt", "w")
+    infodict_file.write("info_dict = %r" % (info_dict))
+    infodict_file.close()
     driver.close()
     print("Sleep for 3 seconds")
     time.sleep(3)
   except Exception as err:
     print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
     error_file = open("trimError.txt", "a")
-    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
     error_file.close()
+    driver.close()
 
 '''
   This method is used to get all trims from the make,model and year passed in the makeList/ModelList
@@ -648,25 +647,25 @@ def get_trims_and_pictures():
       # Uncomment this if you are running the whole thing
       #for modelIndex, model in enumerate(modelList[makeIndex]):
       modelIndex = 0
-      for item2 in range(modelIndex, len(makeList)):
+      for item2 in range(modelIndex, len(modelList[makeIndex])):
         model = modelList[makeIndex][modelIndex]
         print(model)
-        #For each model go through each year and find each cars specs
-        #yearList = [[years for model1], [years for model2]....]
-        # Uncomment this if you are running the whole thing
-        #for modelYears in yearList[index]:
-        for year in yearList[makeIndex][modelIndex]:
-          #Check if the car make&model is in the car_dict already.
-          car_item = car_dict.get(make).get(model)
-          #Check if the vehicle is already populated
-          if (car_item == None or car_item == {}):
-          # if (car_dict.get(make).get(model).get(year) == None or car_dict.get(make).get(model).get(year) == {}):
-            print(year)
-            #Go through each page and get the make model and year
-            getTrims(make, model, year)
-            time.sleep(2)
-            #debug
-            #print(car_dict)
+        #Check if the car make&model is in the car_dict already.
+        car_item = car_dict.get(make).get(model)
+        #Check if the vehicle is already populated
+        if (car_item == None or car_item == {}):
+          #For each model go through each year and find each cars specs
+          #yearList = [[years for model1], [years for model2]....]
+          # Uncomment this if you are running the whole thing
+          #for modelYears in yearList[index]:
+          for year in yearList[makeIndex][modelIndex]:
+            # if (car_dict.get(make).get(model).get(year) == None or car_dict.get(make).get(model).get(year) == {}):
+              print(year)
+              #Go through each page and get the make model and year
+              getTrims(make, model, year)
+              time.sleep(2)
+              #debug
+              #print(car_dict)
         modelIndex = modelIndex +1
       makeIndex = makeIndex +1
 
@@ -687,8 +686,9 @@ try:
             #debug
             print("trim %s" % trim)
             for year, href in years.items():
-              #Check if the car list is 
-              if()
+              #Check if the trim is populated for the dictionary
+              check_trim = car_dict.get(make).get(model).get(trim)
+              if(check_trim == {} or check_trim == None):
                 # print ("make: %s, model: %s year: %s,trim: %s, \nhref:%s" % (make,model,year,trim, href))
                 getVehicleDescription (make, model, trim, year, href)
                 print("populated info for vehicle: %s: %s: %s: %s" % (make,model,trim, year))
@@ -696,7 +696,7 @@ try:
                 print("Sleep for 2 seconds")
                 time.sleep(2)
 except Exception as err:
-  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+  print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s\n" % (make,model,trim,year,err))
 
         
 

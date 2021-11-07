@@ -91,7 +91,8 @@ public class QuestionnaireFragment extends Fragment {
     Hashtable<String, String> queryDB = new Hashtable<String, String>();
     // This Array List will hold the names of the DBField that the user selects.
     ArrayList<String> previousSpecificCategoryAnswer = new ArrayList<>();
-
+    // Creating the loading progress bar
+    ProgressBar pbLoading;
     /*
      * This Method will create the view.
      * We will get the arguments from the Previous class
@@ -111,6 +112,9 @@ public class QuestionnaireFragment extends Fragment {
         Button nextBtn = view.findViewById(R.id.BtnNextPage);
         previousBtn = view.findViewById(R.id.BtnPreviousPage);
         simpleProgressBar= view.findViewById(R.id.pbProgress);
+        // Creating the loading progress bar
+        pbLoading = view.findViewById(R.id.pbLoading);
+        //pbLoading.setVisibility(show);
 
         //Setting the progress bar up
         try {
@@ -161,6 +165,7 @@ public class QuestionnaireFragment extends Fragment {
                 }
                 // display the first question from the list of questions
                 displayQuestion(questions.getFirst());
+                pbLoading.setVisibility(View.INVISIBLE);
                 listIt = questions.listIterator();
             }
         });
