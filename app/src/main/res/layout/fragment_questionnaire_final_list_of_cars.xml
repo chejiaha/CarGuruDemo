@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,16 +13,40 @@
         android:id="@+id/tvListOfCarsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
         android:paddingBottom="30dp"
         android:text="@string/suggestion"
         android:textAlignment="center"
-        android:textColor="@color/white_text" />
+        android:textColor="@color/white_text"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVehicleList"
-        android:layout_width="match_parent"
-        android:layout_height="655dp">
+        android:layout_width="361dp"
+        android:layout_height="614dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvListOfCarsTitle">
 
     </androidx.recyclerview.widget.RecyclerView>
-</LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoadingFinalListQuestionnaire"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="161dp"
+        android:layout_height="237dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        android:indeterminateTint="@color/orange_text"
+        android:indeterminateTintMode="src_atop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvListOfCarsTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

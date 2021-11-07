@@ -14,11 +14,6 @@ import owen.ross.carguru.Models.HelperFunctions;
 import owen.ross.carguru.R;
 import owen.ross.carguru.UI.Catagories.ViewByCategoryFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuestionnaireSplashFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class QuestionnaireSplashFragment extends Fragment {
 
 
@@ -48,8 +43,9 @@ public class QuestionnaireSplashFragment extends Fragment {
         ivStartQuestionnaire = view.findViewById(R.id.ivStartQuestionnaire);
 
         //btnSearchByCategory.setOnClickListener(this::onClickToCategories);
-        ivStartQuestionnaire.setOnClickListener(onClickToCategories);
-        btnSearchByCategory.setOnClickListener(onClickFindMeACar);
+        ivStartQuestionnaire.setOnClickListener(onClickFindMeACar);
+        btnSearchByCategory.setOnClickListener(onClickToCategories);
+
 
 
 

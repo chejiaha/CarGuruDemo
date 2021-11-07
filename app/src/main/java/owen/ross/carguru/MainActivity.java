@@ -1,8 +1,11 @@
 package owen.ross.carguru;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ProgressBar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
@@ -19,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
  */
 public class MainActivity extends AppCompatActivity {
 
+    ProgressBar pbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Handler handler = new Handler();
+
 
         Intent intent = new Intent(this, HomeActivity.class);
         // Navigate to the next page after 3 seconds

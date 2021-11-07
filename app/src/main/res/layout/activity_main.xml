@@ -5,9 +5,19 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splashscreenimg"
+    android:background="@drawable/splashscreenimg">
+<!--    <ProgressBar-->
+<!--        android:id="@+id/pBar"-->
+<!--        style="?android:attr/progressBarStyleLarge"-->
+<!--        android:layout_width="105dp"-->
+<!--        android:layout_height="98dp"-->
+<!--        android:indeterminate="true"-->
+<!--        android:indeterminateTintMode="src_atop"-->
+<!--        android:indeterminateTint="@color/orange_text"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
-   >
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

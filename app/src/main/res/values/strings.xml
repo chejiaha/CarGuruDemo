@@ -8,5 +8,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="suggestion">Suggestion</string>
     <string name="search_button">Search</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Register</string>
 
 </resources>

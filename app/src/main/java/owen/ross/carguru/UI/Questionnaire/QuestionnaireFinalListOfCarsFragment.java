@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 
 import owen.ross.carguru.Callbacks.VehicleFirebaseCallback;
 import owen.ross.carguru.MainActivity;
+import owen.ross.carguru.Models.HelperFunctions;
 import owen.ross.carguru.R;
 import owen.ross.carguru.Models.Car;
 import owen.ross.carguru.Adaptors.CustomAdapter;
@@ -32,6 +34,7 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment{
     View view;
     // Recycler View containing a list of items.
     RecyclerView rvVehicleList;
+
 
     public QuestionnaireFinalListOfCarsFragment() {
         // Required empty public constructor
@@ -58,6 +61,7 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment{
         CustomAdapter customAdapter = new CustomAdapter(vehicleList);
         rvVehicleList.setAdapter(customAdapter);
         rvVehicleList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvVehicleList.setOnClickListener(startProgressBar);
 
         // If the item is clicked get the title of the car and split it into make, model, trim, and year
 //        rvVehicleList.setOnClickListener(onClickSearchVehicle);
@@ -66,6 +70,15 @@ public class QuestionnaireFinalListOfCarsFragment extends Fragment{
         return view;
     }
 
+    // To Find me a car
+    public View.OnClickListener  startProgressBar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ProgressBar pbLoading = v.findViewById(R.id.pbLoadingFinalListQuestionnaire);
+            pbLoading.setVisibility(View.VISIBLE);
+
+        }
+    };
 
     /*
      * This Method is activated when the user clicks the next question button.
