@@ -445,95 +445,123 @@ def MainFunction():
 '''
 def addItemInCarDict(item_dict):
     # Go through each make, model, and year in your passed list.
-    try:
-        for make, models in item_dict.items():
+    
+        for make, models in car_dict.items():
             #debug
             print("make %s" % make)
             #print("makes %s" % models)
-            for model, years in models.items():
-                #Check if there is any data in the model of the car_dict. If its empty continue
-                if(car_dict.get(make).get(model) is None or car_dict.get(make).get(model) == {}):
-                    addItemInCarDict_error = open("addItemInCarDict.txt", "a")
-                    addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
-                    addItemInCarDict_error.close()
-                    continue
-
-                # if(car_dict.get(make).get(model).get(years) is None or car_dict.get(make).get(model).get(years) == {}):
-                #     addItemInCarDict_error = open("addItemInCarDict.txt", "a")
-                #     addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
-                #     addItemInCarDict_error.close()
-                #     continue
-               
-                #debug
-                print("model %s" % model)
-                #recall_dict == Make:{Model:{Year:{recal#:{problem},recal#:{problem}},Year:{....]}
-                for year, recall in years.items():
-                    #debug
-                    print("Year %s + recall %s" % (year,recall))
-                    #For every recall in the year add it to the car_dict recalls list)
-                    #Check if there is a recalls portion of the car_dict
-                    #debug
-                    test = car_dict.get(make).get(model).get(year)
-                    #TODOGo through each trim in the dict and add the year in for 
-                    try:
-                        if (car_dict.get(make).get(model).get(year).get("recalls") is not None):
-                            #If the recalls list is already there then add the recall to the list
-                            car_recalls = car_dict[make][model][year].get("recalls")
-                            car_dict[make][model][year]["recalls"] = car_recalls + recall
-                        # else:
-                        #     #Create the list of recalls and add the item in
-                        #     car_dict[make][model][year]["recalls"] = []
-                        #     car_recalls = car_dict[make][model][year].get("recalls")
-                        #     car_recalls.append(recall)
-                    except Exception as err:
-                        #Create the list of recalls and add the item in
-                        car_dict[make][model][year]["recalls"] = []
-                        car_recalls = car_dict[make][model][year].get("recalls")
-                        car_dict[make][model][year]["recalls"] = car_recalls + recall
-                    
-                        #Write the car_dict to a file for tracking of progress!
-                        print(" Successfully added Recall: %s Make for Make:%s Model %s element %s" % (recall, make, model))
-                        car_dict_file = open("Current_Car_Dict.txt", "w")
-                        car_dict_file.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
-                        car_dict_file.close()
+            for model, trims in models.items():
+                for trim, years in trims.items():
+                    for year, desc in years.items():
+                        try:
+                            #Check if there is any data in the model of the car_dict. If its empty continue
+                            if(recall_dict.get(make).get(model).get(year) is None or recall_dict.get(make).get(model) == {}):
+                                print("This model was not found in Recall_dict Make: %s Model: %s trim: %s  year %s\n" % (make, model, trim,  years))
+                                addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+                                addItemInCarDict_error.write("This model was not found in Recall_dict Make: %s Model: %s trim: %s  year %s\n" % (make, model, trim,  years))
+                                addItemInCarDict_error.close()
+                                continue
+                            else:
+                                #For each trim add the recalls 
+                                # try:
+                                    #This should be 2019: {stuff}
+                                    recalls = recall_dict[make][model].get(year,None)
+                                    print(recalls)
+                                    #  This should be year: {'2019-034': 'Fuel Supply'}
+                                    for recall_num, reason in recalls.items():
+                                        try:
+                                            #now add the reason and recall number to the database.
+                                            recall = "%s %s" % (recall_num, reason)
+                                            car_dict_recalls = car_dict[make][model][trim][year].get("recalls", None)
+                                            if (car_dict_recalls):
+                                                car_dict_recalls.append(recall)
+                                                #Write the car_dict to a file for tracking of progress!
+                                                print(" Successfully added Recall for Make for Make:%s Model %s element %s" % (make, model))
+                                                car_dict_file = open("Current_Car_Dict.txt", "w")
+                                                car_dict_file.write("%r" % (car_dict))
+                                                car_dict_file.close()
+                                            else:
+                                                #Create the list of recalls and add the item in
+                                                car_dict[make][model][trim][year]["recalls"] = []
+                                                car_dict[make][model][trim][year]["recalls"].append(recall)
+                                                print(" Successfully added Recall for Make for Make:%s Model %s element %s" % (make, model, recall_num + reason))
+                                                car_dict_file = open("Current_Car_Dict.txt", "w")
+                                                car_dict_file.write("%r" % (car_dict))
+                                                car_dict_file.close()
+                                        except Exception as err:
+                                            addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+                                            addItemInCarDict_error.write("There was a problem getting vehicle for Make: %s Model: %s trim: %s  year %s\n" % (make, model, trim,  years))
+                                            addItemInCarDict_error.close()
+                                # except Exception as err:
+                                #    #No recalls for this year
+                                #     print("addItemInCarDict No recalls for Make: %s Model: %s year: %s" % (make, model, year))
+                                #     recall_error = open("Recall_Error.txt", "a")
+                                #     recall_error.write(" No recalls found for Make: %s Model: %s year: %s err %s\n" % (make, model, err))
+                                #     recall_error.close()
+                        except Exception as err:
+                            print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s \n error:%s\n" % (make,model,err))
                         
-                    
-    except Exception as err:
-        print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s \n error:%s\n" % (make,model,err))
-
 #Running the code to add the items into the dictionary
 addItemInCarDict(recall_dict)
 
     
 
-#2. Once we get all of the recalls and populate recall_dict, Add all of the recalls to the carDict
-# For each make, model go through each of the years affected, pull the recall numbers and get the values add the values into the car dict as a list.
+# # Go through each make, model, and year in your passed list.
+#     try:
+#         for make, models in item_dict.items():
+#             #debug
+#             print("make %s" % make)
+#             #print("makes %s" % models)
+#             for model, years in models.items():
+#                 #Check if there is any data in the model of the car_dict. If its empty continue
+#                 if(car_dict.get(make).get(model) is None or car_dict.get(make).get(model) == {}):
+#                     addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+#                     addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
+#                     addItemInCarDict_error.close()
+#                     continue
 
-                
-                    
+#                 # if(car_dict.get(make).get(model).get(years) is None or car_dict.get(make).get(model).get(years) == {}):
+#                 #     addItemInCarDict_error = open("addItemInCarDict.txt", "a")
+#                 #     addItemInCarDict_error.write("There was a problem selecting your 'year' for Make: %s Model: %s  year %s\n" % (make, model, years))
+#                 #     addItemInCarDict_error.close()
+#                 #     continue
+               
+#                 #debug
+#                 print("model %s" % model)
+#                 #recall_dict == Make:{Model:{Year:{recal#:{problem},recal#:{problem}},Year:{....]}
+#                 for year, recall in years.items():
+#                     #debug
+#                     print("Year %s + recall %s" % (year,recall))
+#                     #For every recall in the year add it to the car_dict recalls list)
+#                     #Check if there is a recalls portion of the car_dict
+#                     #debug
+#                     test = car_dict.get(make).get(model).get(year)
+#                     #TODOGo through each trim in the dict and add the year in for
+#                     for trim in car_dict[make][model]:
+#                         #For each trim add the recalls 
+#                         try:
+#                             if (car_dict.get(make).get(model).get(year).get("recalls") is not None):
+#                                 #If the recalls list is already there then add the recall to the list
+#                                 car_recalls = car_dict[make][model][year].get("recalls")
+#                                 car_dict[make][model][year]["recalls"] = car_recalls + recall
+#                             # else:
+#                             #     #Create the list of recalls and add the item in
+#                             #     car_dict[make][model][year]["recalls"] = []
+#                             #     car_recalls = car_dict[make][model][year].get("recalls")
+#                             #     car_recalls.append(recall)
+#                         except Exception as err:
+#                             #Create the list of recalls and add the item in
+#                             car_dict[make][model][year]["recalls"] = []
+#                             car_recalls = car_dict[make][model][year].get("recalls")
+#                             car_dict[make][model][year]["recalls"] = car_recalls + recall
+                        
+#                             #Write the car_dict to a file for tracking of progress!
+#                             print(" Successfully added Recall: %s Make for Make:%s Model %s element %s" % (recall, make, model))
+#                             car_dict_file = open("Current_Car_Dict.txt", "w")
+#                             car_dict_file.write("There was a problem selecting your 'model' for Make: %s Model: %s  err %s\n" % (make, model, err))
+#                             car_dict_file.close()
                             
                     
-
-
-
-        
-       
-            
-        
-    
-    # If it has a link, it is the recall number
-    
-    
-        
-
-# Find all elements that are <td> elements
-
-
-#select the first option in the list.
-
-#Look through the makes for Acura
-# for make in makeOptions:
-#     #Select Acura
-#     if (car in make.text):
-        #select from the combobox
+#     except Exception as err:
+#         print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s \n error:%s\n" % (make,model,err))
 
