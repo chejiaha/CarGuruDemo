@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
     }
 
     // To Find me a car
-    public View.OnClickListener  onClickFindMeACar = new View.OnClickListener() {
+    public View.OnClickListener onClickFindMeACar = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //TODO Questionnaire fragment
@@ -85,30 +85,30 @@ public class HomeFragment extends Fragment {
         }
     };
     // Find a specific Model
-    public View.OnClickListener  onClickToSpecificModel = new View.OnClickListener() {
+    public View.OnClickListener onClickToSpecificModel = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Fragment findSpecificModelFragment = new FindSpecificModelFragment();
-            HelperFunctions.switchFragments(getActivity(),findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(), findSpecificModelFragment, R.id.nav_host_fragment, new Bundle());
 
         }
     };
 
     // Browse By Category Link
-    public View.OnClickListener  onClickToCategories = new View.OnClickListener() {
+    public View.OnClickListener onClickToCategories = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Fragment viewByCategoryFragment = new ViewByCategoryFragment();
-            HelperFunctions.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(), viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
     // Car News Link
-    public View.OnClickListener  onClickToNews = new View.OnClickListener() {
+    public View.OnClickListener onClickToNews = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Fragment articleFragment= new ArticleFragment();
-            switchFragments(articleFragment, R.id.nav_host_fragment, new Bundle());
+            Fragment articleFragment = new ArticleFragment();
+            HelperFunctions.switchFragments(getActivity(), articleFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
@@ -118,37 +118,19 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             // Send them to Settings Fragment
             Fragment viewByCategoryFragment = new SettingFragment();
-            HelperFunctions.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(), viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
 
     // To Garage Page
-    public View.OnClickListener  onClickToMyGarage = new View.OnClickListener() {
+    public View.OnClickListener onClickToMyGarage = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             // Send them to Garage Fragment
             Fragment viewByCategoryFragment = new GarageSpashFragment();
-            HelperFunctions.switchFragments(getActivity(),viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
+            HelperFunctions.switchFragments(getActivity(), viewByCategoryFragment, R.id.nav_host_fragment, new Bundle());
         }
     };
-
-    //TODO Move this method out of this class.
-    public void switchFragments (Fragment fragmentName,  int idOfNavHostUI, Bundle bundle){
-        //If the bundle is not empty add the argument
-        if (bundle.isEmpty() == false){
-            fragmentName.setArguments(bundle);
-        }
-        // If idOfNavHostUI is null, then set it to the navigation_host_fragment
-        idOfNavHostUI = idOfNavHostUI != 0 ? idOfNavHostUI : R.id.nav_host_fragment;
-
-        // Create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-        // Create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        // Replace the FrameLayout specifying the navigation layout ID and the new Fragment
-        fragmentTransaction.replace(idOfNavHostUI, fragmentName);
-        fragmentTransaction.commit(); // save the changes
-    }
 
 
 
