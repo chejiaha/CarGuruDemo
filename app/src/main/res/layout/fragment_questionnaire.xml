@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".UI.Questionnaire.QuestionnaireFragment"
     android:id="@+id/navigation_questionnaire"
-    android:background="@color/grey_background">
+    android:background="@drawable/questionnairepageimg">
 
     <ProgressBar
         android:id="@+id/pbProgress"
@@ -19,6 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvQuestionProgressCompleted"
         />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="161dp"
+        android:layout_height="237dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/orange_text"
+        android:indeterminateTintMode="src_atop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvQuestionProgressCompleted"
@@ -34,13 +47,13 @@
         android:id="@+id/tvQuestionChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="Please Choose One"
+        android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivQuestionImage"
-        android:textColor="@color/orange_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivQuestionImage" />
 
     <TextView
         android:id="@+id/tvQuestion"
