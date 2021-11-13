@@ -17,3 +17,20 @@ Your Vehicle had an issue while getting Trim.  Make:Audi, Model:A6 Wagon, Trim:4
 Your Vehicle had an issue while getting Trim.  Make:Audi, Model:A6 Wagon, Trim:4dr Avant Wgn quattro 3.0T Premium *Ltd Avail*, Year:2011 error:'A6 Wagon'
 Your Vehicle had an issue while getting Trim.  Make:Audi, Model:A6 Wagon, Trim:4dr Avant Wgn quattro 3.0T Premium, Year:2010 error:'A6 Wagon'
 Your Vehicle had an issue while getting Trim.  Make:Audi, Model:A6 Wagon, Trim:4dr Avant Wgn 3.0L quattro Premium, Year:2009 error:'A6 Wagon'
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort, Year:2015 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort, Year:2014 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort SULEV, Year:2013 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort SULEV, Year:2012 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Manual Komfort SULEV, Year:2011 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Manual Komfort, Year:2010 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Man Komfort, Year:2009 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Man Turbo, Year:2008 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Convertible Manual, Year:2007 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort, Year:2015 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort, Year:2014 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort SULEV, Year:2013 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort SULEV, Year:2012 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Manual Komfort SULEV, Year:2011 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Manual Komfort, Year:2010 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Man Komfort, Year:2009 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort, Year:2015 error:name 'trim' is not defined
