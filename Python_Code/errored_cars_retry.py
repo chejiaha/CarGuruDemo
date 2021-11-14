@@ -1,41 +1,148 @@
-import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import requests
 import shutil # save img locally
+#C:\Users\luka1\AppData\Local\Programs\Python\Python39\Lib
+import vehicle_scrapper_data
+#Loading manually entered data for all make's, year's and models.
+import car_make_year_data
+#checking if the picture is already in the picture folder.
+import os
 
-car_dict = {'Volkswagen':{'Eos': {}, 'GLI': {}, 'Golf': {}, 'Golf SportWagen': {}, 'GTI': {}, 'ID.4': {}, 'Jetta': {}, 'Jetta Hybrid': {}, 'Jetta SportWagen': {}, 'New Beetle': {}, 'Passat': {}, 'Passat Wagon': {}, 'R32': {}, 'Rabbit': {}, 'Routan': {}, 'Taos': {}, 'Tiguan': {}, 'Touareg': {}, 'Touareg Hybrid': {}}, 
-            "Toyota":{ "C-HR": {}, "Camry": {}, "Camry Hybrid": {}, "Camry Solara": {}, "Corolla": {}, "Corolla Cross": {}, "Corolla Hybrid": {}, "Corolla iM": {}, "FJ Cruiser": {}, "GR 86": {}, "Highlander": {}, "Highlander Hybrid": {}, "Land Cruiser": {}, "Matrix": {},  "Prius Prime": {}},
-            "Volvo":{"S80": {}, "S90": {}, "V50": {}, "V60": {}, "V70": {}, "V90": {}, "XC40": {}, "XC60": {}, "XC70": {}, "XC90": {}},
-            "Infinity":{"ex": {}, "fx": {}, "g35": {}, "g37": {}, "jx": {}, "m": {}, "m-hybrid": {}, "m40": {}, "q50": {}, "q50 hybrid": {}, "Q60": {}, "Q70": {}, "qx30": {}, "qx50": {}, "qx55": {}, "qx56": {}, "qx60": {}, "qx70": {}, "qx80": {}},
-            'Smart': {'Fortwo': {}}}
-info_dict = {'Volkswagen':{'Eos': {}, 'GLI': {}, 'Golf': {}, 'Golf SportWagen': {}, 'GTI': {}, 'ID.4': {}, 'Jetta': {}, 'Jetta Hybrid': {}, 'Jetta SportWagen': {}, 'New Beetle': {}, 'Passat': {}, 'Passat Wagon': {}, 'R32': {}, 'Rabbit': {}, 'Routan': {}, 'Taos': {}, 'Tiguan': {}, 'Touareg': {}, 'Touareg Hybrid': {}}, 
-            "Toyota":{ "C-HR": {}, "Camry": {}, "Camry Hybrid": {}, "Camry Solara": {}, "Corolla": {}, "Corolla Cross": {}, "Corolla Hybrid": {}, "Corolla iM": {}, "FJ Cruiser": {}, "GR 86": {}, "Highlander": {}, "Highlander Hybrid": {}, "Land Cruiser": {}, "Matrix": {},  "Prius Prime": {}},
-            "Volvo":{"S80": {}, "S90": {}, "V50": {}, "V60": {}, "V70": {}, "V90": {}, "XC40": {}, "XC60": {}, "XC70": {}, "XC90": {}},
-            "Infinity":{"ex": {}, "fx": {}, "g35": {}, "g37": {}, "jx": {}, "m": {}, "m-hybrid": {}, "m40": {}, "q50": {}, "q50 hybrid": {}, "Q60": {}, "Q70": {}, "qx30": {}, "qx50": {}, "qx55": {}, "qx56": {}, "qx60": {}, "qx70": {}, "qx80": {}},
-            'Smart': {'Fortwo': {}}}
+# A dict to hold all trim's and the links 
+car_dict = {}
+# {"Trim": "href for car specs information"}
+info_dict = {}
+# The make of the vehicle
+make = ""
+# The Model of the vehicle
+model = ""
+# The Year of the vehicle
+year = ""
+# The Trim of the vehicle
+trim = ""
 
-volwagenModel = ["Eos", "GLI", "Golf", "Golf SportWagen", "GTI", "ID.4", "Jetta", "Jetta Hybrid", "Jetta SportWagen", "New Beetle", "Passat", "Passat Wagon", "R32", "Rabbit", "Routan", "Taos", "Tiguan", "Touareg", "Touareg Hybrid"]
-volwageYear = [[2015,2014,2013,2012,2011,2010,2009,2008,2007], [2009], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010],  [2019,2018,2017,2016,2015], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2014,2013], [2014,2013,2012,2011,2010,2009], [2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2008],  [2009,2008,2007], [2012,2011,2010,2009,2008,2007], [2022], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009], [2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2014,2013,2012]]
+#setting car_dict and info_dict
+car_dict = vehicle_scrapper_data.car_dict
+# {"Trim": "href for car specs information"}
+info_dict = vehicle_scrapper_data.info_dict
 
-toyotaModel = [ "C-HR", "Camry", "Camry Hybrid", "Camry Solara", "Corolla", "Corolla Cross", "Corolla Hybrid", "Corolla iM", "FJ Cruiser", "GR 86", "Highlander", "Highlander Hybrid", "Land Cruiser", "Matrix", "Prius Prime"]
-toyotaYear = [[2021,2020,2019,2018], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2022], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020], [2018,2017], [2014,2013,2012,2011,2010,2009,2008,2007], [2022], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2013,2012,2011,2010,2009,2008,2007], 
-               [2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007], [2021,2020,2019,2018,2017]]
+# Creating the web Driver object
+#driver = webdriver.Firefox()
 
-infinityModel = ["EX", "FX", "G35", "G37", "JX", "M", "M Hybrid", "Q40", "Q50", "Q50 Hybrid", "Q60", "Q70", "QX30", "QX50", "QX55", "QX56", "QX60", "QX70", "QX80"]
-infinityYear = [[2013,2012,2011,2010,2009,2008], [2013,2012,2011,2010,2009,2008,2007], [2008,2007],  [2013,2012,2011,2010,2009,2008], [2013],  [2013,2012,2011,2010,2009,2008,2007], [2013,2012], [2015],  [2021,2020,2019,2018,2017,2016,2015,2014], [2015,2014], [2021,2020,2019,2018,2017,2016,2015,2014],  [2019,2018,2017,2016,2015,2014], [2019,2018,2017], [2021,2020,2019,2018,2017,2016,2015,2014], [2022], [2013,2012,2011,2010,2009,2008,2007], [2020,2019,2018,2017,2016,2015,2014], [2017,2016,2015,2014], [2021,2020,2019,2018,2017,2016,2015,2014], ]
+# # driver.get("https://cars.usnews.com/cars-trucks/ford/focus/2014/")
+# driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semester5/PythonScripts/WebScrappers/test.html")
 
-smartModel = ["Fortwo"]
-smartYear = [[2017,2016,2015,2014,2013,2012,2011,2010,2009,2008]]
-
-makeList = ["Volkswagen","Volvo","Toyota","Smart","Infiniti"]
-
-modelList = [volwagenModel,toyotaModel, infinityModel, smartModel]
-yearList = [volwageYear, toyotaYear, infinityYear, smartYear]
+#driver.get("https://cars.usnews.com/cars-trucks/ford/focus/2014/specs")
+#driver.get("file:///D:/Sheridan%202021%20Semester%205/Capstone%20Prototype/Semester5/PythonScripts/WebScrappers/test2.html")
 
 
+'''
+"BMW" : {
+      "3-series" : {
+        "320i" : {
+          "2016" : {
+            "Category" : "Commuter",
+            "CommonProblems" : [ "Left Light Fails", "Blinker Stops Working" ],
+            "Convertible" : "Both",
+            "Cylinders" : 4,
+            "Description" : "A commuter car that is from 2016",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "GroundClearance" : 5,
+            "Horsepower" : 210,
+            "MPG" : 30,
+            "Price" : 11000,
+            "Recalls" : [ "R1", "R2", "R3" ],
+            "Seats" : 5,
+            "Torque ft-lb" : 200,
+            "Weight" : 3510
+          },
+          "2017" : {
+            "Cylinders" : 4,
+            "Description" : "BMW 320 A quicker commuter car from 2016",
+            "Doors" : 4,
+            "Drivetrain" : "AWD",
+            "EV" : "No",
+            "Engine" : 2,
+            "Horsepower" : 210,
+            "MPG" : 28,
+            "Price" : 13000,
+            "Seats" : 5,
+            "Torque ft-lb" : 200,
+            "Weight" : 3541
+          }
+        },
+    }
+}
 
+
+INFO_dict (one car model and one year)
+{'BMW': {'5-Series': {'4dr Sdn 528i': {'2016': {}}, '4dr Sdn 320i RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379533'},
+'4dr Sdn 320i xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379532'},
+'4dr Sdn 328i RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379804'},
+'4dr Sdn 328d RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379808'},
+'4dr Sdn 328d xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379809'},
+'4dr Sports Wgn 328i xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sports-wagon-379807'},
+'4dr Sdn 330e Plug-In Hybrid RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-382983'},
+'4dr Sports Wgn 328d xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sports-wagon-379810'},
+'4dr Sdn 340i RWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379811'}, 
+'4dr Sdn 340i xDrive AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-sedan-379813'}, 
+'5dr 335i xDrive Gran Turismo AWD': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-wagon-379766'},
+'M3 4dr Sdn': {'2016': 'http://127.0.0.1:5500/cars-trucks/bmw/3-series/2016/specs/3-series-m3-sedan-379326'}}
+}}
+
+'''
+
+
+makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
+            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
+            "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
+            "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
+            "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+
+modelList = [["HD"], car_make_year_data.saabModel, car_make_year_data.saturnModel, car_make_year_data.scionModel, car_make_year_data.smartModel, car_make_year_data.subaruModel, car_make_year_data.suzukiModel, car_make_year_data.teslaModel, car_make_year_data.toyotaModel, car_make_year_data.volwagenModel, car_make_year_data.volvoModel]
+yearList = [[[2012,2011]], car_make_year_data.saabYear, car_make_year_data.saturnYear, car_make_year_data.scionYear, car_make_year_data.smartYear, car_make_year_data.subaruYear, car_make_year_data.suzukiYear, car_make_year_data.teslaYear, car_make_year_data.toyotaYear, car_make_year_data.volwageYear, car_make_year_data.volvoYear]
+
+
+'''
+  This method is created to populate car_dict & info_dict
+  This takes each make and model and puts creates a dictionary inside of each one.
+  
+  This function will populate the dictionary you pass in our case 'dictionary'.
+  The function will create the make and models as empty key/values based on the lists above
+  This function is used to create the base dictionary = {make1:{model1:{}, model2:{}...}} dictionary. 
+    
+  {'Acura': {'ILX': {}, 'ILX Hybrid': {}, 'MDX': {}..}, 'BMW': {'5-series':{},.....}
+  
+  returns dictionary
+'''
+def setupJson (dictionary):
+  #Setting up the initial Json
+  for index, make in enumerate(makeList):
+      # Create the json
+      dictionary[make] = {}
+      
+      #debug
+      #print("make : %s " % make)
+        
+      #Go through the models of each make and add the models
+      #modelList is a list that contains the list of models of each make (makeList)[acuraModels]
+      for model in modelList[index]:
+        #debug
+        #print("model : %s " % model)
+        dictionary[make][model] = {}
+  return dictionary
+
+#Setting up Dictionaries
+# car_dict = setupJson(car_dict)
+# info_dict = setupJson(info_dict)
+
+car_dict = 
+info_dict =
 
 def downloadVehiclePic(make,model,year, listOfImgTag):
   #Check if the file is already downloaded
@@ -81,9 +188,9 @@ def downloadVehiclePic(make,model,year, listOfImgTag):
               print('Image Couldn\'t be retrieved')
           break
     except Exception as err:
-      print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s, Year:%s \n error:%s" % (make,model,year,err))
+      print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s,  Year:%s \n error:%s" % (make,model,year,err))
       error_file = open("ImageError.txt", "a")
-      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Year:%s error:%s\n" % (make,model,year,err))
+      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s,Year:%s error:%s\n" % (make,model,year,err))
       error_file.close()
   else:
     print("The file is already populated.")
@@ -140,53 +247,89 @@ def getVehicleDescription (make, model, trim, year, href):
           split_mpg = item.text.split("/")
           # Splitting the city and higway mpg
           city_mpg = split_mpg[0][5:7]
+          int_city = int(city_mpg.strip())
           highway_mpg = split_mpg[1][1:3]
-          car_dict[make][model][trim][year]["City_MPG"] = city_mpg
-          car_dict[make][model][trim][year]["Highway_MPG"] = highway_mpg
+          int_highway = int(highway_mpg.strip())
+          car_dict[make][model][trim][year]["City_MPG"] = int_city
+          car_dict[make][model][trim][year]["Highway_MPG"] = int_highway
+      #Since this did not get the MPG all the time for some reason get it using other value just incase
+      #EPA Fuel Economy Est - Hwy (MPG): 21 (2021)
+      elif ("Hwy (MPG)" in item_html):
+        split_item = item.split(":")
+        mpg = split_item[1][1:-7]
+        int_item = int(mpg.strip())
+        car_dict[make][model][trim][year]["Highway_MPG"] = int_item
+      #EPA Fuel Economy Est - City (MPG): 15 (2021)
+      elif ("City (MPG)" in item_html):
+        split_item = item.split(":")
+        mpg = split_item[1][1:-7]
+        int_item = int(mpg.strip())
+        car_dict[make][model][trim][year]["City_MPG"] = int_item
       elif ("Horsepower" in item_html):
-          #Horsepower (Net @ RPM): 600 @ 6000
-          car_dict[make][model][trim][year]["Horsepower"] = item.text[22:-7]
+        #Horsepower (Net @ RPM): 600 @ 6000
+        int_item = int(item.text[22:-7].strip())
+        car_dict[make][model][trim][year]["Horsepower"] = item.text[22:-7]
       elif ("Engine Type" in item_html):
-          #Engine Type: Twin Turbo Premium Unleaded V-8
-          car_dict[make][model][trim][year]["Engine"] = item.text[13:]
+        #Engine Type: Twin Turbo Premium Unleaded V-8
+        car_dict[make][model][trim][year]["Engine"] = item.text[13:]
+      #Passenger Capacity: 5
       elif ("Passenger Capacity" in item_html):
-          car_dict[make][model][trim][year]["Seats"] = item.text[20:]
+        #Converting the item into an int.
+        int_item = int(item.text[20:].strip())
+        car_dict[make][model][trim][year]["Seats"] = item.text[20:]
+      #8 Cylinder Engine
+      # Julie you can parse the first letter for the category algorithm
       elif ("Cylinders" in item_html):
-          car_dict[make][model][trim][year]["Cylinders"] = item.text[:1]
+        split_item = item_html.split(" ")
+        car_dict[make][model][trim][year]["Cylinders"] = split_item[0]
       elif ("Torque" in item_html):
-          #Torque (Net @ RPM): 553 @ 1800
-          car_dict[make][model][trim][year]["Torque"] = item.text[18:-7]
+        #Torque (Net @ RPM): 553 @ 1800
+        #Converting the item into an int.
+        int_item = int(item.text[18:-7].strip())
+        car_dict[make][model][trim][year]["Torque"] = item.text[18:-7]
       elif ("Body Style" in item_html):
-          # Body Style: Sedan
-          car_dict[make][model][trim][year]["Type"] = item.text[12:]
+        # Body Style: Sedan
+        car_dict[make][model][trim][year]["Type"] = item.text[12:]
       elif ("All Wheel Drive" in item_html):
-          car_dict[make][model][trim][year]["DriveTrain"] = "AWD"
+        car_dict[make][model][trim][year]["DriveTrain"] = "AWD"
       elif ("Front Wheel Drive" in item_html):
-          car_dict[make][model][trim][year]["DriveTrain"] = "FWD"
+        car_dict[make][model][trim][year]["DriveTrain"] = "FWD"
       elif ("Rear Wheel Drive" in item_html):
-          car_dict[make][model][trim][year]["DriveTrain"] = "RWD"
+        car_dict[make][model][trim][year]["DriveTrain"] = "RWD"
       #Base Curb Weight (lbs.): 2456
       elif ("Base Curb Weight (lbs.):" in item_html):
-          car_dict[make][model][trim][year]["Weight"] = item.text[25:]
+        #Converting the item into an int.
+        int_item = int(item.text[25:].strip())
+        car_dict[make][model][trim][year]["Weight"] = item.text[25:]
       #TODO Trunk Volume (cu. ft.): 14 OR Cargo Volume (cu. ft.): 57.5
       elif ("Trunk Volume" in item_html or "Cargo Volume" in item_html):
-          car_dict[make][model][trim][year]["CargoVolume"] = item.text[24:]
+        #Converting the item into an int.
+        int_item = int(item.text[24:].strip())
+        car_dict[make][model][trim][year]["CargoVolume"] = item.text[24:]
       #Transmission: Manual
       #Transmission: Automatic w/OD
       elif ("Transmission:" in item_html):
-          car_dict[make][model][trim][year]["Transmission"] = item.text[14:]
+        car_dict[make][model][trim][year]["Transmission"] = item.text[14:]
       #Height, Overall (in.): 74.6
       elif ("Height" in item_html):
-          car_dict[make][model][trim][year]["Height"] = item.text[23:]
+        #Converting the item into an int.
+        int_item = int(item.text[23:].strip())
+        car_dict[make][model][trim][year]["Height"] = item.text[23:]
       #Length, Overall (in.): 196.4
       elif ("Length" in item_html):
-          car_dict[make][model][trim][year]["Length"] = item.text[23:]
+        #Converting the item into an int.
+        int_item = int(item.text[23:].strip())
+        car_dict[make][model][trim][year]["Length"] = int_item
       #Width, Max w/o mirrors (in.): 74.9
       elif ("Width" in item_html):
-          car_dict[make][model][trim][year]["Width"] = item.text[30:]
+        #Converting the item into an int.
+        int_item = int(item.text[30:].strip())
+        car_dict[make][model][trim][year]["Width"] = int_item
       #Wheelbase (in.): 117.4
       elif ("Wheelbase" in item_html):
-        car_dict[make][model][trim][year]["Wheelbase"] = item.text[17:]
+        #Converting the item into an int.
+        int_item = int(item.text[17:].strip())
+        car_dict[make][model][trim][year]["Wheelbase"] = int_item
       #Leather Seats
       elif ("Leather Seats" in item_html):
         doIhaveLeatherSeats = True
@@ -196,6 +339,9 @@ def getVehicleDescription (make, model, trim, year, href):
       #Premium Sound System (used for luxury cars)
       elif ("Premium Sound System" in item_html):
         car_dict[make][model][trim][year]["PremiumSoundSystem"] = "True"
+      #Get the engine Displacement (Displacement: 1.4L/83)
+      elif ("Displacement" in item_html):
+        car_dict[make][model][trim][year]["PremiumSoundSystem"] = item.text[14:18]
       else:
           continue
     # Check if the car has leather seats.
@@ -223,21 +369,32 @@ def getVehicleDescription (make, model, trim, year, href):
     print("Sleep for 1 seconds")
     time.sleep(1)
   except Exception as err:
-    print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+    print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Year:%s \n error:%s" % (make,model,year,err))
     error_file = open("DescriptionError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Year:%s error:%s\n" % (make,model,year,err))
     error_file.close()
     driver.close()
-
-  
   
 
 '''
   This method is used to get the list of trims from each vehicle.
   This method will also populate the avg price and msrp price of vehicles in car_dict.
   
-  This function populates the car_dict and adds the trim of each vehicle
-  This function populates the info_dict and adds the hrefs to each trim.
+  This function populates the info_dict and adds the trim, year for each vehicle
+  This function populates the car_dict and adds the trim of each vehicle 
+  Each vehicle's trim must be checked for 
+    -  '.'   = !
+    -  '[ ]' = ( ) 
+    -  '#'   = ''
+    -  '/'   = ?
+    
+  This function populates the info_dict more adding the hrefs to each trim depending on the year
+  This function populates the car_dict more by adding the average cost and msrp into it
+   
+  info_dict {make:{model:{year:{urlToWebsite}}}}
+  car_dict {make:{model:{year:{cost:'price', msrp:'price' }}}}
+
+  This function returns nothing, but modifies the car_dict, info_dict and downloads a photo for each vehilce based on make,model and year.
 '''
 def getTrims(make, model, year):
   try:
@@ -277,12 +434,27 @@ def getTrims(make, model, year):
         trim = a_tags.get_attribute('innerHTML').strip()
         html_link = a_tags.get_attribute('href')
         
-        #Create the trim and the specific year that we are looking at.
-        car_dict[make][model][trim] = {}
-        car_dict[make][model][trim][year] = {}
+        #Due to the Firebase not allowing certain characters in keys. So we have to convert them into specific characters that work.
+        #Replacing periods in trim
+        trim = trim.replace(".","!")
+        #Replacing # in trim with ''
+        trim = trim.replace("#","")
+        #Replacing [ or ] with  in trim
+        trim = trim.replace("[","(")
+        trim = trim.replace("]",")")
+        #Replace / with ? in trim
+        trim = trim.replace("/","?")   
         
-        info_dict[make][model][trim] = {}
-        info_dict[make][model][trim][year] = {}
+        #Create the trim and the specific year that we are looking at.
+        if(car_dict.get(make).get(model).get(trim) is None):
+          car_dict[make][model][trim] = {}
+        if (car_dict.get(make).get(model).get(trim).get(year) is None):
+          car_dict[make][model][trim][year] = {}
+        
+        if(info_dict.get(make).get(model).get(trim) is None):
+          info_dict[make][model][trim] = {}
+        if (info_dict.get(make).get(model).get(trim).get(year) is None):
+          info_dict[make][model][trim][year] = {}
         
         # Put them in the dict to be individually 
         info_dict[make][model][trim][year] = html_link
@@ -290,15 +462,16 @@ def getTrims(make, model, year):
         #Adding the price to the trim
         spec_text = price_spec_html[index].text
         #Avg Paid: $20,368
-        if ("Avg Paid" in spec_text):
-            avg_cost = spec_text[10:]
+        if ("Avg Paid" in spec_text or "Average Price" in spec_text):
+            avg_cost = int(spec_text.split(":")[1].replace(",","").replace("$","").strip())
             car_dict[make][model][trim][year]["Cost"] = avg_cost
+            
             # If the average is in the output, the msrp is also there so we have to add one to the index to get MSRP of the same car. 
             index = index +1
             spec_text = price_spec_html[index].text
             #MSRP: $33,150
         if ("MSRP" in spec_text):
-            msrp = spec_text[6:]
+            msrp = int(spec_text.split(":")[1].replace(",","").replace("$","").strip())
             car_dict[make][model][trim][year]["MSRP"] = msrp
         index = index + 1
         #debug
@@ -316,9 +489,9 @@ def getTrims(make, model, year):
     print("Sleep for 3 seconds")
     time.sleep(3)
   except Exception as err:
-    print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+    print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Year:%s \n error:%s" % (make,model,year,err))
     error_file = open("trimError.txt", "a")
-    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s,  Year:%s error:%s\n" % (make,model,year,err))
     error_file.close()
     driver.close()
 
@@ -346,28 +519,21 @@ def get_trims_and_pictures():
         model = modelList[makeIndex][modelIndex]
         print(model)
         #Check if the car make&model is in the car_dict already.
-        car_item = car_dict.get(make).get(model)
+        car_item = info_dict.get(make).get(model)
         #Check if the vehicle is already populated
         if (car_item == None or car_item == {}):
-          #For each model go through each year and find each cars specs
+          #For each model go through each year and find each cars trims
           #yearList = [[years for model1], [years for model2]....]
-          # Uncomment this if you are running the whole thing
-          #for modelYears in yearList[index]:
           for year in yearList[makeIndex][modelIndex]:
-            # if (car_dict.get(make).get(model).get(year) == None or car_dict.get(make).get(model).get(year) == {}):
+            if (info_dict.get(make).get(model).get(year) == None or info_dict.get(make).get(model).get(year) == {}):
               print(year)
-              #Go through each page and get the make model and year
               getTrims(make, model, year)
-              time.sleep(2)
-              #debug
-              #print(car_dict)
         modelIndex = modelIndex +1
       makeIndex = makeIndex +1
 
 ### START OF MAIN FUNCTION ###
-
 get_trims_and_pictures()
-#print(info_dict)
+#print(info_dict)        
 # Go through each href and get all of the specs for each car
 try:
   for make, models in info_dict.items():
@@ -392,3 +558,10 @@ try:
                 time.sleep(2)
 except Exception as err:
   print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s\n" % (make,model,trim,year,err))
+
+        
+
+
+
+
+

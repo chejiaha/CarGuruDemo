@@ -489,6 +489,12 @@ def getTrims(make, model, year):
     infodict_file.write("info_dict = %r" % (info_dict))
     infodict_file.close()
     driver.close()
+    
+    infodict_file = open("car_dict.txt", "w")
+    infodict_file.write("car_dict = %r" % (car_dict))
+    infodict_file.close()
+    driver.close()
+    
     print("Sleep for 3 seconds")
     time.sleep(3)
   except Exception as err:
