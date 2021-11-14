@@ -34,3 +34,50 @@ Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:
 Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Manual Komfort, Year:2010 error:name 'trim' is not defined
 Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Man Komfort, Year:2009 error:name 'trim' is not defined
 Your Vehicle had an issue while getting Trim.  Make:Volkswagen, Model:Eos, Trim:2dr Conv Komfort, Year:2015 error:name 'trim' is not defined
+Your Vehicle had an issue while getting Trim.  Make:Acura, Model:ILX Hybrid,  Year:2014 error:Message: Reached error page: about:neterror?e=netTimeout&u=https%3A//cars.usnews.com/cars-trucks/acura/ilx-hybrid/2014/specs&c=UTF-8&d=The%20server%20at%20cars.usnews.com%20is%20taking%20too%20long%20to%20respond.
+
+Your Vehicle had an issue while getting Trim.  Make:Acura, Model:TSX Sport Wagon,  Year:2011 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Audi, Model:A8,  Year:2021 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Audi, Model:A8,  Year:2016 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Audi, Model:e-tron,  Year:2021 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Buick, Model:Enclave,  Year:2019 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Buick, Model:Envision,  Year:2021 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Buick, Model:Regal,  Year:2016 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Cadillac, Model:ATS,  Year:2017 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Cadillac, Model:Escalade,  Year:2009 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Cadillac, Model:STS,  Year:2011 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Equinox,  Year:2021 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Equinox,  Year:2020 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Impala,  Year:2016 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Silverado HD,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Chrysler, Model:200,  Year:2011 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Ferrari, Model:599 GTB Fiorano,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:FIAT, Model:124 Spider,  Year:2019 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:FIAT, Model:500,  Year:2019 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Ford, Model:E-Series,  Year:2012 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:GMC, Model:Sierra HD,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:GMC, Model:Terrain,  Year:2020 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:GMC, Model:Yukon,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:GMC, Model:Yukon Hybrid,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Honda, Model:Civic,  Year:2017 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Infiniti, Model:Q50,  Year:2018 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Infiniti, Model:QX60,  Year:2017 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Jeep, Model:Wrangler,  Year:2021 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Kia, Model:Forte,  Year:2016 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Kia, Model:Sorento,  Year:2014 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Land Rover, Model:Range Rover Velar,  Year:2019 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Lexus, Model:LS,  Year:2021 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Mazda, Model:Mazda5,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Mazda, Model:Mazda5,  Year:2009 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Mazda, Model:Mazda5,  Year:2008 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Mazda, Model:Tribute,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Nissan, Model:Altima,  Year:2017 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Nissan, Model:Frontier,  Year:2016 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Nissan, Model:GT-R,  Year:2017 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Nissan, Model:Versa,  Year:2018 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Nissan, Model:Versa,  Year:2017 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:RAM, Model:1500,  Year:2019 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:RAM, Model:HD,  Year:2012 error:Message: The element reference of <a href="/cars-trucks/ram/hd/2012/specs/hd-4wd-crew-cab-8-ft-box-big-horn-335799"> is stale; either the element is no longer attached to the DOM, it is not in the current frame context, or the document has been refreshed
+
+Your Vehicle had an issue while getting Trim.  Make:RAM, Model:HD,  Year:2011 error:Message: Tried to run command without establishing a connection
+

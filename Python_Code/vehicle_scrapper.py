@@ -104,8 +104,14 @@ makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac",
             "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
             "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
 
-modelList = [car_make_year_data.AcuraModel ,car_make_year_data.AlfaRomeoModel, car_make_year_data.AstonMartinModel,car_make_year_data.AudiModel,car_make_year_data.BMWModel,car_make_year_data.BuickModel,car_make_year_data.CadillacModel,car_make_year_data.ChevroletModel,car_make_year_data.ChryslerModel,car_make_year_data.DodgeModel,car_make_year_data.FerrariModel,car_make_year_data.FIATModel,car_make_year_data.FordModel,car_make_year_data.GenesisModel,car_make_year_data.GMCModel,car_make_year_data.HondaModel,car_make_year_data.HummerModel, car_make_year_data.hyundiModel, car_make_year_data.infinityModel, car_make_year_data.isuzuModel, car_make_year_data.jaguarModel, car_make_year_data.jeepModel, car_make_year_data.kiaModel, car_make_year_data.lamboModel, car_make_year_data.landRoverModel, car_make_year_data.lexusModel, car_make_year_data.linconModel, car_make_year_data.lotusModel, car_make_year_data.mazarattiModel, car_make_year_data.mazdaModel, car_make_year_data.mercedesModel, car_make_year_data.mercuryModel, car_make_year_data.miniModel, car_make_year_data.mitsubishiModel, car_make_year_data.nissanModel, car_make_year_data.polestarModel, car_make_year_data.pontiacModel, car_make_year_data.porsheModel, car_make_year_data.ramModel, car_make_year_data.saabModel, car_make_year_data.saturnModel, car_make_year_data.scionModel, car_make_year_data.subaruModel, car_make_year_data.suzukiModel, car_make_year_data.teslaModel, car_make_year_data.toyotaModel, car_make_year_data.volwagenModel, car_make_year_data.volvoModel ]
-yearList = [car_make_year_data.AcuraYear,car_make_year_data.AlfaRomeoYear,car_make_year_data.AstonMartinYear,car_make_year_data.AudiYear,car_make_year_data.BMWYear,car_make_year_data.BuickYear,car_make_year_data.CadillacYear,car_make_year_data.ChevroletYear,car_make_year_data.ChryslerYear,car_make_year_data.DodgeYear,car_make_year_data.FerrariYear,car_make_year_data.FIATYear,car_make_year_data.FordYear,car_make_year_data.GenesisYear,car_make_year_data.GMCYear,car_make_year_data.HondaYear,car_make_year_data.HummerYear,car_make_year_data.hyundiYear, car_make_year_data.infinityYear, car_make_year_data.isuzuYear, car_make_year_data.jaguarYear, car_make_year_data.jeepYear,car_make_year_data.kiaYear, car_make_year_data.lamboYear, car_make_year_data.landRoverYear, car_make_year_data.lexusYear, car_make_year_data.linconYear, car_make_year_data.lotusYear, car_make_year_data.mazarattiYear, car_make_year_data.mazdaYear, car_make_year_data.mercedesYear, car_make_year_data.mercuryYear, car_make_year_data.miniYear, car_make_year_data.mitsubishiYear, car_make_year_data.nissanYear, car_make_year_data.polestarYear, car_make_year_data.pontiacYear, car_make_year_data.porsheYear, car_make_year_data.ramYear, car_make_year_data.saabYear, car_make_year_data.saturnYear, car_make_year_data.scionYear, car_make_year_data.subaruYear, car_make_year_data.suzukiYear, car_make_year_data.teslaYear, car_make_year_data.toyotaYear, car_make_year_data.volwageYear, car_make_year_data.volvoYear]
+modelList = [car_make_year_data.AcuraModel ,car_make_year_data.AlfaRomeoModel, car_make_year_data.AstonMartinModel,car_make_year_data.AudiModel,car_make_year_data.BMWModel,car_make_year_data.BuickModel,car_make_year_data.CadillacModel,car_make_year_data.ChevroletModel,car_make_year_data.ChryslerModel,
+             car_make_year_data.DodgeModel,car_make_year_data.FerrariModel,car_make_year_data.FIATModel,car_make_year_data.FordModel,car_make_year_data.GenesisModel,car_make_year_data.GMCModel,car_make_year_data.HondaModel,car_make_year_data.HummerModel, car_make_year_data.hyundiModel, car_make_year_data.infinityModel, car_make_year_data.isuzuModel,
+             car_make_year_data.jaguarModel, car_make_year_data.jeepModel, car_make_year_data.kiaModel, car_make_year_data.lamboModel, car_make_year_data.landRoverModel, car_make_year_data.lexusModel, car_make_year_data.linconModel, car_make_year_data.lotusModel, car_make_year_data.mazarattiModel, car_make_year_data.mazdaModel,
+             car_make_year_data.mercedesModel, car_make_year_data.mercuryModel, car_make_year_data.miniModel, car_make_year_data.mitsubishiModel, car_make_year_data.nissanModel, car_make_year_data.polestarModel, car_make_year_data.pontiacModel, car_make_year_data.porsheModel, car_make_year_data.ramModel,
+             car_make_year_data.saabModel, car_make_year_data.saturnModel, car_make_year_data.scionModel, car_make_year_data.smartModel, car_make_year_data.subaruModel, car_make_year_data.suzukiModel, car_make_year_data.teslaModel, car_make_year_data.toyotaModel, car_make_year_data.volwagenModel, car_make_year_data.volvoModel
+             ]
+yearList = [car_make_year_data.AcuraYear,car_make_year_data.AlfaRomeoYear,car_make_year_data.AstonMartinYear,car_make_year_data.AudiYear,car_make_year_data.BMWYear,car_make_year_data.BuickYear,car_make_year_data.CadillacYear,car_make_year_data.ChevroletYear,car_make_year_data.ChryslerYear,car_make_year_data.DodgeYear,car_make_year_data.FerrariYear,car_make_year_data.FIATYear,car_make_year_data.FordYear,car_make_year_data.GenesisYear,car_make_year_data.GMCYear,car_make_year_data.HondaYear,car_make_year_data.HummerYear,car_make_year_data.hyundiYear, car_make_year_data.infinityYear, car_make_year_data.isuzuYear, car_make_year_data.jaguarYear, car_make_year_data.jeepYear,car_make_year_data.kiaYear, car_make_year_data.lamboYear, car_make_year_data.landRoverYear, car_make_year_data.lexusYear, car_make_year_data.linconYear, car_make_year_data.lotusYear, car_make_year_data.mazarattiYear, car_make_year_data.mazdaYear, car_make_year_data.mercedesYear, car_make_year_data.mercuryYear, car_make_year_data.miniYear, car_make_year_data.mitsubishiYear, car_make_year_data.nissanYear, car_make_year_data.polestarYear, car_make_year_data.pontiacYear, car_make_year_data.porsheYear, car_make_year_data.ramYear, car_make_year_data.saabYear, car_make_year_data.saturnYear, car_make_year_data.scionYear, car_make_year_data.smartYear, car_make_year_data.subaruYear, car_make_year_data.suzukiYear, car_make_year_data.teslaYear, car_make_year_data.toyotaYear, car_make_year_data.volwageYear, car_make_year_data.volvoYear]
+
 
 '''
   This method is created to populate car_dict & info_dict
@@ -124,6 +130,7 @@ def setupJson (dictionary):
   for index, make in enumerate(makeList):
       # Create the json
       dictionary[make] = {}
+      
       #debug
       #print("make : %s " % make)
         
@@ -184,9 +191,9 @@ def downloadVehiclePic(make,model,year, listOfImgTag):
               print('Image Couldn\'t be retrieved')
           break
     except Exception as err:
-      print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+      print("Your Vehicle had an issue while getting Image. \n Make:%s, Model:%s,  Year:%s \n error:%s" % (make,model,year,err))
       error_file = open("ImageError.txt", "a")
-      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+      error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s,Year:%s error:%s\n" % (make,model,year,err))
       error_file.close()
   else:
     print("The file is already populated.")
@@ -365,9 +372,9 @@ def getVehicleDescription (make, model, trim, year, href):
     print("Sleep for 1 seconds")
     time.sleep(1)
   except Exception as err:
-    print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+    print("Your Vehicle had an issue while populating the Description. \n Make:%s, Model:%s, Year:%s \n error:%s" % (make,model,year,err))
     error_file = open("DescriptionError.txt", "a")
-    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue populating the Description.  Make:%s, Model:%s, Year:%s error:%s\n" % (make,model,year,err))
     error_file.close()
     driver.close()
   
@@ -485,9 +492,9 @@ def getTrims(make, model, year):
     print("Sleep for 3 seconds")
     time.sleep(3)
   except Exception as err:
-    print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s" % (make,model,trim,year,err))
+    print("Your Vehicle had an issue while getting Trim. \n Make:%s, Model:%s, Year:%s \n error:%s" % (make,model,year,err))
     error_file = open("trimError.txt", "a")
-    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s, Trim:%s, Year:%s error:%s\n" % (make,model,trim,year,err))
+    error_file.write("Your Vehicle had an issue while getting Trim.  Make:%s, Model:%s,  Year:%s error:%s\n" % (make,model,year,err))
     error_file.close()
     driver.close()
 
