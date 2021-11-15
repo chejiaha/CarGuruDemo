@@ -98,14 +98,15 @@ INFO_dict (one car model and one year)
 '''
 
 
-makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
-            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
-            "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
+makeList = ["Isuzu", "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
             "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
             "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
 
-modelList = [["HD"], car_make_year_data.saabModel, car_make_year_data.saturnModel, car_make_year_data.scionModel, car_make_year_data.smartModel, car_make_year_data.subaruModel, car_make_year_data.suzukiModel, car_make_year_data.teslaModel, car_make_year_data.toyotaModel, car_make_year_data.volwagenModel, car_make_year_data.volvoModel]
-yearList = [[[2012,2011]], car_make_year_data.saabYear, car_make_year_data.saturnYear, car_make_year_data.scionYear, car_make_year_data.smartYear, car_make_year_data.subaruYear, car_make_year_data.suzukiYear, car_make_year_data.teslaYear, car_make_year_data.toyotaYear, car_make_year_data.volwageYear, car_make_year_data.volvoYear]
+modelList = [car_make_year_data.isuzuModel,car_make_year_data.jaguarModel, car_make_year_data.jeepModel, car_make_year_data.kiaModel, car_make_year_data.lamboModel, car_make_year_data.landRoverModel, car_make_year_data.lexusModel, car_make_year_data.linconModel, car_make_year_data.lotusModel, car_make_year_data.mazarattiModel, car_make_year_data.mazdaModel,
+             car_make_year_data.mercedesModel, car_make_year_data.mercuryModel, car_make_year_data.miniModel, car_make_year_data.mitsubishiModel, car_make_year_data.nissanModel, car_make_year_data.polestarModel, car_make_year_data.pontiacModel, car_make_year_data.porsheModel, car_make_year_data.ramModel,
+             car_make_year_data.saabModel, car_make_year_data.saturnModel, car_make_year_data.scionModel, car_make_year_data.smartModel, car_make_year_data.subaruModel, car_make_year_data.suzukiModel, car_make_year_data.teslaModel, car_make_year_data.toyotaModel, car_make_year_data.volwagenModel, car_make_year_data.volvoModel
+             ]
+yearList = [car_make_year_data.isuzuYear, car_make_year_data.jaguarYear, car_make_year_data.jeepYear,car_make_year_data.kiaYear, car_make_year_data.lamboYear, car_make_year_data.landRoverYear, car_make_year_data.lexusYear, car_make_year_data.linconYear, car_make_year_data.lotusYear, car_make_year_data.mazarattiYear, car_make_year_data.mazdaYear, car_make_year_data.mercedesYear, car_make_year_data.mercuryYear, car_make_year_data.miniYear, car_make_year_data.mitsubishiYear, car_make_year_data.nissanYear, car_make_year_data.polestarYear, car_make_year_data.pontiacYear, car_make_year_data.porsheYear, car_make_year_data.ramYear, car_make_year_data.saabYear, car_make_year_data.saturnYear, car_make_year_data.scionYear, car_make_year_data.smartYear, car_make_year_data.subaruYear, car_make_year_data.suzukiYear, car_make_year_data.teslaYear, car_make_year_data.toyotaYear, car_make_year_data.volwageYear, car_make_year_data.volvoYear]
 
 
 '''
@@ -138,11 +139,9 @@ def setupJson (dictionary):
   return dictionary
 
 #Setting up Dictionaries
-# car_dict = setupJson(car_dict)
-# info_dict = setupJson(info_dict)
+car_dict = setupJson(car_dict)
+info_dict = setupJson(info_dict)
 
-car_dict = 
-info_dict =
 
 def downloadVehiclePic(make,model,year, listOfImgTag):
   #Check if the file is already downloaded
@@ -485,6 +484,9 @@ def getTrims(make, model, year):
     infodict_file = open("info_dict.txt", "w")
     infodict_file.write("info_dict = %r" % (info_dict))
     infodict_file.close()
+    cardict_file = open("car_dict.txt", "w")
+    cardict_file.write("car_dict = %r" % (car_dict))
+    cardict_file.close()
     driver.close()
     print("Sleep for 3 seconds")
     time.sleep(3)
