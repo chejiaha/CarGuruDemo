@@ -98,11 +98,10 @@ INFO_dict (one car model and one year)
 '''
 
 
-makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler",
-            "Dodge","Ferrari","FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu",
-            "Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda",
-            "Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan","Polestar","Pontiac","Porsche","RAM",
-            "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
+makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Dodge","Ferrari",
+            "FIAT","Ford","Genesis","GMC","Honda","HUMMER","Hyundai","Infiniti","Isuzu","Jaguar","Jeep","Kia",
+            "Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda","Mercedes-Benz","Mercury","MINI","Mitsubishi","Nissan",
+            "Polestar","Pontiac","Porsche","RAM", "Saab","Saturn","Scion","Smart","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"]
 
 modelList = [car_make_year_data.AcuraModel ,car_make_year_data.AlfaRomeoModel, car_make_year_data.AstonMartinModel,car_make_year_data.AudiModel,car_make_year_data.BMWModel,car_make_year_data.BuickModel,car_make_year_data.CadillacModel,car_make_year_data.ChevroletModel,car_make_year_data.ChryslerModel,
              car_make_year_data.DodgeModel,car_make_year_data.FerrariModel,car_make_year_data.FIATModel,car_make_year_data.FordModel,car_make_year_data.GenesisModel,car_make_year_data.GMCModel,car_make_year_data.HondaModel,car_make_year_data.HummerModel, car_make_year_data.hyundiModel, car_make_year_data.infinityModel, car_make_year_data.isuzuModel,
@@ -247,39 +246,50 @@ def getVehicleDescription (make, model, trim, year, href):
       #     car_dict[make][model][trim][year]["Doors"] = item.text
       if ("MPG" in item_html and "/" in item_html): 
           # MPG: 15 City / 21 Hwy
-          split_mpg = item.text.split("/")
+          split_mpg = item.text.split(":")
+          split_mpg = split_mpg[1].split("/")
           # Splitting the city and higway mpg
-          city_mpg = split_mpg[0][5:7]
-          int_city = int(city_mpg.strip())
-          highway_mpg = split_mpg[1][1:3]
-          int_highway = int(highway_mpg.strip())
+          city_mpg = split_mpg[0].strip().split(" ")
+          city_mpg = city_mpg[0]
+          int_city = float(city_mpg.strip())
+          highway_mpg = split_mpg[1].strip().split(" ")
+          highway_mpg = highway_mpg[0]
+          int_highway = float(highway_mpg.strip())
           car_dict[make][model][trim][year]["City_MPG"] = int_city
           car_dict[make][model][trim][year]["Highway_MPG"] = int_highway
       #Since this did not get the MPG all the time for some reason get it using other value just incase
       #EPA Fuel Economy Est - Hwy (MPG): 21 (2021)
       elif ("Hwy (MPG)" in item_html):
-        split_item = item.split(":")
-        mpg = split_item[1][1:-7]
-        int_item = int(mpg.strip())
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip().split(" ")
+        mpg = split_item[0]
+        int_item = float(mpg.strip())
         car_dict[make][model][trim][year]["Highway_MPG"] = int_item
       #EPA Fuel Economy Est - City (MPG): 15 (2021)
       elif ("City (MPG)" in item_html):
-        split_item = item.split(":")
-        mpg = split_item[1][1:-7]
-        int_item = int(mpg.strip())
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip().split(" ")
+        mpg = split_item[0]
+        int_item = float(mpg.strip())
         car_dict[make][model][trim][year]["City_MPG"] = int_item
       elif ("Horsepower" in item_html):
         #Horsepower (Net @ RPM): 600 @ 6000
-        int_item = int(item.text[22:-7].strip())
-        car_dict[make][model][trim][year]["Horsepower"] = item.text[22:-7]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip().split(" ")
+        int_item = float(split_item[0].strip())
+        car_dict[make][model][trim][year]["Horsepower"] = int_item
       elif ("Engine Type" in item_html):
         #Engine Type: Twin Turbo Premium Unleaded V-8
-        car_dict[make][model][trim][year]["Engine"] = item.text[13:]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        car_dict[make][model][trim][year]["Engine"] = split_item
       #Passenger Capacity: 5
       elif ("Passenger Capacity" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[20:].strip())
-        car_dict[make][model][trim][year]["Seats"] = item.text[20:]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item.strip())
+        car_dict[make][model][trim][year]["Seats"] = int_item
       #8 Cylinder Engine
       # Julie you can parse the first letter for the category algorithm
       elif ("Cylinders" in item_html):
@@ -288,11 +298,14 @@ def getVehicleDescription (make, model, trim, year, href):
       elif ("Torque" in item_html):
         #Torque (Net @ RPM): 553 @ 1800
         #Converting the item into an int.
-        int_item = int(item.text[18:-7].strip())
-        car_dict[make][model][trim][year]["Torque"] = item.text[18:-7]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip().split(" ")
+        int_item = float(split_item[0].strip())
+        car_dict[make][model][trim][year]["Torque"] = int_item
       elif ("Body Style" in item_html):
         # Body Style: Sedan
-        car_dict[make][model][trim][year]["Type"] = item.text[12:]
+        split_item = item.text.split(":")
+        car_dict[make][model][trim][year]["Type"] = split_item[1]
       elif ("All Wheel Drive" in item_html):
         car_dict[make][model][trim][year]["DriveTrain"] = "AWD"
       elif ("Front Wheel Drive" in item_html):
@@ -300,38 +313,52 @@ def getVehicleDescription (make, model, trim, year, href):
       elif ("Rear Wheel Drive" in item_html):
         car_dict[make][model][trim][year]["DriveTrain"] = "RWD"
       #Base Curb Weight (lbs.): 2456
-      elif ("Base Curb Weight (lbs.):" in item_html):
+      elif ("Base Curb Weight (lbs.): 2222" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[25:].strip())
-        car_dict[make][model][trim][year]["Weight"] = item.text[25:]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item)
+        car_dict[make][model][trim][year]["Weight"] = int_item
       #TODO Trunk Volume (cu. ft.): 14 OR Cargo Volume (cu. ft.): 57.5
       elif ("Trunk Volume" in item_html or "Cargo Volume" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[24:].strip())
-        car_dict[make][model][trim][year]["CargoVolume"] = item.text[24:]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item)
+        car_dict[make][model][trim][year]["CargoVolume"] = int_item
       #Transmission: Manual
       #Transmission: Automatic w/OD
       elif ("Transmission:" in item_html):
-        car_dict[make][model][trim][year]["Transmission"] = item.text[14:]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        car_dict[make][model][trim][year]["Transmission"] = split_item
       #Height, Overall (in.): 74.6
       elif ("Height" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[23:].strip())
-        car_dict[make][model][trim][year]["Height"] = item.text[23:]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item)
+        car_dict[make][model][trim][year]["Height"] = int_item
       #Length, Overall (in.): 196.4
       elif ("Length" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[23:].strip())
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item)
         car_dict[make][model][trim][year]["Length"] = int_item
       #Width, Max w/o mirrors (in.): 74.9
       elif ("Width" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[30:].strip())
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item)
         car_dict[make][model][trim][year]["Width"] = int_item
       #Wheelbase (in.): 117.4
       elif ("Wheelbase" in item_html):
         #Converting the item into an int.
-        int_item = int(item.text[17:].strip())
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip()
+        int_item = float(split_item)
         car_dict[make][model][trim][year]["Wheelbase"] = int_item
       #Leather Seats
       elif ("Leather Seats" in item_html):
@@ -344,7 +371,10 @@ def getVehicleDescription (make, model, trim, year, href):
         car_dict[make][model][trim][year]["PremiumSoundSystem"] = "True"
       #Get the engine Displacement (Displacement: 1.4L/83)
       elif ("Displacement" in item_html):
-        car_dict[make][model][trim][year]["PremiumSoundSystem"] = item.text[14:18]
+        split_item = item.text.split(":")
+        split_item = split_item[1].strip().split("L")
+        int_item = float(split_item[0])
+        car_dict[make][model][trim][year]["Displacement"] = int_item
       else:
           continue
     # Check if the car has leather seats.
