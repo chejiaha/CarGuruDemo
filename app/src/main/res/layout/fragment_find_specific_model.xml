@@ -4,67 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background"
+    android:background="@drawable/find_car_for_you1"
     tools:context=".UI.FindSpecificModel.FindSpecificModelFragment"
     tools:layout_editor_absoluteX="-24dp"
     tools:layout_editor_absoluteY="4dp">
-
-    <ProgressBar
-        android:id="@+id/pbProgress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="281dp"
-        android:layout_height="300dp"
-        android:max="100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+<!--    android:background="@drawable/find_specific_car_page"-->
     <TextView
         android:id="@+id/tvFindSpecificModelTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="28dp"
-        android:text="Find Specific Model"
-        android:textColor="@color/white_text"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/bevan"
+        android:text="Specific Model"
+        android:textColor="@color/orange_text"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spMake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="136dp"
+        android:layout_height="22dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/white_text"
+        android:backgroundTint="@color/white_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFindSpecificModelTitle" />
-
-    <Spinner
-        android:id="@+id/spYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/white_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spTrim" />
-
-    <Spinner
-        android:id="@+id/spModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/white_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMake" />
 
     <!-- <TextView
              android:id="@+id/tvFindSpecificModelSearch"
@@ -79,23 +47,47 @@
              app:layout_constraintTop_toBottomOf="@+id/spMake" />-->
 
     <Spinner
-        android:id="@+id/spTrim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:id="@+id/spModel"
+        android:layout_width="136dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
         android:textColor="@color/white_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/white_text"
+        app:layout_constraintTop_toBottomOf="@+id/spMake" />
+
+    <Spinner
+        android:id="@+id/spTrim"
+        android:layout_width="136dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white_text"
+        android:backgroundTint="@color/white_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/spModel" />
+
+    <Spinner
+        android:id="@+id/spYear"
+        android:layout_width="136dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white_text"
+        android:backgroundTint="@color/white_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTrim" />
 
     <Button
         android:id="@+id/btnFindSpecificModelSearch"
         android:layout_width="96dp"
         android:layout_height="38dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/search_button"
-        android:textColor="@color/grey_background"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -114,28 +106,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvFindSpecificModelRightInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:padding="5dp"
-        android:text="-Approximagte Mechanical Costs \n -Approximate Yearly Costs"
-        android:textColor="@color/orange_text"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFindSpecificModelSearch" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginEnd="60dp"
         android:text="Make"
         android:textColor="@color/white_text"
         app:layout_constraintEnd_toStartOf="@+id/spMake"
@@ -146,33 +125,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginEnd="56dp"
         android:text="Model"
         android:textColor="@color/white_text"
         app:layout_constraintEnd_toStartOf="@+id/spModel"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="92dp"
-        android:text="Trim"
-        android:textColor="@color/white_text"
-        app:layout_constraintEnd_toStartOf="@+id/spModel"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="92dp"
+        android:layout_marginEnd="64dp"
         android:text="Year"
         android:textColor="@color/white_text"
         app:layout_constraintEnd_toStartOf="@+id/spModel"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="281dp"
+        android:layout_height="300dp"
+        android:max="100"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
+        android:text="Trim"
+        android:textColor="@color/white_text"
+        app:layout_constraintEnd_toStartOf="@+id/spModel"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <!--    <TextView-->
     <!--            android:id="@+id/tvFindSpecificModelRecentSearches"-->

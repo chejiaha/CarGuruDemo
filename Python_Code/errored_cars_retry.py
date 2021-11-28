@@ -24,9 +24,9 @@ year = ""
 trim = ""
 
 #setting car_dict and info_dict
-car_dict = vehicle_scrapper_data.car_dict
-# {"Trim": "href for car specs information"}
-info_dict = vehicle_scrapper_data.info_dict
+# car_dict = vehicle_scrapper_data.car_dict
+# # {"Trim": "href for car specs information"}
+# info_dict = vehicle_scrapper_data.info_dict
 
 # Creating the web Driver object
 #driver = webdriver.Firefox()
@@ -99,9 +99,10 @@ INFO_dict (one car model and one year)
 
 makeList = ["Acura","Alfa Romeo","Aston Martin","Audi","BMW","Buick","Cadillac","Chevrolet","Chrysler","Dodge","Ferrari",]
 
-modelList = [car_make_year_data.AcuraModel ,car_make_year_data.AlfaRomeoModel, car_make_year_data.AstonMartinModel,car_make_year_data.AudiModel,car_make_year_data.BMWModel,car_make_year_data.BuickModel,car_make_year_data.CadillacModel,car_make_year_data.ChevroletModel,car_make_year_data.ChryslerModel,
-             car_make_year_data.DodgeModel,car_make_year_data.FerrariModel,]
-yearList = [car_make_year_data.AcuraYear,car_make_year_data.AlfaRomeoYear,car_make_year_data.AstonMartinYear,car_make_year_data.AudiYear,car_make_year_data.BMWYear,car_make_year_data.BuickYear,car_make_year_data.CadillacYear,car_make_year_data.ChevroletYear,car_make_year_data.ChryslerYear,car_make_year_data.DodgeYear,car_make_year_data.FerrariYear,]
+modelList = [car_make_year_data.DodgeModel,car_make_year_data.FerrariModel, car_make_year_data.polestarModel, car_make_year_data.pontiacModel, car_make_year_data.porsheModel, car_make_year_data.ramModel,
+             car_make_year_data.saabModel, car_make_year_data.saturnModel, car_make_year_data.scionModel, car_make_year_data.smartModel, car_make_year_data.subaruModel, car_make_year_data.suzukiModel, car_make_year_data.teslaModel, car_make_year_data.toyotaModel, car_make_year_data.volwagenModel, car_make_year_data.volvoModel
+             ]
+yearList = [car_make_year_data.DodgeYear,car_make_year_data.FerrariYear, car_make_year_data.polestarYear, car_make_year_data.pontiacYear, car_make_year_data.porsheYear, car_make_year_data.ramYear, car_make_year_data.saabYear, car_make_year_data.saturnYear, car_make_year_data.scionYear, car_make_year_data.smartYear, car_make_year_data.subaruYear, car_make_year_data.suzukiYear, car_make_year_data.teslaYear, car_make_year_data.toyotaYear, car_make_year_data.volwageYear, car_make_year_data.volvoYear]
 
 
 '''
@@ -564,10 +565,10 @@ def get_trims_and_pictures():
 #print(info_dict)        
 
 import Car_Dict
-import Info_Dict
+import errored_info_dict
 #Setting up cardict and infodict
 car_dict = Car_Dict.car_dict 
-info_dict = Info_Dict.info_dict
+info_dict = errored_info_dict.info_dict
 
 
 # Go through each href and get all of the specs for each car
@@ -595,7 +596,7 @@ try:
 except Exception as err:
   print("Your Vehicle had an issue while populating description. \n Make:%s, Model:%s, Trim:%s, Year:%s \n error:%s\n" % (make,model,trim,year,err))
 
-        
+        #Volkswagen Atlas
 
 
 

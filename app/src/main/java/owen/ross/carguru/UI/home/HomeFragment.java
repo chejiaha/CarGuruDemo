@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,10 +34,10 @@ public class HomeFragment extends Fragment {
     ImageView ivFindSpecificModel;
     ImageView ivBrowseByCategory;
     ImageView ivCarNews;
-    TextView tvFindMeACar;
-    TextView tvSearchForCar;
-    TextView tvBrowseByCategory;
-    TextView tvCarNews;
+    Button tvFindMeACar;
+    Button tvSearchForCar;
+    Button tvBrowseByCategory;
+    //Button tvCarNews;
     View view;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,25 +51,25 @@ public class HomeFragment extends Fragment {
         });
 
         //Pairing the Text and Image to the Fragment
-        ivFindACarForYou = (ImageView) view.findViewById(R.id.ivFindACarForYou);
-        ivFindSpecificModel = (ImageView) view.findViewById(R.id.ivFindSpecificModel);
-        ivBrowseByCategory = (ImageView) view.findViewById(R.id.ivBrowseByCategory);
-        ivCarNews = (ImageView) view.findViewById(R.id.ivCarNews);
-        tvFindMeACar = (TextView) view.findViewById(R.id.tvFindACarForYou);
-        tvSearchForCar = (TextView) view.findViewById(R.id.tvFindSpecificModel);
-        tvBrowseByCategory = (TextView) view.findViewById(R.id.tvBrowseByCategory);
-        tvCarNews = (TextView) view.findViewById(R.id.tvCarNews);
+//        ivFindACarForYou = (ImageView) view.findViewById(R.id.ivFindACarForYou);
+//        ivFindSpecificModel = (ImageView) view.findViewById(R.id.ivFindSpecificModel);
+//        ivBrowseByCategory = (ImageView) view.findViewById(R.id.ivBrowseByCategory);
+//        ivCarNews = (ImageView) view.findViewById(R.id.ivCarNews);
+        tvFindMeACar = (Button) view.findViewById(R.id.tvFindACarForYou);
+        tvSearchForCar = (Button) view.findViewById(R.id.tvFindSpecificModel);
+        tvBrowseByCategory = (Button) view.findViewById(R.id.tvBrowseByCategory);
+        //tvCarNews = (Button) view.findViewById(R.id.tvCarNews);
 
         //Setting the onclick Listeners
         tvFindMeACar.setOnClickListener(onClickFindMeACar);
         tvSearchForCar.setOnClickListener(onClickToSpecificModel);
         tvBrowseByCategory.setOnClickListener(onClickToCategories);
-        tvCarNews.setOnClickListener(onClickToNews);
+        //tvCarNews.setOnClickListener(onClickToNews);
         //Image Listeneners
-        ivFindACarForYou.setOnClickListener(onClickFindMeACar);
-        ivFindSpecificModel.setOnClickListener(onClickToSpecificModel);
-        ivBrowseByCategory.setOnClickListener(onClickToCategories);
-        ivCarNews.setOnClickListener(onClickToNews);
+//        ivFindACarForYou.setOnClickListener(onClickFindMeACar);
+//        ivFindSpecificModel.setOnClickListener(onClickToSpecificModel);
+//        ivBrowseByCategory.setOnClickListener(onClickToCategories);
+//        ivCarNews.setOnClickListener(onClickToNews);
 
         return view;
     }
@@ -81,7 +82,6 @@ public class HomeFragment extends Fragment {
             //Going from SearchCarFragment to Specific model fragment
             Fragment findMeACar = new QuestionnaireSplashFragment();
             HelperFunctions.switchFragments(getActivity(), findMeACar, R.id.nav_host_fragment, new Bundle());
-
         }
     };
     // Find a specific Model

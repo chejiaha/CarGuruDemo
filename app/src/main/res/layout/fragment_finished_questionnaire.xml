@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".UI.Questionnaire.FinishedQuestionnaireFragment"
     android:id="@+id/finished_questionnaire_fragment"
-    android:background="@color/grey_background">
+    android:background="@drawable/questionnairepageimg">
 
     <TextView
         android:id="@+id/tvQuestionnaireTitle"
@@ -16,6 +16,7 @@
         android:layout_marginTop="24dp"
         android:text="Congratulations"
         android:textSize="25dp"
+        android:textFontWeight="700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +28,7 @@
         android:layout_width="303dp"
         android:layout_height="126dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/crewmascot"
+        android:src="@drawable/car_guru_maskot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireTitle" />
@@ -69,26 +70,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryTitle"
         android:textColor="@color/orange_text"/>
 
-    <TextView
+    <Button
         android:id="@+id/tvQuestionnaireToCars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="60dp"
         android:text="To Suggested Cars"
-        android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toEndOf="@+id/tvQuestionnaireTryAgain"
         app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation" />
 
-    <TextView
+    <Button
         android:id="@+id/tvQuestionnaireTryAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="60dp"
         android:text="Try Again"
-        android:textColor="@color/orange_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvQuestionnaireCategoryExplanation" />
 

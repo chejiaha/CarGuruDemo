@@ -5,100 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".UI.Catagories.ViewByCategoryFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/grey_background">
+    android:background="@drawable/category_img1">
 
-
-    <ImageView
-        android:id="@+id/ivChooseSedan"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/commuterimg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed2" />
 
     <ImageView
         android:id="@+id/ivChooseSUV"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginEnd="40dp"
-        android:src="@drawable/audi_q3_2018"
+        android:src="@drawable/suvimg"
         app:layout_constraintEnd_toStartOf="@+id/ivChooseSports"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toEndOf="@+id/ivChooseCommuter"
         app:layout_constraintTop_toTopOf="@+id/ivChooseSedan" />
-
-    <TextView
-        android:id="@+id/tvChooseCoupe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:text="Coupe"
-        android:textColor="@color/orange_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseCoupe" />
-
-    <ImageView
-        android:id="@+id/ivChooseMinivan"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="44dp"
-        android:src="@drawable/familyimg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseSedan" />
-
-    <TextView
-        android:id="@+id/tvChooseSedan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="Sedan"
-        android:textColor="@color/orange_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseSedan" />
-
-    <ImageView
-        android:id="@+id/ivChooseCoupe"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginEnd="48dp"
-        android:src="@drawable/sportimg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivChooseSedan" />
-
-    <ImageView
-        android:id="@+id/ivChooseTruck"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
-        android:src="@drawable/utilityimg"
-        app:layout_constraintEnd_toEndOf="@+id/tvChooseCoupe"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toEndOf="@+id/ivChooseFamily"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseSUV" />
-
-    <TextView
-        android:id="@+id/tvChooseSUV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:text="SUV"
-        android:textColor="@color/orange_text"
-        app:layout_constraintStart_toEndOf="@+id/tvChooseCommuter"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseSUV" />
-
-    <TextView
-        android:id="@+id/tvChooseMinivan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="4dp"
-        android:text="Minivan"
-        android:textColor="@color/orange_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivChooseMinivan" />
 
     <TextView
         android:id="@+id/tvChooseTruck"
@@ -107,21 +26,103 @@
         android:text="Truck"
         android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toEndOf="@+id/tvChooseMinivan"
         app:layout_constraintTop_toBottomOf="@+id/ivChooseTruck" />
+
+    <ImageView
+        android:id="@+id/ivChooseSedan"
+        android:layout_width="90dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/commuterimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigationNeed2" />
+
+    <ImageView
+        android:id="@+id/ivChooseTruck"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/utilityimg"
+        app:layout_constraintEnd_toEndOf="@+id/tvChooseCoupe"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toEndOf="@+id/ivChooseFamily"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseSUV" />
+
+    <TextView
+        android:id="@+id/tvChooseSedan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="Sedan"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseSedan" />
+
+    <TextView
+        android:id="@+id/tvChooseMinivan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="4dp"
+        android:text="Minivan"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseMinivan" />
+
+    <ImageView
+        android:id="@+id/ivChooseCoupe"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/sportimg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivChooseSedan" />
+
+    <TextView
+        android:id="@+id/tvChooseSUV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:text="SUV"
+        android:textColor="@color/orange_text"
+        app:layout_constraintStart_toEndOf="@+id/tvChooseCommuter"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseSUV" />
+
+    <ImageView
+        android:id="@+id/ivChooseMinivan"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/familyimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseSedan" />
+
+    <TextView
+        android:id="@+id/tvChooseCoupe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="Coupe"
+        android:textColor="@color/orange_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivChooseCoupe" />
 
     <TextView
         android:id="@+id/tvTopCarsNavigationNeed2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="By Bodystyle"
         android:textColor="@color/white_text"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChooseFamily" />
 
@@ -133,10 +134,11 @@
         android:text="Choose A Category"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:fontFamily="@font/bevan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/white_text"/>
+        android:textColor="@color/orange_text"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/tvTopCarsNavigationCategory"-->
@@ -298,20 +300,20 @@
         android:id="@+id/tvTopCarsNavigationNeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:text="By Need"
         android:textColor="@color/white_text"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTopCarsNavigation" />
 
     <ImageView
         android:id="@+id/ivChooseCommuter"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:contentDescription="Commuter"
@@ -321,8 +323,8 @@
 
     <ImageView
         android:id="@+id/ivChooseUtility"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/utilityimg"
@@ -379,8 +381,8 @@
 
     <ImageView
         android:id="@+id/ivChooseLuxury"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:src="@drawable/luxuryimg"
@@ -391,8 +393,8 @@
 
     <ImageView
         android:id="@+id/ivChooseFamily"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/familyimg"
@@ -412,8 +414,8 @@
 
     <ImageView
         android:id="@+id/ivChooseBeater"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:src="@drawable/beaterimg"
@@ -423,8 +425,8 @@
 
     <ImageView
         android:id="@+id/ivChooseSports"
-        android:layout_width="75dp"
-        android:layout_height="76dp"
+        android:layout_width="91dp"
+        android:layout_height="81dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="28dp"
         android:src="@drawable/sportimg"

@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.CarGuru" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/orange_text</item>
-        <item name="colorPrimaryVariant">@color/grey_background</item>
+        <item name="colorPrimary">#002366</item>
+        <item name="colorPrimaryVariant">#a9a9a9</item>
         <item name="colorOnPrimary">@color/white_text</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/grey_background</item>
-        <item name="colorSecondaryVariant">@color/orange_text</item>
-        <item name="colorOnSecondary">@color/orange_text</item>
+        <item name="colorSecondary">#a9a9a9</item>
+        <item name="colorSecondaryVariant">#002366</item>
+        <item name="colorOnSecondary">#002366</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

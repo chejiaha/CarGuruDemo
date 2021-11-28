@@ -131,7 +131,7 @@ public class VehicleDatabase extends Fragment implements VehicleFirebaseCallback
 
 
     /*
-     *      *
+     *
      * The Function is created to get the SINGLE vehicle data that the user requested. It will look through
      * The database Reference and get the item information that has the same make,model and year.
      * This function will Send the user to the specific cars page and will pass the Specific Vehicle
@@ -175,8 +175,6 @@ public class VehicleDatabase extends Fragment implements VehicleFirebaseCallback
                     car.setYear(Integer.parseInt(carYear));
                     String descValue =  ssCarDesc.getValue().toString();
                     tempCar = HelperFunctions.getSpecs(descName,descValue, car);
-
-
                 } // End Of Data Snapshot
                 stringCallback.onCallbackCar(tempCar);
 

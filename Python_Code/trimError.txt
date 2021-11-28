@@ -118,3 +118,9 @@ Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Equinox,  Y
 Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Impala,  Year:2016 error:invalid literal for int() with base 10: 'N/A'
 Your Vehicle had an issue while getting Trim.  Make:Chevrolet, Model:Silverado HD,  Year:2010 error:invalid literal for int() with base 10: 'N/A'
 Your Vehicle had an issue while getting Trim.  Make:Chrysler, Model:200,  Year:2011 error:invalid literal for int() with base 10: 'N/A'
+Your Vehicle had an issue while getting Trim.  Make:Acura, Model:ILX,  Year:2021 error:Message: Tried to run command without establishing a connection
+
+Your Vehicle had an issue while getting Trim.  Make:Acura, Model:ILX,  Year:2021 error:Message: Tried to run command without establishing a connection
+
+Your Vehicle had an issue while getting Trim.  Make:Acura, Model:ILX,  Year:2021 error:Message: Tried to run command without establishing a connection
+

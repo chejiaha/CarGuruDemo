@@ -7,16 +7,17 @@
     tools:context=".UI.Questionnaire.QuestionnaireFinalListOfCarsFragment"
     android:id="@+id/final_list_of_car_questionnaire"
     android:orientation="vertical"
-    android:background="@color/grey_background">
+    android:background="@drawable/questionnairepageimg">
 
     <TextView
         android:id="@+id/tvListOfCarsTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="434dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/bevan"
         android:paddingBottom="30dp"
         android:text="@string/suggestion"
         android:textAlignment="center"
-        android:textColor="@color/white_text"
+        android:textColor="@color/orange_text"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

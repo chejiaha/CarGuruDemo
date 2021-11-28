@@ -5,15 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/questionnairesplashpageimg">
+    android:background="@drawable/questionnairesplashpageimg1">
 
     <TextView
         android:id="@+id/tvFindACarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Come Find Your Car!"
-        android:textSize="20dp"
+        android:text="Find Your Car!"
+        android:textSize="25dp"
+        android:fontFamily="@font/bevan"
         android:textColor="@color/orange_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +25,7 @@
         android:layout_width="303dp"
         android:layout_height="126dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/crewmascot"
+        android:src="@drawable/car_guru_maskot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFindACarTitle" />
@@ -34,6 +35,7 @@
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         android:text="Clicking Start will Bring you to a questionnaire that will determine the best cars for your needs"
         android:textColor="@color/white_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +48,7 @@
         android:layout_width="225dp"
         android:layout_height="156dp"
         android:layout_marginTop="4dp"
-        android:src="@drawable/questionnairestartbutton"
+        android:src="@drawable/questionnairestartbutton1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFindACarForYouDescription" />

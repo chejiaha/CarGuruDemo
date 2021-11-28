@@ -11,7 +11,7 @@
 
 <TextView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/grey_background"
+    android:background="#002366"
     android:id="@+id/tvSpinnerItem"
     android:layout_width="match_parent"
     android:layout_height="60px"
@@ -19,7 +19,7 @@
     android:text="Description"
     android:textAlignment="center"
     android:textAllCaps="true"
-    android:textColor="@color/white_text"
+    android:textColor="@color/orange_text"
     android:textSize="10dp"
     android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="parent"
